@@ -8,8 +8,10 @@
 		"url": "https://coding.net/u/roshanca/p/kh-demo-mobile/git"
 	},
 	"devDependencies": {
+    "grunt-contrib-clean": "latest",
     "grunt-contrib-connect": "latest",
     "grunt-contrib-less": "latest",
+    "grunt-contrib-requirejs": "latest",
     "grunt-contrib-watch": "latest",
     "matchdep": "latest"
 	},

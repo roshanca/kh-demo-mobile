@@ -16,6 +16,17 @@ module.exports = (grunt) ->
         ' * Copyright (c) <%= grunt.template.today(\"yyyy\") %> <%= pkg.author.name %> <<%=pkg.author.email%>>; \n' +
         ' */\n\n'
 
+    clean:
+      dist: ['dist/*']
+
+    requirejs:
+      compile:
+        options:
+          mainConfigFile: 'src/app.js'
+          name: 'app'
+          out: 'dist/app.min.js'
+          preserveLicenseComments: false
+
     connect:
       server:
         options:
@@ -34,5 +45,6 @@ module.exports = (grunt) ->
         files: ['src/less/**/*.less']
         tasks: ['less:development']
 
+  grunt.registerTask 'release', ['clean', 'requirejs']
   grunt.registerTask 'server', ['connect:server', 'watch:server']
 
