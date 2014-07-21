@@ -4,7 +4,19 @@ define(['utils'], function (Utils) {
 		Utils.bindEvents(params.bindings)
 	}
 
+	function resetBtn() {
+		$$('.login-getcode').html('获取验证码');
+		$$('.login-getcode').removeClass('disabled');
+	}
+
+	function inputBlur() {
+		$$('.mobile').blur();
+		$$('.password').blur();
+	}
+
 	return {
-		init: init
+		init: init,
+		resetBtn: resetBtn,
+		inputBlur: inputBlur
 	}
 });

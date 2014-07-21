@@ -31,15 +31,6 @@ define(['js/views/loginView', 'GS'], function (View, GS) {
 		return reg.test(str);
 	}
 
-	function resetBtn() {
-		$$('.login-getcode').html('重新获取验证码');
-		$$('.login-getcode').removeClass('disabled');
-
-		if (timer) {
-			clearTimeout(timer);
-		}
-	}
-
 	function loginSubmit() {
 		var valMobile = $$('.mobile').val();
 		var valPassword = $$('.password').val();
@@ -63,6 +54,7 @@ define(['js/views/loginView', 'GS'], function (View, GS) {
 				success: function (data) {
 					var data = JSON.parse(data);
 					if (data.resMap.errorNo == '0') {
+						View.inputBlur();
 						GS.setCurrentUser(data.resMap['sid'], data.resMap['user']);
 						mainView.loadPage(GS.getCurrentUser().node.current + '.html');
 						khApp.hideIndicator();
@@ -103,7 +95,6 @@ define(['js/views/loginView', 'GS'], function (View, GS) {
 			success: function (data) {
 				var data = JSON.parse(data);
 				if (data.resMap.errorNo == '0') {
-					$$('.password').focus();
 					if (!$$(btn).hasClass('disabled')) {
 						$$(btn).addClass('disabled');
 					}
@@ -123,7 +114,7 @@ define(['js/views/loginView', 'GS'], function (View, GS) {
 								countDown(setTime);
 							}, 1000);
 						} else {
-							resetBtn();
+							View.resetBtn();
 						}
 					}
 				} else {
