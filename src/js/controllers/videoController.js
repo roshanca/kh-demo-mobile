@@ -1,4 +1,4 @@
-define(['js/views/profileView', 'GS'], function (View, GS) {
+define(['js/views/videoView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '#logout',
@@ -17,7 +17,7 @@ define(['js/views/profileView', 'GS'], function (View, GS) {
 	}
 
 	function nextSubmit() {
-		mainView.loadPage('department.html');
+		mainView.loadPage('cert.html');
 	}
 
 	return {

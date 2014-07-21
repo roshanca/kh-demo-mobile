@@ -3563,3 +3563,48 @@ body > .photo-browser .toolbar {
   left: 0;
   top: 0;
 }
+.login-getcode {
+  width: 160px;
+}
+.prepare h3 {
+  border-bottom: 1px solid #dedede;
+}
+.department-content {
+  background-color: #fda958;
+}
+.department-content .select-block {
+  padding: 75px 0;
+  text-align: center;
+  color: #fff;
+  border-bottom: 1px solid #fd7a00;
+  background-color: #fd8615;
+}
+.department-content .list-block {
+  margin-top: 2px;
+}
+.department-content .list-block ul {
+  border-color: #fd7a00;
+}
+.department-content .list-block li {
+  display: inline-block;
+  background-color: #fd8615;
+}
+.department-content .list-block .item-content {
+  padding-left: 0;
+  text-align: center;
+}
+.department-content .list-block .item-inner {
+  padding-right: 0;
+  border-bottom-color: transparent;
+  background-image: none;
+}
+.department-content .list-block .item-after {
+  display: none;
+}
+.department-content .list-block .item-title {
+  margin: 0 auto;
+  color: #fff;
+}
+.department-content .list-block .query {
+  border-left: 2px solid #fda958;
+}
