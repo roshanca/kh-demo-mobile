@@ -1,0 +1,16 @@
+{
+  "resMap": {
+    "errorNo": 0,
+    "errorInfo": "出错了，请重新获取验证码",
+    "user": {
+      "id": "10001",
+      "mobile": "13757126163",
+      "node": {
+        "prev": "",
+        "current": "collect",
+        "next": "profile"
+      }
+    },
+    "sid": "g651771fe37dc17c17421331a87721"
+  }
+}

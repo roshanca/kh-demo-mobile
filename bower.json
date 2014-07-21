@@ -1,0 +1,12 @@
+{
+  "name": "kh-demo-mobile",
+  "description": "Online account opening system for investors",
+  "version": "1.0.0",
+  "dependencies": {
+    "framework7": "latest",
+    "requirejs": "latest",
+    "requirejs-text": "latest",
+    "requirejs-hbs": "latest",
+    "handlebars": "latest"
+  }
+}

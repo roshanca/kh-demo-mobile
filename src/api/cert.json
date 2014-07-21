@@ -1,0 +1,9 @@
+{
+  "resMap": {
+    "errorNo": 0,
+    "errorInfo": "数字证书下载失败",
+    "successInfo": "数字证书安装成功",
+    "doneCallback": "doneCallback",
+    "isDownloadSuccess": true
+  }
+}

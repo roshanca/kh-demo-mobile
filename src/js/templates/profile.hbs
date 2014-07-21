@@ -1,0 +1,102 @@
+<ul>
+	<li>
+		<div class="item-content">
+			<div class="item-inner">
+			<div class="item-title label">姓名</div>
+				<div class="item-input">
+					<input type="text" name="name" placeholder="您的姓名">
+				</div>
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="item-content">
+			<div class="item-inner">
+			<div class="item-title label">身份证号</div>
+				<div class="item-input">
+					<input type="text" name="cid" placeholder="您的18位二代身份证号">
+				</div>
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="item-content">
+			<div class="item-inner">
+			<div class="item-title label">身份证住址</div>
+				<div class="item-input">
+				<textarea name="cidAddr" placeholder="您的身份证住址"></textarea>
+				</div>
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="item-content">
+			<div class="item-inner">
+			<div class="item-title label">联系地址</div>
+				<div class="item-input">
+				<textarea name="address" placeholder="您的联系地址"></textarea>
+				</div>
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="item-content">
+			<div class="item-inner">
+			<div class="item-title label">邮编</div>
+				<div class="item-input">
+					<input type="text" name="postCode" placeholder="联系地址的邮编">
+				</div>
+			</div>
+		</div>
+	</li>
+	<li>
+		<a href="#" class="item-link smart-select" data-pagetitle="选择职业">
+			<select name="career">
+			{{#each model.careers}}
+				<option value="{{value}}">{{career}}</option>
+			{{/each}}
+			</select>
+			<!-- <select name="career">
+				<option value="a">aaa</option>
+				<option value="b">bbb</option>
+				<option value="c">ccc</option>
+			</select> -->
+			<div class="item-content">
+				<div class="item-inner">
+					<div class="item-title">职业</div>
+					<div class="item-after">请选择</div>
+				</div>
+			</div>
+		</a>
+	</li>
+	<li>
+		<a href="#" class="item-link smart-select" data-pagetitle="选择行业">
+			<select name="industry">
+			{{#each model.industries}}
+				<option value="{{value}}">{{industry}}</option>
+			{{/each}}
+			</select>
+			<div class="item-content">
+				<div class="item-inner">
+					<div class="item-title">行业</div>
+					<div class="item-after">请选择</div>
+				</div>
+			</div>
+		</a>
+	</li>
+	<li>
+		<a href="#" class="item-link smart-select" data-pagetitle="选择学历">
+			<select name="industry">
+			{{#each model.educations}}
+				<option value="{{value}}">{{education}}</option>
+			{{/each}}
+			</select>
+			<div class="item-content">
+				<div class="item-inner">
+					<div class="item-title">行业</div>
+					<div class="item-after">请选择</div>
+				</div>
+			</div>
+		</a>
+	</li>
+</ul>

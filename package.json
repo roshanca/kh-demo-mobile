@@ -1,0 +1,19 @@
+{
+	"name": "kh-demo-mobile",
+  "project": "ctsec",
+	"description": "A web app made with Framework7",
+	"version": "1.0.0",
+	"repository": {
+		"type": "git",
+		"url": "https://coding.net/u/roshanca/p/kh-demo-mobile/git"
+	},
+	"devDependencies": {
+    "grunt-contrib-connect": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-watch": "latest",
+    "matchdep": "latest"
+	},
+	"scripts": {
+    "start": "grunt server"
+	}
+}
