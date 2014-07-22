@@ -1,0 +1,36 @@
+{
+  "errorNo": 0,
+  "model": {
+    "questions": [
+      {
+        "topic": "您的年收入为多少？",
+        "options": [
+          {"option": "10万（含）以下", "value": "a01", "groupId": "1406023506799"},
+          {"option": "10万-20万（含）", "value": "a02", "groupId": "1406023506799"},
+          {"option": "20万-30万（含）", "value": "a03", "groupId": "1406023506799"},
+          {"option": "30万以上", "value": "a04", "groupId": "1406023506799"}
+        ]
+      },
+      {
+        "topic": "您可以接受的投资标有哪些？",
+        "multi": true,
+        "options": [
+          {"option": "权证和期货", "value": "a11", "groupId": "1406023506669"},
+          {"option": "股票", "value": "a11", "groupId": "1406023506669"},
+          {"option": "基金", "value": "a11", "groupId": "1406023506669"},
+          {"option": "家庭理财规划", "value": "a11", "groupId": "1406023506669"}
+        ]
+      },
+      {
+        "topic": "您的投资经验有哪些？",
+        "multi": true,
+        "options": [
+          {"option": "除银行活期账户和定期存款外，我基本没有其他投资经验", "value": "a21", "groupId": "1406023506321"},
+          {"option": "股票", "value": "a21", "groupId": "1406023506321"},
+          {"option": "基金", "value": "a21", "groupId": "1406023506321"},
+          {"option": "家庭理财规划", "value": "a21", "groupId": "1406023506321"}
+        ]
+      }
+    ]
+  }
+}

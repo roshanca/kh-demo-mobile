@@ -1,0 +1,43 @@
+{{#each model.questions}}
+	<div class="content-block-title">{{topic}}
+	{{#if multi}}
+	（多选）
+	</div>
+	<div class="list-block">
+		<ul>
+			{{#each options}}
+			<li>
+				<label class="label-radio item-content">
+					<div class="item-media"></div>
+					<input type="checkbox" name="checkbox-{{groupId}}" value="{{value}}">
+					<div class="item-inner">
+						{{option}}
+					</div>
+				</label>
+			</li>
+			{{/each}}
+	{{else}}
+	（单选）
+	</div>
+	<div class="list-block">
+		<ul>
+			{{#each options}}
+			<li>
+				<label class="label-radio item-content">
+					<div class="item-media"></div>
+					<input type="radio" name="radio-{{groupId}}" value="{{value}}">
+					<div class="item-inner">
+						{{option}}
+					</div>
+				</label>
+			</li>
+			{{/each}}
+	{{/if}}
+
+
+		</ul>
+	</div>
+{{/each}}
+<div class="content-block">
+	<a href="#" class="button button-big active next-button">下一步</a>
+</div>

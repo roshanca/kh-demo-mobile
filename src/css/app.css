@@ -3555,6 +3555,17 @@ body > .photo-browser .toolbar {
 [disabled] [disabled] {
   opacity: 1;
 }
+[data-page="risk"] .list-block {
+  counter-reset: options;
+}
+[data-page="risk"] .list-block .item-media {
+  padding-bottom: 7px;
+  padding-right: 7px;
+  counter-increment: options;
+}
+[data-page="risk"] .list-block .item-media:before {
+  content: counter(options, upper-latin) ". ";
+}
 .fileuploader {
   position: relative;
 }

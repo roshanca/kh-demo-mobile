@@ -1,0 +1,13 @@
+[data-page="risk"] {
+  .list-block {
+    counter-reset: options;
+    .item-media {
+      padding-bottom: 7px;
+      padding-right: 7px;
+      counter-increment: options;
+      &:before {
+        content: counter(options, upper-latin)". ";
+      }
+    }
+  }
+}
