@@ -3,6 +3,7 @@
   "model": {
     "questions": [
       {
+        "index": 1,
         "topic": "您的年收入为多少？",
         "options": [
           {"option": "10万（含）以下", "value": "a01", "groupId": "1406023506799"},
@@ -12,6 +13,7 @@
         ]
       },
       {
+        "index": 2,
         "topic": "您可以接受的投资标有哪些？",
         "multi": true,
         "options": [
@@ -22,6 +24,7 @@
         ]
       },
       {
+        "index": 3,
         "topic": "您的投资经验有哪些？",
         "multi": true,
         "options": [
