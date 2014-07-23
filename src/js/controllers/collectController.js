@@ -34,27 +34,7 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 				text: '接受',
 				onClick: function () {
 					var currentUser = GS.getCurrentUser();
-					$$.ajax({
-						url: 'api/login.json',
-						type: 'POST',
-						data: {},
-						success: function (data) {
-							var data = JSON.parse(data);
-							var newUserData = {
-								"id": "10001",
-								"node": {
-									"prev": "collect",
-									"current": "profile",
-									"next": ""
-								}
-							}
-							if (data.resMap.errorNo == '0') {
-								GS.removeCurrentUser();
-								GS.setCurrentUser(data.resMap['sid'], newUserData);
-								mainView.loadPage(currentUser.node.next + '.html');
-							}
-						}
-					});
+					mainView.loadPage('profile.html');
 				}
 			}]
 		});
