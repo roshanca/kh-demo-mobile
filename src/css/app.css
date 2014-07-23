@@ -3555,6 +3555,45 @@ body > .photo-browser .toolbar {
 [disabled] [disabled] {
   opacity: 1;
 }
+[data-page="department"] .department-block {
+  background-color: #fda958;
+}
+[data-page="department"] .department-block .department-name {
+  padding: 75px 0;
+  text-align: center;
+  color: #fff;
+  border-bottom: 1px solid #fd7a00;
+  background-color: #fd8615;
+}
+[data-page="department"] .department-block .list-block {
+  margin-top: 2px;
+}
+[data-page="department"] .department-block .list-block ul {
+  border-color: #fd7a00;
+}
+[data-page="department"] .department-block .list-block li {
+  display: inline-block;
+  background-color: #fd8615;
+}
+[data-page="department"] .department-block .list-block .item-content {
+  padding-left: 0;
+  text-align: center;
+}
+[data-page="department"] .department-block .list-block .item-inner {
+  padding-right: 0;
+  border-bottom-color: transparent;
+  background-image: none;
+}
+[data-page="department"] .department-block .list-block .item-after {
+  display: none;
+}
+[data-page="department"] .department-block .list-block .item-title {
+  margin: 0 auto;
+  color: #fff;
+}
+[data-page="department"] .department-block .list-block .all {
+  border-left: 2px solid #fda958;
+}
 [data-page="risk"] .list-block {
   counter-reset: options;
 }
@@ -3579,43 +3618,4 @@ body > .photo-browser .toolbar {
 }
 .prepare h3 {
   border-bottom: 1px solid #dedede;
-}
-.department-content {
-  background-color: #fda958;
-}
-.department-content .select-block {
-  padding: 75px 0;
-  text-align: center;
-  color: #fff;
-  border-bottom: 1px solid #fd7a00;
-  background-color: #fd8615;
-}
-.department-content .list-block {
-  margin-top: 2px;
-}
-.department-content .list-block ul {
-  border-color: #fd7a00;
-}
-.department-content .list-block li {
-  display: inline-block;
-  background-color: #fd8615;
-}
-.department-content .list-block .item-content {
-  padding-left: 0;
-  text-align: center;
-}
-.department-content .list-block .item-inner {
-  padding-right: 0;
-  border-bottom-color: transparent;
-  background-image: none;
-}
-.department-content .list-block .item-after {
-  display: none;
-}
-.department-content .list-block .item-title {
-  margin: 0 auto;
-  color: #fff;
-}
-.department-content .list-block .query {
-  border-left: 2px solid #fda958;
 }
