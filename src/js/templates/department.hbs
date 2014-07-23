@@ -1,0 +1,46 @@
+<div class="department-block">
+	<div class="department-name">
+		<h3>{{model.recDepartment}}</h3>
+	</div>
+	<div class="list-block">
+		<ul class="row no-gutter">
+			<li class="col-50">
+				<a href="#" class="item-link smart-select" data-pagetitle="附近营业部">
+					<select name="nearby">
+					{{#each model.departmentsNearby}}
+						<option value="{{value}}">{{department}}</option>
+					{{/each}}
+					</select>
+					<div class="item-content nearby">
+						<div class="item-inner">
+							<div class="item-title">附近</div>
+							<div class="item-after">{{model.recDepartment}}</div>
+						</div>
+					</div>
+				</a>
+			</li>
+			<li class="col-50">
+				<a href="#" class="item-link smart-select" data-pagetitle="选择营业部" data-searchbar="true" data-searchbar-placeholder="营业部名称" data-searchbar-cancel="取消">
+					<select name="all">
+					{{#each model.departmentsAll}}
+						<optgroup label="{{group}}">
+							{{#each departments}}
+								<option value="{{value}}">{{department}}</option>
+							{{/each}}
+						</optgroup>
+					{{/each}}
+					</select>
+					<div class="item-content">
+						<div class="item-inner all">
+							<div class="item-title">查找</div>
+							<div class="item-after"></div>
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="content-block">
+	<a href="#" class="button button-big active next-button">下一步</a>
+</div>
