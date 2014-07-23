@@ -11,12 +11,26 @@ define(['js/views/profileView', 'GS'], function (View, GS) {
 	}];
 
 	function init() {
-		View.render({
-			bindings: bindings
+		khApp.showIndicator();
+		$$.ajax({
+			url: 'api/profile.json',
+			type: 'POST',
+			success: function (data) {
+				var data = JSON.parse(data);
+				if (data.errorNo == '0') {
+					var model = data.model;
+					View.render({
+						bindings: bindings,
+						model: model
+					});
+					khApp.hideIndicator();
+				}
+			}
 		});
 	}
 
 	function nextSubmit() {
+		$$('.page-content').scrollTop(0);
 		mainView.loadPage('department.html');
 	}
 
