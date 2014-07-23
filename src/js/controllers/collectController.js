@@ -12,6 +12,10 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 		element: '.next-button',
 		event: 'click',
 		handler: nextSubmit
+	}, {
+		element: '.agree-button',
+		event: 'click',
+		handler: doneCallback
 	}];
 
 	function init() {
@@ -25,19 +29,24 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 	}
 
 	function nextSubmit() {
-		khApp.modal({
-			title: '接受协议',
-			text: 'Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae',
-			buttons: [{
-				text: '拒绝'
-			}, {
-				text: '接受',
-				onClick: function () {
-					var currentUser = GS.getCurrentUser();
-					mainView.loadPage('profile.html');
-				}
-			}]
-		});
+		// khApp.modal({
+		// 	title: '接受协议',
+		// 	text: 'Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae',
+		// 	buttons: [{
+		// 		text: '拒绝'
+		// 	}, {
+		// 		text: '接受',
+		// 		onClick: function () {
+		// 			mainView.loadPage('profile.html');
+		// 		}
+		// 	}]
+		// });
+		khApp.popup('.popup');
+	}
+
+	function doneCallback() {
+		mainView.loadPage('profile.html');
+		khApp.closeModal();
 	}
 
 	return {

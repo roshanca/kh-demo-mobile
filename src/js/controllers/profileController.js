@@ -30,7 +30,6 @@ define(['js/views/profileView', 'GS'], function (View, GS) {
 	}
 
 	function nextSubmit() {
-		$$('.page-content').scrollTop(0);
 		mainView.loadPage('department.html');
 	}
 

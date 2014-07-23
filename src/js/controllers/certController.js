@@ -35,7 +35,7 @@ define(['js/views/certView', 'js/router', 'GS'], function (View, Router, GS) {
 				var data = JSON.parse(data);
 
 				View.reRender({
-					model: data.resMap,
+					model: data,
 					doneCallback: doneCallback
 				});
 
@@ -44,26 +44,27 @@ define(['js/views/certView', 'js/router', 'GS'], function (View, Router, GS) {
 		});
 	}
 
-	function doneCallback(flag) {
-		if (flag === 0) {
-			clickRedirect('account.html');
+	function doneCallback(errorNo) {
+		if (errorNo == '0') {
+			khApp.modal({
+				title: '系统消息',
+				text: '数字证书已安装成功，是否要继续？',
+				buttons: [{
+					text: '取消',
+					onClick: function () {
+						khApp.closeModal();
+					}
+				}, {
+					text: '继续',
+					onClick: function () {
+						mainView.loadPage('account.html');
+						khApp.closeModal();
+					}
+				}]
+			});
+		} else {
+			requestCert();
 		}
-	}
-
-	function clickRedirect(url) {
-		khApp.modal({
-			title: '系统消息',
-			text: '数字证书安装已成功，是否要继续？',
-			buttons: [{
-				text: '取消'
-			}, {
-				text: '继续',
-				onClick: function () {
-					mainView.loadPage(url);
-					khApp.closeModal();
-				}
-			}]
-		});
 	}
 
 	return {
