@@ -13,9 +13,13 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 		event: 'click',
 		handler: doneCallback
 	}, {
-		element: '.upload-content',
+		element: '#cardFront',
 		event: 'click',
-		handler: uploadStart
+		handler: uploadFront
+	}, {
+		element: '#cardBack',
+		event: 'click',
+		handler: uploadBack
 	}];
 
 	function init() {
@@ -24,9 +28,23 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 		});
 	}
 
-	function uploadStart() {
+	function uploadFront() {
+		uploadStart(0);
+	}
+
+	function uploadBack() {
+		uploadStart(1);
+	}
+
+	/**
+	 * 上传照片类型
+	 * @param  {Number} type 0: 正面照, 1: 反面照, 2: 大头照
+	 */
+	function uploadStart(type) {
+		var typeText = ['正面照', '反面照', '大头照'][type];
+
 		khApp.modal({
-			title: '请选择上传方式',
+			title: '上传' + typeText,
 			buttons: [{
 				text: '拍照',
 				onClick: function () {
@@ -44,18 +62,6 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 	}
 
 	function nextSubmit() {
-		// khApp.modal({
-		// 	title: '接受协议',
-		// 	text: 'Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae',
-		// 	buttons: [{
-		// 		text: '拒绝'
-		// 	}, {
-		// 		text: '接受',
-		// 		onClick: function () {
-		// 			mainView.loadPage('profile.html');
-		// 		}
-		// 	}]
-		// });
 		khApp.popup('.popup');
 	}
 
