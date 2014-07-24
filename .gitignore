@@ -22,4 +22,4 @@ log/
 target/
 
 # SVN
-.svn
+.svn/
