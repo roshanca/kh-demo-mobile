@@ -95,7 +95,6 @@
         padding-top: 8px;
         padding-bottom: 7px;
         min-height: 44px;
-
         .border-box();
         .flexbox();
         -webkit-box-flex:1;
@@ -104,13 +103,13 @@
         .align-items(center);
     }
     .item-title {
-        font-size: 17px;
         .flex-shrink(1);
         white-space: nowrap;
         position: relative;
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
+
         &.label {
             width: 35%;
             .flex-shrink(0);
@@ -142,6 +141,7 @@
         .transition(300ms);
         display: block;
         color: inherit;
+
         .item-inner {
             padding-right: 35px;
             background: no-repeat -webkit-calc(~"100% - 15px") center;
