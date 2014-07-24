@@ -1,3 +1,57 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('../font/iconfont.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-user:before {
+  content: "\e607";
+}
+.icon-local:before {
+  content: "\e608";
+}
+.icon-commend:before {
+  content: "\e600";
+}
+.icon-lookfor:before {
+  content: "\e609";
+}
+.icon-error:before {
+  content: "\e601";
+}
+.icon-success:before {
+  content: "\e602";
+}
+.icon-wait:before {
+  content: "\e603";
+}
+.icon-bright:before {
+  content: "\e604";
+}
+.icon-cardfront:before {
+  content: "\e605";
+}
+.icon-cardback:before {
+  content: "\e606";
+}
+.icon-bankcard:before {
+  content: "\e60b";
+}
+.icon-clock:before {
+  content: "\e60d";
+}
+.icon-wifi:before {
+  content: "\e60e";
+}
+.icon-idcard:before {
+  content: "\e60a";
+}
 /*=============
   Framework 7
 =============*/
@@ -3555,6 +3609,28 @@ body > .photo-browser .toolbar {
 [disabled] [disabled] {
   opacity: 1;
 }
+[data-page="collect"] .upload-block {
+  margin: 35px 15px;
+}
+[data-page="collect"] .upload-block .upload-content {
+  height: 140px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #c6cacc;
+  background-color: #fff;
+}
+[data-page="collect"] .upload-block .upload-content:last-child {
+  margin-bottom: 0;
+}
+[data-page="collect"] .upload-block .upload-content .iconfont {
+  font-size: 80px;
+  line-height: 1.3333333333;
+  color: #b7bcc3;
+}
+[data-page="collect"] .upload-block .upload-content .title {
+  color: #808080;
+}
 [data-page="department"] .department-block {
   background-color: #fda958;
 }
@@ -3604,14 +3680,6 @@ body > .photo-browser .toolbar {
 }
 [data-page="risk"] .list-block .item-media:before {
   content: counter(options, upper-latin) ". ";
-}
-.fileuploader {
-  position: relative;
-}
-.fileuploader .fileuploader-button {
-  position: absolute;
-  left: 0;
-  top: 0;
 }
 .login-getcode {
   width: 180px;
