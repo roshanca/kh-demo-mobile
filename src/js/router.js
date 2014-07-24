@@ -13,7 +13,7 @@ define(['GS'], function (GS) {
 		depository : 'depository',
 		review     : 'review',
 		audit      : 'audit'
-	}
+	};
 
 	/**
 	 * Init router, that handle page events
@@ -50,5 +50,5 @@ define(['GS'], function (GS) {
 	return {
 		init: init,
 		load: load
-	}
+	};
 });

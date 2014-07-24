@@ -1,7 +1,7 @@
-define(['utils', 'hbs!js/templates/department'], function (Utils, Template) {
+define(['utils', 'hbs!js/templates/department'], function (Utils, departmentTemplate) {
 
 	function render(params) {
-		var template = Template({model: params.model})
+		var template = departmentTemplate({model: params.model});
 		$$('#departmentContent').append(template);
 		Utils.bindEvents(params.bindings);
 	}

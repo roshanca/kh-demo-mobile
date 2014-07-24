@@ -1,7 +1,7 @@
-define(['utils', 'hbs!js/templates/cert'], function (Utils, Template) {
+define(['utils', 'hbs!js/templates/cert'], function (Utils, certTemplate) {
 
 	function render(params) {
-		var template = Template({model: params.model});
+		var template = certTemplate({model: params.model});
 		initPopup(template);
 		Utils.bindEvents(params.bindings);
 	}
@@ -18,7 +18,7 @@ define(['utils', 'hbs!js/templates/cert'], function (Utils, Template) {
 	}
 
 	function reRender(params) {
-		var template = Template({model: params.model});
+		var template = certTemplate({model: params.model});
 		initPopup(template);
 		bindButtonEvent(params);
 	}
@@ -32,5 +32,5 @@ define(['utils', 'hbs!js/templates/cert'], function (Utils, Template) {
 	return {
 		render: render,
 		reRender: reRender
-	}
+	};
 });

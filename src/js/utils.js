@@ -14,5 +14,5 @@ define([], function () {
 
 	return {
 		bindEvents: bindEvents
-	}
+	};
 });

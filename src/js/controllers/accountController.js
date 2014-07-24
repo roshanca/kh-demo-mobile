@@ -22,5 +22,5 @@ define(['js/views/accountView', 'GS'], function (View, GS) {
 
 	return {
 		init: init
-	}
-})
+	};
+});

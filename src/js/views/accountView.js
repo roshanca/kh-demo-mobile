@@ -6,5 +6,5 @@ define(['utils'], function (Utils) {
 
 	return {
 		render: render
-	}
+	};
 });

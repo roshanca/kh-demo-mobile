@@ -16,8 +16,8 @@ define(['js/views/profileView', 'GS'], function (View, GS) {
 			url: 'api/profile.json',
 			type: 'POST',
 			success: function (data) {
-				var data = JSON.parse(data);
-				if (data.errorNo == '0') {
+				data = JSON.parse(data);
+				if (data.errorNo === 0) {
 					var model = data.model;
 					View.render({
 						bindings: bindings,

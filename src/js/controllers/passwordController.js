@@ -34,5 +34,5 @@ define(['js/views/passwordView', 'GS', 'utils'], function (View, GS, Utils) {
 
 	return {
 		init: init
-	}
-})
+	};
+});

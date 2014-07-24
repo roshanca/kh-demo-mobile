@@ -1,12 +1,16 @@
 define(['utils'], function (Utils) {
 
 	function init(params) {
-		Utils.bindEvents(params.bindings)
+		Utils.bindEvents(params.bindings);
 	}
 
 	function resetBtn() {
-		$$('.login-getcode').html('获取验证码');
+		$$('.login-getcode').html('重新获取验证码');
 		$$('.login-getcode').removeClass('disabled');
+	}
+
+	function reRenderBtn(leftTime) {
+		$$('.login-getcode').html(leftTime + '秒后重新获取');
 	}
 
 	function inputBlur() {
@@ -17,6 +21,7 @@ define(['utils'], function (Utils) {
 	return {
 		init: init,
 		resetBtn: resetBtn,
+		reRenderBtn: reRenderBtn,
 		inputBlur: inputBlur
-	}
+	};
 });

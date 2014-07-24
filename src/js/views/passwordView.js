@@ -5,13 +5,15 @@ define(['utils'], function (Utils) {
 	}
 
 	function toggleInputs(visiable) {
-		var $$wrapper = $$('.item-set').parent();
-		var $$itemSet = $$('.item-set');
-		var $$itemContent = $$itemSet.nextAll('li').css('overflow', 'hidden').find('.item-content');
-		var height = $$itemSet.outerHeight();
+		var $$wrapper = $$('.item-set').parent(),
+			$$itemSet = $$('.item-set'),
+			$$itemContent = $$itemSet.nextAll('li').css('overflow', 'hidden').find('.item-content'),
+			height = $$itemSet.outerHeight(),
+			clientHeight;
+
 		if (visiable === 'hide') {
 			$$wrapper.css('height', height * 3 + 'px');
-			var clientHeight = $$wrapper[0].clientHeight;
+			clientHeight = $$wrapper[0].clientHeight;
 			$$wrapper.css('height', height + 'px').transition('300ms');
 			$$itemContent.transform('translate3d(0,-200%,0)')
 				.transition('300ms')
@@ -23,14 +25,14 @@ define(['utils'], function (Utils) {
 			$$itemContent.show();
 			$$itemSet.find('.item-inner').css('border-bottom', '1px solid #c8c7cc');
 			$$wrapper.css('height', height + 'px');
-			var clientHeight = $$wrapper[0].clientHeight;
+			clientHeight = $$wrapper[0].clientHeight;
 			$$wrapper.css('height', height * 3 + 'px').transition('300ms');
-			$$itemContent.transform('translate3d(0,0,0)').transition('300ms')
+			$$itemContent.transform('translate3d(0,0,0)').transition('300ms');
 		}
 	}
 
 	return {
 		render: render,
 		toggleInputs: toggleInputs
-	}
+	};
 });

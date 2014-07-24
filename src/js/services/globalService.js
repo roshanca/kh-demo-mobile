@@ -12,7 +12,7 @@ define([], function () {
 			}
 
 			if (localStorage.getItem('sid')) {
-				$CONFIG.currentUser['sid'] = localStorage.getItem('sid');
+				$CONFIG.currentUser.sid = localStorage.getItem('sid');
 			}
 		}
 	}
@@ -23,7 +23,7 @@ define([], function () {
 
 	function getSid() {
 		var m = $$.parseUrlQuery(window.location.href || '');
-		return m['sid'] || localStorage.getItem('sid');
+		return m.sid || localStorage.getItem('sid');
 	}
 
 	function setCurrentUser(sid, user) {

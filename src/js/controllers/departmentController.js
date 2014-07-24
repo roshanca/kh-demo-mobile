@@ -28,8 +28,8 @@ define(['js/views/departmentView', 'GS'], function (View, GS) {
 			url: 'api/department.json',
 			type: 'POST',
 			success: function (data) {
-				var data = JSON.parse(data);
-				if (data.errorNo == '0') {
+				data = JSON.parse(data);
+				if (data.errorNo === 0) {
 					var model = data.model;
 					View.render({
 						bindings: bindings,
@@ -48,8 +48,8 @@ define(['js/views/departmentView', 'GS'], function (View, GS) {
 
 	function setName(e) {
 		var page = e.detail.page;
-		if (page.from === 'left') {
-			console.log(page);
+		if (page.view.url === 'department.html') {
+			console.log(page.view.url);
 			var name = View.getTrigger().text();
 			View.renderName(name);
 		}

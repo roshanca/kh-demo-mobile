@@ -13,7 +13,7 @@ define(['js/views/certView', 'js/router', 'GS'], function (View, Router, GS) {
 	function init() {
 		View.render({
 			bindings: bindings,
-			model: {"isDownloading": true}
+			model: {'isDownloading': true}
 		});
 	}
 
@@ -28,11 +28,11 @@ define(['js/views/certView', 'js/router', 'GS'], function (View, Router, GS) {
 					if (e.lengthComputable) {
 						var percentComplete = (e.loaded / e.total) * 100;
 						console.log(percentComplete);
-					};
+					}
 				}, false);
 			},
 			success: function (data) {
-				var data = JSON.parse(data);
+				data = JSON.parse(data);
 
 				View.reRender({
 					model: data,
@@ -45,7 +45,7 @@ define(['js/views/certView', 'js/router', 'GS'], function (View, Router, GS) {
 	}
 
 	function doneCallback(errorNo) {
-		if (errorNo == '0') {
+		if (errorNo === 0) {
 			khApp.modal({
 				title: '系统消息',
 				text: '数字证书已安装成功，是否要继续？',
@@ -69,5 +69,5 @@ define(['js/views/certView', 'js/router', 'GS'], function (View, Router, GS) {
 
 	return {
 		init: init
-	}
+	};
 });

@@ -1,7 +1,7 @@
-define(['utils', 'hbs!js/templates/protocal'], function (Utils, Template) {
+define(['utils', 'hbs!js/templates/protocal'], function (Utils, protocalTemplate) {
 
 	function render(params) {
-		var template = Template({model: params.model});
+		var template = protocalTemplate({model: params.model});
 		initPopup(template);
 		Utils.bindEvents(params.bindings);
 	}

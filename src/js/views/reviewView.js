@@ -1,7 +1,7 @@
-define(['utils', 'hbs!js/templates/review'], function (Utils, Template) {
+define(['utils', 'hbs!js/templates/review'], function (Utils, reviewTemplate) {
 
 	function render(params) {
-		var template = Template({model: params.model})
+		var template = reviewTemplate({model: params.model});
 		$$('#reviewContent').append(template);
 		Utils.bindEvents(params.bindings);
 	}

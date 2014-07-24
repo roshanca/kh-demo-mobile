@@ -48,24 +48,31 @@ define(['js/views/loginView', 'GS'], function (View, GS) {
 				url: 'api/login.json',
 				type: 'POST',
 				data: {
-					"mobile": valMobile,
-					"validateCode": valPassword
+					'mobile': valMobile,
+					'validateCode': valPassword
 				},
 				success: function (data) {
-					var data = JSON.parse(data);
-					if (data.resMap.errorNo == '0') {
+					data = JSON.parse(data);
+					if (data.errorNo === 0) {
 						View.inputBlur();
-						GS.setCurrentUser(data.resMap['sid'], data.resMap['user']);
+						GS.setCurrentUser(data.sid, data.user);
 						mainView.loadPage(GS.getCurrentUser().node.current + '.html');
 						khApp.hideIndicator();
 					} else {
-						resetBtn();
 						khApp.hideIndicator();
-						khApp.alert(data.resMap['errorInfo']);
+						khApp.alert(data.errorInfo);
 					}
+					resetCountdown();
 				}
 			});
 		}
+	}
+
+	function resetCountdown() {
+		if (timer) {
+			clearTimeout(timer);
+		}
+		View.resetBtn();
 	}
 
 	function getValidateCode() {
@@ -84,52 +91,55 @@ define(['js/views/loginView', 'GS'], function (View, GS) {
 		var btn = this;
 		var setTime = 60;
 		var curTime = 0;
-		var leftTime;
 
 		$$.ajax({
-			url: 'api/login.json',
+			url: 'api/verify.json',
 			type: 'POST',
 			data: {
-				"mphone": val
+				'mphone': val
 			},
 			success: function (data) {
-				var data = JSON.parse(data);
-				if (data.resMap.errorNo == '0') {
+				data = JSON.parse(data);
+				if (data.errorNo === 0) {
 					if (!$$(btn).hasClass('disabled')) {
 						$$(btn).addClass('disabled');
 					}
-					countDown(setTime);
 
-					function countDown(setTime) {
-						if (timer) {
-							clearTimeout(timer);
-						}
-
-						curTime++
-						leftTime = setTime - curTime;
-						$$(btn).html(leftTime + '秒后重新获取');
-
-						if (leftTime > 0) {
-							timer = setTimeout(function () {
-								countDown(setTime);
-							}, 1000);
-						} else {
-							View.resetBtn();
-						}
-					}
+					countDown(setTime, curTime);
 				} else {
-					khApp.alert(data.resMap['errorInfo']);
-					curTime = 0;
+					khApp.alert(data.errorInfo);
+					resetCountdown();
 				}
 			},
 			timeout: function () {
 				khApp.alert('服务器无响应'),
-				curTime = 0;
+				resetCountdown();
 			}
 		});
 	}
 
+	function countDown(setTime, curTime) {
+		var leftTime;
+
+		if (timer) {
+			clearTimeout(timer);
+		}
+
+		curTime++;
+		leftTime = setTime - curTime;
+		// $$(btn).html(leftTime + '秒后重新获取');
+		View.reRenderBtn(leftTime);
+
+		if (leftTime > 0) {
+			timer = setTimeout(function () {
+				countDown(setTime, curTime);
+			}, 1000);
+		} else {
+			View.resetBtn();
+		}
+	}
+
 	return {
 		init: init
-	}
+	};
 });
