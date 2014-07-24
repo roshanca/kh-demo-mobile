@@ -5,10 +5,6 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 		event: 'click',
 		handler: GS.logout
 	}, {
-		element: '.fileuploader-button',
-		event: 'change',
-		handler: fileSelected
-	}, {
 		element: '.next-button',
 		event: 'click',
 		handler: nextSubmit
@@ -16,6 +12,10 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 		element: '.agree-button',
 		event: 'click',
 		handler: doneCallback
+	}, {
+		element: '.upload-content',
+		event: 'click',
+		handler: uploadStart
 	}];
 
 	function init() {
@@ -24,8 +24,23 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 		});
 	}
 
-	function fileSelected() {
-		khApp.alert(this.files[0].name);
+	function uploadStart() {
+		khApp.modal({
+			title: '请选择上传方式',
+			buttons: [{
+				text: '拍照',
+				onClick: function () {
+					khApp.alert('您选择了拍照');
+				}
+			}, {
+				text: '浏览相册',
+				onClick: function () {
+					khApp.alert('您选择了浏览相册');
+				}
+			}, {
+				text: '取消'
+			}]
+		});
 	}
 
 	function nextSubmit() {
