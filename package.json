@@ -1,21 +1,36 @@
 {
   "name": "kh-demo-mobile",
-  "project": "ctsec",
-  "description": "A web app made with Framework7",
-  "version": "1.0.0",
+  "version": "0.9.0",
+  "description": "A online account opening system web app made with Framework7 for investors",
+  "main": "dist/",
+  "author": {
+    "name": "Roshan Wu",
+    "email": "wwj1983@gmail.com"
+  },
+  "license": ["GPL v2"],
   "repository": {
     "type": "git",
-    "url": "https://coding.net/u/roshanca/p/kh-demo-mobile/git"
+    "url": "https://github.com/roshanca/kh-demo-mobile"
+  },
+  "bugs": {
+    "url": "https://github.com/roshanca/kh-demo-mobile/issues"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
   },
   "devDependencies": {
     "grunt-contrib-clean": "latest",
     "grunt-contrib-connect": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-jshint": "latest",
     "grunt-contrib-less": "latest",
     "grunt-contrib-requirejs": "latest",
     "grunt-contrib-watch": "latest",
+    "jshint": "latest",
+    "jshint-stylish": "latest",
     "matchdep": "latest"
   },
   "scripts": {
-    "start": "grunt server"
+    "test": "grunt test"
   }
 }

@@ -19,32 +19,54 @@ module.exports = (grunt) ->
     clean:
       dist: ['dist/*']
 
+    copy:
+      img:
+        expand: true,
+        cwd: 'src/img',
+        src: ['**'],
+        dest: 'dist/img'
+
     requirejs:
-      compile:
+      dist:
         options:
           mainConfigFile: 'src/app.js'
           name: 'app'
-          out: 'dist/app.min.js'
+          out: 'dist/js/app.min.js'
           preserveLicenseComments: false
 
     connect:
-      server:
+      src:
         options:
           port: 3001
           base: 'src/'
 
     less:
-      development:
+      src:
         options:
           strictImports: false
         files:
           'src/css/app.css': 'src/less/app.less'
+      dist:
+        options:
+          strictImports: false
+          cleancss: true
+          report: 'min'
+        files:
+          'dist/css/app.min.css': 'src/less/app.less'
 
     watch:
-      server:
+      src:
         files: ['src/less/**/*.less']
-        tasks: ['less:development']
+        tasks: ['less:src']
 
-  grunt.registerTask 'release', ['clean', 'requirejs']
-  grunt.registerTask 'server', ['connect:server', 'watch:server']
+    jshint:
+      options:
+        jshintrc: '.jshintrc'
+        reporter: require('jshint-stylish')
+      all: ['src/js/*']
+
+  grunt.registerTask 'default', ['dev']
+  grunt.registerTask 'dev', ['less:src', 'connect:src', 'watch:src']
+  grunt.registerTask 'test', ['jshint']
+  grunt.registerTask 'dist', ['clean', 'requirejs', 'less:dist', 'copy']
 

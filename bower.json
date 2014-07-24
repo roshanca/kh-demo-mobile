@@ -1,7 +1,23 @@
 {
   "name": "kh-demo-mobile",
-  "description": "Online account opening system for investors",
-  "version": "1.0.0",
+  "version": "0.9.0",
+  "description": "A online account opening system web app made with Framework7 for investors",
+  "author": {
+    "name": "Roshan Wu",
+    "email": "wwj1983@gmail.com"
+  },
+  "license": ["GPL v2"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roshanca/kh-demo-mobile"
+  },
+  "main": "dist/",
+  "styles": [
+    "dist/css/app.min.css"
+  ],
+  "scripts": [
+    "dist/js/app.min.js"
+  ],
   "dependencies": {
     "framework7": "latest",
     "requirejs": "latest",
