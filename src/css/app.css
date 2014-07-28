@@ -3798,6 +3798,22 @@ body > .photo-browser .toolbar {
 .login-getcode {
   width: 180px;
 }
-.prepare h3 {
+.prepare .prepare-title {
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #b1b1b1;
   border-bottom: 1px solid #dedede;
+}
+.prepare .row {
+  text-align: center;
+  color: #b1b1b1;
+}
+.prepare .iconfont {
+  font-size: 50px;
+}
+.copyright {
+  padding: 0 15px;
+  text-align: center;
+  color: #b1b1b1;
 }
