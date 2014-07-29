@@ -17,7 +17,17 @@ define(['utils', 'hbs!js/templates/protocal'], function (Utils, protocalTemplate
 		}
 	}
 
+	function showPhotoFront(url) {
+		$$('#cardFront').html('<img src=' + url + ' alt="" height="120">');
+	}
+
+	function showPhotoBack(url) {
+		$$('#cardBack').html('<img src=' + url + ' alt="" height="120">');
+	}
+
 	return {
-		render: render
+		render: render,
+		showPhotoFront: showPhotoFront,
+		showPhotoBack: showPhotoBack
 	};
 });

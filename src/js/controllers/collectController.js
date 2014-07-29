@@ -61,6 +61,19 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 		});
 	}
 
+	/**
+	 * 上传成功图片展示
+	 * @param  {[String]} url
+	 * @param  {[Number]} type
+	 */
+	function changeImage(url, type) {
+		if (type === 0) {
+			View.showPhotoFront(url);
+		} else if (type === 1) {
+			View.showPhotoBack(url);
+		}
+	}
+
 	function nextSubmit() {
 		khApp.popup('.popup');
 	}
