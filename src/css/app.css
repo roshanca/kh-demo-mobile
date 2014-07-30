@@ -3751,7 +3751,7 @@ body > .photo-browser .toolbar {
   margin: 35px 15px;
 }
 [data-page="collect"] .upload-block .upload-content {
-  height: 140px;
+  height: 160px;
   margin-bottom: 20px;
   text-align: center;
   border-radius: 5px;
@@ -3762,8 +3762,7 @@ body > .photo-browser .toolbar {
   margin-bottom: 0;
 }
 [data-page="collect"] .upload-block .upload-content .iconfont {
-  font-size: 80px;
-  line-height: 1.3333333333;
+  font-size: 86px;
   color: #b7bcc3;
 }
 [data-page="collect"] .upload-block .upload-content .title {

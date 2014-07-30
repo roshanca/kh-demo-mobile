@@ -5,13 +5,9 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 		event: 'click',
 		handler: GS.logout
 	}, {
-		element: '.next-button',
+		element: '.collect-next',
 		event: 'click',
 		handler: nextSubmit
-	}, {
-		element: '.agree-button',
-		event: 'click',
-		handler: doneCallback
 	}, {
 		element: '#cardFront',
 		event: 'click',
@@ -22,9 +18,34 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 		handler: uploadBack
 	}];
 
+	var afterBindings = [{
+		element: '.agree-button',
+		event: 'click',
+		handler: doneCallback
+	}];
+
 	function init() {
 		View.render({
 			bindings: bindings
+		});
+
+		/**
+		 * 获取协议内容，准备协议展示模板
+		 */
+		$$.ajax({
+			url: 'api/protocal.json',
+			type: 'GET',
+			success: function (data) {
+				data = JSON.parse(data);
+				if (data.errorNo === 0) {
+					View.renderPopup({
+						model: data.model,
+						bindings: afterBindings
+					});
+				} else {
+					khApp.alert(data.errorInfo);
+				}
+			}
 		});
 	}
 
