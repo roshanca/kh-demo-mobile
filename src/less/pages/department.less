@@ -1,8 +1,19 @@
 [data-page="department"] {
   .department-block {
+    position: relative;
     background-color: #fda958;
+    .department-badge {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      z-index: 9;
+      color: #fff;
+      .iconfont {
+        font-size: 20px;
+      }
+    }
     .department-name {
-      padding: 75px 0;
+      padding: 55px 0;
       text-align: center;
       color: #fff;
       border-bottom: 1px solid #fd7a00;
@@ -32,6 +43,9 @@
       .item-title {
         margin: 0 auto;
         color: #fff;
+        .iconfont {
+          font-size: 20px;
+        }
       }
       .all {
         border-left: 2px solid #fda958;

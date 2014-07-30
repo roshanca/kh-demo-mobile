@@ -3723,6 +3723,30 @@ body > .photo-browser .toolbar {
 [disabled] [disabled] {
   opacity: 1;
 }
+.login-getcode {
+  width: 180px;
+  color: #fff;
+  background: #feaa5b;
+}
+.prepare .prepare-title {
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #b1b1b1;
+  border-bottom: 1px solid #dedede;
+}
+.prepare .row {
+  text-align: center;
+  color: #b1b1b1;
+}
+.prepare .iconfont {
+  font-size: 50px;
+}
+.copyright {
+  padding: 0 15px;
+  text-align: center;
+  color: #b1b1b1;
+}
 [data-page="collect"] .upload-block {
   margin: 35px 15px;
 }
@@ -3746,10 +3770,21 @@ body > .photo-browser .toolbar {
   color: #808080;
 }
 [data-page="department"] .department-block {
+  position: relative;
   background-color: #fda958;
 }
+[data-page="department"] .department-block .department-badge {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 9;
+  color: #fff;
+}
+[data-page="department"] .department-block .department-badge .iconfont {
+  font-size: 20px;
+}
 [data-page="department"] .department-block .department-name {
-  padding: 75px 0;
+  padding: 55px 0;
   text-align: center;
   color: #fff;
   border-bottom: 1px solid #fd7a00;
@@ -3781,6 +3816,9 @@ body > .photo-browser .toolbar {
   margin: 0 auto;
   color: #fff;
 }
+[data-page="department"] .department-block .list-block .item-title .iconfont {
+  font-size: 20px;
+}
 [data-page="department"] .department-block .list-block .all {
   border-left: 2px solid #fda958;
 }
@@ -3795,25 +3833,12 @@ body > .photo-browser .toolbar {
 [data-page="risk"] .list-block .item-media:before {
   content: counter(options, upper-latin) ". ";
 }
-.login-getcode {
-  width: 180px;
+.button {
+  border-color: #fe8008;
 }
-.prepare .prepare-title {
-  margin-bottom: 0;
-  padding-bottom: 10px;
-  text-align: center;
-  color: #b1b1b1;
-  border-bottom: 1px solid #dedede;
+.button.active {
+  background: #fd8615;
 }
-.prepare .row {
-  text-align: center;
-  color: #b1b1b1;
-}
-.prepare .iconfont {
-  font-size: 50px;
-}
-.copyright {
-  padding: 0 15px;
-  text-align: center;
-  color: #b1b1b1;
+.navbar a.link {
+  color: #444;
 }
