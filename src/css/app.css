@@ -45,14 +45,14 @@
 .icon-bankcard:before {
   content: "\e60b";
 }
-.icon-clock:before {
-  content: "\e60d";
-}
 .icon-wifi:before {
   content: "\e60e";
 }
 .icon-idcard:before {
   content: "\e60a";
+}
+.icon-clock:before {
+  content: "\e613";
 }
 /*=============
   Framework 7
