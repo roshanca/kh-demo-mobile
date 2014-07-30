@@ -3768,6 +3768,13 @@ body > .photo-browser .toolbar {
 [data-page="collect"] .upload-block .upload-content .title {
   color: #808080;
 }
+[data-page="video"] .tip {
+  text-align: center;
+}
+[data-page="video"] .tip .iconfont {
+  font-size: 70px;
+  color: #fd8615;
+}
 [data-page="department"] .department-block {
   position: relative;
   background-color: #fda958;
