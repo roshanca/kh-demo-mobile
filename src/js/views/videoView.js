@@ -4,7 +4,29 @@ define(['utils'], function (Utils) {
 		Utils.bindEvents(params.bindings);
 	}
 
+	function ready(num) {
+		$$('.video-content').hide();
+		$$('#videoWait').show();
+
+		if (num) {
+			$$('.wait-num').html(num);
+		}
+	}
+
+	/**
+	 * 显示隐藏 dialog
+	 */
+	function toggleDialog(flag) {
+		if (flag === 'hide') {
+			$$('.dialog').hide();
+		} else if (flag === 'show') {
+			$$('.dialog').show();
+		}
+	}
+
 	return {
-		render: render
+		render: render,
+		ready: ready,
+		toggleDialog: toggleDialog
 	};
 });

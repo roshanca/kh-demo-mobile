@@ -3723,6 +3723,15 @@ body > .photo-browser .toolbar {
 [disabled] [disabled] {
   opacity: 1;
 }
+.button {
+  border-color: #fe8008;
+}
+.button.active {
+  background: #fd8615;
+}
+.navbar a.link {
+  color: #444;
+}
 .login-getcode {
   width: 180px;
   color: #fff;
@@ -3774,6 +3783,131 @@ body > .photo-browser .toolbar {
 [data-page="video"] .tip .iconfont {
   font-size: 70px;
   color: #fd8615;
+}
+[data-page="video"] .wait-indicator {
+  margin-bottom: 35px;
+  text-align: center;
+}
+[data-page="video"] .wait-indicator .wait-num {
+  padding: 0 5px;
+  font-size: 24px;
+  font-style: italic;
+  color: #fb8415;
+}
+[data-page="video"] .dialog {
+  position: relative;
+  padding: 0 15px 15px 15px;
+  border: 1px solid #dfdfdd;
+  background: #fff;
+  border-radius: 6px;
+}
+[data-page="video"] .dialog:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0px;
+  height: 0px;
+  margin-left: -15px;
+  border-style: solid;
+  border-width: 0 15px 15px 15px;
+  top: -15px;
+  border-color: transparent transparent #dfdfdd transparent;
+}
+[data-page="video"] .dialog:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0px;
+  height: 0px;
+  margin-left: -15px;
+  border-style: solid;
+  border-width: 0 15px 15px 15px;
+  top: -14px;
+  border-color: transparent transparent #fff transparent;
+}
+[data-page="video"] .dialog p {
+  color: #808080;
+}
+.clock {
+  -webkit-animation: explode 500ms forwards;
+  margin: 35px auto;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #ffffff, 0 2px 5px 8px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.3) inset;
+  background: radial-gradient(transparent 75px, #eeeeee 75px), radial-gradient(#eeeeee 65px, transparent 65px), linear-gradient(90deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(120deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(150deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(180deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(210deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(240deg, transparent 49.5%, #000000 50%, transparent 50%), radial-gradient(#eeeeee 72px, transparent 72px), linear-gradient(264deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(258deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(252deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(246deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(234deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(228deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(222deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(216deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(204deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(198deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(192deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(186deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(174deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(168deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(162deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(156deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(144deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(138deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(132deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(126deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(114deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(108deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(102deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(96deg, transparent 49.5%, #000000 50%, transparent 50%), #eeeeee;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
+.hands {
+  width: 100%;
+  height: 100%;
+  -webkit-filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.4));
+}
+.hand {
+  width: 5px;
+  height: 60px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -60px 0 0 -3.5px;
+  background: #444;
+  transform-origin: 50% 100%;
+}
+.hour {
+  height: 45px;
+  margin: -45px 0 0 -4px;
+  width: 8px;
+  animation: tick 43200s linear infinite;
+  -webkit-animation: tick 43200s linear infinite;
+}
+.minute {
+  -webkit-animation: tick 3600s linear infinite;
+  animation: tick 3600s linear infinite;
+}
+.seconds {
+  width: 2px;
+  background-color: red;
+  -webkit-animation: tick 60s steps(60, end) infinite;
+  animation: tick 60s steps(60, end) infinite;
+  height: 80px;
+  margin-left: -1px;
+  transform-origin: 50% 60px;
+}
+.seconds:after {
+  content: '';
+  position: absolute;
+  bottom: 11px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+@keyframes tick {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes tick {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes explode {
+  0% {
+    -webkit-transform: scale(0.1, 0.1);
+  }
+  30% {
+    -webkit-transform: scale(1.1, 1.1);
+  }
+  70% {
+    -webkit-transform: scale(0.6, 0.6);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+  }
 }
 [data-page="department"] .department-block {
   position: relative;
@@ -3838,13 +3972,4 @@ body > .photo-browser .toolbar {
 }
 [data-page="risk"] .list-block .item-media:before {
   content: counter(options, upper-latin) ". ";
-}
-.button {
-  border-color: #fe8008;
-}
-.button.active {
-  background: #fd8615;
-}
-.navbar a.link {
-  color: #444;
 }
