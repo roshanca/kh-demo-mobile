@@ -64,11 +64,11 @@ define(['js/views/videoView', 'GS'], function (View, GS) {
 				if (data.errorNo === 0) {
 					var videoStatus = data.videoStatus;
 					if (videoStatus === 1) { // 可连接视频
-						videoStart();
+						// videoStart();
 					} else if (videoStatus === 0) { // 进入排队
 						View.showWait(data.waitNum);
 						needWait = true;
-						queryCount++
+						queryCount++;
 					}
 				} else {
 					khApp.alert(data.errorInfo);
@@ -76,7 +76,6 @@ define(['js/views/videoView', 'GS'], function (View, GS) {
 				}
 			},
 			error: function () {
-				khApp.alert(data.errorInfo);
 				queryCount++;
 			}
 		});
