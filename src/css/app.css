@@ -3791,6 +3791,15 @@ body > .photo-browser .toolbar {
 [data-page="collect"] .upload-block .upload-content .title {
   color: #808080;
 }
+[data-page="profile"] input[type="text"],
+[data-page="profile"] textarea,
+[data-page="profile"] .item-after {
+  text-align: right;
+  color: #40464d;
+}
+[data-page="profile"] .item-title {
+  color: #999;
+}
 [data-page="video"] .tip {
   text-align: center;
 }
