@@ -1,50 +1,6 @@
 {
   "errorNo": 0,
   "model": {
-    "recDepartment": "营业部1",
-    "departmentsNearby": [
-      {"department": "营业部1", "value": "1"},
-      {"department": "营业部2", "value": "2"},
-      {"department": "营业部3", "value": "3"},
-      {"department": "营业部4", "value": "4"}
-    ],
-    "departmentsAll": [
-      {
-        "group": "杭州",
-        "departments": [
-          {"department": "杭州营业部1", "value": "11"},
-          {"department": "杭州营业部2", "value": "12"},
-          {"department": "杭州营业部3", "value": "13"},
-          {"department": "杭州营业部4", "value": "14"}
-        ]
-      },
-      {
-        "group": "北京",
-        "departments": [
-          {"department": "北京营业部1", "value": "21"},
-          {"department": "北京营业部2", "value": "22"},
-          {"department": "北京营业部3", "value": "23"},
-          {"department": "北京营业部4", "value": "24"},
-          {"department": "北京营业部5", "value": "25"}
-        ]
-      },
-      {
-        "group": "上海",
-        "departments": [
-          {"department": "上海营业部1", "value": "31"},
-          {"department": "上海营业部2", "value": "32"},
-          {"department": "上海营业部3", "value": "33"},
-          {"department": "上海营业部4", "value": "34"}
-        ]
-      },
-      {
-        "group": "广州",
-        "departments": [
-          {"department": "广州营业部1", "value": "41"},
-          {"department": "广州营业部2", "value": "42"},
-          {"department": "广州营业部3", "value": "43"}
-        ]
-      }
-    ]
+    "recDepartment": "推荐营业部"
   }
 }
