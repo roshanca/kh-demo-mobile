@@ -6,6 +6,7 @@ define(['GS'], function (GS) {
 		profile    : 'profile',
 		department : 'department',
 		video      : 'video',
+		appoint    : 'appoint',
 		cert       : 'cert',
 		account    : 'account',
 		risk       : 'risk',

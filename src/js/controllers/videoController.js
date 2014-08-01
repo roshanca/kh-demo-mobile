@@ -5,13 +5,29 @@ define(['js/views/videoView', 'GS'], function (View, GS) {
 		event: 'click',
 		handler: GS.logout
 	}, {
-		element: '.video-button',
+		element: '.video-start-button',
 		event: 'click',
 		handler: startVideo
 	}, {
 		element: '.wait-button',
 		event: 'click',
 		handler: waitVideo
+	}, {
+		element: '.video-success-button',
+		event: 'click',
+		handler: success
+	}, {
+		element: '.video-fail-button',
+		event: 'click',
+		handler: fail
+	}, {
+		element: '.video-retry-button',
+		event: 'click',
+		handler: retry
+	}, {
+		element: '#waitLeft',
+		event: 'click',
+		handler: View.showReady
 	}];
 
 	var queryCount = 0,
@@ -25,7 +41,7 @@ define(['js/views/videoView', 'GS'], function (View, GS) {
 	}
 
 	function startVideo() {
-		View.ready();
+		View.showWait();
 		queryUserWaitInfo();
 	}
 
@@ -50,7 +66,7 @@ define(['js/views/videoView', 'GS'], function (View, GS) {
 					if (videoStatus === 1) { // 可连接视频
 						videoStart();
 					} else if (videoStatus === 0) { // 进入排队
-						View.ready(data.waitNum);
+						View.showWait(data.waitNum);
 						needWait = true;
 						queryCount++
 					}
@@ -73,6 +89,18 @@ define(['js/views/videoView', 'GS'], function (View, GS) {
 		View.toggleDialog('hide');
 		queryCount = 0;
 		queryUserWaitInfo();
+	}
+
+	function success() {
+		View.showSuccess();
+	}
+
+	function fail() {
+		View.showFail();
+	}
+
+	function retry() {
+		View.showReady();
 	}
 
 	function nextSubmit() {

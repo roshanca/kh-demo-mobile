@@ -4,13 +4,33 @@ define(['utils'], function (Utils) {
 		Utils.bindEvents(params.bindings);
 	}
 
-	function ready(num) {
+	function showReady() {
+		$$('.left').css('visibility', 'visible');
+		$$('.video-content').hide();
+		$$('#videoReady').show();
+	}
+
+	function showWait(num) {
+		$$('#readyLeft').hide();
+		$$('#waitLeft').show();
 		$$('.video-content').hide();
 		$$('#videoWait').show();
 
 		if (num) {
 			$$('.wait-num').html(num);
 		}
+	}
+
+	function showSuccess() {
+		$$('.left').css('visibility', 'hidden');
+		$$('.video-content').hide();
+		$$('#videoSuccess').show();
+	}
+
+	function showFail() {
+		$$('.left').css('visibility', 'hidden');
+		$$('.video-content').hide();
+		$$('#videoFail').show();
 	}
 
 	/**
@@ -26,7 +46,10 @@ define(['utils'], function (Utils) {
 
 	return {
 		render: render,
-		ready: ready,
-		toggleDialog: toggleDialog
+		showWait: showWait,
+		showReady: showReady,
+		showSuccess: showSuccess,
+		showFail: showFail,
+		toggleDialog: toggleDialog,
 	};
 });

@@ -24,7 +24,7 @@
 .icon-lookfor:before {
   content: "\e609";
 }
-.icon-error:before {
+.icon-fail:before {
   content: "\e601";
 }
 .icon-success:before {
@@ -3732,6 +3732,20 @@ body > .photo-browser .toolbar {
 .navbar a.link {
   color: #444;
 }
+.info {
+  font-size: 21px;
+  text-align: center;
+}
+.info .iconfont {
+  display: block;
+  font-size: 70px;
+}
+.info .icon-success {
+  color: #80d61e;
+}
+.info .icon-fail {
+  color: #d42323;
+}
 .login-getcode {
   width: 180px;
   color: #fff;
@@ -3831,11 +3845,11 @@ body > .photo-browser .toolbar {
 .clock {
   -webkit-animation: explode 500ms forwards;
   margin: 35px auto;
-  width: 160px;
-  height: 160px;
+  width: 10em;
+  height: 10em;
   border-radius: 50%;
   box-shadow: 0 0 0 10px #ffffff, 0 2px 5px 8px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.3) inset;
-  background: radial-gradient(transparent 75px, #eeeeee 75px), radial-gradient(#eeeeee 65px, transparent 65px), linear-gradient(90deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(120deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(150deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(180deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(210deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(240deg, transparent 49.5%, #000000 50%, transparent 50%), radial-gradient(#eeeeee 72px, transparent 72px), linear-gradient(264deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(258deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(252deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(246deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(234deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(228deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(222deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(216deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(204deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(198deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(192deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(186deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(174deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(168deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(162deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(156deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(144deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(138deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(132deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(126deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(114deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(108deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(102deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(96deg, transparent 49.5%, #000000 50%, transparent 50%), #eeeeee;
+  background: radial-gradient(transparent 4.8em, #eeeeee 4.8em), radial-gradient(#eeeeee 4.3em, transparent 4.3em), linear-gradient(90deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(120deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(150deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(180deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(210deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(240deg, transparent 49.5%, #000000 50%, transparent 50%), radial-gradient(#eeeeee 4.6em, transparent 4.6em), linear-gradient(264deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(258deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(252deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(246deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(234deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(228deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(222deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(216deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(204deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(198deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(192deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(186deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(174deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(168deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(162deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(156deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(144deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(138deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(132deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(126deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(114deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(108deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(102deg, transparent 49.5%, #000000 50%, transparent 50%), linear-gradient(96deg, transparent 49.5%, #000000 50%, transparent 50%), #eeeeee;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
@@ -3846,19 +3860,19 @@ body > .photo-browser .toolbar {
   -webkit-filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.4));
 }
 .hand {
-  width: 5px;
-  height: 60px;
+  width: .3em;
+  height: 3.75em;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -60px 0 0 -3.5px;
+  margin: -3.75em 0 0 -0.2em;
   background: #444;
   transform-origin: 50% 100%;
 }
 .hour {
-  height: 45px;
-  margin: -45px 0 0 -4px;
-  width: 8px;
+  width: .5em;
+  height: 2.8em;
+  margin: -2.8em 0 0 -0.3em;
   animation: tick 43200s linear infinite;
   -webkit-animation: tick 43200s linear infinite;
 }
@@ -3871,17 +3885,17 @@ body > .photo-browser .toolbar {
   background-color: red;
   -webkit-animation: tick 60s steps(60, end) infinite;
   animation: tick 60s steps(60, end) infinite;
-  height: 80px;
+  height: 5em;
   margin-left: -1px;
-  transform-origin: 50% 60px;
+  transform-origin: 50% 3.75em;
 }
 .seconds:after {
   content: '';
   position: absolute;
-  bottom: 11px;
-  left: -10px;
-  width: 20px;
-  height: 20px;
+  bottom: .625em;
+  left: -0.55em;
+  width: 1.25em;
+  height: 1.25em;
   background: red;
   border-radius: 50%;
 }

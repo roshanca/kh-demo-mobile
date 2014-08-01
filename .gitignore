@@ -25,4 +25,4 @@ target/
 .svn/
 
 # Dev
-develop/
+dev/

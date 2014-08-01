@@ -52,23 +52,23 @@
 .clock {
   -webkit-animation: explode 500ms forwards;
   margin: 35px auto;
-  width: 160px;
-  height: 160px;
+  width: 10em;
+  height: 10em;
   border-radius: 50%;
   box-shadow:
     0 0 0 10px #ffffff,
     0 2px 5px 8px rgba(0, 0, 0, 0.6),
     0 4px 8px rgba(0, 0, 0, 0.3) inset;
   background:
-    radial-gradient(transparent 75px, #eee 75px),
-    radial-gradient(#eee 65px, transparent 65px),
+    radial-gradient(transparent 4.8em, #eee 4.8em),
+    radial-gradient(#eee 4.3em, transparent 4.3em),
     linear-gradient(90deg, transparent 49.5%, black 50%, transparent 50%),
     linear-gradient(120deg, transparent 49.5%, black 50%, transparent 50%),
     linear-gradient(150deg, transparent 49.5%, black 50%, transparent 50%),
     linear-gradient(180deg, transparent 49.5%, black 50%, transparent 50%),
     linear-gradient(210deg, transparent 49.5%, black 50%, transparent 50%),
     linear-gradient(240deg, transparent 49.5%, black 50%, transparent 50%),
-    radial-gradient(#eee 72px, transparent 72px),
+    radial-gradient(#eee 4.6em, transparent 4.6em),
     linear-gradient(264deg, transparent 49.5%, black 50%, transparent 50%),
     linear-gradient(258deg, transparent 49.5%, black 50%, transparent 50%),
     linear-gradient(252deg, transparent 49.5%, black 50%, transparent 50%),
@@ -104,19 +104,19 @@
   -webkit-filter: drop-shadow(0 4px 2px rgba(0,0,0,.4));
 }
 .hand {
-  width: 5px;
-  height: 60px;
+  width: .3em;
+  height: 3.75em;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -60px 0 0 -3.5px;
+  margin: -3.75em 0 0 -0.2em;
   background: #444;
   transform-origin: 50% 100%;
 }
 .hour {
-  height: 45px;
-  margin: -45px 0 0 -4px;
-  width: 8px;
+  width: .5em;
+  height: 2.8em;
+  margin: -2.8em 0 0 -0.3em;
   animation: tick 43200s linear infinite;
   -webkit-animation: tick 43200s linear infinite;
 }
@@ -129,17 +129,17 @@
   background-color: red;
   -webkit-animation: tick 60s steps(60, end) infinite;
   animation: tick 60s steps(60, end) infinite;
-  height: 80px;
+  height: 5em;
   margin-left: -1px;
-  transform-origin: 50% 60px;
+  transform-origin: 50% 3.75em;
 }
 .seconds:after {
   content: '';
   position: absolute;
-  bottom: 11px;
-  left: -10px;
-  width: 20px;
-  height: 20px;
+  bottom: .625em;
+  left: -0.55em;
+  width: 1.25em;
+  height: 1.25em;
   background: red;
   border-radius: 50%;
 }
