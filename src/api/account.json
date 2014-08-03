@@ -1,0 +1,26 @@
+{
+  "errorNo": 0,
+  "model": {
+    "accountGroups": [
+      {
+        "group": "股票账户", "types": [
+          {"value": "a0", "type": "上海A股"},
+          {"value": "a1", "type": "深圳A股"}
+        ]
+      },
+      {
+        "group": "基金账户", "types": [
+          {"value": "b0", "type": "户开放式基金"},
+          {"value": "b1", "type": "深开放式基金"},
+          {"value": "b2", "type": "上海基金"},
+          {"value": "b3", "type": "深圳基金"}
+        ]
+      }
+    ],
+    "protocals": [
+      {"protocal": "《证券交易委托协议代理书》"},
+      {"protocal": "《指定交易协议书》"},
+      {"protocal": "《买者自负承诺书》"}
+    ]
+  }
+}

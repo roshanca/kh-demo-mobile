@@ -11,8 +11,21 @@ define(['js/views/accountView', 'GS'], function (View, GS) {
 	}];
 
 	function init() {
-		View.render({
-			bindings: bindings
+		khApp.showIndicator();
+		$$.ajax({
+			url: 'api/account.json',
+			type: 'POST',
+			success: function (data) {
+				data = JSON.parse(data);
+				if (data.errorNo === 0) {
+					var model = data.model;
+					View.render({
+						bindings: bindings,
+						model: model
+					});
+					khApp.hideIndicator();
+				}
+			}
 		});
 	}
 
