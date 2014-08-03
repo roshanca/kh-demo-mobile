@@ -5,9 +5,19 @@ define(['js/views/riskView', 'GS'], function (View, GS) {
 		event: 'click',
 		handler: GS.logout
 	}, {
-		element: '.next-button',
+		element: '.risk-submit-button',
 		event: 'click',
-		handler: nextSubmit
+		handler: submit
+	}];
+
+	var afterBindings = [{
+		element: '#logout',
+		event: 'click',
+		handler: GS.logout
+	}, {
+		element: '.risk-next-button',
+		event: 'click',
+		handler: next
 	}];
 
 	function init() {
@@ -29,7 +39,40 @@ define(['js/views/riskView', 'GS'], function (View, GS) {
 		});
 	}
 
-	function nextSubmit() {
+	function submit() {
+		// var formData = khApp.formToJSON('#riskContent');
+		// for (var i in formData) {
+		// 	console.log(i);
+		// }
+
+
+
+		// var list = $$('#riskContent').find('.list-block');
+		// list.each(function (i) {
+		// 	var input = $$(this).find('input')[0];
+		// 	console.log(input.checked);
+		// });
+
+		khApp.showIndicator();
+		$$.ajax({
+			url: 'api/risk_result.json',
+			type: 'POST',
+			success: function (data) {
+				data = JSON.parse(data);
+				if (data.errorNo === 0) {
+					View.renderPopup({
+						model: data.model,
+						bindings: afterBindings
+					});
+					khApp.popup('.popup');
+				}
+				khApp.hideIndicator();
+			}
+		});
+	}
+
+	function next() {
+		khApp.closeModal();
 		mainView.loadPage('review.html');
 	}
 
