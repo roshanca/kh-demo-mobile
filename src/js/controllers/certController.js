@@ -52,7 +52,7 @@ define(['js/views/certView', 'js/router', 'GS'], function (View, Router, GS) {
 				console.log(percentComplete);
 				$$('progress').val(percentComplete);
 			}
-		}
+		};
 	}
 
 	function doneCallback() {
