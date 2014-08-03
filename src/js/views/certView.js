@@ -1,36 +1,24 @@
-define(['utils', 'hbs!js/templates/cert'], function (Utils, certTemplate) {
+define(['utils', 'hbs!js/templates/cert_popup'], function (Utils, certPopupTemplate) {
 
 	function render(params) {
-		var template = certTemplate({model: params.model});
-		initPopup(template);
 		Utils.bindEvents(params.bindings);
 	}
 
-	function initPopup(template) {
-		if ($$('.popup').length === 0) {
-			var popup = document.createElement('div');
-			popup.setAttribute('class', 'popup');
-			popup.innerHTML = template;
-			$$('body').append(popup);
-		} else {
-			$$('.popup').html(template);
-		}
+	function renderPopup(params) {
+		var template = certPopupTemplate({model: params.model});
+		$$('.popup').html(template);
+		Utils.bindEvents(params.bindings);
 	}
 
-	function reRender(params) {
-		var template = certTemplate({model: params.model});
-		initPopup(template);
-		bindButtonEvent(params);
-	}
-
-	function bindButtonEvent(params) {
-		$$('.download-button').on('click', function () {
-			params.doneCallback(params.model.errorNo);
-		});
+	function showDownloading() {
+		$$('.section').hide();
+		$$('#download').show();
+		khApp.closeModal();
 	}
 
 	return {
 		render: render,
-		reRender: reRender
+		renderPopup: renderPopup,
+		showDownloading: showDownloading
 	};
 });

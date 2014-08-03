@@ -1,0 +1,28 @@
+<div class="view view-popup navbar-fixed">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="center sliding">
+				安装证书
+			</div>
+			{{!-- <div class="right"><a href="#" class="link">完成</a></div> --}}
+		</div>
+	</div>
+	<div class="page">
+		<div class="page-content">
+		{{#if model.success}}
+			<div class="content-block">
+				<div class="info"><i class="iconfont icon-success"></i>{{model.successText}}</div>
+			</div>
+			<div class="content-block">
+				<a href="#" class="button button-big active cert-download-button">完成</a>
+			</div>
+		{{/if}}
+		{{#if model.fail}}
+			<div class="info"><i class="iconfont icon-fail"></i>{{model.failText}}</div>
+			<div class="content-block">
+				<a href="#" class="button button-big active cert-retry-button">重新下载</a>
+			</div>
+		{{/if}}
+		</div>
+	</div>
+</div>
