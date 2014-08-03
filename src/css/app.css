@@ -3746,6 +3746,9 @@ body > .photo-browser .toolbar {
 .info .icon-fail {
   color: #d42323;
 }
+.info .icon-wait {
+  color: #fd8615;
+}
 .login-getcode {
   width: 180px;
   color: #fff;
@@ -3790,6 +3793,32 @@ body > .photo-browser .toolbar {
 }
 [data-page="collect"] .upload-block .upload-content .title {
   color: #808080;
+}
+progress {
+  width: 100%;
+  height: 18px;
+  background-color: #f3f3f3;
+  border: 0;
+  border-radius: 9px;
+}
+progress::-webkit-progress-bar {
+  background-color: #f3f3f3;
+  border-radius: 9px;
+}
+progress::-webkit-progress-value {
+  background-color: #5cb85c;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 40px 40px;
+  border-radius: 9px;
+  -webkit-animation: stripes 2s linear infinite;
+}
+@-webkit-keyframes stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
 }
 [data-page="profile"] input[type="text"],
 [data-page="profile"] textarea,
