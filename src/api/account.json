@@ -18,9 +18,9 @@
       }
     ],
     "protocals": [
-      {"protocal": "《证券交易委托协议代理书》"},
-      {"protocal": "《指定交易协议书》"},
-      {"protocal": "《买者自负承诺书》"}
+      {"id": "aaa", "protocal": "《证券交易委托协议代理书》"},
+      {"id": "bbb", "protocal": "《指定交易协议书》"},
+      {"id": "ccc", "protocal": "《买者自负承诺书》"}
     ]
   }
 }

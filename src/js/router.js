@@ -13,7 +13,8 @@ define(['GS'], function (GS) {
 		password   : 'password',
 		depository : 'depository',
 		review     : 'review',
-		audit      : 'audit'
+		audit      : 'audit',
+		protocal   : 'protocal'
 	};
 
 	/**

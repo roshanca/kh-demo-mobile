@@ -1,24 +1,13 @@
-define(['utils', 'hbs!js/templates/protocal'], function (Utils, protocalTemplate) {
+define(['utils', 'hbs!js/templates/protocal_popup'], function (Utils, protocalPopupTemplate) {
 
 	function render(params) {
 		Utils.bindEvents(params.bindings);
 	}
 
 	function renderPopup(params) {
-		var template = protocalTemplate({model: params.model});
-		initPopup(template);
+		var template = protocalPopupTemplate({model: params.model});
+		$$('.popup').html(template);
 		Utils.bindEvents(params.bindings);
-	}
-
-	function initPopup(template) {
-		if ($$('.popup').length === 0) {
-			var popup = document.createElement('div');
-			popup.setAttribute('class', 'popup');
-			popup.innerHTML = template;
-			$$('body').append(popup);
-		} else {
-			$$('.popup').html(template);
-		}
 	}
 
 	function showPhotoFront(url) {

@@ -5,7 +5,7 @@ define(['js/views/accountView', 'GS'], function (View, GS) {
 		event: 'click',
 		handler: GS.logout
 	}, {
-		element: '.next-button',
+		element: '.account-next-button',
 		event: 'click',
 		handler: nextSubmit
 	}];
