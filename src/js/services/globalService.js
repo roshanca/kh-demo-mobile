@@ -61,6 +61,7 @@ define([], function () {
 	function logout() {
 		khApp.confirm('您确定要退出登录吗？', function () {
 			removeCurrentUser();
+			khApp.closeModal();
 			mainView.loadPage('login.html');
 		});
 	}

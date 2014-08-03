@@ -91,8 +91,8 @@ define(['js/views/collectView', 'GS'], function (View, GS) {
 	}
 
 	function doneCallback() {
-		mainView.loadPage('profile.html');
 		khApp.closeModal();
+		mainView.loadPage('profile.html');
 	}
 
 	return {
