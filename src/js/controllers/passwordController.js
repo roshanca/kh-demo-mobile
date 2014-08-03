@@ -5,7 +5,7 @@ define(['js/views/passwordView', 'GS', 'utils'], function (View, GS, Utils) {
 		event: 'click',
 		handler: GS.logout
 	}, {
-		element: '.next-button',
+		element: '.password-next-button',
 		event: 'click',
 		handler: nextSubmit
 	}, {
