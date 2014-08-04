@@ -9,5 +9,4 @@
 * [Framework7](http://www.idangero.us/framework7/)
 * [requirejs](http://requirejs.org)
 * [requirejs-text](https://github.com/requirejs/text)
-* [requirejs-hbs](https://github.com/epeli/requirejs-hbs)
-* [Handlebars.js](http://handlebarsjs.com)
+* [mustache](http://mustache.github.io)
