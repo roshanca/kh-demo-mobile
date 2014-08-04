@@ -1,6 +1,6 @@
 {
   "name": "kh-demo-mobile",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "A online account opening system app for investors, made with Framework7.",
   "main": "dist/",
   "author": {
