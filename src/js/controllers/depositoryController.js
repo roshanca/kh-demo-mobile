@@ -14,7 +14,7 @@ define(['views/depositoryView', 'GS'], function (View, GS) {
 		element: '.depository-next-button',
 		event: 'click',
 		handler: nextSubmit
-	}]
+	}];
 
 	function init() {
 		View.init({
