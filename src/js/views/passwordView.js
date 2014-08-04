@@ -18,12 +18,12 @@ define(['utils'], function (Utils) {
 			content.transform('translate3d(0,-200%,0)')
 				.transition('300ms')
 				.transitionEnd(function () {
-					trigger.find('.item-inner').css('border-bottom', '1px solid transparent');
+					trigger.addClass('bare');
 					content.hide();
 				});
 		} else if (visiable === 'show') {
 			content.show();
-			trigger.find('.item-inner').css('border-bottom', '1px solid #c8c7cc');
+			trigger.removeClass('bare');
 			wrapper.css('height', height + 'px');
 			clientHeight = wrapper[0].clientHeight;
 			wrapper.css('height', height * 3 + 'px').transition('300ms');

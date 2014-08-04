@@ -1,0 +1,66 @@
+<div class="content-block">
+	<p>开通三方存管后，您的资金可以在银行卡与交易账户中自由调度</p>
+</div>
+<div class="list-block">
+	<ul>
+		<li>
+			<a href="#" class="item-link smart-select">
+				<select name="bank" id="bank">
+					{{#model.banks}}
+					<option value="{{code}}" data-type="{{type}}" data-protocal-id="{{protocalId}}">{{name}}</option>
+					{{/model.banks}}
+					{{!-- <option value="1">中信银行</option>
+					<option value="2">招商银行</option>
+					<option value="3">中国银行</option>
+					<option value="4">中国建设银行</option> --}}
+				</select>
+				<div class="item-content">
+					<div class="item-inner">
+						<div class="item-title">请选择银行</div>
+						<div class="item-after"></div>
+					</div>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="list-block" id="inputGroup" style="display: none;">
+	<ul>
+		<li class="cardno-input">
+			<div class="item-content">
+				<div class="item-inner">
+				<div class="item-title label">卡号</div>
+					<div class="item-input">
+						<input type="text" name="cardNo" placeholder="请输入银行卡卡号">
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="cardpsw-input">
+			<div class="item-content">
+				<div class="item-inner">
+				<div class="item-title label">密码</div>
+					<div class="item-input">
+						<input type="text" name="cardPSW" placeholder="请输入银行卡密码">
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="cardpsw-input">
+			<div class="item-content">
+				<div class="item-inner">
+				<div class="item-title label">重复</div>
+					<div class="item-input">
+						<input type="text" name="cardPSWrepeat" placeholder="请再次输入银行卡卡号">
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+<div class="content-block" id="agreeProtocal" style="display: none;">
+	<label><input type="checkbox" name="agreement" value="agreement"> 我已阅读并同意签署<a id="protocalLink" href="protocal.html">《<span id="bankName"></span>三方协议》</a></label>
+</div>
+<div class="content-block">
+	<a href="#" class="button button-big active depository-next-button">开通三方存管</a>
+</div>
