@@ -1,6 +1,12 @@
-define(['utils'], function (Utils) {
+define(['utils', 'hbs!js/templates/video_popup'], function (Utils, videoPopupTemplate) {
 
 	function render(params) {
+		Utils.bindEvents(params.bindings);
+	}
+
+	function renderPopup(params) {
+		var template = videoPopupTemplate({model: params.model});
+		$$('.popup').html(template);
 		Utils.bindEvents(params.bindings);
 	}
 
@@ -21,18 +27,6 @@ define(['utils'], function (Utils) {
 		}
 	}
 
-	function showSuccess() {
-		$$('.left').css('visibility', 'hidden');
-		$$('.video-content').hide();
-		$$('#videoSuccess').show();
-	}
-
-	function showFail() {
-		$$('.left').css('visibility', 'hidden');
-		$$('.video-content').hide();
-		$$('#videoFail').show();
-	}
-
 	/**
 	 * 显示隐藏 dialog
 	 */
@@ -46,10 +40,9 @@ define(['utils'], function (Utils) {
 
 	return {
 		render: render,
+		renderPopup: renderPopup,
 		showWait: showWait,
 		showReady: showReady,
-		showSuccess: showSuccess,
-		showFail: showFail,
 		toggleDialog: toggleDialog,
 	};
 });

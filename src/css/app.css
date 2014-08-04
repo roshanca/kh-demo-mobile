@@ -3729,6 +3729,9 @@ body > .photo-browser .toolbar {
 .button.active {
   background: #fd8615;
 }
+.modal-button {
+  color: #000;
+}
 .navbar a.link {
   color: #444;
 }
@@ -3747,6 +3750,12 @@ body > .photo-browser .toolbar {
   color: #d42323;
 }
 .info .icon-wait {
+  color: #fd8615;
+}
+.info .desc {
+  font-size: 14px;
+}
+.info .hotline {
   color: #fd8615;
 }
 .login-getcode {

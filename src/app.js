@@ -1,4 +1,5 @@
 require.config({
+	baseUrl: './',
 	paths: {
 		Framework7: 'lib/framework7',
 		handlebars: 'lib/handlebars',
@@ -17,7 +18,7 @@ require.config({
 	}
 });
 
-define(['Framework7', 'js/router'], function (Framework7, Router) {
+require(['Framework7', 'js/router'], function (Framework7, Router) {
 	window.$$ = Framework7.$;
 
 	window.khApp = new Framework7({

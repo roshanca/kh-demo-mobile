@@ -1,4 +1,4 @@
-define(['js/views/certView', 'js/router', 'GS'], function (View, Router, GS) {
+define(['js/views/certView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '#logout',
@@ -24,35 +24,38 @@ define(['js/views/certView', 'js/router', 'GS'], function (View, Router, GS) {
 		View.render({
 			bindings: bindings
 		});
+		setTimeout(View.showAuditAfter, 1500);
 	}
 
 	function requestCert() {
 		View.showDownloading();
 		// khApp.showIndicator();
-		var xhr = $$.ajax({
-			url: 'api/cert.json',
-			type: 'POST',
-			success: function (data) {
-				data = JSON.parse(data);
-				if (data.errorNo === 0) {
-					View.renderPopup({
-						model: data.model,
-						bindings: afterBindings
-					});
-					khApp.popup('.popup');
+		setTimeout(function () {
+			var xhr = $$.ajax({
+				url: 'api/cert.json',
+				type: 'POST',
+				success: function (data) {
+					data = JSON.parse(data);
+					if (data.errorNo === 0) {
+						View.renderPopup({
+							model: data.model,
+							bindings: afterBindings
+						});
+						khApp.popup('.popup');
+					}
+					// khApp.hideIndicator();
 				}
-				// khApp.hideIndicator();
-			}
-		});
+			});
 
-		// 下载进度
-		xhr.onprogress = function (e) {
-			if (e.lengthComputable) {
-				var percentComplete = (e.loaded / e.total) * 100;
-				console.log(percentComplete);
-				$$('progress').val(percentComplete);
-			}
-		};
+			// 下载进度
+			xhr.onprogress = function (e) {
+				if (e.lengthComputable) {
+					var percentComplete = (e.loaded / e.total) * 100;
+					console.log(percentComplete);
+					$$('progress').val(percentComplete);
+				}
+			};
+		}, 1500);
 	}
 
 	function doneCallback() {
@@ -67,7 +70,7 @@ define(['js/views/certView', 'js/router', 'GS'], function (View, Router, GS) {
 			}, {
 				text: '继续',
 				onClick: function () {
-					mainView.loadPage('account.html');
+					mainView.loadPage('collect.html');
 					khApp.closeModal();
 				}
 			}]

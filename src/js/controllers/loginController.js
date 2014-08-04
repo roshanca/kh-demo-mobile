@@ -31,43 +31,6 @@ define(['js/views/loginView', 'GS'], function (View, GS) {
 		return reg.test(str);
 	}
 
-	function loginSubmit() {
-		var valMobile = $$('.mobile').val();
-		var valPassword = $$('.password').val();
-
-		if (!isMobile(valMobile)) {
-			khApp.alert('手机号码为空或有误，请重新输入');
-		} else if (!timer) {
-			khApp.alert('您还没有获取验证码，请先获取验证码');
-		} else if (!isVaildCode(valPassword)) {
-			khApp.alert('输入4位数字验证码');
-		} else {
-			khApp.showIndicator();
-
-			$$.ajax({
-				url: 'api/login.json',
-				type: 'POST',
-				data: {
-					'mobile': valMobile,
-					'validateCode': valPassword
-				},
-				success: function (data) {
-					data = JSON.parse(data);
-					if (data.errorNo === 0) {
-						View.inputBlur();
-						GS.setCurrentUser(data.sid, data.user);
-						mainView.loadPage(GS.getCurrentUser().node.current + '.html');
-						khApp.hideIndicator();
-					} else {
-						khApp.hideIndicator();
-						khApp.alert(data.errorInfo);
-					}
-					resetCountdown();
-				}
-			});
-		}
-	}
-
 	function resetCountdown() {
 		if (timer) {
 			clearTimeout(timer);
@@ -127,7 +90,6 @@ define(['js/views/loginView', 'GS'], function (View, GS) {
 
 		curTime++;
 		leftTime = setTime - curTime;
-		// $$(btn).html(leftTime + '秒后重新获取');
 		View.reRenderBtn(leftTime);
 
 		if (leftTime > 0) {
@@ -136,6 +98,43 @@ define(['js/views/loginView', 'GS'], function (View, GS) {
 			}, 1000);
 		} else {
 			View.resetBtn();
+		}
+	}
+
+	function loginSubmit() {
+		var valMobile = $$('.mobile').val();
+		var valPassword = $$('.password').val();
+
+		if (!isMobile(valMobile)) {
+			khApp.alert('手机号码为空或有误，请重新输入');
+		} else if (!timer) {
+			khApp.alert('您还没有获取验证码，请先获取验证码');
+		} else if (!isVaildCode(valPassword)) {
+			khApp.alert('输入4位数字验证码');
+		} else {
+			khApp.showIndicator();
+
+			$$.ajax({
+				url: 'api/login.json',
+				type: 'POST',
+				data: {
+					'mobile': valMobile,
+					'validateCode': valPassword
+				},
+				success: function (data) {
+					data = JSON.parse(data);
+					if (data.errorNo === 0) {
+						View.inputBlur();
+						GS.setCurrentUser(data.sid, data.user);
+						mainView.loadPage('cert.html');
+						khApp.hideIndicator();
+					} else {
+						khApp.hideIndicator();
+						khApp.alert(data.errorInfo);
+					}
+					resetCountdown();
+				}
+			});
 		}
 	}
 

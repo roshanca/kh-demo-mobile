@@ -9,25 +9,35 @@ define(['js/views/videoView', 'GS'], function (View, GS) {
 		event: 'click',
 		handler: startVideo
 	}, {
-		element: '.wait-button',
+		element: '.video-wait-button',
 		event: 'click',
 		handler: waitVideo
 	}, {
 		element: '.video-success-button',
 		event: 'click',
-		handler: success
+		handler: successTest
 	}, {
 		element: '.video-fail-button',
 		event: 'click',
-		handler: fail
-	}, {
-		element: '.video-retry-button',
-		event: 'click',
-		handler: retry
+		handler: failTest
 	}, {
 		element: '#waitLeft',
 		event: 'click',
 		handler: View.showReady
+	}];
+
+	var afterBindings = [{
+		element: '#logout',
+		event: 'click',
+		handler: GS.logout
+	}, {
+		element: '.video-next-button',
+		event: 'click',
+		handler: nextSubmit
+	}, {
+		element: '.video-retry-button',
+		event: 'click',
+		handler: retry
 	}];
 
 	var queryCount = 0,
@@ -81,7 +91,7 @@ define(['js/views/videoView', 'GS'], function (View, GS) {
 		});
 
 		// 定时任务
-		timer = setTimeout(queryUserWaitInfo, 3000);
+		timer = setTimeout(queryUserWaitInfo, 1500);
 	}
 
 	function waitVideo() {
@@ -90,20 +100,52 @@ define(['js/views/videoView', 'GS'], function (View, GS) {
 		queryUserWaitInfo();
 	}
 
-	function success() {
-		View.showSuccess();
+	function successTest() {
+		khApp.showIndicator();
+		$$.ajax({
+			url: 'api/video_success.json',
+			type: 'POST',
+			success: function (data) {
+				data = JSON.parse(data);
+				if (data.errorNo === 0) {
+					View.renderPopup({
+						model: data.model,
+						bindings: afterBindings
+					});
+					khApp.popup('.popup');
+				}
+				khApp.hideIndicator();
+			}
+		});
 	}
 
-	function fail() {
-		View.showFail();
+	function failTest() {
+		khApp.showIndicator();
+		$$.ajax({
+			url: 'api/video_fail.json',
+			type: 'POST',
+			success: function (data) {
+				data = JSON.parse(data);
+				if (data.errorNo === 1) {
+					View.renderPopup({
+						model: data.model,
+						bindings: afterBindings
+					});
+					khApp.popup('.popup');
+				}
+				khApp.hideIndicator();
+			}
+		});
 	}
 
 	function retry() {
 		View.showReady();
+		khApp.closeModal();
 	}
 
 	function nextSubmit() {
-		mainView.loadPage('cert.html');
+		mainView.loadPage('account.html');
+		khApp.closeModal();
 	}
 
 	return {

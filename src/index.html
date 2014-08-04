@@ -5,8 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<title>My App</title>
+	<title>khApp</title>
+	<!--(if target dev)><!-->
 	<link rel="stylesheet" href="css/app.css">
+	<!--<!(endif)-->
+
+	<!--(if target dist)>
+	<link rel="stylesheet" href="css/app.min.css?v={{rlsdate}}">
+	<!--<!(endif)-->
 </head>
 <body>
 	<!-- Status bar overlay for full screen mode (PhoneGap) -->
@@ -37,6 +43,12 @@
 		</div>
 	</div>
 	<div class="popup"></div>
+	<!--(if target dev)><!-->
 	<script data-main="app" src="lib/require.js"></script>
+	<!--<!(endif)-->
+
+	<!--(if target dist)>
+	<script data-main="app" src="js/require.min.js"></script>
+	<!--<!(endif)-->
 </body>
 </html>

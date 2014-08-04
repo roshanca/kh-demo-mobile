@@ -28,11 +28,9 @@ define(['GS'], function (GS) {
 
 		if (!GS.isLogin()) {
 			mainView.loadPage('login.html');
-		} else if (!GS.isCertInstalled()) {
-			mainView.loadPage('cert.html');
 		} else {
 			var currentUser = GS.getCurrentUser();
-			mainView.loadPage(currentUser.node.current + '.html');
+			mainView.loadPage(currentUser.node + '.html');
 		}
 	}
 

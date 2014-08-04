@@ -1,0 +1,7 @@
+{
+  "errorNo": 1,
+  "model": {
+    "fail": true,
+    "failText": "视频验证失败，请重新验证!"
+  }
+}

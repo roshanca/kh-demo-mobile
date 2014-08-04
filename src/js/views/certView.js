@@ -10,15 +10,29 @@ define(['utils', 'hbs!js/templates/cert_popup'], function (Utils, certPopupTempl
 		Utils.bindEvents(params.bindings);
 	}
 
-	function showDownloading() {
+	function show(sectionId) {
 		$$('.section').hide();
-		$$('#download').show();
+		$$('#' + sectionId).show();
 		khApp.closeModal();
+	}
+
+	function showDownloading() {
+		show('download');
+	}
+
+	function showAuditBefore() {
+		show('auditBefore');
+	}
+
+	function showAuditAfter() {
+		show('auditAfter');
 	}
 
 	return {
 		render: render,
 		renderPopup: renderPopup,
-		showDownloading: showDownloading
+		showDownloading: showDownloading,
+		showAuditBefore: showAuditBefore,
+		showAuditAfter: showAuditAfter
 	};
 });

@@ -1,7 +1,7 @@
 {
   "errorNo": 0,
   "model": {
-    "fail": true,
+    "success": true,
     "successText": "数字证书安装成功"
   }
 }
