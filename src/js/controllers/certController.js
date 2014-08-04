@@ -1,4 +1,4 @@
-define(['js/views/certView', 'GS'], function (View, GS) {
+define(['views/certView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '#logout',
@@ -59,22 +59,7 @@ define(['js/views/certView', 'GS'], function (View, GS) {
 	}
 
 	function doneCallback() {
-		khApp.modal({
-			title: '系统消息',
-			text: '数字证书已安装成功，是否要继续？',
-			buttons: [{
-				text: '取消',
-				onClick: function () {
-					khApp.closeModal();
-				}
-			}, {
-				text: '继续',
-				onClick: function () {
-					mainView.loadPage('collect.html');
-					khApp.closeModal();
-				}
-			}]
-		});
+		mainView.loadPage('collect.html');
 	}
 
 	return {

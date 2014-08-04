@@ -1,7 +1,7 @@
-define(['hbs!js/templates/protocal'], function (protocalTemplate) {
+define(['text!/mustache/protocal.mustache', 'mustache'], function (protocalTemplate, mustache) {
 
 	function render(params) {
-		var template = protocalTemplate({model: params.model});
+		var template = mustache.render(protocalTemplate, {model: params.model});
 		$$('#protocalContent').append(template);
 	}
 

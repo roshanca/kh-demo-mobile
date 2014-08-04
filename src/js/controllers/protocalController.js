@@ -1,4 +1,4 @@
-define(['js/views/protocalView', 'GS'], function (View, GS) {
+define(['views/protocalView', 'GS'], function (View, GS) {
 
 	function init(query) {
 		console.log(query);

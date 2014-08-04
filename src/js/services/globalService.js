@@ -46,18 +46,6 @@ define([], function () {
 		}
 	}
 
-	/**
-	 * 判断证书是否安装
-	 * @return {Boolean} true: 已安装; false: 未安装
-	 */
-	function isCertInstalled() {
-		return true;
-	}
-
-	/**
-	 * 注销登出
-	 * @return {void}
-	 */
 	function logout() {
 		khApp.confirm('您确定要退出登录吗？', function () {
 			removeCurrentUser();
@@ -71,7 +59,6 @@ define([], function () {
 		getCurrentUser: getCurrentUser,
 		setCurrentUser: setCurrentUser,
 		removeCurrentUser: removeCurrentUser,
-		isCertInstalled: isCertInstalled,
 		isLogin: isLogin,
 		logout: logout
 	};

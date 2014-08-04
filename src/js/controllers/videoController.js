@@ -1,4 +1,4 @@
-define(['js/views/videoView', 'GS'], function (View, GS) {
+define(['views/videoView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '#logout',

@@ -1,4 +1,4 @@
-define(['js/views/accountView', 'GS'], function (View, GS) {
+define(['views/accountView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '#logout',

@@ -58,9 +58,9 @@
 		<li>
 			<a href="#" class="item-link smart-select" data-pagetitle="选择职业">
 				<select name="career">
-				{{#each model.careers}}
+				{{#model.careers}}
 					<option value="{{value}}">{{career}}</option>
-				{{/each}}
+				{{/model.careers}}
 				</select>
 				<!-- <select name="career">
 					<option value="a">aaa</option>
@@ -70,9 +70,7 @@
 				<div class="item-content">
 					<div class="item-inner">
 						<div class="item-title">职业</div>
-						<div class="item-after">{{#each model.careers}}
-							{{#if @first}} {{career}} {{/if}}
-						{{/each}}</div>
+						<div class="item-after"></div>
 					</div>
 				</div>
 			</a>
@@ -80,16 +78,14 @@
 		<li>
 			<a href="#" class="item-link smart-select" data-pagetitle="选择行业">
 				<select name="industry">
-				{{#each model.industries}}
+				{{#model.industries}}
 					<option value="{{value}}">{{industry}}</option>
-				{{/each}}
+				{{/model.industries}}
 				</select>
 				<div class="item-content">
 					<div class="item-inner">
 						<div class="item-title">行业</div>
-						<div class="item-after">{{#each model.industries}}
-							{{#if @first}} {{industry}} {{/if}}
-						{{/each}}</div>
+						<div class="item-after"></div>
 					</div>
 				</div>
 			</a>
@@ -97,16 +93,14 @@
 		<li>
 			<a href="#" class="item-link smart-select" data-pagetitle="选择学历">
 				<select name="industry">
-				{{#each model.educations}}
+				{{#model.educations}}
 					<option value="{{value}}">{{education}}</option>
-				{{/each}}
+				{{/model.educations}}
 				</select>
 				<div class="item-content">
 					<div class="item-inner">
 						<div class="item-title">学历</div>
-						<div class="item-after">{{#each model.educations}}
-							{{#if @first}} {{education}} {{/if}}
-						{{/each}}</div>
+						<div class="item-after"></div>
 					</div>
 				</div>
 			</a>
@@ -114,6 +108,6 @@
 	</ul>
 </div>
 <div class="content-block">
-	<a href="#" class="button button-big active next-button">下一步</a>
+	<a href="#" class="button button-big active profile-next-button">下一步</a>
 </div>
 

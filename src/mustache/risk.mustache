@@ -1,12 +1,12 @@
 <form id="riskForm">
-{{#each model.questions}}
+{{#model.questions}}
 	<div class="content-block-title">{{index}}.{{topic}}
-	{{#if multi}}
+	{{#multi}}
 	（多选）
 	</div>
 	<div class="list-block">
 		<ul>
-			{{#each options}}
+			{{#options}}
 			<li>
 				<label class="label-radio item-content">
 					<div class="item-media"></div>
@@ -16,13 +16,15 @@
 					</div>
 				</label>
 			</li>
-			{{/each}}
-	{{else}}
+			{{/options}}
+	{{/multi}}
+
+  {{^multi}}
 	（单选）
 	</div>
 	<div class="list-block">
 		<ul>
-			{{#each options}}
+			{{#options}}
 			<li>
 				<label class="label-radio item-content">
 					<div class="item-media"></div>
@@ -32,13 +34,12 @@
 					</div>
 				</label>
 			</li>
-			{{/each}}
-	{{/if}}
-
+			{{/options}}
+	{{/multi}}
 
 		</ul>
 	</div>
-{{/each}}
+{{/model.questions}}
 </form>
 <div class="content-block">
 	<a href="#" class="button button-big active risk-submit-button">提交</a>

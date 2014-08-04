@@ -3,13 +3,13 @@
 	<ul>
 		<li><a href="#" class="item-link smart-select">
 			<select name="account" multiple>
-				{{#each model.accountGroups}}
+				{{#model.accountGroups}}
 				<optgroup label="{{group}}">
-					{{#each types}}
+					{{#types}}
 					<option value="{{value}}">{{type}}</option>
-					{{/each}}
+					{{/types}}
 				</optgroup>
-				{{/each}}
+				{{/model.accountGroups}}
 			</select>
 			<div class="item-content">
 				<div class="item-inner">
@@ -23,7 +23,7 @@
 <div class="content-block-title">签署协议</div>
 <div class="list-block">
 	<ul>
-		{{#each model.protocals}}
+		{{#model.protocals}}
 		<li>
 			<a href="protocal.html?id={{id}}" class="item-link item-content protocal-link">
 			<div class="item-inner">
@@ -31,7 +31,7 @@
 				</div>
 			</a>
 		</li>
-		{{/each}}
+		{{/model.protocals}}
 		{{!-- <li>
 			<div class="item-content">
 				<div class="item-inner">

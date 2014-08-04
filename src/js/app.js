@@ -1,24 +1,20 @@
 require.config({
-	baseUrl: './',
+	baseUrl: 'js',
 	paths: {
-		Framework7: 'lib/framework7',
-		handlebars: 'lib/handlebars',
-		hbs: 'lib/hbs',
-		text: 'lib/text',
-		GS: 'js/services/globalService',
-		utils: 'js/utils'
+		Framework7: 'libs/framework7',
+		mustache: 'libs/mustache',
+		text: 'libs/text',
+		templates: '../mustache',
+		GS: 'services/globalService'
 	},
 	shim: {
-		handlebars: {
-			exports: 'Handlebars'
-		},
 		Framework7: {
 			exports: 'Framework7'
 		}
 	}
 });
 
-require(['Framework7', 'js/router'], function (Framework7, Router) {
+require(['Framework7', 'router'], function (Framework7, Router) {
 	window.$$ = Framework7.$;
 
 	window.khApp = new Framework7({

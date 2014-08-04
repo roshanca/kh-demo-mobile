@@ -1,4 +1,4 @@
-define(['js/views/loginView', 'GS'], function (View, GS) {
+define(['views/loginView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '.login-submit',

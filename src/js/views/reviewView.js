@@ -1,7 +1,7 @@
-define(['utils', 'hbs!js/templates/review'], function (Utils, reviewTemplate) {
+define(['utils', 'text!templates/review.mustache', 'mustache'], function (Utils, reviewTemplate, mustache) {
 
 	function render(params) {
-		var template = reviewTemplate({model: params.model});
+		var template = mustache.render(reviewTemplate, {model: params.model});
 		$$('#reviewContent').append(template);
 		Utils.bindEvents(params.bindings);
 	}

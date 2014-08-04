@@ -1,11 +1,11 @@
-define(['utils', 'hbs!js/templates/video_popup'], function (Utils, videoPopupTemplate) {
+define(['utils', 'text!templates/video_popup.mustache', 'mustache'], function (Utils, videoPopupTemplate, mustache) {
 
 	function render(params) {
 		Utils.bindEvents(params.bindings);
 	}
 
 	function renderPopup(params) {
-		var template = videoPopupTemplate({model: params.model});
+		var template = mustache.render(videoPopupTemplate, {model: params.model});
 		$$('.popup').html(template);
 		Utils.bindEvents(params.bindings);
 	}

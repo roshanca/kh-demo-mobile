@@ -1,11 +1,11 @@
-define(['js/views/reviewView', 'GS'], function (View, GS) {
+define(['views/reviewView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '#logout',
 		event: 'click',
 		handler: GS.logout
 	}, {
-		element: '.next-button',
+		element: '.review-next-button',
 		event: 'click',
 		handler: nextSubmit
 	}];

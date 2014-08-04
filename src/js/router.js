@@ -41,7 +41,7 @@ define(['GS'], function (GS) {
 	 */
 	function load(controllerName, query) {
 		if (controllerName in hash) {
-			require(['js/controllers/' + hash[controllerName] + 'Controller'], function (controller) {
+			require(['controllers/' + hash[controllerName] + 'Controller'], function (controller) {
 				controller.init(query);
 			});
 		}

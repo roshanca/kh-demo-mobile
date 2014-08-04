@@ -1,23 +1,23 @@
-{{#if model.departmentsNearby}}
+{{#model.departmentsNearby}}
 <a href="#" class="item-link smart-select" id="nearbySelect" data-pagetitle="附近营业部">
 	<select name="nearby">
-	{{#each model.departmentsNearby}}
+	{{#model.departmentsNearby}}
 		<option value="{{value}}">{{department}}</option>
-	{{/each}}
+	{{/model.departmentsNearby}}
 	</select>
 </a>
+{{/model.departmentsNearby}}
 
-{{else}}
-
+{{#model.departmentsAll}}
 <a href="#" class="item-link smart-select" id="allSelect" data-pagetitle="选择营业部" data-searchbar="true" data-searchbar-placeholder="营业部名称" data-searchbar-cancel="取消">
 	<select name="all">
-	{{#each model.departmentsAll}}
+	{{#model.departmentsAll}}
 		<optgroup label="{{group}}">
-			{{#each departments}}
+			{{#departments}}
 				<option value="{{value}}">{{department}}</option>
-			{{/each}}
+			{{/departments}}
 		</optgroup>
-	{{/each}}
+	{{/model.departmentsAll}}
 	</select>
 </a>
-{{/if}}
+{{/model.departmentsAll}}

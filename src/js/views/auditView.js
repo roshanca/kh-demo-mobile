@@ -1,7 +1,7 @@
-define(['utils', 'hbs!js/templates/audit'], function (Utils, auditTemplate) {
+define(['utils', 'text!templates/audit.mustache', 'mustache'], function (Utils, auditTemplate, mustache) {
 
 	function render(params) {
-		var template = auditTemplate({model: params.model});
+		var template = mustache.render(auditTemplate, {model: params.model});
 		$$('#auditContent').append(template);
 		Utils.bindEvents(params.bindings);
 	}

@@ -1,11 +1,11 @@
-define(['js/views/profileView', 'GS'], function (View, GS) {
+define(['views/profileView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '#logout',
 		event: 'click',
 		handler: GS.logout
 	}, {
-		element: '.next-button',
+		element: '.profile-next-button',
 		event: 'click',
 		handler: nextSubmit
 	}];

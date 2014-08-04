@@ -1,11 +1,11 @@
-define(['utils', 'hbs!js/templates/protocal_popup'], function (Utils, protocalPopupTemplate) {
+define(['utils', 'text!templates/protocal_popup.mustache', 'mustache'], function (Utils, protocalPopupTemplate, mustache) {
 
 	function render(params) {
 		Utils.bindEvents(params.bindings);
 	}
 
 	function renderPopup(params) {
-		var template = protocalPopupTemplate({model: params.model});
+		var template = mustache.render(protocalPopupTemplate, {model: params.model});
 		$$('.popup').html(template);
 		Utils.bindEvents(params.bindings);
 	}

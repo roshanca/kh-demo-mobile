@@ -22,7 +22,6 @@
     "framework7": "latest",
     "requirejs": "latest",
     "requirejs-text": "latest",
-    "requirejs-hbs": "latest",
-    "handlebars": "latest"
+    "mustache": "latest"
   }
 }

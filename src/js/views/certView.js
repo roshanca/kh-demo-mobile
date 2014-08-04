@@ -1,11 +1,11 @@
-define(['utils', 'hbs!js/templates/cert_popup'], function (Utils, certPopupTemplate) {
+define(['utils', 'text!templates/cert_popup.mustache', 'mustache'], function (Utils, certPopupTemplate, mustache) {
 
 	function render(params) {
 		Utils.bindEvents(params.bindings);
 	}
 
 	function renderPopup(params) {
-		var template = certPopupTemplate({model: params.model});
+		var template = mustache.render(certPopupTemplate, {model: params.model});
 		$$('.popup').html(template);
 		Utils.bindEvents(params.bindings);
 	}

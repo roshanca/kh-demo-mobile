@@ -67,6 +67,18 @@ module.exports = (grunt) ->
               include: [
 
               ]
+            },
+            {
+              name: 'js/controllers/certController'
+              include: [
+
+              ]
+            }
+            {
+              name: 'js/controllers/loginController'
+              include: [
+
+              ]
             }
           ]
           # name: 'app'

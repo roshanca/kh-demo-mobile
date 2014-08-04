@@ -1,8 +1,8 @@
-{{#each model.questions}}
+{{#model.questions}}
 	<div class="content-block-title">{{index}}.{{topic}}</div>
 	<div class="list-block">
 		<ul>
-			{{#each options}}
+			{{#options}}
 			<li>
 				<label class="label-radio item-content">
 					<div class="item-media"></div>
@@ -12,10 +12,10 @@
 					</div>
 				</label>
 			</li>
-			{{/each}}
+			{{/options}}
 		</ul>
 	</div>
-{{/each}}
+{{/model.questions}}
 <div class="content-block">
 	<a href="#" class="button button-big active next-button">提交</a>
 </div>

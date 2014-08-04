@@ -1,11 +1,11 @@
-define(['utils', 'hbs!js/templates/department'], function (Utils, departmentTemplate) {
+define(['utils', 'text!templates/department.mustache', 'mustache'], function (Utils, departmentTemplate, mustache) {
 
 	function render(params) {
 		Utils.bindEvents(params.bindings);
 	}
 
 	function renderSelect(params) {
-		var template = departmentTemplate({model: params.model});
+		var template = mustache.render(departmentTemplate, {model: params.model});
 		$$('#departmentContent').append(template);
 		Utils.bindEvents(params.bindings);
 	}

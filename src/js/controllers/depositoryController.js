@@ -1,11 +1,11 @@
-define(['js/views/depositoryView', 'GS'], function (View, GS) {
+define(['views/depositoryView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '#logout',
 		event: 'click',
 		handler: GS.logout
 	}, {
-		element: '.next-button',
+		element: '.depository-next-button',
 		event: 'click',
 		handler: nextSubmit
 	}];

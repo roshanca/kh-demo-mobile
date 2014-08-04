@@ -1,4 +1,4 @@
-define(['js/views/riskView', 'GS'], function (View, GS) {
+define(['views/riskView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '#logout',
@@ -7,7 +7,7 @@ define(['js/views/riskView', 'GS'], function (View, GS) {
 	}, {
 		element: '.risk-submit-button',
 		event: 'click',
-		handler: submit
+		handler: resultSubmit
 	}];
 
 	var afterBindings = [{
@@ -17,7 +17,7 @@ define(['js/views/riskView', 'GS'], function (View, GS) {
 	}, {
 		element: '.risk-next-button',
 		event: 'click',
-		handler: next
+		handler: nextSubmit
 	}];
 
 	function init() {
@@ -39,7 +39,7 @@ define(['js/views/riskView', 'GS'], function (View, GS) {
 		});
 	}
 
-	function submit() {
+	function resultSubmit() {
 		// var formData = khApp.formToJSON('#riskContent');
 		// for (var i in formData) {
 		// 	console.log(i);
@@ -71,7 +71,7 @@ define(['js/views/riskView', 'GS'], function (View, GS) {
 		});
 	}
 
-	function next() {
+	function nextSubmit() {
 		khApp.closeModal();
 		mainView.loadPage('review.html');
 	}

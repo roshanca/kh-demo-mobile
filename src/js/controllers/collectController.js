@@ -1,11 +1,11 @@
-define(['js/views/collectView', 'GS'], function (View, GS) {
+define(['views/collectView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '#logout',
 		event: 'click',
 		handler: GS.logout
 	}, {
-		element: '.collect-next',
+		element: '.collect-next-button',
 		event: 'click',
 		handler: nextSubmit
 	}, {
