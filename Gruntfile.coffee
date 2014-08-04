@@ -114,7 +114,7 @@ module.exports = (grunt) ->
       options:
         jshintrc: '.jshintrc'
         reporter: require('jshint-stylish')
-      all: ['src/js/*']
+      all: ['src/js/*', '!src/js/libs']
 
   grunt.registerTask 'default', ['dev']
   grunt.registerTask 'dev', ['less:src', 'connect:src', 'watch:src']
