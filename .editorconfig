@@ -8,7 +8,7 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{html,xml,js,hbs}]
+[*.{html,xml,js,mustache}]
 indent_style = tab
 indent_size = 4
 
