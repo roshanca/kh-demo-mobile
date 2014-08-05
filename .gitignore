@@ -1,3 +1,6 @@
+# Deploy
+dist/
+
 # Windows
 Thumbs.db
 Desktop.ini
@@ -22,7 +25,4 @@ log/
 target/
 
 # SVN
-.svn/
-
-# Dist
-dist/
+*.svn/
