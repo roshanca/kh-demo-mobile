@@ -17,29 +17,30 @@ module.exports = (grunt) ->
         ' */\n\n'
 
     clean:
-      dist: ['dist/*']
+      build: ['build/*']
+      deploy: ['deploy/public/*']
 
     copy:
       api:
         expand: true,
         cwd: 'src/api',
         src: ['**'],
-        dest: 'dist/api'
+        dest: 'build/api'
       img:
         expand: true,
         cwd: 'src/img',
         src: ['**'],
-        dest: 'dist/img'
+        dest: 'build/img'
       font:
         expand: true,
         cwd: 'src/font',
         src: ['**'],
-        dest: 'dist/font'
+        dest: 'build/font'
       html:
         expand: true,
         cwd: 'src',
         src: ['**.html', '!index.html'],
-        dest: 'dist'
+        dest: 'build'
 
     targethtml:
       dist:
@@ -48,41 +49,38 @@ module.exports = (grunt) ->
             version: '<%= pkg.version %>'
             rlsdate: '<%= grunt.template.today("yyyymmddHHMM") %>'
         files:
-          'dist/index.html': 'src/index.html'
+          'build/index.html': 'src/index.html'
 
     uglify:
-      dist:
+      build:
         files:
-          'dist/js/require.min.js': ['src/lib/require.js']
+          'build/js/require.min.js': ['src/js/libs/require.js']
 
     requirejs:
-      dist:
+      build:
         options:
-          appDir: 'src'
-          dir: 'dist'
-          mainConfigFile: 'src/app.js'
-          modules: [
-            {
-              name: 'app'
-              include: [
-
-              ]
-            },
-            {
-              name: 'js/controllers/certController'
-              include: [
-
-              ]
-            }
-            {
-              name: 'js/controllers/loginController'
-              include: [
-
-              ]
-            }
+          # appDir: 'src'
+          # dir: 'build'
+          baseUrl: 'src/js'
+          mainConfigFile: 'src/js/app.js'
+          name: 'app',
+          include: [
+            'controllers/accountController'
+            'controllers/appointController'
+            'controllers/auditController'
+            'controllers/certController'
+            'controllers/collectController'
+            'controllers/departmentController'
+            'controllers/depositoryController'
+            'controllers/loginController'
+            'controllers/passwordController'
+            'controllers/profileController'
+            'controllers/protocalController'
+            'controllers/reviewController'
+            'controllers/riskController'
+            'controllers/videoController'
           ]
-          # name: 'app'
-          # out: 'dist/app.min.js'
+          out: 'build/js/app.min.js'
           preserveLicenseComments: false
 
     connect:
@@ -90,6 +88,10 @@ module.exports = (grunt) ->
         options:
           port: 3001
           base: 'src/'
+      build:
+        options:
+          port: 4001
+          base: 'build'
 
     less:
       src:
@@ -97,18 +99,21 @@ module.exports = (grunt) ->
           strictImports: false
         files:
           'src/css/app.css': 'src/less/app.less'
-      dist:
+      build:
         options:
           strictImports: false
           cleancss: true
           report: 'min'
         files:
-          'dist/css/app.min.css': 'src/less/app.less'
+          'build/css/app.min.css': 'src/less/app.less'
 
     watch:
       src:
         files: ['src/less/**/*.less']
         tasks: ['less:src']
+      build:
+        files: []
+        tasks: []
 
     jshint:
       options:
@@ -116,8 +121,13 @@ module.exports = (grunt) ->
         reporter: require('jshint-stylish')
       all: ['src/js/*', '!src/js/libs']
 
+    shell:
+      deploy:
+        command: 'rsync -avzl --delete build/** deploy/public'
+
   grunt.registerTask 'default', ['dev']
   grunt.registerTask 'dev', ['less:src', 'connect:src', 'watch:src']
   grunt.registerTask 'test', ['jshint']
-  grunt.registerTask 'dist', ['clean', 'requirejs', 'less:dist', 'copy', 'uglify', 'targethtml']
-
+  grunt.registerTask 'build', ['clean:build', 'requirejs', 'uglify', 'less:build', 'targethtml', 'copy']
+  grunt.registerTask 'serve', ['connect:build', 'watch:build']
+  grunt.registerTask 'deploy', ['shell']

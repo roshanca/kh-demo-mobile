@@ -27,6 +27,7 @@
     "grunt-contrib-requirejs": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
+    "grunt-shell": "latest",
     "grunt-targethtml": "latest",
     "jshint": "latest",
     "jshint-stylish": "latest",
