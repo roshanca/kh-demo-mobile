@@ -1,4 +1,4 @@
-define(['text!/mustache/protocal.mustache', 'mustache'], function (protocalTemplate, mustache) {
+define(['text!templates/protocal.mustache', 'mustache'], function (protocalTemplate, mustache) {
 
 	function render(params) {
 		var template = mustache.render(protocalTemplate, {model: params.model});

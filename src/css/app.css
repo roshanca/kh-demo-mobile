@@ -3824,7 +3824,11 @@ body > .photo-browser .toolbar {
   border-bottom: 1px solid transparent !important;
 }
 .login-getcode {
-  width: 180px;
+  position: absolute;
+  z-index: 99;
+  right: 15px;
+  top: 15px;
+  width: 130px;
   color: #fff;
   background: #feaa5b;
 }

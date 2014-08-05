@@ -29,7 +29,29 @@ define(['views/accountView', 'GS'], function (View, GS) {
 		});
 	}
 
+	function getSelectGroupValue() {
+		var optgroup = $$('[name=account]').find('optgroup');
+		var ret = [];
+
+		for (var i = 0, l = optgroup.length; i < l; i++) {
+			var options = optgroup[i].getElementsByTagName('option');
+			for (var j = 0, m = options.length;  j < m; j++) {
+				if (options[j].selected) {
+					ret.push({
+						'group': optgroup[i].label,
+						'value': options[j].value
+					});
+				}
+			}
+		}
+
+		return ret;
+	}
+
+
 	function nextSubmit() {
+		var groupValue = getSelectGroupValue();
+		console.log(JSON.stringify(groupValue));
 		mainView.loadPage('password.html');
 	}
 
