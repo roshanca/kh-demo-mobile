@@ -3,7 +3,7 @@
   "model": {
     "accountGroups": [
       {
-        "group": "股票账户", "types": [
+        "group": "股东账户", "types": [
           {"value": "a0", "type": "上海A股"},
           {"value": "a1", "type": "深圳A股"}
         ]
