@@ -3823,6 +3823,11 @@ body > .photo-browser .toolbar {
 .bare .item-inner {
   border-bottom: 1px solid transparent !important;
 }
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .login-getcode {
   position: absolute;
   z-index: 99;
@@ -4064,19 +4069,19 @@ progress::-webkit-progress-value {
   margin-top: 2px;
 }
 [data-page="department"] .department-block .list-block ul {
+  display: block;
   border-color: #fd7a00;
 }
 [data-page="department"] .department-block .list-block li {
-  display: inline-block;
+  float: left;
   background-color: #fd8615;
 }
 [data-page="department"] .department-block .list-block .item-inner {
+  display: block;
+  text-align: center;
   padding-right: 0;
   border-bottom-color: transparent;
   background-image: none;
-}
-[data-page="department"] .department-block .list-block .item-link {
-  text-align: center;
 }
 [data-page="department"] .department-block .list-block .item-title {
   margin: 0 auto;
