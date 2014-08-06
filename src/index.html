@@ -15,28 +15,25 @@
 	<!--<!(endif)-->
 </head>
 <body>
-	<!-- Status bar overlay for full screen mode (PhoneGap) -->
 	<div class="statusbar-overlay"></div>
-	<!-- Views -->
-	<div class="views">
-		<!-- Your main view, should have "view-main" class -->
+	<div class="panel-overlay"></div>
+	<div class="views hidden-navbar">
 		<div class="view view-main" id="mianView">
-			<!-- Top Navbar-->
 			<div class="navbar">
 				<div class="navbar-inner">
-					<!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-					<div class="center sliding">Awesome App</div>
+					<div class="center sliding">手机开户</div>
 				</div>
 			</div>
-			<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
 			<div class="pages navbar-through toolbar-through">
-				<!-- Page, "data-page" contains page name -->
 				<div data-page="index" class="page">
-					<!-- Scrollable page content -->
 					<div class="page-content">
-						<p>Page content goes here</p>
-						<!-- Link to another page -->
-						<a href="about.html">About app</a>
+						<img class="logo" src="img/logo.png" width="163" height="45" alt="">
+						<div class="entrance">
+							<a class="kh" href="login.html?type=0">我是新入市投资者，还没有股东账户</a>
+							<a class="zh" href="login.html?type=1">我已有股东账户，已撤销指定交易和完成转托管</a>
+							<a class="zjh" href="login.html?type=2">无论有没有在其他券商开立股东账户，都可开立资金账户</a>
+						</div>
+						<div class="copyright">©中华证券版权所有</div>
 					</div>
 				</div>
 			</div>
