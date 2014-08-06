@@ -3785,20 +3785,87 @@ body > .photo-browser .toolbar {
 [disabled] [disabled] {
   opacity: 1;
 }
+/* ==========================================================================
+   Modify Framework7 original class
+   ========================================================================== */
+.list-block,
+.content-block {
+  margin-bottom: 18px;
+}
+.content-block-title + .list-block,
+.content-block-title + .content-block {
+  margin-top: 15px;
+}
+.list-block input[type="text"],
+.list-block input[type="password"],
+.list-block input[type="email"],
+.list-block input[type="tel"],
+.list-block input[type="url"],
+.list-block input[type="date"],
+.list-block input[type="datetime-local"],
+.list-block input[type="number"],
+.list-block select,
+.list-block textarea {
+  font-size: 15px;
+}
+.list-block textarea {
+  height: 60px;
+}
+.list-block ul {
+  border-color: #e5e5e3;
+}
+.list-block .item-title {
+  font-size: 15px;
+}
+.list-block .item-inner {
+  border-color: #f4f4f4;
+}
 .button {
   border-color: #fe8008;
 }
 .button.active {
   background: #fd8615;
 }
+.button.button-big {
+  font-size: 18px;
+}
 .modal-button {
   color: #000;
 }
-.navbar a.link {
-  color: #444;
+.navbar {
+  border-color: #e5e5e3;
 }
+.navbar a.link,
+.toolbar a.link {
+  color: #444;
+  -webkit-justify-content: inherit;
+}
+.navbar .center {
+  font-size: 18px;
+}
+.content-block-title {
+  margin-top: 18px;
+  font-size: 15px;
+  white-space: normal;
+  line-height: 20px;
+}
+label.label-radio input[type="checkbox"]:checked ~ .item-inner,
+label.label-radio input[type="radio"]:checked ~ .item-inner {
+  background-image: url("../img/i-form-radio-yellow.png");
+  background-size: auto 15px;
+}
+label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-checkbox:after,
+label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-checkbox:after {
+  background-color: #fd8615;
+}
+.label-switch input[type="checkbox"]:checked + .checkbox {
+  background: #fb912c;
+}
+/* ==========================================================================
+   Add mine
+   ========================================================================== */
 .info {
-  font-size: 21px;
+  font-size: 18px;
   text-align: center;
 }
 .info .iconfont {
@@ -3861,15 +3928,76 @@ body > .photo-browser .toolbar {
 .step .step-item.current {
   color: #fd8615;
 }
-.navbar .center {
-  font-size: 18px;
+.select-trigger {
+  padding: 15px 13px;
+  border: 1px solid #dfdfdd;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.select-radio {
+  display: none;
+}
+.select-radio[type="radio"]:checked + .select-trigger {
+  position: relative;
+  color: #fd8615;
+  border-color: #fd8615;
+}
+.select-radio[type="radio"]:checked + .select-trigger:after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+  height: 28px;
+  width: 30px;
+  background-image: url("../img/i-form-radio-yellow.png");
+  background-size: auto 15px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+[data-page="index"] .page-content {
+  padding: 20px 0 10px;
+}
+[data-page="index"] .logo {
+  display: block;
+  width: 163px;
+  margin: 0 auto;
+}
+[data-page="index"] .entrance {
+  padding: 20px 5px;
+}
+[data-page="index"] .entrance a {
+  display: block;
+  height: 110px;
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 5px;
+  background-position: bottom center;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+[data-page="index"] .entrance .kh {
+  background-color: #fec111;
+  background-image: url(../img/entrance-kh.png);
+}
+[data-page="index"] .entrance .zh {
+  background-color: #ff8b1f;
+  background-image: url(../img/entrance-zh.png);
+}
+[data-page="index"] .entrance .zjh {
+  background-color: #158ed4;
+  background-image: url(../img/entrance-zjh.png);
 }
 .login-getcode {
   position: absolute;
   z-index: 99;
   right: 15px;
-  top: 15px;
+  top: 13px;
   width: 130px;
+  height: 32px;
+  line-height: 32px;
   color: #fff;
   background: #feaa5b;
 }
@@ -3878,22 +4006,27 @@ body > .photo-browser .toolbar {
   padding-bottom: 10px;
   text-align: center;
   color: #b1b1b1;
+  font-size: 15px;
   border-bottom: 1px solid #dedede;
 }
 .prepare .row {
+  padding-top: 10px;
+  font-size: 12px;
   text-align: center;
   color: #b1b1b1;
 }
 .prepare .iconfont {
-  font-size: 50px;
+  font-size: 70px;
+  line-height: 60px;
 }
 .copyright {
   padding: 0 15px;
   text-align: center;
+  font-size: 12px;
   color: #b1b1b1;
 }
 [data-page="collect"] .upload-block {
-  margin: 35px 15px;
+  margin: 18px 15px;
 }
 [data-page="collect"] .upload-block .upload-content {
   height: 160px;

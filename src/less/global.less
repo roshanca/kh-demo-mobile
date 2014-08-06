@@ -1,3 +1,35 @@
+/* ==========================================================================
+   Modify Framework7 original class
+   ========================================================================== */
+.list-block,
+.content-block {
+  margin-bottom: 18px;
+}
+
+.content-block-title + .list-block, .content-block-title + .content-block {
+  margin-top: 15px;
+}
+
+.list-block input[type="text"], .list-block input[type="password"], .list-block input[type="email"], .list-block input[type="tel"], .list-block input[type="url"], .list-block input[type="date"], .list-block input[type="datetime-local"], .list-block input[type="number"], .list-block select, .list-block textarea {
+  font-size: 15px;
+}
+
+.list-block textarea {
+  height: 60px;
+}
+
+.list-block ul {
+  border-color: #e5e5e3;
+}
+
+.list-block .item-title {
+  font-size: 15px;
+}
+
+.list-block .item-inner {
+  border-color: #f4f4f4;
+}
+
 .button {
   border-color: #fe8008;
 }
@@ -6,16 +38,52 @@
   background: #fd8615;
 }
 
+.button.button-big {
+  font-size: 18px;
+}
+
 .modal-button {
   color: #000;
 }
 
-.navbar a.link {
-  color: #444;
+.navbar {
+  border-color: #e5e5e3;
 }
 
+.navbar a.link, .toolbar a.link {
+  color: #444;
+  -webkit-justify-content: inherit;
+}
+
+.navbar .center {
+  font-size: 18px;
+}
+
+.content-block-title {
+  margin-top: 18px;
+  font-size: 15px;
+  white-space: normal;
+  line-height: 20px;
+}
+
+label.label-radio input[type="checkbox"]:checked ~ .item-inner, label.label-radio input[type="radio"]:checked ~ .item-inner {
+  background-image: url("../img/i-form-radio-yellow.png");
+  background-size: auto 15px;
+}
+
+label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-checkbox:after, label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-checkbox:after {
+  background-color: #fd8615;
+}
+
+.label-switch input[type="checkbox"]:checked + .checkbox {
+  background: #fb912c;
+}
+
+/* ==========================================================================
+   Add mine
+   ========================================================================== */
 .info {
-  font-size: 21px;
+  font-size: 18px;
   text-align: center;
   .iconfont {
     display: block;
@@ -84,6 +152,32 @@
   }
 }
 
-.navbar .center {
-  font-size: 18px;
+.select-trigger {
+  padding: 15px 13px;
+  border: 1px solid #dfdfdd;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.select-radio {
+  display: none;
+}
+
+.select-radio[type="radio"]:checked + .select-trigger {
+  position: relative;
+  color: #fd8615;
+  border-color: #fd8615;
+  &:after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: block;
+    height: 28px;
+    width: 30px;
+    background-image: url("../img/i-form-radio-yellow.png");
+    background-size: auto 15px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 }

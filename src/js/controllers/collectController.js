@@ -18,40 +18,34 @@ define(['views/collectView', 'GS'], function (View, GS) {
 		handler: uploadBack
 	}];
 
-	var afterBindings = [{
-		element: '.agree-button',
-		event: 'click',
-		handler: doneCallback
-	}];
-
 	function init() {
 		View.render({
 			bindings: bindings
 		});
 
 		// ajax 获取协议内容
-		reqProtocalContent();
+		// reqProtocalContent();
 	}
 
 	//取协议内容
-	function reqProtocalContent() {
-		$$.ajax({
-			url: 'api/protocal.json',
-			type: 'GET',
-			timeout: 15000, //超时时间设置，单位毫秒
-			success: function (data) {
-				data = JSON.parse(data);
-				if (data.errorNo === 0) {
-					View.renderPopup({
-						model: data.model,
-						bindings: afterBindings
-					});
-				} else {
-					khApp.alert(data.errorInfo);
-				}
-			}
-		});
-	}
+	// function reqProtocalContent() {
+	// 	$$.ajax({
+	// 		url: 'api/protocal.json',
+	// 		type: 'GET',
+	// 		timeout: 15000, //超时时间设置，单位毫秒
+	// 		success: function (data) {
+	// 			data = JSON.parse(data);
+	// 			if (data.errorNo === 0) {
+	// 				View.renderPopup({
+	// 					model: data.model,
+	// 					bindings: afterBindings
+	// 				});
+	// 			} else {
+	// 				khApp.alert(data.errorInfo);
+	// 			}
+	// 		}
+	// 	});
+	// }
 
 	function uploadFront() {
 		uploadStart(0);
@@ -87,11 +81,6 @@ define(['views/collectView', 'GS'], function (View, GS) {
 	}
 
 	function nextSubmit() {
-		khApp.popup('.popup');
-	}
-
-	function doneCallback() {
-		khApp.closeModal();
 		mainView.loadPage('profile.html');
 	}
 

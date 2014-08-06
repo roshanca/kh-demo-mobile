@@ -11,11 +11,11 @@ define(['utils', 'text!templates/protocal_popup.mustache', 'mustache'], function
 	}
 
 	function showPhotoFront(url) {
-		$$('#cardFront').html('<img src=' + url + ' alt="" height="120">');
+		$$('#cardFront').html('<img src=' + url + ' alt="" height="160">');
 	}
 
 	function showPhotoBack(url) {
-		$$('#cardBack').html('<img src=' + url + ' alt="" height="120">');
+		$$('#cardBack').html('<img src=' + url + ' alt="" height="160">');
 	}
 
 	return {

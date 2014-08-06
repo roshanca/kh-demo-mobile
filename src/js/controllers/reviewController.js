@@ -4,13 +4,22 @@ define(['views/reviewView', 'GS'], function (View, GS) {
 		element: '#logout',
 		event: 'click',
 		handler: GS.logout
-	}, {
+	}];
+
+	var afterBindings = [{
 		element: '.review-next-button',
 		event: 'click',
 		handler: nextSubmit
+	}, {
+		element: '.select-trigger',
+		event: 'click',
+		handler: selectTrigger
 	}];
 
 	function init() {
+		View.init({
+			bindings: bindings
+		});
 		khApp.showIndicator();
 		$$.ajax({
 			url: 'api/review.json',
@@ -20,8 +29,8 @@ define(['views/reviewView', 'GS'], function (View, GS) {
 				if (data.errorNo === 0) {
 					var model = data.model;
 					View.render({
-						bindings: bindings,
-						model: model
+						model: model,
+						bindings: afterBindings
 					});
 					khApp.hideIndicator();
 				}
@@ -30,7 +39,14 @@ define(['views/reviewView', 'GS'], function (View, GS) {
 	}
 
 	function nextSubmit() {
+		var resultData = khApp.formToJSON('#reviewContent');
+		console.log(resultData);
 		mainView.loadPage('audit.html');
+	}
+
+	function selectTrigger() {
+		var radio = $$(this).parent().find('[type=radio]');
+		radio[0].checked = true;
 	}
 
 	return {

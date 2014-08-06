@@ -1,21 +1,16 @@
 {{#model.questions}}
 	<div class="content-block-title">{{index}}.{{topic}}</div>
-	<div class="list-block">
-		<ul>
-			{{#options}}
-			<li>
-				<label class="label-radio item-content">
-					<div class="item-media"></div>
-					<input type="radio" name="radio-{{groupId}}" value="{{value}}">
-					<div class="item-inner">
-						{{option}}
-					</div>
-				</label>
-			</li>
-			{{/options}}
-		</ul>
+	<div class="content-block">
+		<div class="row">
+		{{#options}}
+			<div class="col-50">
+				<input class="select-radio" type="radio" name="{{groupId}}">
+				<div class="select-trigger">{{option}}</div>
+			</div>
+		{{/options}}
+		</div>
 	</div>
 {{/model.questions}}
 <div class="content-block">
-	<a href="#" class="button button-big active next-button">提交</a>
+	<a href="#" class="button button-big active review-next-button">提交</a>
 </div>

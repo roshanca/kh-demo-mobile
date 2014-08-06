@@ -10,10 +10,12 @@ define(['views/loginView', 'GS'], function (View, GS) {
 		handler: getValidateCode
 	}];
 
-	function init() {
+	function init(query) {
 		View.init({
 			bindings: bindings
 		});
+		$$('.views').removeClass('hidden-navbar');
+		console.log(query);
 	}
 
 	// function isEmail(str){
