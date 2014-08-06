@@ -30,7 +30,8 @@ require(['Framework7', 'router'], function (Framework7, Router) {
 	});
 
 	window.mainView = khApp.addView('#mianView', {
-		dynamicNavbar: true
+		dynamicNavbar: true,
+		domCache: true
 	});
 
 	Router.init();
