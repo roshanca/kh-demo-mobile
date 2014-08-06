@@ -3828,6 +3828,42 @@ body > .photo-browser .toolbar {
   display: table;
   clear: both;
 }
+.step {
+  padding: 7px 0;
+  margin: 0;
+  background-color: #fff;
+}
+.step .step-item {
+  float: left;
+  width: 33%;
+  list-style: none;
+  text-align: center;
+  font-size: 12px;
+  color: #858482;
+}
+.step .step-item:after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 10px;
+  margin-left: 99%;
+  margin-top: -13px;
+  opacity: .5;
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path d='M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z' fill='%23000'/></svg>");
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-transform: scaleX(-1);
+}
+.step .step-item:last-child:after {
+  display: none;
+}
+.step .step-item.current {
+  color: #fd8615;
+}
+.navbar .center {
+  font-size: 18px;
+}
 .login-getcode {
   position: absolute;
   z-index: 99;
