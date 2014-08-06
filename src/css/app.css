@@ -3967,6 +3967,7 @@ label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-check
   padding: 20px 5px;
 }
 [data-page="index"] .entrance a {
+  position: relative;
   display: block;
   height: 110px;
   margin-top: 5px;
@@ -3974,20 +3975,50 @@ label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-check
   font-size: 16px;
   color: #fff;
   border-radius: 5px;
-  background-position: bottom center;
-  background-size: 100% auto;
+}
+[data-page="index"] .entrance a:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 150px;
+  height: 70px;
+  background-size: auto 100%;
   background-repeat: no-repeat;
+  left: 0;
+  background-position: 10px bottom;
+}
+[data-page="index"] .entrance a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 150px;
+  height: 70px;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  right: 0;
+  background-position: right bottom;
 }
 [data-page="index"] .entrance .kh {
   background-color: #fec111;
+}
+[data-page="index"] .entrance .kh:before,
+[data-page="index"] .entrance .kh:after {
   background-image: url(../img/entrance-kh.png);
 }
 [data-page="index"] .entrance .zh {
   background-color: #ff8b1f;
+}
+[data-page="index"] .entrance .zh:before,
+[data-page="index"] .entrance .zh:after {
   background-image: url(../img/entrance-zh.png);
 }
 [data-page="index"] .entrance .zjh {
   background-color: #158ed4;
+}
+[data-page="index"] .entrance .zjh:before,
+[data-page="index"] .entrance .zjh:after {
   background-image: url(../img/entrance-zjh.png);
 }
 .login-getcode {

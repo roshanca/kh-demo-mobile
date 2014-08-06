@@ -1,3 +1,14 @@
+.pseudo-bg() {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 150px;
+  height: 70px;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+
 [data-page="index"] {
   .page-content {
     padding: 20px 0 10px;
@@ -10,6 +21,7 @@
   .entrance {
     padding: 20px 5px;
     a {
+      position: relative;
       display: block;
       height: 110px;
       margin-top: 5px;
@@ -17,21 +29,37 @@
       font-size: 16px;
       color: #fff;
       border-radius: 5px;
-      background-position: bottom center;
-      background-size: 100% auto;
-      background-repeat: no-repeat;
+      &:before {
+        .pseudo-bg();
+        left: 0;
+        background-position: 10px bottom;
+      }
+      &:after {
+        .pseudo-bg();
+        right: 0;
+        background-position: right bottom;
+      }
     }
     .kh {
       background-color: #fec111;
-      background-image: url(../img/entrance-kh.png);
+      &:before,
+      &:after {
+        background-image: url(../img/entrance-kh.png);
+      }
     }
     .zh {
       background-color: #ff8b1f;
-      background-image: url(../img/entrance-zh.png);
+      &:before,
+      &:after {
+        background-image: url(../img/entrance-zh.png);
+      }
     }
     .zjh {
       background-color: #158ed4;
-      background-image: url(../img/entrance-zjh.png);
+      &:before,
+      &:after {
+        background-image: url(../img/entrance-zjh.png);
+      }
     }
   }
 }
