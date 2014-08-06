@@ -14,7 +14,7 @@ define(['views/loginView', 'GS'], function (View, GS) {
 		View.init({
 			bindings: bindings
 		});
-		$$('.views').removeClass('hidden-navbar');
+		mainView.showNavbar();
 		console.log(query);
 	}
 
