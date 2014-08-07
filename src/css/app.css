@@ -3823,6 +3823,10 @@ body > .photo-browser .toolbar {
 .list-block .item-inner {
   border-color: #f4f4f4;
 }
+.list-block .list-block-label {
+  margin-bottom: 15px;
+  font-size: 12px;
+}
 .button {
   border-color: #fe8008;
 }
