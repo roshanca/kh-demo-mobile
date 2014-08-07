@@ -10,6 +10,10 @@
 }
 
 [data-page="video"] {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
   .info-content {
     margin-top: 0;
   }
@@ -52,121 +56,121 @@
   }
 }
 
-.clock {
-  -webkit-animation: explode 500ms forwards;
-  margin: 35px auto;
-  width: 10em;
-  height: 10em;
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 10px #ffffff,
-    0 2px 5px 8px rgba(0, 0, 0, 0.6),
-    0 4px 8px rgba(0, 0, 0, 0.3) inset;
-  background:
-    radial-gradient(transparent 4.8em, #eee 4.8em),
-    radial-gradient(#eee 4.3em, transparent 4.3em),
-    linear-gradient(90deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(120deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(150deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(180deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(210deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(240deg, transparent 49.5%, black 50%, transparent 50%),
-    radial-gradient(#eee 4.6em, transparent 4.6em),
-    linear-gradient(264deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(258deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(252deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(246deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(234deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(228deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(222deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(216deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(204deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(198deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(192deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(186deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(174deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(168deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(162deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(156deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(144deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(138deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(132deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(126deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(114deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(108deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(102deg, transparent 49.5%, black 50%, transparent 50%),
-    linear-gradient(96deg, transparent 49.5%, black 50%, transparent 50%),
-    #eee;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  position: relative;
-}
-.hands {
-  width: 100%;
-  height: 100%;
-  -webkit-filter: drop-shadow(0 4px 2px rgba(0,0,0,.4));
-}
-.hand {
-  width: .3em;
-  height: 3.75em;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin: -3.75em 0 0 -0.2em;
-  background: #444;
-  transform-origin: 50% 100%;
-}
-.hour {
-  width: .5em;
-  height: 2.8em;
-  margin: -2.8em 0 0 -0.3em;
-  animation: tick 43200s linear infinite;
-  -webkit-animation: tick 43200s linear infinite;
-}
-.minute {
-  -webkit-animation: tick 3600s linear infinite;
-  animation: tick 3600s linear infinite;
-}
-.seconds {
-  width: 2px;
-  background-color: red;
-  -webkit-animation: tick 60s steps(60, end) infinite;
-  animation: tick 60s steps(60, end) infinite;
-  height: 5em;
-  margin-left: -1px;
-  transform-origin: 50% 3.75em;
-}
-.seconds:after {
-  content: '';
-  position: absolute;
-  bottom: .625em;
-  left: -0.55em;
-  width: 1.25em;
-  height: 1.25em;
-  background: red;
-  border-radius: 50%;
-}
-@keyframes tick {
-  to {
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes tick {
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes explode {
-  0% {
-    -webkit-transform:scale(0.1,0.1);
-  }
-  30% {
-    -webkit-transform:scale(1.1,1.1);
-  }
-  70% {
-    -webkit-transform:scale(.6,.6);
-  }
-  100% {
-    -webkit-transform:scale(1,1);
-  }
-}
+// .clock {
+//   -webkit-animation: explode 500ms forwards;
+//   margin: 35px auto;
+//   width: 10em;
+//   height: 10em;
+//   border-radius: 50%;
+//   box-shadow:
+//     0 0 0 10px #ffffff,
+//     0 2px 5px 8px rgba(0, 0, 0, 0.6),
+//     0 4px 8px rgba(0, 0, 0, 0.3) inset;
+//   background:
+//     radial-gradient(transparent 4.8em, #eee 4.8em),
+//     radial-gradient(#eee 4.3em, transparent 4.3em),
+//     linear-gradient(90deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(120deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(150deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(180deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(210deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(240deg, transparent 49.5%, black 50%, transparent 50%),
+//     radial-gradient(#eee 4.6em, transparent 4.6em),
+//     linear-gradient(264deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(258deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(252deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(246deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(234deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(228deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(222deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(216deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(204deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(198deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(192deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(186deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(174deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(168deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(162deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(156deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(144deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(138deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(132deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(126deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(114deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(108deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(102deg, transparent 49.5%, black 50%, transparent 50%),
+//     linear-gradient(96deg, transparent 49.5%, black 50%, transparent 50%),
+//     #eee;
+//   background-repeat: no-repeat;
+//   background-size: 100% 100%;
+//   position: relative;
+// }
+// .hands {
+//   width: 100%;
+//   height: 100%;
+//   -webkit-filter: drop-shadow(0 4px 2px rgba(0,0,0,.4));
+// }
+// .hand {
+//   width: .3em;
+//   height: 3.75em;
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   margin: -3.75em 0 0 -0.2em;
+//   background: #444;
+//   transform-origin: 50% 100%;
+// }
+// .hour {
+//   width: .5em;
+//   height: 2.8em;
+//   margin: -2.8em 0 0 -0.3em;
+//   animation: tick 43200s linear infinite;
+//   -webkit-animation: tick 43200s linear infinite;
+// }
+// .minute {
+//   -webkit-animation: tick 3600s linear infinite;
+//   animation: tick 3600s linear infinite;
+// }
+// .seconds {
+//   width: 2px;
+//   background-color: red;
+//   -webkit-animation: tick 60s steps(60, end) infinite;
+//   animation: tick 60s steps(60, end) infinite;
+//   height: 5em;
+//   margin-left: -1px;
+//   transform-origin: 50% 3.75em;
+// }
+// .seconds:after {
+//   content: '';
+//   position: absolute;
+//   bottom: .625em;
+//   left: -0.55em;
+//   width: 1.25em;
+//   height: 1.25em;
+//   background: red;
+//   border-radius: 50%;
+// }
+// @keyframes tick {
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+// @-webkit-keyframes tick {
+//   to {
+//     -webkit-transform: rotate(360deg);
+//   }
+// }
+// @-webkit-keyframes explode {
+//   0% {
+//     -webkit-transform:scale(0.1,0.1);
+//   }
+//   30% {
+//     -webkit-transform:scale(1.1,1.1);
+//   }
+//   70% {
+//     -webkit-transform:scale(.6,.6);
+//   }
+//   100% {
+//     -webkit-transform:scale(1,1);
+//   }
+// }

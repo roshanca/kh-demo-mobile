@@ -76,8 +76,12 @@ define(['views/loginView', 'GS'], function (View, GS) {
 					resetCountdown();
 				}
 			},
+			error: function () {
+				khApp.alert('服务器出错');
+				resetCountdown();
+			},
 			timeout: function () {
-				khApp.alert('服务器无响应'),
+				khApp.alert('服务器无响应');
 				resetCountdown();
 			}
 		});

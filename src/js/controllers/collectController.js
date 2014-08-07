@@ -23,29 +23,25 @@ define(['views/collectView', 'GS'], function (View, GS) {
 			bindings: bindings
 		});
 
-		// ajax 获取协议内容
-		// reqProtocalContent();
+		// ajax 获取协议 ID
+		reqProtocalContent();
 	}
 
-	//取协议内容
-	// function reqProtocalContent() {
-	// 	$$.ajax({
-	// 		url: 'api/protocal.json',
-	// 		type: 'GET',
-	// 		timeout: 15000, //超时时间设置，单位毫秒
-	// 		success: function (data) {
-	// 			data = JSON.parse(data);
-	// 			if (data.errorNo === 0) {
-	// 				View.renderPopup({
-	// 					model: data.model,
-	// 					bindings: afterBindings
-	// 				});
-	// 			} else {
-	// 				khApp.alert(data.errorInfo);
-	// 			}
-	// 		}
-	// 	});
-	// }
+	// 货取协议 ID
+	function reqProtocalContent() {
+		$$.ajax({
+			url: 'api/protocal.json',
+			type: 'GET',
+			success: function (data) {
+				data = JSON.parse(data);
+				if (data.errorNo === 0) {
+					View.replaceQueryId(data.protocalId);
+				} else {
+					khApp.alert(data.errorInfo);
+				}
+			}
+		});
+	}
 
 	function uploadFront() {
 		uploadStart(0);
