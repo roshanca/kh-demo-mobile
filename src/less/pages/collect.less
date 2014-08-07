@@ -2,6 +2,7 @@
   .upload-block {
     margin: 18px 15px;
     .upload-content {
+      position: relative;
       height: 160px;
       margin-bottom: 20px;
       text-align: center;
@@ -19,5 +20,14 @@
         color: #808080;
       }
     }
+  }
+  input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    height: 162px;
+    width: 100%;
+    opacity: 0;
   }
 }

@@ -44,11 +44,11 @@ define(['views/collectView', 'GS'], function (View, GS) {
 	}
 
 	function uploadFront() {
-		uploadStart(0);
+		// uploadStart(0);
 	}
 
 	function uploadBack() {
-		uploadStart(1);
+		// uploadStart(1);
 	}
 
 	/**

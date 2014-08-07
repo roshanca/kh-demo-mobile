@@ -4106,6 +4106,7 @@ label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-check
   margin: 18px 15px;
 }
 [data-page="collect"] .upload-block .upload-content {
+  position: relative;
   height: 160px;
   margin-bottom: 20px;
   text-align: center;
@@ -4122,6 +4123,15 @@ label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-check
 }
 [data-page="collect"] .upload-block .upload-content .title {
   color: #808080;
+}
+[data-page="collect"] input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  height: 162px;
+  width: 100%;
+  opacity: 0;
 }
 progress {
   height: 18px;
