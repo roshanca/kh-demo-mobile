@@ -60,7 +60,7 @@ define(['views/certView', 'GS'], function (View, GS) {
 
 	function doneCallback() {
 		khApp.closeModal();
-		mainView.loadPage('collect.html');
+		mainView.loadPage('account.html');
 	}
 
 	return {

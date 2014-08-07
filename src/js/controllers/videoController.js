@@ -144,7 +144,7 @@ define(['views/videoView', 'GS'], function (View, GS) {
 	}
 
 	function nextSubmit() {
-		mainView.loadPage('account.html');
+		mainView.loadPage('cert.html');
 		khApp.closeModal();
 	}
 
