@@ -12,18 +12,24 @@ define([], function () {
 		}
 	}
 
+	/**
+	 * Set the position of submit button, which queried by selector, dynamic
+	 * @param {String} selector
+	 */
 	function setButtonPosition(selector) {
 		var pageContent = $$(selector).parents('.page-content');
 		if (isScroll(pageContent[0])) {
-			return;
+			$$(selector).removeClass('fixed-bottom');
+		} else {
+			$$(selector).addClass('fixed-bottom');
 		}
-		$$(selector).css({
-			'position': 'fixed',
-			'bottom': '30px',
-			'width': 'calc(100% - 30px)'
-		});
 	}
 
+	/**
+	 * Detect whether the element has scrollbar
+	 * @param  {HTMLElement}  elem
+	 * @return {Boolean}      true: has scrollbar; false: hasn't
+	 */
 	function isScroll(elem) {
 		return elem.scrollHeight > elem.clientHeight;
 	}
