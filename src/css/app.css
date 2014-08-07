@@ -3788,6 +3788,9 @@ body > .photo-browser .toolbar {
 /* ==========================================================================
    Modify Framework7 original class
    ========================================================================== */
+.toolbar-through .page-content {
+  padding-bottom: 0;
+}
 .list-block,
 .content-block {
   margin-bottom: 18px;
@@ -3864,6 +3867,21 @@ label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-check
 /* ==========================================================================
    Add mine
    ========================================================================== */
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(100% - 30px);
+}
+.fixed-bottom {
+  position: fixed;
+  bottom: 30px;
+  width: calc(100% - 30px);
+}
+.info-content {
+  margin-top: -30px;
+  padding: 0 15px;
+}
 .info {
   font-size: 18px;
   text-align: center;
@@ -4078,7 +4096,6 @@ label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-check
   color: #808080;
 }
 progress {
-  width: 100%;
   height: 18px;
   background-color: #f3f3f3;
   border: 0;
@@ -4111,6 +4128,9 @@ progress::-webkit-progress-value {
 }
 [data-page="profile"] .item-title {
   color: #999;
+}
+[data-page="video"] .info-content {
+  margin-top: 0;
 }
 [data-page="video"] .tip {
   text-align: center;

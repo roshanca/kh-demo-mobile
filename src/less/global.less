@@ -1,6 +1,10 @@
 /* ==========================================================================
    Modify Framework7 original class
    ========================================================================== */
+.toolbar-through .page-content {
+  padding-bottom: 0;
+}
+
 .list-block,
 .content-block {
   margin-bottom: 18px;
@@ -82,6 +86,24 @@ label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-ch
 /* ==========================================================================
    Add mine
    ========================================================================== */
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(~"100% - 30px");
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 30px;
+  width: calc(~"100% - 30px");
+}
+
+.info-content {
+  margin-top: -30px;
+  padding: 0 15px;
+}
+
 .info {
   font-size: 18px;
   text-align: center;

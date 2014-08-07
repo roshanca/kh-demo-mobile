@@ -10,15 +10,17 @@
 	<div class="page">
 		<div class="page-content">
 		{{#model.success}}
-			<div class="content-block">
+			<div class="info-content vertical-align">
 				<div class="info"><i class="iconfont icon-success"></i>{{model.successText}}</div>
 			</div>
 			<div class="content-block">
-				<a href="#" class="button button-big active cert-download-button">完成</a>
+				<a href="#" class="button button-big active fixed-bottom cert-download-button">完成</a>
 			</div>
 		{{/model.success}}
 		{{#model.fail}}}
-			<div class="info"><i class="iconfont icon-fail"></i>{{model.failText}}</div>
+			<div class="info-content vertical-align">
+				<div class="info"><i class="iconfont icon-fail"></i>{{model.failText}}</div>
+			</div>
 			<div class="content-block">
 				<a href="#" class="button button-big active cert-retry-button">重新下载</a>
 			</div>
