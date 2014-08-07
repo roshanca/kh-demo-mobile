@@ -2,6 +2,7 @@ define(['utils', 'text!templates/department.mustache', 'mustache'], function (Ut
 
 	function render(params) {
 		Utils.bindEvents(params.bindings);
+		Utils.setButtonPosition('.department-next-button');
 	}
 
 	function renderSelect(params) {

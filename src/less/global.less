@@ -47,6 +47,10 @@
   background: #fd8615;
 }
 
+.button:active {
+  background-color: #f89e48;
+}
+
 .button.button-big {
   font-size: 18px;
 }
@@ -88,6 +92,19 @@ label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-ch
   background: #fb912c;
 }
 
+.row {
+  display: block;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.row > [class*="col-"] {
+  float: left;
+}
+
 /* ==========================================================================
    Add mine
    ========================================================================== */
@@ -96,12 +113,14 @@ label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-ch
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+  width: 90%;
   width: calc(~"100% - 30px");
 }
 
 .fixed-bottom {
   position: fixed;
   bottom: 30px;
+  width: 90%;
   width: calc(~"100% - 30px");
 }
 
@@ -208,4 +227,13 @@ label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-ch
     background-repeat: no-repeat;
     background-position: center center;
   }
+}
+
+.score {
+  font-size: 40px;
+  color: #fd8615;
+}
+
+.level {
+  font-size: 20px;
 }

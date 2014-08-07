@@ -30,7 +30,7 @@ define(['views/profileView', 'GS'], function (View, GS) {
 	}
 
 	function nextSubmit() {
-		mainView.loadPage('department.html');
+		mainView.loadPage('video.html');
 	}
 
 	return {

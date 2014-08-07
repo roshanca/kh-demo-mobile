@@ -132,7 +132,7 @@ define(['views/loginView', 'GS'], function (View, GS) {
 					if (data.errorNo === 0) {
 						View.inputBlur();
 						GS.setCurrentUser(data.sid, data.user);
-						mainView.loadPage('cert.html');
+						mainView.loadPage('department.html');
 						khApp.hideIndicator();
 					} else {
 						khApp.hideIndicator();

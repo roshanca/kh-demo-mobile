@@ -4,6 +4,7 @@ define(['utils', 'text!templates/account.mustache', 'text!templates/protocal.mus
 		var template = mustache.render(accountTemplate, {model: params.model});
 		$$('#accountContent').html(template);
 		Utils.bindEvents(params.bindings);
+		Utils.setButtonPosition('.account-next-button');
 	}
 
 	function renderPopup(params) {

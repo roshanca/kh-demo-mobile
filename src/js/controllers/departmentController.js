@@ -98,7 +98,7 @@ define(['views/departmentView', 'GS'], function (View, GS) {
 	}
 
 	function nextSubmit() {
-		mainView.loadPage('video.html');
+		mainView.loadPage('collect.html');
 	}
 
 	return {
