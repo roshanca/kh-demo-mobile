@@ -12,7 +12,7 @@ define(['views/identityView', 'GS'], function (View, GS) {
 	}
 
 	function verifySubmit() {
-		var code = $$("#identitycode").val();
+		var code = $$('#identitycode').val();
 		code = $$.trim(code);
 		if (code.length === 0 || code.length < 18 ) {
 			khApp.alert('请正确输入身份证号');
