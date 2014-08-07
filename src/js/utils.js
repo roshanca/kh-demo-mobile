@@ -12,7 +12,24 @@ define([], function () {
 		}
 	}
 
+	function setButtonPosition(selector) {
+		var pageContent = $$(selector).parents('.page-content');
+		if (isScroll(pageContent[0])) {
+			return;
+		}
+		$$(selector).css({
+			'position': 'fixed',
+			'bottom': '30px',
+			'width': 'calc(100% - 30px)'
+		});
+	}
+
+	function isScroll(elem) {
+		return elem.scrollHeight > elem.clientHeight;
+	}
+
 	return {
-		bindEvents: bindEvents
+		bindEvents: bindEvents,
+		setButtonPosition: setButtonPosition
 	};
 });
