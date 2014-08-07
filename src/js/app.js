@@ -29,7 +29,7 @@ require(['Framework7', 'router'], function (Framework7, Router) {
 		smartSelectBackTemplate: '<div class="left sliding"><a href="#" class="back link"><i class="icon icon-back-black"></i><span>{{backText}}</span></a></div>'
 	});
 
-	window.mainView = khApp.addView('#mianView', {
+	window.mainView = khApp.addView('#mainView', {
 		dynamicNavbar: true,
 		domCache: true
 	});
