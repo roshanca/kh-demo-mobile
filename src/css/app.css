@@ -3874,9 +3874,24 @@ label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-check
 }
 /* Android */
 html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
-html.android label.label-radio input[type="radio"]:checked ~ .item-inner,
-html.android .list-block .item-link .item-inner {
+html.android label.label-radio input[type="radio"]:checked ~ .item-inner {
   background-position: 95% center;
+}
+html.android .list-block .item-link .item-inner {
+  position: relative;
+}
+html.android .list-block .item-link .item-inner:after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  z-index: 9;
+  display: block;
+  width: 10px;
+  height: 20px;
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg viewBox='0 0 60 120' xmlns='http://www.w3.org/2000/svg'><path d='m60 61.5-38.25 38.25-9.75-9.75 29.25-28.5-29.25-28.5 9.75-9.75z' fill='%23c7c7cc'/></svg>");
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 html.android .row .col-50 {
   width: 46%;
@@ -4274,6 +4289,9 @@ progress::-webkit-progress-value {
   padding-right: 0;
   border-bottom-color: transparent;
   background-image: none;
+}
+[data-page="department"] .department-block .list-block .item-inner:after {
+  left: -9999999px;
 }
 [data-page="department"] .department-block .list-block .item-title {
   margin: 0 auto;
