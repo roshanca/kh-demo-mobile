@@ -21,6 +21,7 @@ require(['Framework7', 'router'], function (Framework7, Router) {
 		pushState: false,
 		swipeBackPage: false,
 		popupCloseByOutside: false,
+		preloadPreviousPage: false,
 		animateNavBackIcon: true,
 		modalTitle: '系统消息',
 		modalButtonOk: '确定',
