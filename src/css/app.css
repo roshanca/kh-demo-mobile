@@ -52,7 +52,7 @@
   content: "\e60a";
 }
 .icon-clock:before {
-  content: "\e613";
+  content: "\e60c";
 }
 html,
 body {
@@ -3874,7 +3874,8 @@ label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-check
 }
 /* Android */
 html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
-html.android label.label-radio input[type="radio"]:checked ~ .item-inner {
+html.android label.label-radio input[type="radio"]:checked ~ .item-inner,
+html.android .list-block .item-link .item-inner {
   background-position: 90% center;
 }
 html.android .row .col-50 {

@@ -51,7 +51,7 @@
 				<div class="item-inner">
 				<div class="item-title label">邮编</div>
 					<div class="item-input">
-						<input type="tel" name="postCode" placeholder="联系地址的邮编" value="{{model.postCode}}">
+						<input type="tel" name="postCode" maxlength="6" placeholder="联系地址的邮编" value="{{model.postCode}}">
 					</div>
 				</div>
 			</div>
@@ -63,15 +63,10 @@
 					<option value="{{value}}">{{career}}</option>
 				{{/model.careers}}
 				</select>
-				<!-- <select name="career">
-					<option value="a">aaa</option>
-					<option value="b">bbb</option>
-					<option value="c">ccc</option>
-				</select> -->
 				<div class="item-content">
 					<div class="item-inner">
 						<div class="item-title">职业</div>
-						<div class="item-after"></div>
+						<div class="item-after">请选择</div>
 					</div>
 				</div>
 			</a>
@@ -86,7 +81,7 @@
 				<div class="item-content">
 					<div class="item-inner">
 						<div class="item-title">行业</div>
-						<div class="item-after"></div>
+						<div class="item-after">请选择</div>
 					</div>
 				</div>
 			</a>
@@ -101,7 +96,7 @@
 				<div class="item-content">
 					<div class="item-inner">
 						<div class="item-title">学历</div>
-						<div class="item-after"></div>
+						<div class="item-after">请选择</div>
 					</div>
 				</div>
 			</a>

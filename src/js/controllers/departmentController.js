@@ -95,6 +95,7 @@ define(['views/departmentView', 'GS'], function (View, GS) {
 	function selectedName() {
 		var selectedText = this.options[this.selectedIndex].text;
 		View.renderName(selectedText);
+		View.renderBadge();
 	}
 
 	function nextSubmit() {

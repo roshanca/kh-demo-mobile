@@ -8,19 +8,25 @@ define(['views/loginView', 'GS'], function (View, GS) {
 		element: '.login-getcode',
 		event: 'click',
 		handler: getValidateCode
+	}];
+
+	var contents = [{
+		nav: '新开户',
+		desc: '我是新入市投资者，还没有股东账户'
 	}, {
-		element: '#backToIndex',
-		event: 'click',
-		handler: backToIndex
+		nav: '转户',
+		desc: '我已有股东账户，已撤销指定交易和完成转托管'
+	}, {
+		nav: '开产品户',
+		desc: '无论有没有在其他券商开立股东账户，都可开立资金账户'
 	}];
 
 	function init(query) {
 		var type = query.type;
+		View.changeType(contents[type].nav, contents[type].desc);
 		View.init({
-			bindings: bindings,
-			type: type
+			bindings: bindings
 		});
-		mainView.showNavbar();
 	}
 
 	// function isEmail(str){
@@ -147,11 +153,6 @@ define(['views/loginView', 'GS'], function (View, GS) {
 				}
 			});
 		}
-	}
-
-	function backToIndex() {
-		mainView.goBack();
-		// mainView.hideNavbar();
 	}
 
 	return {

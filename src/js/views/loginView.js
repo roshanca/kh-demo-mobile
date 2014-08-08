@@ -18,10 +18,16 @@ define(['utils'], function (Utils) {
 		$$('.password').blur();
 	}
 
+	function changeType(navText, descText){
+		$$('.sliding').html(navText);
+		$$('.desc').html(descText);
+	}
+
 	return {
 		init: init,
 		resetBtn: resetBtn,
 		reRenderBtn: reRenderBtn,
-		inputBlur: inputBlur
+		inputBlur: inputBlur,
+		changeType: changeType
 	};
 });

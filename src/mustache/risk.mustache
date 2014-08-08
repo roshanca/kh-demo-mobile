@@ -2,7 +2,7 @@
 {{#model.questions}}
 	<div class="content-block-title">{{index}}.{{topic}}
 	{{#multi}}
-	（多选）
+	<small>（多选）</small>
 	</div>
 	<div class="list-block">
 		<ul>
@@ -20,7 +20,7 @@
 	{{/multi}}
 
   {{^multi}}
-	（单选）
+	<small>（单选）</small>
 	</div>
 	<div class="list-block">
 		<ul>

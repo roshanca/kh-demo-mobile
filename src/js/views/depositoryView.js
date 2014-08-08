@@ -8,6 +8,13 @@ define(['utils', 'text!templates/depository.mustache', 'mustache'], function (Ut
 		var template = mustache.render(depositoryTemplate, {model: params.model});
 		$$('#depositoryContent').html(template);
 		Utils.bindEvents(params.bindings);
+		resetSelect(-1);
+	}
+
+	function resetSelect(value) {
+		$$('.smart-select select').each(function () {
+			this.value = value;
+		});
 	}
 
 	function noNeedInput() {

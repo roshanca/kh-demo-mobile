@@ -20,7 +20,6 @@ define(['views/appointView', 'GS'], function (View, GS) {
 		var formData = khApp.formToJSON('#appointList');
 		console.log(formData);
 		mainView.loadPage('index.html');
-		mainView.hideNavbar();
 	}
 
 	return {

@@ -9,15 +9,27 @@ define(['utils', 'text!templates/department.mustache', 'mustache'], function (Ut
 		var template = mustache.render(departmentTemplate, {model: params.model});
 		$$('#departmentContent').append(template);
 		Utils.bindEvents(params.bindings);
+		resetSelect(-1);
 	}
 
 	function renderName(text) {
 		$$('.department-name').find('h2').text(text);
 	}
 
+	function renderBadge() {
+		$$('.department-badge').html('您选择的是');
+	}
+
+	function resetSelect(value) {
+		$$('.smart-select select').each(function () {
+			this.value = value;
+		});
+	}
+
 	return {
 		render: render,
 		renderName: renderName,
+		renderBadge: renderBadge,
 		renderSelect: renderSelect
 	};
 });
