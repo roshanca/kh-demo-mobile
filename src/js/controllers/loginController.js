@@ -8,6 +8,10 @@ define(['views/loginView', 'GS'], function (View, GS) {
 		element: '.login-getcode',
 		event: 'click',
 		handler: getValidateCode
+	}, {
+		element: '#backToIndex',
+		event: 'click',
+		handler: backToIndex
 	}];
 
 	function init(query) {
@@ -142,6 +146,11 @@ define(['views/loginView', 'GS'], function (View, GS) {
 				}
 			});
 		}
+	}
+
+	function backToIndex() {
+		mainView.goBack();
+		mainView.hideNavbar();
 	}
 
 	return {
