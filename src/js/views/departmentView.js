@@ -9,7 +9,7 @@ define(['utils', 'text!templates/department.mustache', 'mustache'], function (Ut
 		var template = mustache.render(departmentTemplate, {model: params.model});
 		$$('#departmentContent').append(template);
 		Utils.bindEvents(params.bindings);
-		resetSelect(-1);
+		resetSelect();
 	}
 
 	function renderName(text) {
@@ -20,9 +20,9 @@ define(['utils', 'text!templates/department.mustache', 'mustache'], function (Ut
 		$$('.department-badge').html('您选择的是');
 	}
 
-	function resetSelect(value) {
+	function resetSelect() {
 		$$('.smart-select select').each(function () {
-			this.value = value;
+			this.selectedIndex = -1;
 		});
 	}
 
