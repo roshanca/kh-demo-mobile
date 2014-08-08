@@ -3876,7 +3876,7 @@ label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-check
 html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
 html.android label.label-radio input[type="radio"]:checked ~ .item-inner,
 html.android .list-block .item-link .item-inner {
-  background-position: 90% center;
+  background-position: 95% center;
 }
 html.android .row .col-50 {
   width: 46%;
