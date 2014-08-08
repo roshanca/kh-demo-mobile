@@ -4,6 +4,9 @@ deploy/
 # Build
 build/
 
+# Github Pages
+ghp/
+
 # Windows
 Thumbs.db
 Desktop.ini
