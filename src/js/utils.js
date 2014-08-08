@@ -23,6 +23,9 @@ define([], function () {
 		} else {
 			$$(selector).addClass('fixed-bottom');
 		}
+
+		// When window resizing(such as keyboard popup), button need to be reposition
+		$$(window).resize(function () { setButtonPosition.call(this, selector) });
 	}
 
 	/**
