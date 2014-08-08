@@ -25,7 +25,7 @@ define([], function () {
 		}
 
 		// When window resizing(such as keyboard popup), button need to be reposition
-		$$(window).resize(function () { setButtonPosition.call(this, selector) });
+		$$(window).resize(function () { setButtonPosition.call(this, selector); });
 	}
 
 	/**
