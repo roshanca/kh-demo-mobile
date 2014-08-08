@@ -88,7 +88,7 @@ body {
 	width: 180px;
 	height: 180px;
 	margin: 0 auto;
-	background: transparent url(../img/logo.png) no-repeat center;
+	background: transparent url(img/logo.png) no-repeat center;
 	-webkit-background-size: 100% auto;
 	background-size: 100% auto;
 }
