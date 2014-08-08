@@ -26,7 +26,7 @@
   border-color: #e5e5e3;
 }
 
-.list-block .item-title {
+.list-block .item-title, .list-block .smart-select .item-after {
   font-size: 15px;
 }
 
@@ -92,17 +92,22 @@ label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-ch
   background: #fb912c;
 }
 
-.row {
-  display: block;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+/* Android */
+html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
+html.android label.label-radio input[type="radio"]:checked ~ .item-inner {
+  background-position: 90% center;
 }
 
-.row > [class*="col-"] {
-  float: left;
+html.android .row .col-50 {
+  width: 46%;
+}
+
+html.android .row.no-gutter .col-50 {
+  width: 50%;
+}
+
+html.android .row .col-33 {
+  width: 30%;
 }
 
 /* ==========================================================================
@@ -113,14 +118,14 @@ label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-ch
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-  width: 90%;
+  width: 90%; /* Android */
   width: calc(~"100% - 30px");
 }
 
 .fixed-bottom {
   position: fixed;
   bottom: 30px;
-  width: 90%;
+  width: 90%; /* Android */
   width: calc(~"100% - 30px");
 }
 

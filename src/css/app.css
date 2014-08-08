@@ -3817,7 +3817,8 @@ body > .photo-browser .toolbar {
 .list-block ul {
   border-color: #e5e5e3;
 }
-.list-block .item-title {
+.list-block .item-title,
+.list-block .smart-select .item-after {
   font-size: 15px;
 }
 .list-block .item-inner {
@@ -3871,16 +3872,19 @@ label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-check
 .label-switch input[type="checkbox"]:checked + .checkbox {
   background: #fb912c;
 }
-.row {
-  display: block;
+/* Android */
+html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
+html.android label.label-radio input[type="radio"]:checked ~ .item-inner {
+  background-position: 90% center;
 }
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+html.android .row .col-50 {
+  width: 46%;
 }
-.row > [class*="col-"] {
-  float: left;
+html.android .row.no-gutter .col-50 {
+  width: 50%;
+}
+html.android .row .col-33 {
+  width: 30%;
 }
 /* ==========================================================================
    Add mine
@@ -3891,12 +3895,14 @@ label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-check
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   width: 90%;
+  /* Android */
   width: calc(100% - 30px);
 }
 .fixed-bottom {
   position: fixed;
   bottom: 30px;
   width: 90%;
+  /* Android */
   width: calc(100% - 30px);
 }
 .info-content {
