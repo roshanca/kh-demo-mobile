@@ -15,11 +15,12 @@ define(['views/loginView', 'GS'], function (View, GS) {
 	}];
 
 	function init(query) {
+		var type = query.type;
 		View.init({
-			bindings: bindings
+			bindings: bindings,
+			type: type
 		});
 		mainView.showNavbar();
-		console.log(query);
 	}
 
 	// function isEmail(str){
@@ -150,7 +151,7 @@ define(['views/loginView', 'GS'], function (View, GS) {
 
 	function backToIndex() {
 		mainView.goBack();
-		mainView.hideNavbar();
+		// mainView.hideNavbar();
 	}
 
 	return {

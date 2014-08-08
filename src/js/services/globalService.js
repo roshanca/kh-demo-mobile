@@ -51,7 +51,6 @@ define([], function () {
 			removeCurrentUser();
 			khApp.closeModal();
 			mainView.loadPage('index.html');
-			mainView.hideNavbar();
 		});
 	}
 

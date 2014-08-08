@@ -4008,7 +4008,7 @@ html.android .row .col-33 {
   font-size: 20px;
 }
 [data-page="index"] .page-content {
-  padding: 20px 0 10px;
+  padding: 20px 0 10px !important;
 }
 [data-page="index"] .logo {
   display: block;
@@ -4163,6 +4163,9 @@ progress::-webkit-progress-value {
   to {
     background-position: 0 0;
   }
+}
+[data-page="profile"] .list-block {
+  margin-top: 0;
 }
 [data-page="profile"] input[type="text"],
 [data-page="profile"] input[type="tel"],
