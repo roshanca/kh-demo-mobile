@@ -1,0 +1,83 @@
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="left" id="readyLeft">
+			<a href="#" class="link back">
+				<i class="icon icon-back-black"></i>
+				<span></span>
+			</a>
+		</div>
+		<div class="left" id="waitLeft" style="display: none;">
+			<a href="#" class="link">
+				<i class="icon icon-back-black"></i>
+				<span></span>
+			</a>
+		</div>
+		<div class="center sliding">视频验证</div>
+		<div class="right">
+			<a href="#" class="link" id="logout">注销</a>
+		</div>
+	</div>
+</div>
+
+<div class="pages navbar-through no-toolbar">
+	<div data-page="video" class="page">
+		<div class="page-content">
+			<ol class="step clearfix">
+				<li class="step-item current">1 身份验证</li>
+				<li class="step-item">2 协议签署</li>
+				<li class="step-item">3 三方存管</li>
+			</ol>
+			<div class="video-content" id="videoReady">
+				<div class="content-block-title">
+					您将和客服人员进行视频通话，客服人员将对您进行身份确认。
+				</div>
+				<div class="info-content vertical-align">
+					<div class="row">
+						<div class="col-50 tip">
+							<i class="iconfont icon-bright"></i>
+							<p>确保光线充足</p>
+						</div>
+						<div class="col-50 tip">
+							<i class="iconfont icon-clock"></i>
+							<p>周一至周五<br>09:00-22:00</p>
+						</div>
+					</div>
+				</div>
+				<div class="content-block">
+					<a href="#" class="button button-big active fixed-bottom video-start-button">开始视频</a>
+				</div>
+			</div>
+			<div class="video-content" id="videoWait" style="display: none;">
+				<div class="content-block">
+					<!-- <div class="clock">
+						<div class="hands">
+							<div class="hand hour"></div>
+							<div class="hand minute"></div>
+							<div class="hand seconds"></div>
+						</div>
+					</div> -->
+					<img class="waiting-img" src="img/cup.png" width="160" height="160" alt="waiting">
+					<p class="wait-indicator">您前方还有<span class="wait-num"><img class="loading-img" src="img/loading.gif"  alt="loading"></span>人排队等待，请稍候</p>
+					<div class="dialog" style="display: none;">
+						<p>如果排队人数较多，您可以选择：</p>
+						<div class="row">
+							<div class="col-50">
+								<a href="#" class="button active video-wait-button">继续等待</a>
+							</div>
+							<div class="col-50">
+								<a href="appoint.html" class="button active appoint-button">预约客服</a>
+							</div>
+						</div>
+					</div>
+					<div class="content-block-title">For test:</div>
+					<div class="content-block">
+						<div class="row">
+							<div class="col-50"><a href="#" class="button button-submit video-success-button">视频成功</a></div>
+							<div class="col-50"><a href="#" class="button button-cancel video-fail-button">视频失败</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

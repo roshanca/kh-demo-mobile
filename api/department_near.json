@@ -1,0 +1,11 @@
+{
+  "errorNo": 0,
+  "model": {
+    "departmentsNearby": [
+      {"department": "营业部1", "value": "1"},
+      {"department": "营业部2", "value": "2"},
+      {"department": "营业部3", "value": "3"},
+      {"department": "营业部4", "value": "4"}
+    ]
+  }
+}

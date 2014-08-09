@@ -1,0 +1,39 @@
+{
+  "errorNo": 0,
+  "model": {
+    "questions": [
+      {
+        "index": 1,
+        "topic": "您本人通过网络向中华公司提交了开户申请？",
+        "options": [
+          {"option": "是", "value": "yes", "groupId": "1406023506799"},
+          {"option": "否", "value": "no", "groupId": "1406023506799"}
+        ]
+      },
+      {
+        "index": 2,
+        "topic": "开户是您的真实意愿？",
+        "options": [
+          {"option": "是", "value": "yes", "groupId": "1406023506669"},
+          {"option": "否", "value": "no", "groupId": "1406023506669"}
+        ]
+      },
+      {
+        "index": 3,
+        "topic": "您阅读各类风险揭示文件并理解相关条款？",
+        "options": [
+          {"option": "是", "value": "yes", "groupId": "1406023506321"},
+          {"option": "否", "value": "no", "groupId": "1406023506321"}
+        ]
+      },
+      {
+        "index": 4,
+        "topic": "您同意所签的协议？",
+        "options": [
+          {"option": "是", "value": "yes", "groupId": "1406023511780"},
+          {"option": "否", "value": "no", "groupId": "1406023511780"}
+        ]
+      }
+    ]
+  }
+}
