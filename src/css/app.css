@@ -4193,9 +4193,12 @@ progress::-webkit-progress-value {
 [data-page="profile"] .item-title {
   color: #999;
 }
-[data-page="video"] img {
+[data-page="video"] .waiting-img {
   display: block;
   margin: 0 auto;
+}
+[data-page="video"] .loading-img {
+  vertical-align: middle;
 }
 [data-page="video"] .info-content {
   margin-top: 0;

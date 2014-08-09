@@ -11,7 +11,8 @@ define(['utils', 'text!templates/video_popup.mustache', 'mustache'], function (U
 	}
 
 	function showReady() {
-		$$('.left').css('visibility', 'visible');
+		$$('#readyLeft').show();
+		$$('#waitLeft').hide();
 		$$('.video-content').hide();
 		$$('#videoReady').show();
 	}
@@ -30,10 +31,10 @@ define(['utils', 'text!templates/video_popup.mustache', 'mustache'], function (U
 	/**
 	 * 显示隐藏 dialog
 	 */
-	function toggleDialog(flag) {
-		if (flag === 'hide') {
+	function toggleDialog(visible) {
+		if (visible === 'hide') {
 			$$('.dialog').hide();
-		} else if (flag === 'show') {
+		} else if (visible === 'show') {
 			$$('.dialog').show();
 		}
 	}

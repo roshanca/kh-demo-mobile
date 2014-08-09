@@ -23,7 +23,7 @@ define(['views/videoView', 'GS'], function (View, GS) {
 	}, {
 		element: '#waitLeft',
 		event: 'click',
-		handler: View.showReady
+		handler: backReady
 	}];
 
 	var afterBindings = [{
@@ -52,7 +52,7 @@ define(['views/videoView', 'GS'], function (View, GS) {
 
 	function startVideo() {
 		View.showWait();
-		queryUserWaitInfo();
+		waitVideo();
 	}
 
 	function queryUserWaitInfo() {
@@ -100,7 +100,23 @@ define(['views/videoView', 'GS'], function (View, GS) {
 		queryUserWaitInfo();
 	}
 
+	function backReady() {
+		View.showReady();
+		clearTimeout(timer);
+	}
+
+	function retry() {
+		View.showReady();
+		khApp.closeModal();
+	}
+
+	function nextSubmit() {
+		mainView.loadPage('cert.html');
+		khApp.closeModal();
+	}
+
 	function successTest() {
+		clearTimeout(timer);
 		khApp.showIndicator();
 		$$.ajax({
 			url: 'api/video_success.json',
@@ -120,6 +136,7 @@ define(['views/videoView', 'GS'], function (View, GS) {
 	}
 
 	function failTest() {
+		clearTimeout(timer);
 		khApp.showIndicator();
 		$$.ajax({
 			url: 'api/video_fail.json',
@@ -136,16 +153,6 @@ define(['views/videoView', 'GS'], function (View, GS) {
 				khApp.hideIndicator();
 			}
 		});
-	}
-
-	function retry() {
-		View.showReady();
-		khApp.closeModal();
-	}
-
-	function nextSubmit() {
-		mainView.loadPage('cert.html');
-		khApp.closeModal();
 	}
 
 	return {

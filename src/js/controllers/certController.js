@@ -59,6 +59,7 @@ define(['views/certView', 'GS'], function (View, GS) {
 	}
 
 	function doneCallback() {
+		View.showAuditAfter();
 		khApp.closeModal();
 		mainView.loadPage('account.html');
 	}

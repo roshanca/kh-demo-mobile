@@ -18,14 +18,17 @@ define(['utils', 'text!templates/cert_popup.mustache', 'mustache'], function (Ut
 
 	function showDownloading() {
 		show('download');
+		$$('.step').hide();
 	}
 
 	function showAuditBefore() {
 		show('auditBefore');
+		$$('.step').show();
 	}
 
 	function showAuditAfter() {
 		show('auditAfter');
+		$$('.step').show();
 	}
 
 	return {
