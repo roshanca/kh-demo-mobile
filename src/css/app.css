@@ -4300,6 +4300,10 @@ progress::-webkit-progress-value {
 [data-page="department"] .department-block .list-block .item-title .iconfont {
   font-size: 20px;
 }
+[data-page="department"] .department-block .list-block .nearby-link:active,
+[data-page="department"] .department-block .list-block .all-link:active {
+  background-color: #f89e48;
+}
 [data-page="department"] .department-block .list-block .all {
   border-left: 2px solid #fda958;
 }
