@@ -35,7 +35,7 @@ define(['views/collectView', 'GS'], function (View, GS) {
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {
-					View.replaceQueryId(data.protocalId);
+					View.replaceQueryId(data.econtractId);
 				} else {
 					khApp.alert(data.errorInfo);
 				}
