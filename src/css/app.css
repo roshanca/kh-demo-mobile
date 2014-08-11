@@ -4023,18 +4023,6 @@ html.android .row .col-33 {
 .level {
   font-size: 20px;
 }
-.agree-block {
-  display: -webkit-flex;
-  display: flex;
-}
-html.android .agree-block:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-html.android .agree-block input[type="checkbox"] {
-  float: left;
-}
 [data-page="index"] .page-content {
   padding: 20px 0 10px !important;
 }
