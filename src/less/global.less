@@ -259,3 +259,19 @@ html.android .row .col-33 {
 .level {
   font-size: 20px;
 }
+
+.agree-block {
+  display: -webkit-flex;
+  display: flex;
+}
+
+html.android .agree-block {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  input[type="checkbox"] {
+    float: left;
+  }
+}
