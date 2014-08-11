@@ -123,7 +123,7 @@ module.exports = (grunt) ->
 
     shell:
       deploy:
-        command: 'rsync -avzl --delete build/** deploy/public'
+        command: 'rsync -avzl --delete build/** deploy/'
 
   grunt.registerTask 'default', ['dev']
   grunt.registerTask 'dev', ['less:src', 'connect:src', 'watch:src']
