@@ -2,7 +2,7 @@
 
 [![Build Status](http://img.shields.io/travis/roshanca/kh-demo-mobile.svg?style=flat)](https://travis-ci.org/roshanca/kh-demo-mobile)
 [![devDependency Status](http://img.shields.io/david/dev/roshanca/kh-demo-mobile.svg?style=flat)](https://david-dm.org/roshanca/kh-demo-mobile#info=devDependencies)
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Built with Grunt](https://dl.dropboxusercontent.com/u/58390955/mybuiltwith-alt-01.svg)](http://gruntjs.com/)
 
 ## Dependencies
 
