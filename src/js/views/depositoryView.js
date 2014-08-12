@@ -20,11 +20,13 @@ define(['utils', 'text!templates/depository.mustache', 'mustache'], function (Ut
 	function noNeedInput() {
 		$$('#inputGroup').hide();
 		$$('#agreeProtocal').show();
+		$$('#agreeProtocal').css('display', '-webkit-flex');
 	}
 
 	function onlyCardNoInput() {
 		$$('#inputGroup').show();
 		$$('#agreeProtocal').show();
+		$$('#agreeProtocal').css('display', '-webkit-flex');
 
 		$$('.cardno-input').show().addClass('bare');
 		$$('.cardpsw-input').hide();
@@ -33,6 +35,7 @@ define(['utils', 'text!templates/depository.mustache', 'mustache'], function (Ut
 	function bothCardNoPswInput() {
 		$$('#inputGroup').show();
 		$$('#agreeProtocal').show();
+		$$('#agreeProtocal').css('display', '-webkit-flex');
 
 		$$('.cardno-input').show().removeClass('bare');
 		$$('.cardpsw-input').show();

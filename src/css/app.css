@@ -4027,6 +4027,9 @@ html.android .row .col-33 {
   display: -webkit-flex;
   display: flex;
 }
+.agree-block input[type="checkbox"] {
+  font-size: 15px;
+}
 html.android .agree-block:after {
   content: "";
   display: table;
