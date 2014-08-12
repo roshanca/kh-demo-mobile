@@ -48,7 +48,7 @@ define(['utils', 'text!templates/depository.mustache', 'mustache'], function (Ut
 	}
 
 	function replaceQueryId(link, id) {
-		link.search = '?id=' + id;
+		link.search = '?econtract_id=' + id;
 	}
 
 	return {
