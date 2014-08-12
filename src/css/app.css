@@ -4276,14 +4276,15 @@ html.android progress {
 }
 [data-page="department"] .department-block {
   position: relative;
-  background-color: #fda958;
+  border-top: 1px solid #dfdfdf;
+  background-color: #fff;
 }
 [data-page="department"] .department-block .department-badge {
   position: absolute;
   left: 10px;
   top: 10px;
   z-index: 9;
-  color: #fff;
+  color: #fd8615;
 }
 [data-page="department"] .department-block .department-badge .iconfont {
   font-size: 20px;
@@ -4291,20 +4292,19 @@ html.android progress {
 [data-page="department"] .department-block .department-name {
   padding: 55px 15px;
   text-align: center;
-  color: #fff;
-  border-bottom: 1px solid #fd7a00;
-  background-color: #fd8615;
+  color: #fd8615;
+  background-color: #fff;
 }
 [data-page="department"] .department-block .list-block {
   margin-top: 2px;
 }
 [data-page="department"] .department-block .list-block ul {
   display: block;
-  border-color: #fd7a00;
+  border-color: #dfdfdf;
 }
 [data-page="department"] .department-block .list-block li {
   float: left;
-  background-color: #fd8615;
+  background-color: #fff;
 }
 [data-page="department"] .department-block .list-block .item-inner {
   display: block;
@@ -4318,17 +4318,16 @@ html.android progress {
 }
 [data-page="department"] .department-block .list-block .item-title {
   margin: 0 auto;
-  color: #fff;
+  color: #808080;
 }
 [data-page="department"] .department-block .list-block .item-title .iconfont {
   font-size: 20px;
 }
-[data-page="department"] .department-block .list-block .nearby-link:active,
-[data-page="department"] .department-block .list-block .all-link:active {
-  background-color: #f89e48;
-}
 [data-page="department"] .department-block .list-block .all {
-  border-left: 2px solid #fda958;
+  border-left: 1px solid #dfdfdf;
+}
+[data-page="department"] .content-block-title {
+  margin-top: 35px;
 }
 [data-page="risk"] .list-block {
   counter-reset: options;
