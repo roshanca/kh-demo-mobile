@@ -17,8 +17,8 @@ define(['views/loginView', 'GS'], function (View, GS) {
 		nav: '转户',
 		desc: '我已有股东账户，已撤销指定交易和完成转托管'
 	}, {
-		nav: '开资金户',
-		desc: '无论有没有在其他券商开立股东账户，都可开立资金账户'
+		nav: '开理财户',
+		desc: '无论有没有在其他券商开立股东账户，都可开立理财户'
 	}];
 
 	function init(query) {
