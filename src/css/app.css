@@ -4170,6 +4170,10 @@ html.android .agree-block input[type="checkbox"] {
   width: 100%;
   opacity: 0;
 }
+#face .icon-user {
+  font-size: 60px;
+  line-height: 120px;
+}
 progress {
   height: 18px;
   background-color: #f3f3f3;
