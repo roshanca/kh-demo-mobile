@@ -6,7 +6,7 @@ define(['views/collectView', 'GS'], function (View, GS) {
 		handler: GS.logout
 	}];
 
-	var afterBinding = [{
+	var afterBindings = [{
 		element: '.collect-next-button',
 		event: 'click',
 		handler: nextSubmit
@@ -33,7 +33,7 @@ define(['views/collectView', 'GS'], function (View, GS) {
 				if (data.errorNo === 0) {
 					View.render({
 						model: data.model,
-						bindings: afterBinding
+						bindings: afterBindings
 					});
 				} else {
 					khApp.alert(data.errorInfo);
