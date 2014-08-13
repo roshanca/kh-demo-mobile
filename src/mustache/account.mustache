@@ -30,38 +30,16 @@
 	<ul>
 		{{#model.protocals}}
 		<li>
-			<a href="protocal.html?id={{id}}" class="item-link item-content protocal-link">
+			<a href="protocal.html?econtract_id={{id}}" class="item-link item-content protocal-link">
 			<div class="item-inner">
-					<div class="item-title">{{protocal}}</div>
+					<div class="item-title">{{name}}</div>
 				</div>
 			</a>
 		</li>
 		{{/model.protocals}}
-		{{!-- <li>
-			<div class="item-content">
-				<div class="item-inner">
-					<div class="item-title">我已阅读并同意签署以上协议</div>
-					<div class="item-after">
-						<label class="label-switch">
-							<input type="checkbox">
-							<div class="checkbox"></div>
-						</label>
-					</div>
-				</div>
-			</div>
-		</li> --}}
 	</ul>
 </div>
 <div class="content-block-title">
-	{{!-- <label class="label-checkbox item-content">
-		<input type="checkbox" name="agreement" value="agreement">
-		<div class="item-media">
-			<i class="icon icon-form-checkbox"></i>
-		</div>
-		<div class="item-inner">
-			<div class="item-title">我已阅读并同意签署以上协议</div>
-		</div>
-	</label> --}}
 	<label><input type="checkbox" name="agreement" value="agreement"> 我已阅读并同意签署以上协议</label>
 </div>
 <div class="content-block">
