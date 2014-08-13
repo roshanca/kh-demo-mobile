@@ -1,16 +1,14 @@
 define([], function () {
 
 	function init() {
-		var links = document.querySelectorAll('a');
+		var links = $$('a[data-type]');
 
-		for (var i = 0, l = links.length; i < l; i++) {
-			(function (index) {
-				return links[index].addEventListener('click', function () {
-					var type = this.getAttribute('data-type');
-					jumpPage(type);
-				}, false);
-			})(i);
-		}
+		links.each(function () {
+			this.addEventListener('click', function () {
+				var type = this.getAttribute('data-type');
+				jumpPage(type);
+			}, false);
+		});
 	}
 
 	function jumpPage(param) {
