@@ -22,24 +22,24 @@ module.exports = (grunt) ->
 
     copy:
       api:
-        expand: true,
-        cwd: 'src/api',
-        src: ['**'],
+        expand: true
+        cwd: 'src/api'
+        src: ['**']
         dest: 'build/api'
       img:
-        expand: true,
-        cwd: 'src/img',
-        src: ['**'],
+        expand: true
+        cwd: 'src/img'
+        src: ['**']
         dest: 'build/img'
       font:
-        expand: true,
-        cwd: 'src/font',
-        src: ['**'],
+        expand: true
+        cwd: 'src/font'
+        src: ['**']
         dest: 'build/font'
       html:
-        expand: true,
-        cwd: 'src',
-        src: ['**.html', '!index.html'],
+        expand: true
+        cwd: 'src'
+        src: ['**.html', '!index.html']
         dest: 'build'
 
     targethtml:
@@ -56,6 +56,16 @@ module.exports = (grunt) ->
         files:
           'build/js/require.min.js': ['src/js/libs/require.js']
 
+    htmlmin:
+      build:
+        options:
+          removeComments: true
+          collapseWhitespace: true
+        expand: true
+        cwd: 'src/mustache'
+        src: ['**.mustache']
+        dest: 'src/template'
+
     requirejs:
       build:
         options:
@@ -64,6 +74,8 @@ module.exports = (grunt) ->
           baseUrl: 'src/js'
           mainConfigFile: 'src/js/app.js'
           name: 'app',
+          paths:
+            'templates': '../template'
           include: [
             'controllers/accountController'
             'controllers/appointController'
@@ -129,6 +141,6 @@ module.exports = (grunt) ->
   grunt.registerTask 'default', ['dev']
   grunt.registerTask 'dev', ['less:src', 'connect:src', 'watch:src']
   grunt.registerTask 'test', ['jshint']
-  grunt.registerTask 'build', ['clean:build', 'requirejs', 'uglify', 'less:build', 'targethtml', 'copy']
+  grunt.registerTask 'build', ['clean:build', 'htmlmin', 'requirejs', 'uglify', 'less:build', 'targethtml', 'copy']
   grunt.registerTask 'serve', ['connect:build', 'watch:build']
   grunt.registerTask 'deploy', ['shell']

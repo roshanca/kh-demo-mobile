@@ -7,7 +7,9 @@
     "name": "Roshan Wu",
     "email": "wwj1983@gmail.com"
   },
-  "license": ["GPL v2"],
+  "license": [
+    "GPL v2"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/roshanca/kh-demo-mobile"
@@ -22,6 +24,7 @@
     "grunt-contrib-clean": "latest",
     "grunt-contrib-connect": "latest",
     "grunt-contrib-copy": "latest",
+    "grunt-contrib-htmlmin": "^0.3.0",
     "grunt-contrib-jshint": "latest",
     "grunt-contrib-less": "latest",
     "grunt-contrib-requirejs": "latest",
