@@ -1,6 +1,12 @@
-define(['utils'], function (Utils) {
+define(['utils', 'text!templates/collect.mustache', 'mustache'], function (Utils, collectTemplate, mustache) {
+
+	function init(params) {
+		Utils.bindEvents(params.bindings);
+	}
 
 	function render(params) {
+		var template = mustache.render(collectTemplate, {model: params.model});
+		$$('#collectContent').html(template);
 		Utils.bindEvents(params.bindings);
 	}
 
@@ -12,15 +18,15 @@ define(['utils'], function (Utils) {
 		$$('#cardBack').html('<img src=' + url + ' alt="" height="160">');
 	}
 
-	function replaceQueryId(id) {
-		var protocalLink = document.querySelector('#protocalLink');
-		protocalLink.search = '?econtract_id=' + id;
+	function showPhotoFace(url) {
+		$$('#face').html('<img src=' + url + ' alt="" height="160">');
 	}
 
 	return {
+		init: init,
 		render: render,
 		showPhotoFront: showPhotoFront,
 		showPhotoBack: showPhotoBack,
-		replaceQueryId: replaceQueryId
+		showPhotoFace: showPhotoFace
 	};
 });

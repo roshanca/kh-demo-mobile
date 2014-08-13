@@ -1,6 +1,7 @@
 define(['GS'], function (GS) {
 
 	var hash = {
+		index      : 'index',
 		login      : 'login',
 		identity   : 'identity',
 		collect    : 'collect',

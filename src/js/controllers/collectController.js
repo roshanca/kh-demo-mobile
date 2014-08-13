@@ -4,7 +4,9 @@ define(['views/collectView', 'GS'], function (View, GS) {
 		element: '#logout',
 		event: 'click',
 		handler: GS.logout
-	}, {
+	}];
+
+	var afterBinding = [{
 		element: '.collect-next-button',
 		event: 'click',
 		handler: nextSubmit
@@ -19,23 +21,20 @@ define(['views/collectView', 'GS'], function (View, GS) {
 	}];
 
 	function init() {
-		View.render({
+		View.init({
 			bindings: bindings
 		});
 
-		// ajax 获取协议 ID
-		reqProtocalContent();
-	}
-
-	// 货取协议 ID
-	function reqProtocalContent() {
 		$$.ajax({
-			url: 'api/protocal.json',
+			url: 'api/collect.json',
 			type: 'GET',
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {
-					View.replaceQueryId(data.econtractId);
+					View.render({
+						model: data.model,
+						bindings: afterBinding
+					});
 				} else {
 					khApp.alert(data.errorInfo);
 				}
@@ -44,18 +43,22 @@ define(['views/collectView', 'GS'], function (View, GS) {
 	}
 
 	function uploadFront() {
-		// uploadStart(0);
+		// uploadSelect(0);
 	}
 
 	function uploadBack() {
-		// uploadStart(1);
+		// uploadSelect(1);
+	}
+
+	function uploadFacePic() {
+		// uploadSelect(2);
 	}
 
 	/**
 	 * 上传照片类型
 	 * @param  {Number} type 0: 正面照, 1: 反面照, 2: 大头照
 	 */
-	function uploadStart(type) {
+	function uploadSelect(type) {
 		var typeText = ['正面照', '反面照', '大头照'][type];
 
 		khApp.modal({
