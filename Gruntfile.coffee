@@ -72,6 +72,7 @@ module.exports = (grunt) ->
             'controllers/collectController'
             'controllers/departmentController'
             'controllers/depositoryController'
+            'controllers/guideController'
             'controllers/loginController'
             'controllers/passwordController'
             'controllers/profileController'
