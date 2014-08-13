@@ -2,6 +2,7 @@ define(['GS'], function (GS) {
 
 	var hash = {
 		index      : 'index',
+		guide      : 'guide',
 		login      : 'login',
 		identity   : 'identity',
 		collect    : 'collect',
@@ -31,7 +32,7 @@ define(['GS'], function (GS) {
 
 		if (!GS.isLogin()) {
 			// mainView.loadPage('login.html');
-			mainView.loadPage('index.html', false);
+			mainView.loadPage('guide.html', false);
 		} else {
 			var currentUser = GS.getCurrentUser();
 			mainView.loadPage(currentUser.node + '.html');

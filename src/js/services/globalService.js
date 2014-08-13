@@ -50,7 +50,7 @@ define([], function () {
 		khApp.confirm('您确定要退出登录吗？', function () {
 			removeCurrentUser();
 			khApp.closeModal();
-			mainView.loadPage('index.html');
+			mainView.loadPage('guide.html');
 		});
 	}
 

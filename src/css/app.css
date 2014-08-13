@@ -4038,18 +4038,18 @@ html.android .agree-block:after {
 html.android .agree-block input[type="checkbox"] {
   float: left;
 }
-[data-page="index"] .page-content {
+[data-page="guide"] .page-content {
   padding: 20px 0 10px !important;
 }
-[data-page="index"] .logo {
+[data-page="guide"] .logo {
   display: block;
   width: 163px;
   margin: 0 auto;
 }
-[data-page="index"] .entrance {
+[data-page="guide"] .entrance {
   padding: 20px 5px;
 }
-[data-page="index"] .entrance a {
+[data-page="guide"] .entrance a {
   position: relative;
   display: block;
   height: 110px;
@@ -4059,7 +4059,7 @@ html.android .agree-block input[type="checkbox"] {
   color: #fff;
   border-radius: 5px;
 }
-[data-page="index"] .entrance a:before {
+[data-page="guide"] .entrance a:before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -4071,7 +4071,7 @@ html.android .agree-block input[type="checkbox"] {
   left: 0;
   background-position: 10px bottom;
 }
-[data-page="index"] .entrance a:after {
+[data-page="guide"] .entrance a:after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -4083,25 +4083,25 @@ html.android .agree-block input[type="checkbox"] {
   right: 0;
   background-position: right bottom;
 }
-[data-page="index"] .entrance .kh {
+[data-page="guide"] .entrance .kh {
   background-color: #fec111;
 }
-[data-page="index"] .entrance .kh:before,
-[data-page="index"] .entrance .kh:after {
+[data-page="guide"] .entrance .kh:before,
+[data-page="guide"] .entrance .kh:after {
   background-image: url(../img/entrance-kh.png);
 }
-[data-page="index"] .entrance .zh {
+[data-page="guide"] .entrance .zh {
   background-color: #ff8b1f;
 }
-[data-page="index"] .entrance .zh:before,
-[data-page="index"] .entrance .zh:after {
+[data-page="guide"] .entrance .zh:before,
+[data-page="guide"] .entrance .zh:after {
   background-image: url(../img/entrance-zh.png);
 }
-[data-page="index"] .entrance .zjh {
+[data-page="guide"] .entrance .zjh {
   background-color: #158ed4;
 }
-[data-page="index"] .entrance .zjh:before,
-[data-page="index"] .entrance .zjh:after {
+[data-page="guide"] .entrance .zjh:before,
+[data-page="guide"] .entrance .zjh:after {
   background-image: url(../img/entrance-zjh.png);
 }
 .login-getcode {
