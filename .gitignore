@@ -32,3 +32,6 @@ target/
 
 # SVN
 *.svn/
+
+# Temp
+src/template
