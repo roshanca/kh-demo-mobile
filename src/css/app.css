@@ -4038,6 +4038,15 @@ html.android .agree-block:after {
 html.android .agree-block input[type="checkbox"] {
   float: left;
 }
+/* ==========================================================================
+   Performance enhance
+   ========================================================================== */
+html.android label.label-checkbox,
+html.android label.label-radio,
+html.android .list-block .item-link {
+  -webkit-transition-duration: 0ms;
+  transition-duration: 0ms;
+}
 [data-page="guide"] .page-content {
   padding: 20px 0 10px !important;
 }
@@ -4346,6 +4355,9 @@ html.android progress {
 }
 [data-page="risk"] .list-block .item-media:before {
   content: counter(options, upper-latin) ". ";
+}
+[data-page="risk"] .hidden {
+  display: none;
 }
 [data-page="audit"] .info {
   height: 78px;
