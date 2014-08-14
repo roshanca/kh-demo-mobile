@@ -29,6 +29,7 @@ define(['views/passwordView', 'GS', 'utils'], function (View, GS, Utils) {
 	}
 
 	function nextSubmit() {
+		$$(window).off('resize', window.bind_resize);
 		mainView.loadPage('depository.html');
 	}
 

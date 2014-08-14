@@ -16,7 +16,7 @@ define([], function () {
 	 * Set the position of submit button, which queried by selector, dynamic
 	 * @param {String} selector
 	 */
-	function setButtonPosition(selector) {
+	function setButtonPosition(selector, binded) {
 		var pageContent = $$(selector).parents('.page-content');
 		if (isScroll(pageContent[0])) {
 			$$(selector).removeClass('fixed-bottom');
@@ -24,8 +24,12 @@ define([], function () {
 			$$(selector).addClass('fixed-bottom');
 		}
 
+		if (binded) return;
+
 		// When window resizing(such as keyboard popup), button need to be reposition
-		$$(window).resize(function () { setButtonPosition.call(this, selector); });
+		$$(window).on('resize', window.bind_resize = function () {
+			setButtonPosition.call(this, selector, true);
+		});
 	}
 
 	/**

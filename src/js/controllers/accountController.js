@@ -52,6 +52,7 @@ define(['views/accountView', 'GS'], function (View, GS) {
 	function nextSubmit() {
 		var groupValue = getSelectGroupValue();
 		console.log(groupValue);
+		$$(window).off('resize', window.bind_resize);
 		mainView.loadPage('password.html');
 	}
 
