@@ -61,6 +61,8 @@ module.exports = (grunt) ->
         options:
           removeComments: true
           collapseWhitespace: true
+          # Minifying Mustache templates
+          customAttrSurround: [[/\{\{[#\^][^}]+\}\}/, /\{\{\/[^}]+\}\}/]]
         expand: true
         cwd: 'src/mustache'
         src: ['**.mustache']
