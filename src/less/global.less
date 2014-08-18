@@ -71,6 +71,10 @@
   line-height: 20px;
 }
 
+.searchbar.searchbar-active .searchbar-cancel {
+  color: #666;
+}
+
 label.label-radio input[type="checkbox"]:checked ~ .item-inner, label.label-radio input[type="radio"]:checked ~ .item-inner {
   // background-image: url("../img/i-form-radio-yellow.png");
   background-size: auto 15px;
@@ -79,7 +83,19 @@ label.label-radio input[type="checkbox"]:checked ~ .item-inner, label.label-radi
 /* Android */
 html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
 html.android label.label-radio input[type="radio"]:checked ~ .item-inner {
-  background-position: 95% center;
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    z-index: 9;
+    display: block;
+    width: 22px;
+    height: 17px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
 }
 
 html.android .list-block .item-link .item-inner {
@@ -93,7 +109,7 @@ html.android .list-block .item-link .item-inner {
     display: block;
     width: 10px;
     height: 20px;
-    background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23ff9500' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg viewBox='0 0 60 120' xmlns='http://www.w3.org/2000/svg'><path d='m60 61.5-38.25 38.25-9.75-9.75 29.25-28.5-29.25-28.5 9.75-9.75z' fill='%23c7c7cc'/></svg>");
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
   }
@@ -148,14 +164,8 @@ html.android .row .col-33 {
   .icon-fail {
     color: #d42323;
   }
-  .icon-wait {
-    color: #fd8615;
-  }
   .desc {
     font-size: 14px;
-  }
-  .hotline {
-    color: #fd8615;
   }
 }
 
@@ -199,9 +209,6 @@ html.android .row .col-33 {
         display: none;
       }
     }
-    &.current {
-      color: #fd8615;
-    }
   }
 }
 
@@ -218,8 +225,6 @@ html.android .row .col-33 {
 
 .select-radio[type="radio"]:checked + .select-trigger {
   position: relative;
-  color: #fd8615;
-  border-color: #fd8615;
   &:after {
     content: "";
     position: absolute;
@@ -228,7 +233,6 @@ html.android .row .col-33 {
     display: block;
     height: 28px;
     width: 30px;
-    background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23ff9500' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
     background-size: auto 15px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -237,7 +241,6 @@ html.android .row .col-33 {
 
 .score {
   font-size: 40px;
-  color: #fd8615;
 }
 
 .level {
@@ -268,6 +271,7 @@ html.android .agree-block {
    ========================================================================== */
 html.android label.label-checkbox,
 html.android label.label-radio,
-html.android .list-block .item-link {
+html.android .list-block .item-link,
+html.android .searchbar.searchbar-active .searchbar-cancel {
   .transition(0ms);
 }
