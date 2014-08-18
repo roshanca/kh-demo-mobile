@@ -1,5 +1,5 @@
 {{#model.departmentsNearby}}
-<a href="#" class="item-link smart-select" id="nearbySelect" data-pagetitle="附近营业部">
+<a href="#" class="item-link smart-select" id="nearbySelect" data-page-title="附近营业部">
 	<select name="nearby">
 	{{#model.departmentsNearby}}
 		<option value="{{value}}">{{department}}</option>
@@ -9,7 +9,7 @@
 {{/model.departmentsNearby}}
 
 {{#model.departmentsAll}}
-<a href="#" class="item-link smart-select" id="allSelect" data-pagetitle="选择营业部" data-searchbar="true" data-searchbar-placeholder="营业部名称" data-searchbar-cancel="取消">
+<a href="#" class="item-link smart-select" id="allSelect" data-page-title="选择营业部" data-searchbar="true" data-searchbar-placeholder="营业部名称" data-searchbar-cancel="取消">
 	<select name="all">
 	{{#model.departmentsAll}}
 		<optgroup label="{{group}}">

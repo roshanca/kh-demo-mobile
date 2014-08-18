@@ -15,7 +15,7 @@ require.config({
 });
 
 require(['Framework7', 'router'], function (Framework7, Router) {
-	window.$$ = Framework7.$;
+	window.$$ = window.Dom7;
 
 	var device = Framework7.prototype.device;
 
@@ -34,7 +34,7 @@ require(['Framework7', 'router'], function (Framework7, Router) {
 			modalButtonOk: '确定',
 			modalButtonCancel: '取消',
 			smartSelectBackText: '完成',
-			smartSelectBackTemplate: '<div class="left sliding"><a href="#" class="back link"><i class="icon icon-back-black"></i><span>{{backText}}</span></a></div>'
+			smartSelectBackTemplate: '<div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><span>{{backText}}</span></a></div>'
 		});
 	} else {
 		window.khApp = new Framework7({
@@ -48,7 +48,7 @@ require(['Framework7', 'router'], function (Framework7, Router) {
 			modalButtonOk: '确定',
 			modalButtonCancel: '取消',
 			smartSelectBackText: '完成',
-			smartSelectBackTemplate: '<div class="left sliding"><a href="#" class="back link"><i class="icon icon-back-black"></i><span>完成</span></a></div>'
+			smartSelectBackTemplate: '<div class="left sliding"><a href="#" class="back link"><i class="icon icon-back"></i><span>{{backText}}</span></a></div>'
 		});
 	}
 

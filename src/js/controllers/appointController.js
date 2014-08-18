@@ -19,7 +19,7 @@ define(['views/appointView', 'GS'], function (View, GS) {
 	function appointDone() {
 		var formData = khApp.formToJSON('#appointList');
 		console.log(formData);
-		mainView.loadPage('index.html');
+		mainView.loadPage('guide.html');
 	}
 
 	return {
