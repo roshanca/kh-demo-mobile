@@ -25,7 +25,6 @@
     margin: 0;
     z-index: 500;
     -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
     backface-visibility: hidden;
     b {
         font-weight: 500;
@@ -33,7 +32,6 @@
     a.link {
         line-height: 44px;
         height: 44px;
-        color: @navbarLinksColor;
         text-decoration: none;
         position: relative;
         .flexbox();
@@ -64,7 +62,7 @@
     top: 0;
     background: @navbarBg;
     border-bottom: 1px solid @navbarBorderColor;
-    html.ios-gt-7 & {
+    html.retina.ios-gt-7 & {
         border-bottom-width: 0.5px;
     }
     .center {
@@ -109,7 +107,7 @@
     bottom: 0;
     background: @toolbarBg;
     border-top: 1px solid @toolbarBorderColor;
-    html.ios-gt-7 & {
+    html.retina.ios-gt-7 & {
         border-top-width: 0.5px;
     }
     a {
