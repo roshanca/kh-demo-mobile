@@ -6,6 +6,7 @@ define([], function () {
 		if (!$CONFIG) {
 			$CONFIG = {};
 			$CONFIG.currentUser = {};
+			$CONFIG.version = window.appVersion;
 
 			if (localStorage.getItem('user')) {
 				$CONFIG.currentUser = JSON.parse(localStorage.getItem('user'));
@@ -58,7 +59,7 @@ define([], function () {
 	function checkUpdate() {
 		khApp.modal({
 			title: '当前版本',
-			text: appVersion,
+			text: $CONFIG.version,
 			buttons: [{
 				text: '检测更新',
 				onClick: function () {
