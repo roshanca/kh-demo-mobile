@@ -30,6 +30,9 @@ define(['GS'], function (GS) {
 			load(page.name, page.query);
 		});
 
+		$$('.logout').on('click', GS.logout);
+		$$('.version').on('click', GS.checkUpdate);
+
 		if (!GS.isLogin()) {
 			// mainView.loadPage('login.html');
 			mainView.loadPage('guide.html', false);

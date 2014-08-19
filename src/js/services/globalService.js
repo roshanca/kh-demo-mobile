@@ -50,7 +50,23 @@ define([], function () {
 		khApp.confirm('您确定要退出登录吗？', function () {
 			removeCurrentUser();
 			khApp.closeModal();
+			khApp.closePanel();
 			mainView.loadPage('guide.html');
+		});
+	}
+
+	function checkUpdate() {
+		khApp.modal({
+			title: '当前版本',
+			text: appVersion,
+			buttons: [{
+				text: '检测更新',
+				onClick: function () {
+					khApp.alert('您当前的版本已经是最新');
+				}
+			}, {
+				text: '返回'
+			}]
 		});
 	}
 
@@ -60,6 +76,7 @@ define([], function () {
 		setCurrentUser: setCurrentUser,
 		removeCurrentUser: removeCurrentUser,
 		isLogin: isLogin,
-		logout: logout
+		logout: logout,
+		checkUpdate: checkUpdate
 	};
 });

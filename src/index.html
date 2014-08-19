@@ -7,22 +7,48 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<title>khApp</title>
 	<!--(if target dev)><!-->
+	<script> var appVersion = 'test'; </script>
 	<link rel="stylesheet" href="css/app.css">
 	<!--<!(endif)-->
 
 	<!--(if target dist)>
+	<script> var appVersion = {{version}}; </script>
 	<link rel="stylesheet" href="css/app.min.css?v={{rlsdate}}">
 	<!--<!(endif)-->
 </head>
 <body class="theme-orange">
 	<div class="statusbar-overlay"></div>
 	<div class="panel-overlay"></div>
+	<div class="panel panel-right panel-reveal">
+		<div class="title-block">设置</div>
+		<div class="content-block">
+			<ul class="panel-list">
+				<li>
+					<a href="faq.html" class="item-link close-panel">
+						<div class="item-inner">
+							<div class="item-title">帮助中心</div>
+							<div class="item-media"><i class="iconfont icon-qmark"></i></div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="item-link version">
+						<div class="item-inner">
+							<div class="item-title">版本说明</div>
+							<div class="item-media"><i class="iconfont icon-emark"></i></div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<a href="#" class="button button-big fixed-bottom logout">注销</a>
+		</div>
+	</div>
 	<div class="views">
 		<div class="view view-main hidden-navbar" id="mainView">
 			<div class="navbar">
 
 			</div>
-			<div class="pages navbar-through toolbar-through">
+			<div class="pages navbar-through no-toolbar">
 				<div data-page="index" class="page no-navbar">
 
 				</div>

@@ -19,19 +19,19 @@
     Framework 7
     ===========================*/
     window.Framework7 = function (params) {
-    
+
         // App
         var app = this;
-    
+
         // Version
         app.version = '0.9.5';
-    
+
         // Default Parameters
         app.params = {
             cache: true,
             cacheIgnore: [],
             cacheIgnoreGetParameters: false,
-            cacheDuration: 1000 * 60 * 10, // Ten minutes 
+            cacheDuration: 1000 * 60 * 10, // Ten minutes
             preloadPreviousPage: true,
             // Push State
             pushState: false,
@@ -101,39 +101,39 @@
             notificationCloseIcon: true,
             // Animate Pages
             animatePages: true
-    
+
         };
-    
+
         // Extend defaults with parameters
         for (var param in params) {
             app.params[param] = params[param];
         }
-    
+
         // DOM lib
         var $ = Dom7;
-    
+
         // Touch events
         app.touchEvents = {
             start: app.support.touch ? 'touchstart' : 'mousedown',
             move: app.support.touch ? 'touchmove' : 'mousemove',
             end: app.support.touch ? 'touchend' : 'mouseup'
         };
-    
+
         // Link to local storage
         app.ls = localStorage;
-    
+
         // RTL
         app.rtl = $('body').css('direction') === 'rtl';
         if (app.rtl) $('html').attr('dir', 'rtl');
-    
+
         // Overwrite statusbar overlay
         if (typeof app.params.statusbarOverlay !== 'undefined') {
             if (app.params.statusbarOverlay) $('html').addClass('with-statusbar-overlay');
             else $('html').removeClass('with-statusbar-overlay');
         }
-    
-        
-    
+
+
+
         /*======================================================
         ************   Views   ************
         ======================================================*/
@@ -149,7 +149,7 @@
                 swipeBackPageThreshold: app.params.swipeBackPageThreshold,
                 animatePages: app.params.animatePages
             };
-        
+
             params = params || {};
             for (var def in defaults) {
                 if (typeof params[def] === 'undefined') {
@@ -159,17 +159,17 @@
             // View
             var view = this;
             view.params = params;
-        
+
             // Selector
             view.selector = selector;
-        
+
             // Container
             var container = $(selector);
             view.container = container[0];
-            
+
             // Location
             var docLocation = document.location.href;
-        
+
             // History
             view.history = [];
             var viewURL = docLocation;
@@ -182,26 +182,26 @@
                 else {
                     if (viewURL.indexOf(pushStateSeparator) >= 0 && viewURL.indexOf(pushStateSeparator + '#') < 0) viewURL = viewURL.split(pushStateSeparator)[0];
                 }
-                    
+
             }
             view.url = container.attr('data-url') || view.params.url || viewURL;
-        
+
             // Store to history main view's url
             if (view.url) {
                 view.history.push(view.url);
             }
-        
+
             // Content cache
             view.contentCache = {};
-        
+
             // Store View in element for easy access
             container[0].f7View = view;
-        
+
             // Pages
             view.pagesContainer = container.find('.pages')[0];
-        
+
             view.allowPageChange = true;
-        
+
             // Active Page
             if (!view.activePage) {
                 var currentPage = $(view.pagesContainer).find('.page-on-center');
@@ -212,7 +212,7 @@
                 }
                 if (currentPage.length > 0) {
                     currentPageData = currentPage[0].f7PageData;
-                
+
                 }
                 if (currentPageData) {
                     currentPageData.view = view;
@@ -221,10 +221,10 @@
                     currentPage[0].f7PageData = currentPageData;
                 }
             }
-        
+
             // Is main
             view.main = container.hasClass(app.params.viewMainClass);
-        
+
             // Touch events
             var isTouched = false,
                 isMoved = false,
@@ -244,7 +244,7 @@
                 previousNavBackIcon,
                 dynamicNavbar,
                 el;
-        
+
             view.handleTouchStart = function (e) {
                 if (!allowViewTouchMove || !view.params.swipeBackPage || isTouched || app.swipeoutOpenedEl) return;
                 isMoved = false;
@@ -255,7 +255,7 @@
                 touchStartTime = (new Date()).getTime();
                 dynamicNavbar = view.params.dynamicNavbar && container.find('.navbar-inner').length > 1;
             };
-        
+
             view.handleTouchMove = function (e) {
                 if (!isTouched) return;
                 var pageX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
@@ -301,17 +301,17 @@
                     }
                 }
                 isMoved = true;
-        
+
                 e.preventDefault();
-        
+
                 // RTL inverter
                 var inverter = app.rtl ? -1 : 1;
-        
+
                 // Touches diff
                 touchesDiff = (pageX - touchesStart.x - view.params.swipeBackPageThreshold) * inverter;
                 if (touchesDiff < 0) touchesDiff = 0;
                 var percentage = touchesDiff / viewContainerWidth;
-        
+
                 // Swipe Back Callback
                 var callbackData = {
                     percentage: percentage,
@@ -324,7 +324,7 @@
                     view.params.onSwipeBackMove(callbackData);
                 }
                 container.trigger('swipebackmove', callbackData);
-        
+
                 // Transform pages
                 var activePageTranslate = touchesDiff * inverter;
                 var previousPageTranslate = (touchesDiff / 5 - viewContainerWidth / 5) * inverter;
@@ -332,13 +332,13 @@
                     activePageTranslate = Math.round(activePageTranslate);
                     previousPageTranslate = Math.round(previousPageTranslate);
                 }
-        
+
                 activePage.transform('translate3d(' + activePageTranslate + 'px,0,0)');
                 if (view.params.swipeBackPageBoxShadow && app.device.os !== 'android') activePage[0].style.boxShadow = '0px 0px 12px rgba(0,0,0,' + (0.5 - 0.5 * percentage) + ')';
-        
+
                 previousPage.transform('translate3d(' + previousPageTranslate + 'px,0,0)');
                 previousPage[0].style.opacity = 0.9 + 0.1 * percentage;
-        
+
                 // Dynamic Navbars Animation
                 if (dynamicNavbar) {
                     var i;
@@ -372,7 +372,7 @@
                     }
                 }
             };
-        
+
             view.handleTouchEnd = function (e) {
                 if (!isTouched || !isMoved) {
                     isTouched = false;
@@ -420,9 +420,9 @@
                                 activeNavBackIcon.addClass('page-transitioning').transform('translate3d(' + -translate + 'px,0,0)');
                             }
                         }
-        
+
                     }).addClass('page-transitioning');
-        
+
                     previousNavElements.transform('').css({opacity: ''}).each(function () {
                         var translate = pageChanged ? 0 : this.f7NavbarLeftOffset;
                         var sliding = $(this);
@@ -436,16 +436,16 @@
                 }
                 allowViewTouchMove = false;
                 view.allowPageChange = false;
-        
+
                 if (pageChanged) {
                     // Update View's URL
                     var url = view.history[view.history.length - 2];
                     view.url = url;
-                    
+
                     // Page before animation callback
                     app.pageAnimCallbacks('before', view, {pageContainer: previousPage[0], url: url, position: 'left', newPage: previousPage, oldPage: activePage, swipeBack: true});
                 }
-        
+
                 activePage.transitionEnd(function () {
                     $([activePage[0], previousPage[0]]).removeClass('page-transitioning');
                     if (dynamicNavbar) {
@@ -473,16 +473,16 @@
             view.detachEvents = function () {
                 view.attachEvents(true);
             };
-        
+
             // Init
             if (view.params.swipeBackPage) {
                 view.attachEvents();
             }
-        
+
             // Add view to app
             app.views.push(view);
             if (view.main) app.mainView = view;
-        
+
             // Load methods
             view.loadPage = function (url, animatePages) {
                 return app.loadPage(view, url, animatePages);
@@ -493,7 +493,7 @@
             view.goBack = function (url, animatePages) {
                 return app.goBack(view, url, animatePages);
             };
-        
+
             // Bars methods
             view.hideNavbar = function () {
                 return app.hideNavbar(container);
@@ -507,14 +507,14 @@
             view.showToolbar = function () {
                 return app.showToolbar(container);
             };
-        
+
             // Push State on load
             if (app.params.pushState && view.main) {
                 var pushStateUrl;
                 if (pushStateRoot) {
                     pushStateUrl = docLocation.split(app.params.pushStateRoot + pushStateSeparator)[1];
                 }
-        
+
                 else if (docLocation.indexOf(pushStateSeparator) >= 0 && docLocation.indexOf(pushStateSeparator + '#') < 0) {
                     pushStateUrl = docLocation.split(pushStateSeparator)[1];
                 }
@@ -523,22 +523,22 @@
                 if (pushStateUrl) {
                     app.loadPage(view, pushStateUrl, pushStateAnimatePages, false);
                 }
-                    
+
             }
-        
+
             // Destroy
             view.destroy = function () {
                 view.detachEvents();
                 view = undefined;
             };
-        
+
             // Plugin hook
             app.pluginHook('addView', view);
-            
+
             // Return view
             return view;
         };
-        
+
         app.addView = function (selector, params) {
             return new View(selector, params);
         };
@@ -563,10 +563,10 @@
                 navbar: _navbar,
                 page: _page
             };
-        
+
             // Plugin hook
             app.pluginHook('navbarInit', _navbar, _page);
-            
+
             // Navbar Init Callback
             $(navbarInnerContainer).trigger('navbarInit', eventData);
         };
@@ -585,7 +585,7 @@
                     navbarWidth = tt.width(),
                     onLeft = tt.hasClass('navbar-on-left'),
                     currLeft, diff;
-        
+
                 if (noRight) {
                     currLeft = navbarWidth - centerWidth;
                 }
@@ -610,12 +610,12 @@
                 }
                 // RTL inverter
                 var inverter = app.rtl ? -1 : 1;
-                
+
                 // Center left
                 var centerLeft = diff;
                 if (app.rtl && noLeft && noRight && center.length > 0) centerLeft = -centerLeft;
                 center.css({left: centerLeft + 'px'});
-        
+
                 if (center.hasClass('sliding')) {
                     center[0].f7NavbarLeftOffset = -(currLeft + diff) * inverter;
                     center[0].f7NavbarRightOffset = (navbarWidth - currLeft - diff - centerWidth) * inverter;
@@ -643,7 +643,7 @@
                     }
                     if (onLeft) right.transform('translate3d(' + right[0].f7NavbarLeftOffset + 'px, 0, 0)');
                 }
-                
+
             });
         };
         app.hideNavbar = function (viewContainer) {
@@ -667,7 +667,7 @@
                 vc.removeClass('hiding-toolbar');
             });
         };
-        
+
         /*======================================================
         ************   Searchbar   ************
         ======================================================*/
@@ -699,21 +699,21 @@
             else {
                 notFound = $(notFound);
             }
-        
+
             // Cancel button
             var cancelWidth, cancelMarginProp = app.rtl ? 'margin-left' : 'margin-right';
             if (cancel.length > 0) {
                 cancelWidth = cancel.width();
-        
+
                 cancel.css(cancelMarginProp, - cancelWidth + 'px');
             }
-        
+
             // Handlers
             function disableSearchbar() {
                 input.val('').trigger('change');
                 searchbar.removeClass('searchbar-active searchbar-not-empty');
                 if (cancel.length > 0) cancel.css(cancelMarginProp, - cancelWidth + 'px');
-                
+
                 if (searchList) searchbarOverlay.removeClass('searchbar-overlay-active');
                 if (app.device.ios) {
                     setTimeout(function () {
@@ -724,7 +724,7 @@
                     input.blur();
                 }
             }
-        
+
             // Activate
             function enableSearchbar() {
                 if (app.device.ios) {
@@ -733,7 +733,7 @@
                         searchbar.addClass('searchbar-active');
                         if (cancel.length > 0) cancel.css(cancelMarginProp, '0px');
                         searchList.trigger('enableSearch');
-        
+
                     }, 400);
                 }
                 else {
@@ -743,13 +743,13 @@
                     searchList.trigger('disableSearch');
                 }
             }
-        
+
             // Clear
             function clearSearchbar() {
                 input.val('').trigger('change');
                 searchList.trigger('clearSearch');
             }
-        
+
             // Change
             function searchValue() {
                 setTimeout(function () {
@@ -765,12 +765,12 @@
                     if (searchList.length > 0 && searchIn) search(value);
                 }, 0);
             }
-        
+
             //Prevent submit
             function preventSubmit(e) {
                 e.preventDefault();
             }
-        
+
             function attachEvents(destroy) {
                 var method = destroy ? 'off' : 'on';
                 searchbar[method]('submit', preventSubmit);
@@ -784,10 +784,10 @@
                 attachEvents(true);
             }
             searchbar[0].f7DestroySearchbar = detachEvents;
-        
+
             // Attach events
             attachEvents();
-        
+
             // Search
             function search(query) {
                 var values = query.trim().toLowerCase().split(' ');
@@ -810,7 +810,7 @@
                         foundItems.push(el[0]);
                     }
                 });
-        
+
                 if (app.params.searchbarHideDividers) {
                     searchList.find('.item-divider, .list-group-title').each(function () {
                         var title = $(this);
@@ -839,9 +839,9 @@
                         }
                     });
                 }
-        
+
                 searchList.trigger('search', {query: query, foundItems: foundItems});
-        
+
                 if (foundItems.length === 0) {
                     notFound.show();
                     found.hide();
@@ -851,7 +851,7 @@
                     found.show();
                 }
             }
-        
+
             // Destroy on page remove
             function pageBeforeRemove() {
                 detachEvents();
@@ -860,7 +860,7 @@
             if (pageContainer.hasClass('page')) {
                 pageContainer.on('pageBeforeRemove', pageBeforeRemove);
             }
-                
+
         };
         app.destroySearchbar = function (pageContainer) {
             pageContainer = $(pageContainer);
@@ -868,7 +868,7 @@
             if (searchbar.length === 0) return;
             if (searchbar[0].f7DestroySearchbar) searchbar[0].f7DestroySearchbar();
         };
-        
+
         /*======================================================
         ************   Messagebar   ************
         ======================================================*/
@@ -880,18 +880,18 @@
             var pageContent = messagebar.parents('.page').find('.page-content');
             var initialBarHeight = messagebar[0].offsetHeight;
             var initialAreaHeight = textarea[0].offsetHeight;
-        
+
             //Prevent submit
             function preventSubmit(e) {
                 e.preventDefault();
             }
-        
+
             // Resize textarea
             function sizeTextarea() {
-                
+
                 // Reset
                 textarea.css({'height': ''});
-                
+
                 var height = textarea[0].offsetHeight;
                 var diff = height - textarea[0].clientHeight;
                 var scrollHeight = textarea[0].scrollHeight;
@@ -924,9 +924,9 @@
                 to = setTimeout(function () {
                     sizeTextarea();
                 }, 0);
-                    
+
             }
-        
+
             function attachEvents(destroy) {
                 var method = destroy ? 'off' : 'on';
                 messagebar[method]('submit', preventSubmit);
@@ -935,12 +935,12 @@
             function detachEvents() {
                 attachEvents(true);
             }
-            
+
             messagebar[0].f7DestroyMessagebar = detachEvents;
-        
+
             // Attach events
             attachEvents();
-        
+
             // Destroy on page remove
             function pageBeforeRemove() {
                 detachEvents();
@@ -968,7 +968,7 @@
             }
             if (index !== false) app.cache.splice(index, 1);
         };
-        
+
         // XHR
         app.xhr = false;
         app.get = function (url, view, callback) {
@@ -990,7 +990,7 @@
                     }
                 }
             }
-        
+
             app.xhr = $.ajax({
                 url: url,
                 method: 'GET',
@@ -1018,16 +1018,16 @@
                 }
             });
             if (view) view.xhr = app.xhr;
-        
+
             return app.xhr;
         };
-        
+
         /*======================================================
         ************   Pages   ************
         ======================================================*/
         // Page Callbacks API
         app.pageCallbacks = {};
-        
+
         app.onPage = function (callbackName, pageName, callback) {
             if (pageName && pageName.split(' ').length > 1) {
                 var pageNames = pageName.split(' ');
@@ -1065,7 +1065,7 @@
                 trigger: callback
             };
         };
-        
+
         //Create callbacks methods dynamically
         function createPageCallback(callbackName) {
             var capitalized = callbackName.replace(/^./, function (match) {
@@ -1075,13 +1075,13 @@
                 return app.onPage(callbackName, pageName, callback);
             };
         }
-        
+
         var pageCallbacksNames = ('beforeInit init beforeAnimation afterAnimation beforeRemove').split(' ');
         for (var i = 0; i < pageCallbacksNames.length; i++) {
             app.pageCallbacks[pageCallbacksNames[i]] = {};
             createPageCallback(pageCallbacksNames[i]);
         }
-        
+
         app.triggerPageCallbacks = function (callbackName, pageName, pageData) {
             var allPagesCallbacks = app.pageCallbacks[callbackName]['*'];
             if (allPagesCallbacks) {
@@ -1095,7 +1095,7 @@
                 callbacks[i](pageData);
             }
         };
-        
+
         // On Page Init Callback
         app.pageInitCallback = function (view, pageContainer, url, position, navbarInnerContainer) {
             if (pageContainer.f7PageInitialized) return;
@@ -1110,22 +1110,22 @@
                 from: position,
                 navbarInnerContainer: navbarInnerContainer
             };
-        
+
             // Store pagedata in page
             pageContainer.f7PageData = pageData;
-        
+
             // Update View's activePage
             if (view) view.activePage = pageData;
-        
+
             // Before Init Callbacks
             app.pluginHook('pageBeforeInit', pageData);
             if (app.params.onPageBeforeInit) app.params.onPageBeforeInit(app, pageData);
             app.triggerPageCallbacks('beforeInit', pageData.name, pageData);
             $(pageData.container).trigger('pageBeforeInit', {page: pageData});
-        
+
             // Init page
             app.initPage(pageContainer);
-        
+
             // Init Callback
             app.pluginHook('pageInit', pageData);
             if (app.params.onPageInit) app.params.onPageInit(app, pageData);
@@ -1159,24 +1159,24 @@
             };
             var oldPage = params.oldPage,
                 newPage = params.newPage;
-        
+
             // Update page date
             params.pageContainer.f7PageData = pageData;
-        
+
             if (callback === 'after') {
                 app.pluginHook('pageAfterAnimation', pageData);
                 if (app.params.onPageAfterAnimation) app.params.onPageAfterAnimation(app, pageData);
                 app.triggerPageCallbacks('afterAnimation', pageData.name, pageData);
                 $(pageData.container).trigger('pageAfterAnimation', {page: pageData});
-        
+
             }
             if (callback === 'before') {
                 // Add data-page on view
                 $(view.container).attr('data-page', pageData.name);
-        
+
                 // Update View's activePage
                 if (view) view.activePage = pageData;
-        
+
                 // Hide/show navbar dynamically
                 if (newPage.hasClass('no-navbar') && !oldPage.hasClass('no-navbar')) {
                     view.hideNavbar();
@@ -1198,7 +1198,7 @@
                 $(pageData.container).trigger('pageBeforeAnimation', {page: pageData});
             }
         };
-        
+
         // Init Page Events and Manipulations
         app.initPage = function (pageContainer) {
             // Size navbars on page load
@@ -1220,11 +1220,11 @@
             // Init message bar
             if (app.initMessagebar) app.initMessagebar(pageContainer);
         };
-        
+
         // Load Page
         app.allowPageChange = true;
         app._tempDomElement = document.createElement('div');
-        
+
         // Search required element in parsed content in related view
         function _findElement(selector, container, view) {
             container = $(container);
@@ -1244,7 +1244,7 @@
                 return undefined;
             }
         }
-        
+
         // Set pages classess for animation
         function _animatePages(leftPage, rightPage, direction, view) {
             // Loading new page
@@ -1258,7 +1258,7 @@
                 rightPage.removeClass('page-on-center').addClass('page-from-center-to-right');
             }
         }
-        
+
         // Set navbars classess for animation
         function _animateNavbars(leftNavbarInner, rightNavbarInner, direction, view) {
             // Loading new page
@@ -1273,7 +1273,7 @@
                         }
                     }
                 });
-        
+
                 leftNavbarInner.removeClass('navbar-on-center').addClass('navbar-from-center-to-left');
                 leftNavbarInner.find('.sliding').each(function () {
                     var sliding = $(this);
@@ -1300,7 +1300,7 @@
                         }
                     }
                 });
-        
+
                 rightNavbarInner.removeClass('navbar-on-center').addClass('navbar-from-center-to-right');
                 rightNavbarInner.find('.sliding').each(function () {
                     var sliding = $(this);
@@ -1316,14 +1316,14 @@
         function _load(view, url, content, animatePages) {
             var viewContainer = $(view.container), pagesContainer = $(view.pagesContainer),
                 newPage, oldPage, pagesInView, i, oldNavbarInner, newNavbarInner, navbar, dynamicNavbar;
-        
+
             if (typeof animatePages === 'undefined') animatePages = view.params.animatePages;
-        
+
             // Plugin hook
             app.pluginHook('loadPage', view, url, content);
-        
+
             app._tempDomElement.innerHTML = '';
-        
+
             // Parse DOM
             if (url || (typeof content === 'string')) {
                 app._tempDomElement.innerHTML = content;
@@ -1336,18 +1336,18 @@
                     $(app._tempDomElement).append(content);
                 }
             }
-        
+
             // Find new page
             newPage = _findElement('.page', app._tempDomElement, view);
-        
+
             // If page not found exit
             if (!newPage) {
                 view.allowPageChange = true;
                 return;
             }
-        
+
             newPage.addClass('page-on-right');
-        
+
             // Find old page (should be the last one) and remove older pages
             pagesInView = pagesContainer.children('.page:not(.cached)');
             if (pagesInView.length > 1) {
@@ -1368,9 +1368,9 @@
                     $(pagesInView[i]).addClass('cached');
                 }
             }
-        
+
             oldPage = pagesContainer.children('.page:not(.cached)');
-        
+
             // Dynamic navbar
             if (view.params.dynamicNavbar) {
                 dynamicNavbar = true;
@@ -1401,11 +1401,11 @@
                 newNavbarInner.addClass('navbar-on-right');
                 navbar.append(newNavbarInner[0]);
             }
-        
+
             // save content areas into view's cache
             if (!url) {
                 url = '#content-' + view.history.length;
-        
+
                 if (!view.params.domCache) {
                     if (view.history.length === 1) {
                         view.contentCache[view.history[0]] = { nav: oldNavbarInner, page: oldPage };
@@ -1413,22 +1413,22 @@
                     view.contentCache[url] = { nav: newNavbarInner, page: newPage };
                 }
             }
-        
+
             // Update View history
             view.url = url;
             view.history.push(url);
-        
+
             // Append Old Page and add classes for animation
             pagesContainer.append(newPage[0]);
-        
+
             // Page Init Events
             app.pageInitCallback(view, newPage[0], url, 'right', dynamicNavbar ? newNavbarInner[0] : undefined);
-        
+
             // Navbar init event
             if (dynamicNavbar) {
                 app.navbarInitCallback(view, newPage[0], navbar[0], newNavbarInner[0], url, 'right');
             }
-        
+
             if (dynamicNavbar && animatePages) {
                 newNavbarInner.find('.sliding').each(function () {
                     var sliding = $(this);
@@ -1442,10 +1442,10 @@
             }
             // Force reLayout
             var clientLeft = newPage[0].clientLeft;
-        
+
             // Before Anim Callback
             app.pageAnimCallbacks('before', view, {pageContainer: newPage[0], url: url, position: 'right', oldPage: oldPage, newPage: newPage});
-        
+
             function afterAnimation() {
                 view.allowPageChange = true;
                 newPage.removeClass('page-from-right-to-center page-on-right').addClass('page-on-center');
@@ -1457,17 +1457,17 @@
                 app.pageAnimCallbacks('after', view, {pageContainer: newPage[0], url: url, position: 'right', oldPage: oldPage, newPage: newPage});
                 if (app.params.pushState) app.pushStateClearQueue();
             }
-        
+
             if (animatePages) {
                 // Set pages before animation
                 _animatePages(oldPage, newPage, 'to-left', view);
-        
+
                 // Dynamic navbar animation
                 if (dynamicNavbar) {
                     setTimeout(function () {
                         _animateNavbars(oldNavbarInner, newNavbarInner, 'to-left', view);
                     }, 0);
-        
+
                 }
                 newPage.animationEnd(function (e) {
                     afterAnimation();
@@ -1479,13 +1479,13 @@
         }
         function preprocess(content, url, next) {
             //Modified by Greg Keys, added callback
-            
+
             // Plugin hook
             app.pluginHook('preprocess', content, url, next);
-            
+
             // Preprocess by plugin
             content = app.pluginProcess('preprocess', content);
-        
+
             if (app.params.preprocess) {
                 content = app.params.preprocess(content, url, next);
                 //this should handle backwards compatibility
@@ -1531,7 +1531,7 @@
                     var pushStateRoot = app.params.pushStateRoot || '';
                     if (pushState) history.pushState({url: url}, '', pushStateRoot + app.params.pushStateSeparator + url);
                 }
-                
+
                 preprocess(data, url, function (data) {
                     _load(view, url, data, animatePages);
                 });
@@ -1539,48 +1539,48 @@
         };
         app.goBack = function (view, url, animatePages, preloadOnly, pushState) {
             if (!view.allowPageChange) return false;
-        
+
             view.allowPageChange = false;
             if (app.xhr && view.xhr && view.xhr === app.xhr) {
                 app.xhr.abort();
                 app.xhr = false;
             }
             app.pluginHook('goBack', view, url, preloadOnly);
-        
+
             if (app.params.pushState)  {
                 if (typeof pushState === 'undefined') pushState = true;
                 if (!preloadOnly && history.state && pushState) {
                     history.back();
                 }
             }
-        
+
             var viewContainer = $(view.container),
                 pagesContainer = $(view.pagesContainer),
                 pagesInView = pagesContainer.children('.page'),
                 oldPage, newPage, oldNavbarInner, newNavbarInner, navbar, dynamicNavbar;
-        
+
             if (typeof animatePages === 'undefined') animatePages = view.params.animatePages;
-        
+
             function _animate() {
                 // Page before animation callback
                 app.pageAnimCallbacks('before', view, {pageContainer: newPage[0], url: url, position: 'left', oldPage: oldPage, newPage: newPage});
-        
+
                 function afterAnimation() {
                     app.afterGoBack(view, oldPage[0], newPage[0]);
                     app.pageAnimCallbacks('after', view, {pageContainer: newPage[0], url: url, position: 'left', oldPage: oldPage, newPage: newPage});
                 }
-        
+
                 if (animatePages) {
                     // Set pages before animation
                     _animatePages(newPage, oldPage, 'to-right', view);
-        
+
                     // Dynamic navbar animation
                     if (dynamicNavbar) {
                         setTimeout(function () {
                             _animateNavbars(newNavbarInner, oldNavbarInner, 'to-right', view);
                         }, 0);
                     }
-                    
+
                     newPage.animationEnd(function () {
                         afterAnimation();
                     });
@@ -1592,17 +1592,17 @@
             }
             function _preload() {
                 newPage = _findElement('.page', app._tempDomElement, view);
-        
+
                 // If pages not found or there are still more than one, exit
                 if (!newPage) {
                     view.allowPageChange = true;
                     return;
                 }
                 newPage.addClass('page-on-left');
-        
+
                 // Find old page (should be the only one)
                 oldPage = $(pagesInView[0]);
-        
+
                 // Dynamic navbar
                 if (view.params.dynamicNavbar) {
                     dynamicNavbar = true;
@@ -1611,9 +1611,9 @@
                     if (!newNavbarInner) {
                         dynamicNavbar = false;
                     }
-                    
+
                 }
-        
+
                 if (dynamicNavbar) {
                     navbar = viewContainer.find('.navbar');
                     oldNavbarInner = navbar.find('.navbar-inner');
@@ -1623,19 +1623,19 @@
                         oldNavbarInner = navbar.find('.navbar-inner');
                     }
                     navbar.prepend(newNavbarInner[0]);
-                    
+
                 }
                 // Prepend new Page and add classes for animation
                 pagesContainer.prepend(newPage[0]);
-        
+
                 // Page Init Events
                 app.pageInitCallback(view, newPage[0], url, 'left', dynamicNavbar ? newNavbarInner[0] : undefined);
-        
+
                 // Navbar init event
                 if (dynamicNavbar) {
                     app.navbarInitCallback(view, newPage[0], navbar[0], newNavbarInner[0], url, 'right');
                 }
-        
+
                 if (dynamicNavbar && newNavbarInner.hasClass('navbar-on-left') && animatePages) {
                     newNavbarInner.find('.sliding').each(function () {
                         var sliding = $(this);
@@ -1643,30 +1643,30 @@
                             if (sliding.hasClass('left') && sliding.find('.back .icon').length > 0) {
                                 sliding.find('.back .icon').transform('translate3d(' + (-this.f7NavbarLeftOffset) + 'px,0,0)');
                             }
-                            if (sliding.hasClass('center') && oldNavbarInner.find('.left .back .icon').length > 0) {
+                            if (sliding.hasClass('center') && oldNavbarInner.find('.left .back .icon').length > 0 && !oldNavbarInner.find('.left .icon-only').length) {
                                 this.f7NavbarLeftOffset += oldNavbarInner.find('.left .back span')[0].offsetLeft;
                             }
                         }
                         sliding.transform('translate3d(' + (this.f7NavbarLeftOffset) + 'px,0,0)');
                     });
                 }
-        
+
                 // Exit if we need only to preload page
                 if (preloadOnly) {
                     newPage.addClass('page-on-left');
                     view.allowPageChange = true;
                     return;
                 }
-        
+
                 // Update View's URL
                 view.url = url;
-        
+
                 // Force reLayout
                 var clientLeft = newPage[0].clientLeft;
-        
+
                 _animate();
             }
-        
+
             if (pagesInView.length > 1) {
                 // Exit if only preloadOnly
                 if (preloadOnly) {
@@ -1675,11 +1675,11 @@
                 }
                 // Update View's URL
                 view.url = view.history[view.history.length - 2];
-        
+
                 // Define old and new pages
                 newPage = $(pagesInView[pagesInView.length - 2]);
                 oldPage = $(pagesInView[pagesInView.length - 1]);
-        
+
                 // Dynamic navbar
                 if (view.params.dynamicNavbar) {
                     dynamicNavbar = true;
@@ -1699,7 +1699,7 @@
                     view.allowPageChange = true;
                     return;
                 }
-                
+
                 // Check current url is in cache?
                 if (!view.params.domCache && (url in view.contentCache)) {
                     var _cache = view.contentCache[url];
@@ -1708,7 +1708,7 @@
                     _preload();
                     return;
                 }
-        
+
                 app.get(url, view, function (data, error) {
                     if (error) {
                         view.allowPageChange = true;
@@ -1734,7 +1734,7 @@
                 var inners = $(view.container).find('.navbar-inner:not(.cached)');
                 var oldNavbar = $(inners[1]).remove();
                 var newNavbar = $(inners[0]).removeClass('navbar-on-left navbar-from-left-to-center').addClass('navbar-on-center');
-        
+
                 if (app.params.preloadPreviousPage && view.params.domCache) {
                     var cachedNavs = $(view.container).find('.navbar-inner.cached');
                     $(cachedNavs[cachedNavs.length - 1]).removeClass('cached');
@@ -1742,15 +1742,15 @@
             }
             // Update View's History
             var previousURL = view.history.pop();
-            
+
             // Check previous page is content based only and remove it from content cache
             if (!view.params.domCache && previousURL && previousURL.indexOf('#content-') > -1 && (previousURL in view.contentCache)) {
                 view.contentCache[previousURL] = null;
                 delete view.contentCache[previousURL];
             }
-            
+
             if (app.params.pushState) app.pushStateClearQueue();
-        
+
             // Preload previous page
             if (app.params.preloadPreviousPage) {
                 if (view.params.domCache) {
@@ -1759,9 +1759,9 @@
                 }
                 app.goBack(view, false, undefined, true);
             }
-        
+
         };
-        
+
         /*======================================================
         ************   Modals   ************
         ======================================================*/
@@ -1802,11 +1802,11 @@
                             .replace(/{{buttons}}/g, buttonsHTML)
                             .replace(/{{noButtons}}/g, !params.buttons || params.buttons.length === 0 ? 'modal-no-buttons' : '');
             _modalTemplateTempDiv.innerHTML = modalHTML;
-        
+
             var modal = $(_modalTemplateTempDiv).children();
-        
+
             $('body').append(modal[0]);
-            
+
             // Add events on buttons
             modal.find('.modal-button').each(function (index, el) {
                 $(el).on('click', function (e) {
@@ -1940,11 +1940,11 @@
         // Action Sheet
         app.actions = function (params) {
             params = params || [];
-            
+
             if (params.length > 0 && !$.isArray(params[0])) {
                 params = [params];
             }
-        
+
             var actionsTemplate = app.params.modalActionsTemplate;
             var buttonsHTML = '';
             for (var i = 0; i < params.length; i++) {
@@ -1959,11 +1959,11 @@
                 }
             }
             var modalHTML = actionsTemplate.replace(/{{buttons}}/g, buttonsHTML);
-        
+
             _modalTemplateTempDiv.innerHTML = modalHTML;
             var modal = $(_modalTemplateTempDiv).children();
             $('body').append(modal[0]);
-        
+
             var groups = modal.find('.actions-modal-group');
             groups.each(function (index, el) {
                 var groupIndex = index;
@@ -2000,7 +2000,7 @@
                 modal.append('<div class="popover-angle"></div>');
             }
             modal.show();
-        
+
             function sizePopover() {
                 modal.css({left: '', top: ''});
                 var modalWidth =  modal.width();
@@ -2008,7 +2008,7 @@
                 var modalAngle = modal.find('.popover-angle');
                 var modalAngleSize = modalAngle.width() / 2;
                 modalAngle.removeClass('on-left on-right on-top on-bottom').css({left: '', top: ''});
-        
+
                 var targetWidth = target.outerWidth();
                 var targetHeight = target.outerHeight();
                 var targetOffset = target.offset();
@@ -2016,16 +2016,16 @@
                 if (targetParentPage.length > 0) {
                     targetOffset.top = targetOffset.top - targetParentPage[0].scrollTop;
                 }
-        
+
                 var windowHeight = $(window).height();
                 var windowWidth = $(window).width();
-        
+
                 var modalTop = 0;
                 var modalLeft = 0;
                 var diff = 0;
                 // Top Position
                 var modalPosition = 'top';
-        
+
                 if ((modalHeight + modalAngleSize) < targetOffset.top) {
                     // On top
                     modalTop = targetOffset.top - modalHeight - modalAngleSize;
@@ -2072,21 +2072,21 @@
                     }
                     modalAngle.css({top: (modalHeight / 2 - modalAngleSize + diff) + 'px'});
                 }
-        
+
                 // Apply Styles
                 modal.css({top: modalTop + 'px', left: modalLeft + 'px'});
             }
             sizePopover();
-        
+
             $(window).on('resize', sizePopover);
             modal.on('close', function () {
                 $(window).off('resize', sizePopover);
             });
-            
+
             if (modal.find('.' + app.params.viewClass).length > 0) {
                 app.sizeNavbars(modal.find('.' + app.params.viewClass)[0]);
             }
-        
+
             app.openModal(modal);
             return modal[0];
         };
@@ -2124,12 +2124,12 @@
         };
         app.openModal = function (modal) {
             modal = $(modal);
-        
+
             var isPopover = modal.hasClass('popover');
             var isPopup = modal.hasClass('popup');
             var isLoginScreen = modal.hasClass('login-screen');
             if (!isPopover && !isPopup && !isLoginScreen) modal.css({marginTop: - Math.round(modal.outerHeight() / 2) + 'px'});
-        
+
             var overlay;
             if (!isLoginScreen) {
                 if ($('.modal-overlay').length === 0 && !isPopup) {
@@ -2140,13 +2140,13 @@
                 }
                 overlay = isPopup ? $('.popup-overlay') : $('.modal-overlay');
             }
-        
+
             //Make sure that styles are applied, trigger relayout;
             var clientLeft = modal[0].clientLeft;
-        
+
             // Trugger open event
             modal.trigger('open');
-        
+
             // Classes for transition in
             if (!isLoginScreen) overlay.addClass('modal-overlay-visible');
             modal.removeClass('modal-out').addClass('modal-in').transitionEnd(function (e) {
@@ -2163,19 +2163,19 @@
             var isPopover = modal.hasClass('popover');
             var isPopup = modal.hasClass('popup');
             var isLoginScreen = modal.hasClass('login-screen');
-        
+
             var removeOnClose = modal.hasClass('remove-on-close');
-        
+
             var overlay = isPopup ? $('.popup-overlay') : $('.modal-overlay');
             overlay.removeClass('modal-overlay-visible');
-        
+
             modal.trigger('close');
-            
+
             if (!isPopover) {
                 modal.removeClass('modal-in').addClass('modal-out').transitionEnd(function (e) {
                     if (modal.hasClass('modal-out')) modal.trigger('closed');
                     else modal.trigger('opened');
-                    
+
                     if (isPopup || isLoginScreen) {
                         modal.removeClass('modal-out').hide();
                         if (removeOnClose && modal.length > 0) modal.remove();
@@ -2191,7 +2191,7 @@
             }
             return true;
         };
-        
+
         /*======================================================
         ************   Panels   ************
         ======================================================*/
@@ -2208,14 +2208,14 @@
             if (panel.find('.' + app.params.viewClass).length > 0) {
                 if (app.sizeNavbars) app.sizeNavbars(panel.find('.' + app.params.viewClass)[0]);
             }
-        
+
             // Trigger reLayout
             var clientLeft = panel[0].clientLeft;
-            
+
             // Transition End;
             var transitionEndTarget = effect === 'reveal' ? $('.' + app.params.viewsClass) : panel;
             var openedTriggered = false;
-            
+
             function panelTransitionEnd() {
                 transitionEndTarget.transitionEnd(function (e) {
                     if ($(e.target).is(transitionEndTarget)) {
@@ -2231,7 +2231,7 @@
                 });
             }
             panelTransitionEnd();
-        
+
             $('body').addClass('with-panel-' + panelPosition + '-' + effect);
             return true;
         };
@@ -2244,7 +2244,7 @@
             var transitionEndTarget = effect === 'reveal' ? $('.' + app.params.viewsClass) : activePanel;
             activePanel.trigger('close');
             app.allowPanelOpen = false;
-        
+
             transitionEndTarget.transitionEnd(function () {
                 if (activePanel.hasClass('active')) return;
                 activePanel.css({display: ''});
@@ -2252,7 +2252,7 @@
                 $('body').removeClass('panel-closing');
                 app.allowPanelOpen = true;
             });
-        
+
             $('body').addClass('panel-closing').removeClass('with-panel-' + panelPosition + '-' + effect);
         };
         /*======================================================
@@ -2261,12 +2261,12 @@
         app.initSwipePanels = function () {
             var panel = $('.panel.panel-' + app.params.swipePanel);
             if (panel.length === 0) return;
-        
+
             var panelOverlay = $('.panel-overlay');
             var isTouched, isMoved, isScrolling, touchesStart = {}, touchStartTime, touchesDiff, translate, opened, panelWidth, effect, direction, side;
             var views = $('.' + app.params.viewsClass);
             side = app.params.swipePanel;
-        
+
             function handleTouchStart(e) {
                 if (!app.allowPanelOpen || !app.params.swipePanel || isTouched) return;
                 if ($('.modal-in, .photo-browser-in').length > 0) return;
@@ -2295,7 +2295,7 @@
                 isMoved = false;
                 isTouched = true;
                 isScrolling = undefined;
-                
+
                 touchStartTime = (new Date()).getTime();
                 direction = undefined;
             }
@@ -2318,7 +2318,7 @@
                     else {
                         direction = 'to-left';
                     }
-        
+
                     if (
                         side === 'left' &&
                         (
@@ -2334,7 +2334,7 @@
                         return;
                     }
                 }
-        
+
                 if (app.params.swipePanelNoFollow) {
                     var timeDiff = (new Date()).getTime() - touchStartTime;
                     if (timeDiff < 300) {
@@ -2351,7 +2351,7 @@
                     isMoved = false;
                     return;
                 }
-        
+
                 if (!isMoved) {
                     effect = panel.hasClass('panel-cover') ? 'cover' : 'reveal';
                     panel.show();
@@ -2363,15 +2363,15 @@
                         if (app.sizeNavbars) app.sizeNavbars(panel.find('.' + app.params.viewClass)[0]);
                     }
                 }
-        
+
                 isMoved = true;
-        
+
                 e.preventDefault();
                 var threshold = opened ? 0 : -app.params.swipePanelThreshold;
                 if (side === 'right') threshold = -threshold;
-                
+
                 touchesDiff = pageX - touchesStart.x + threshold;
-        
+
                 if (side === 'right') {
                     translate = touchesDiff  - (opened ? panelWidth : 0);
                     if (translate > 0) translate = 0;
@@ -2407,7 +2407,7 @@
                 var timeDiff = (new Date()).getTime() - touchStartTime;
                 var action;
                 var edge = (translate === 0 || Math.abs(translate) === panelWidth);
-        
+
                 if (!opened) {
                     if (translate === 0) {
                         action = 'reset';
@@ -2484,7 +2484,7 @@
             $(document).on(app.touchEvents.move, handleTouchMove);
             $(document).on(app.touchEvents.end, handleTouchEnd);
         };
-        
+
         /*======================================================
         ************   Messages   ************
         ======================================================*/
@@ -2535,7 +2535,7 @@
                     message.addClass('message-last');
                 }
                 else message.removeClass('message-last');
-        
+
                 if (prev.length === 0) {
                     message.addClass('message-first');
                 }
@@ -2556,7 +2556,7 @@
                     message.addClass('message-last');
                 }
                 else message.removeClass('message-last');
-        
+
                 if (prev.length === 0) {
                     message.addClass('message-first');
                 }
@@ -2580,7 +2580,7 @@
             if (newScroll === currentScroll) return;
             messagesContent.scrollTop(newScroll, 300);
         };
-        
+
         /*===============================================================================
         ************   Swipeout Actions (Swipe to delete)   ************
         ===============================================================================*/
@@ -2602,8 +2602,8 @@
                     }
                 }
             });
-            
-        
+
+
             function handleTouchStart(e) {
                 if (!app.allowSwipeout) return;
                 isMoved = false;
@@ -2624,7 +2624,7 @@
                     isTouched = false;
                     return;
                 }
-        
+
                 if (!isMoved) {
                     if ($('.list-block.sortable-opened').length > 0) return;
                     /*jshint validthis:true */
@@ -2636,13 +2636,13 @@
                     swipeOutEl.removeClass('transitioning');
                 }
                 isMoved = true;
-        
+
                 e.preventDefault();
-                
+
                 if (app.rtl) e.f7PreventSwipeBack = true;
                 touchesDiff = pageX - touchesStart.x;
                 translate = touchesDiff  - (opened ? swipeOutActionsWidth : 0);
-        
+
                 if (translate > 0) {
                     if (!opened) {
                         isTouched = isMoved = false;
@@ -2654,7 +2654,7 @@
                     translate = -swipeOutActionsWidth - Math.pow(-translate - swipeOutActionsWidth, 0.8);
                 }
                 e.f7PreventPanelSwipe = true;
-        
+
                 if (app.params.swipeoutNoFollow) {
                     if (touchesDiff < 0 && !opened) {
                         app.swipeoutOpen(swipeOutEl);
@@ -2673,7 +2673,7 @@
                     swipeOutEl.trigger('swipeout', {progress: Math.abs(translate / swipeOutActionsWidth)});
                     swipeOutContent.transform('translate3d(' + translate + 'px,0,0)');
                 }
-        
+
             }
             function handleTouchEnd(e) {
                 if (!isTouched || !isMoved) {
@@ -2750,7 +2750,7 @@
                 $(document).on(app.touchEvents.move, '.list-block li.swipeout', handleTouchMove);
                 $(document).on(app.touchEvents.end, '.list-block li.swipeout', handleTouchEnd);
             }
-                
+
         };
         app.swipeoutOpen = function (el) {
             el = $(el);
@@ -2778,7 +2778,7 @@
                     el.trigger('closed');
                     app.allowSwipeout = true;
                 });
-        
+
             if (app.swipeoutOpenedEl && app.swipeoutOpenedEl[0] === el[0]) app.swipeoutOpenedEl = undefined;
         };
         app.swipeoutDelete = function (el) {
@@ -2796,7 +2796,7 @@
             var translate = '-100%';
             el.find('.swipeout-content').transform('translate3d(' + translate + ',0,0)');
         };
-        
+
         /*===============================================================================
         ************   Sortable   ************
         ===============================================================================*/
@@ -2828,7 +2828,7 @@
         };
         app.initSortable = function () {
             var isTouched, isMoved, touchStartY, touchesDiff, sortingEl, sortingItems, minTop, maxTop, insertAfter, insertBefore, sortableContainer;
-            
+
             function handleTouchStart(e) {
                 isMoved = false;
                 isTouched = true;
@@ -2849,10 +2849,10 @@
                     sortableContainer.addClass('sortable-sorting');
                     minTop = sortingEl[0].offsetTop;
                     maxTop = sortingEl.parent().height() - sortingEl[0].offsetTop - sortingEl.height();
-                    
+
                 }
                 isMoved = true;
-        
+
                 e.preventDefault();
                 e.f7PreventPanelSwipe = true;
                 touchesDiff = pageY - touchStartY;
@@ -2860,16 +2860,16 @@
                 if (translate < -minTop) translate = -minTop;
                 if (translate > maxTop) translate = maxTop;
                 sortingEl.transform('translate3d(0,' + translate + 'px,0)');
-        
+
                 insertBefore = insertAfter = undefined;
-        
+
                 sortingItems.each(function () {
                     var currentEl = $(this);
                     if (currentEl[0] === sortingEl[0]) return;
                     var currentElOffset = currentEl[0].offsetTop;
                     var currentElHeight = currentEl.height();
                     var sortingElOffset = sortingEl[0].offsetTop + translate;
-        
+
                     if ((sortingElOffset >= currentElOffset - currentElHeight / 2) && sortingEl.index() < currentEl.index()) {
                         currentEl.transform('translate3d(0,-100%,0)');
                         insertAfter = currentEl;
@@ -2917,33 +2917,33 @@
                 $(document).on(app.touchEvents.move, handleTouchMove);
                 $(document).on(app.touchEvents.end, handleTouchEnd);
             }
-                
+
         };
-        
+
         /*===============================================================================
         ************   Smart Select   ************
         ===============================================================================*/
         app.initSmartSelects = function (pageContainer) {
             var page = $(pageContainer);
             if (page.length === 0) return;
-        
+
             var selects = page.find('.smart-select');
             if (selects.length === 0) return;
-        
+
             selects.each(function () {
                 var smartSelect = $(this);
-        
+
                 var $select = smartSelect.find('select');
                 if ($select.length === 0) return;
-        
+
                 var select = $select[0];
                 if (select.length === 0) return;
-        
+
                 var valueText = [];
                 for (var i = 0; i < select.length; i++) {
                     if (select[i].selected) valueText.push(select[i].textContent.trim());
                 }
-        
+
                 var itemAfter = smartSelect.find('.item-after');
                 if (itemAfter.length === 0) {
                     smartSelect.find('.item-inner').append('<div class="item-after">' + valueText.join(', ') + '</div>');
@@ -2951,20 +2951,20 @@
                 else {
                     itemAfter.text(valueText);
                 }
-                
+
             });
-            
+
         };
         app.smartSelectOpen = function (smartSelect) {
             smartSelect = $(smartSelect);
             if (smartSelect.length === 0) return;
-        
+
             // Find related view
             var view = smartSelect.parents('.' + app.params.viewClass);
             if (view.length === 0) return;
             view = view[0].f7View;
             if (!view) return;
-        
+
             // Collect all values
             var select = smartSelect.find('select')[0];
             var $select = $(select);
@@ -2986,11 +2986,11 @@
                     disabled: select[i].disabled
                 };
             }
-        
+
             var pageTitle = smartSelect.attr('data-page-title') || smartSelect.find('.item-title').text();
             var backText = smartSelect.attr('data-back-text') || app.params.smartSelectBackText;
             var backOnSelect = smartSelect.attr('data-back-onselect') ? (smartSelect.attr('data-back-onselect') === 'true' ? true : false) : app.params.smartSelectBackOnSelect;
-        
+
             // Generate dynamic page layout
             var id = (new Date()).getTime();
             var inputType = select.multiple ? 'checkbox' : 'radio';
@@ -3035,18 +3035,18 @@
             if (smartSelect.parents('.navbar-fixed').length > 0) navbarLayout = 'fixed';
             // Page Layout
             var pageName = 'smart-select-' + inputName;
-        
+
             var noToolbar = smartSelect.parents('.page').hasClass('no-toolbar') ? 'no-toolbar' : '';
             var noNavbar  = smartSelect.parents('.page').hasClass('no-navbar')  ? 'no-navbar'  : 'navbar-' + navbarLayout;
-        
+
             var useSearchbar = typeof smartSelect.data('searchbar') === 'undefined' ? app.params.smartSelectSearchbar : (smartSelect.data('searchbar') === 'true' ? true : false);
             var searchbarPlaceholder, searchbarCancel;
-                
+
             if (useSearchbar) {
                 searchbarPlaceholder = smartSelect.data('searchbar-placeholder') || 'Search';
                 searchbarCancel = smartSelect.data('searchbar-cancel') || 'Cancel';
             }
-        
+
             var searchbarHTML =   '<form class="searchbar" data-search-list=".smart-select-list-' + id + '" data-search-in=".item-title">' +
                                     '<div class="searchbar-input">' +
                                         '<input type="search" placeholder="' + searchbarPlaceholder + '">' +
@@ -3055,7 +3055,7 @@
                                     '<a href="#" class="searchbar-cancel">' + searchbarCancel + '</a>' +
                                   '</form>' +
                                   '<div class="searchbar-overlay"></div>';
-        
+
             var pageHTML =
                 (navbarLayout === 'through' ? navbarHTML : '') +
                 '<div class="pages">' +
@@ -3072,7 +3072,7 @@
                 '    </div>' +
                 '  </div>' +
                 '</div>';
-        
+
             // Event Listeners on new page
             function handleInputs(e) {
                 var page = e.detail.page;
@@ -3098,7 +3098,7 @@
                             optionText = [smartSelect.find('option[value="' + value + '"]').text()];
                             select.value = value;
                         }
-                            
+
                         $select.trigger('change');
                         smartSelect.find('.item-after').text(optionText.join(', '));
                         if (backOnSelect && inputType === 'radio') {
@@ -3108,12 +3108,12 @@
                 }
             }
             $(document).on('pageInit', handleInputs);
-        
+
             // Load content
             view.loadContent(pageHTML);
-        
+
         };
-        
+
         /*======================================================
         ************   Pull To Refresh   ************
         ======================================================*/
@@ -3123,11 +3123,11 @@
                 eventsTarget = eventsTarget.find('.pull-to-refresh-content');
             }
             if (eventsTarget.length === 0) return;
-        
+
             var isTouched, isMoved, touchesStart = {}, isScrolling, touchesDiff, touchStartTime, container, refresh = false, useTranslate = false, startTranslate = 0, translate, scrollTop;
-        
+
             container = eventsTarget;
-        
+
             function handleTouchStart(e) {
                 if (isTouched) {
                     if (app.device.os === 'android') {
@@ -3142,7 +3142,7 @@
                 touchesStart.y = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
                 touchStartTime = (new Date()).getTime();
             }
-            
+
             function handleTouchMove(e) {
                 if (!isTouched) return;
                 var pageX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
@@ -3154,9 +3154,9 @@
                     isTouched = false;
                     return;
                 }
-        
+
                 scrollTop = container[0].scrollTop;
-        
+
                 if (!isMoved) {
                     /*jshint validthis:true */
                     container.removeClass('transitioning');
@@ -3174,7 +3174,7 @@
                 }
                 isMoved = true;
                 touchesDiff = pageY - touchesStart.y;
-                
+
                 if (touchesDiff > 0 && scrollTop <= 0 || scrollTop < 0) {
                     if (useTranslate) {
                         e.preventDefault();
@@ -3191,7 +3191,7 @@
                     }
                 }
                 else {
-                    
+
                     container.removeClass('pull-up');
                     refresh = false;
                     return;
@@ -3219,12 +3219,12 @@
                 isTouched = false;
                 isMoved = false;
             }
-        
+
             // Attach Events
             eventsTarget.on(app.touchEvents.start, handleTouchStart);
             eventsTarget.on(app.touchEvents.move, handleTouchMove);
             eventsTarget.on(app.touchEvents.end, handleTouchEnd);
-        
+
             // Detach Events on page remove
             var page = eventsTarget.hasClass('page') ? eventsTarget : eventsTarget.parents('.page');
             if (page.length === 0) return;
@@ -3232,13 +3232,13 @@
                 eventsTarget.off(app.touchEvents.start, handleTouchStart);
                 eventsTarget.off(app.touchEvents.move, handleTouchMove);
                 eventsTarget.off(app.touchEvents.end, handleTouchEnd);
-        
+
                 page.off('pageBeforeRemove', detachEvents);
             }
             page.on('pageBeforeRemove', detachEvents);
-        
+
         };
-        
+
         app.pullToRefreshDone = function (container) {
             container = $(container);
             if (container.length === 0) container = $('.pull-to-refresh-content.refreshing');
@@ -3283,7 +3283,7 @@
         app.detachInfiniteScroll = function (infiniteContent) {
             $(infiniteContent).off('scroll', handleInfiniteScroll);
         };
-        
+
         app.initInfiniteScroll = function (pageContainer) {
             pageContainer = $(pageContainer);
             var infiniteContent = pageContainer.find('.infinite-scroll');
@@ -3303,23 +3303,23 @@
             if (newTab.length === 0) return false;
             var tabs = newTab.parent('.tabs');
             if (tabs.length === 0) return false;
-        
+
             // Return swipeouts in hidden tabs
             app.allowSwipeout = true;
-        
+
             // Animated tabs
             var isAnimatedTabs = tabs.parent().hasClass('tabs-animated-wrap');
             if (isAnimatedTabs) {
                 tabs.transform('translate3d(' + -newTab.index() * 100 + '%,0,0)');
             }
-        
+
             // Remove active class from old tabs
             var oldTab = tabs.children('.tab.active').removeClass('active');
             // Add active class to new tab
             newTab.addClass('active');
             // Trigger 'show' event on new tab
             newTab.trigger('show');
-        
+
             // Update navbars in new tab
             if (!isAnimatedTabs && newTab.find('.navbar').length > 0) {
                 // Find tab's view
@@ -3328,7 +3328,7 @@
                 else viewContainer = newTab.parents('.' + app.params.viewClass)[0];
                 app.sizeNavbars(viewContainer);
             }
-        
+
             // Find related link for new tab
             if (tabLink) tabLink = $(tabLink);
             else {
@@ -3343,7 +3343,7 @@
                 }
             }
             if (tabLink.length === 0) return;
-        
+
             // Find related link for old tab
             var oldTabLink;
             if (oldTab && oldTab.length > 0) {
@@ -3357,11 +3357,11 @@
                     });
                 }
             }
-        
+
             // Update links' classes
             if (tabLink && tabLink.length > 0) tabLink.addClass('active');
             if (oldTabLink && oldTabLink.length > 0) oldTabLink.removeClass('active');
-            
+
             return true;
         };
         /*===============================================================================
@@ -3419,7 +3419,7 @@
         app.initFastClicks = function () {
             if (!app.support.touch) return;
             var touchStartX, touchStartY, touchStartTime, targetElement, trackClick, activeSelection, scrollParent, lastClickTime, isMoved;
-        
+
             function androidNeedsBlur(el) {
                 var noBlur = ('button checkbox file image radio submit input textarea').split(' ');
                 if (document.activeElement && el !== document.activeElement && document.activeElement !== document.body) {
@@ -3467,7 +3467,7 @@
                 if (e.targetTouches.length > 1) {
                     return true;
                 }
-        
+
                 if (app.device.os === 'ios') {
                     var selection = window.getSelection();
                     if (selection.rangeCount && (!selection.isCollapsed || document.activeElement === selection.focusNode)) {
@@ -3483,13 +3483,13 @@
                         document.activeElement.blur();
                     }
                 }
-        
+
                 trackClick = true;
                 targetElement = e.target;
                 touchStartTime = (new Date()).getTime();
                 touchStartX = e.targetTouches[0].pageX;
                 touchStartY = e.targetTouches[0].pageY;
-        
+
                 // Detect scroll parent
                 if (app.device.os === 'ios') {
                     scrollParent = undefined;
@@ -3516,35 +3516,35 @@
                     if (!activeSelection) e.preventDefault();
                     return true;
                 }
-        
+
                 if (document.activeElement === e.target) {
                     return true;
                 }
-        
+
                 if (!activeSelection) {
                     e.preventDefault();
                 }
-        
+
                 if ((e.timeStamp - lastClickTime) < 200) {
                     return true;
                 }
-        
+
                 lastClickTime = e.timeStamp;
                 touchStartTime = 0;
-        
+
                 trackClick = false;
-        
+
                 if (app.device.os === 'ios' && scrollParent) {
                     if (scrollParent.scrollTop !== scrollParent.f7ScrollTop) {
                         return false;
                     }
                 }
-        
+
                 // Trigger focus when required
                 if (targetNeedsFocus(targetElement)) {
                     targetElement.focus();
                 }
-        
+
                 e.preventDefault();
                 var touch = e.changedTouches[0];
                 var evt = document.createEvent('MouseEvents');
@@ -3555,29 +3555,29 @@
                 evt.initMouseEvent(eventType, true, true, window, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, false, false, false, false, 0, null);
                 evt.forwardedTouchEvent = true;
                 targetElement.dispatchEvent(evt);
-        
+
                 return false;
-        
-                
+
+
             }
             function handleTouchCancel(e) {
                 trackClick = false;
                 targetElement = null;
             }
-        
+
             function handleClick(e) {
                 var allowClick = false;
-        
+
                 if (trackClick) {
                     targetElement = null;
                     trackClick = false;
                     return true;
                 }
-        
+
                 if (e.target.type === 'submit' && e.detail === 0) {
                     return true;
                 }
-        
+
                 if (!targetElement) {
                     allowClick =  true;
                 }
@@ -3590,7 +3590,7 @@
                 if (!e.cancelable) {
                     allowClick =  true;
                 }
-        
+
                 if (!allowClick) {
                     e.stopImmediatePropagation();
                     e.stopPropagation();
@@ -3602,7 +3602,7 @@
                     }
                     targetElement = null;
                 }
-        
+
                 return allowClick;
             }
             document.addEventListener('click', handleClick, true);
@@ -3611,7 +3611,7 @@
             $(document).on('touchend', handleTouchEnd);
             $(document).on('touchcancel', handleTouchCancel);
         };
-        
+
         /*===============================================================================
         ************   Handle clicks and make them fast (on tap);   ************
         ===============================================================================*/
@@ -3621,26 +3621,26 @@
                 var clicked = $(this);
                 var url = clicked.attr('href');
                 var isLink = clicked[0].nodeName.toLowerCase() === 'a';
-        
-                // Check if link is external 
+
+                // Check if link is external
                 if (isLink) {
                     /*jshint shadow:true */
                     for (var i = 0; i < app.params.externalLinks.length; i++) {
                         if (clicked.hasClass(app.params.externalLinks[i])) {
                             return;
                         }
-        
+
                         if (clicked[0].rel === app.params.externalLinks[i]) {
                             return;
                         }
                     }
                 }
-        
+
                 // Smart Select
                 if (clicked.hasClass('smart-select')) {
                     if (app.smartSelectOpen) app.smartSelectOpen(clicked);
                 }
-                
+
                 // Open Panel
                 if (clicked.hasClass('open-panel')) {
                     if ($('.panel').length === 1) {
@@ -3656,7 +3656,7 @@
                 if (clicked.hasClass('close-panel')) {
                     app.closePanel();
                 }
-        
+
                 if (clicked.hasClass('panel-overlay') && app.params.panelsCloseByOutside) {
                     app.closePanel();
                 }
@@ -3706,14 +3706,14 @@
                         app.closeModal('.modal.modal-in');
                     if ($('.actions-modal.modal-in').length > 0 && app.params.actionsCloseByOutside)
                         app.closeModal('.actions-modal.modal-in');
-                    
+
                     if ($('.popover.modal-in').length > 0) app.closeModal('.popover.modal-in');
                 }
                 if (clicked.hasClass('popup-overlay')) {
                     if ($('.popup.modal-in').length > 0 && app.params.popupCloseByOutside)
                         app.closeModal('.popup.modal-in');
                 }
-        
+
                 // Tabs
                 if (clicked.hasClass('tab-link')) {
                     app.showTab(clicked.attr('data-tab') || clicked.attr('href'), clicked);
@@ -3737,7 +3737,7 @@
                     else {
                         app.swipeoutDelete(clicked.parents('.swipeout'));
                     }
-                        
+
                 }
                 // Sortable
                 if (clicked.hasClass('toggle-sortable')) {
@@ -3789,7 +3789,7 @@
             }
             $(document).on('click', 'a, .open-panel, .close-panel, .panel-overlay, .modal-overlay, .popup-overlay, .swipeout-delete, .close-popup, .open-popup, .open-popover, .open-login-screen, .close-login-screen .smart-select, .toggle-sortable, .open-sortable, .close-sortable, .accordion-item-toggle', handleClicks);
         };
-        
+
         /*======================================================
         ************   App Resize Actions   ************
         ======================================================*/
@@ -3809,7 +3809,7 @@
         app.resize = function () {
             if (app.sizeNavbars) app.sizeNavbars();
             _fixIpadBodyScrolLeft();
-            
+
         };
         app.orientationchange = function () {
             if (app.device && app.device.minimalUi) {
@@ -3817,7 +3817,7 @@
             }
             _fixIpadBodyScrolLeft();
         };
-        
+
         /*===============================================================================
         ************   Store and parse forms data   ************
         ===============================================================================*/
@@ -3825,7 +3825,7 @@
         app.formStoreData = function (formId, formJSON) {
             // Store form data in app.formsData
             app.formsData[formId] = formJSON;
-        
+
             // Store form data in local storage also
             app.ls['f7form-' + formId] = JSON.stringify(formJSON);
         };
@@ -3835,7 +3835,7 @@
                 app.formsData[formId] = '';
                 delete app.formsData[formId];
             }
-        
+
             // Delete form data from local storage also
             if (app.ls['f7form-' + formId]) {
                 app.ls['f7form-' + formId] = '';
@@ -3853,10 +3853,10 @@
         app.formToJSON = function (form) {
             form = $(form);
             if (form.length !== 1) return false;
-        
+
             // Form data
             var formData = {};
-        
+
             // Skip input types
             var skipTypes = ['submit', 'image', 'button', 'file'];
             var skipNames = [];
@@ -3894,19 +3894,19 @@
                             break;
                     }
                 }
-                    
+
             });
-        
+
             return formData;
         };
         app.formFromJSON = function (form, formData) {
             form = $(form);
             if (form.length !== 1) return false;
-        
+
             // Skip input types
             var skipTypes = ['submit', 'image', 'button', 'file'];
             var skipNames = [];
-        
+
             form.find('input, select, textarea').each(function () {
                 var input = $(this);
                 var name = input.attr('name');
@@ -3943,16 +3943,16 @@
                             break;
                     }
                 }
-                    
+
             });
         };
         app.initFormsStorage = function (pageContainer) {
             pageContainer = $(pageContainer);
             if (pageContainer.length === 0) return;
-        
+
             var forms = pageContainer.find('form.store-data');
             if (forms.length === 0) return;
-            
+
             // Parse forms data and fill form if there is such data
             forms.each(function () {
                 var id = this.getAttribute('id');
@@ -3972,7 +3972,7 @@
                 form.trigger('store', {data: formJSON});
             }
             forms.on('change submit', storeForm);
-        
+
             // Detach Listeners
             function pageBeforeRemove() {
                 forms.off('change submit', storeForm);
@@ -3980,23 +3980,23 @@
             }
             pageContainer.on('pageBeforeRemove', pageBeforeRemove);
         };
-        
+
         // Ajax submit on forms
         $(document).on('submit change', 'form.ajax-submit, form.ajax-submit-onchange', function (e) {
             var form = $(this);
             if (e.type === 'change' && !form.hasClass('ajax-submit-onchange')) return;
             if (e.type === 'submit') e.preventDefault();
-            
+
             var method = form.attr('method') || 'GET';
             var contentType = form.attr('enctype');
-        
+
             var url = form.attr('action');
             if (!url) return;
-        
+
             var data;
             if (method === 'POST') data = new FormData(form[0]);
             else data = $.serializeObject(app.formToJSON(form[0]));
-        
+
             var xhr = $.ajax({
                 method: method,
                 url: url,
@@ -4007,8 +4007,8 @@
                 }
             });
         });
-        
-        
+
+
         /*======================================================
         ************   Handle Browser's History   ************
         ======================================================*/
@@ -4028,7 +4028,7 @@
                 app.loadContent(queue.view, queue.stateContent, animatePages, false);
             }
         };
-        
+
         app.initPushState = function () {
             var blockPopstate = true;
             $(window).on('load', function () {
@@ -4096,7 +4096,7 @@
             }
             $(window).on('popstate', handlePopState);
         };
-        
+
         /*======================================================
         ************   Slider   ************
         ======================================================*/
@@ -4126,35 +4126,35 @@
                     params[def] = defaults[def];
                 }
             }
-        
+
             var s = this;
             s.params = params;
             s.container = $(container);
             if (s.container.length === 0) return;
             s.container[0].f7Slider = s;
-        
+
             if (s.params.direction === 'vertical') {
                 s.container.addClass('slider-container-vertical');
             }
             else {
                 s.container.addClass('slider-container-horizontal');
             }
-        
+
             s.wrapper = s.container.children('.' + s.params.wrapperClass);
-        
+
             if (s.params.pagination) {
                 s.paginationContainer = $(s.params.pagination);
             }
-            
+
             s.activeSlideIndex = s.previousSlideIndex = s.params.initialSlide || 0;
-        
+
             var isH = s.params.direction === 'horizontal';
-        
+
             var inverter = isH ? (app.rtl ? -1 : 1) : 1;
-        
+
             s.updateSlides = function () {
                 s.slides = s.wrapper.children('.' + s.params.slideClass);
-        
+
                 if (s.params.spaceBetween !== 0) {
                     var marginProp = app.rtl ? 'margin-left' : 'margin-right';
                     if (isH) s.slides.css(marginProp, s.params.spaceBetween + 'px');
@@ -4174,7 +4174,7 @@
                     }
                 }
             };
-        
+
             s.updatePagination = function () {
                 if (s.paginationContainer && s.paginationContainer.length > 0) {
                     var bulletsHTML = '';
@@ -4185,13 +4185,13 @@
                     s.bullets = s.paginationContainer.find('.' + s.params.bulletClass);
                 }
             };
-        
+
             s.updateSize = function () {
                 s.width = s.container[0].offsetWidth;
                 s.height = s.container[0].offsetHeight;
                 s.size = isH ? s.width : s.height;
             };
-        
+
             s.attachEvents = function (detach) {
                 var action = detach ? 'off' : 'on';
                 // Slide between photos
@@ -4199,28 +4199,28 @@
                 s.container[action](app.touchEvents.move, s.onTouchMove);
                 s.container[action](app.touchEvents.end, s.onTouchEnd);
                 $(window)[action]('resize', s.onResize);
-        
+
                 // Next, Prev, Index
                 if (s.params.nextButton) $(s.params.nextButton)[action]('click', s.onClickNext);
                 if (s.params.prevButton) $(s.params.prevButton)[action]('click', s.onClickPrev);
                 if (s.params.indexButton) $(s.params.indexButton)[action]('click', s.onClickIndex);
-        
+
                 // Prevent Links
                 if (s.params.preventClicks) s.container[action]('click', s.onClick);
             };
             s.detachEvents = function () {
                 s.attachEvents(true);
             };
-        
+
             s.onResize = function () {
                 s.updateSize();
                 s.slideTo(s.activeSlideIndex, 0, false);
             };
-        
+
             var isTouched, isMoved, touchesStart = {}, touchesCurrent = {}, touchStartTime, isScrolling, currentTranslate, animating = false;
             var lastClickTime = Date.now(), clickTimeout;
             s.allowClick = true;
-        
+
             s.onClick = function (e) {
                 if (s.params.preventClicks && !s.allowClick) {
                     e.preventDefault();
@@ -4246,10 +4246,10 @@
                 if (s.params.onTouchMove) s.params.onTouchMove(s, e);
                 s.allowClick = false;
                 if (e.targetTouches && e.targetTouches.length > 1) return;
-                
+
                 touchesCurrent.x = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
                 touchesCurrent.y = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
-        
+
                 if (typeof isScrolling === 'undefined') {
                     isScrolling = !!(isScrolling || Math.abs(touchesCurrent.y - touchesStart.y) > Math.abs(touchesCurrent.x - touchesStart.x));
                 }
@@ -4262,10 +4262,10 @@
                     return;
                 }
                 if (s.params.onSliderMove) s.params.onSliderMove(s, e);
-        
+
                 e.preventDefault();
                 e.stopPropagation();
-        
+
                 if (!isMoved) {
                     currentTranslate = $.getTranslate(s.wrapper[0], isH ? 'x' : 'y') * inverter;
                     s.wrapper.transition(0);
@@ -4279,12 +4279,12 @@
                 }
                 isMoved = true;
                 var diff = isH ? (touchesCurrent.x - touchesStart.x) * inverter : touchesCurrent.y - touchesStart.y;
-        
+
                 if ((diff > 0 && s.activeSlideIndex === 0)) diff = Math.pow(diff, 0.85);
                 else if (diff < 0 && s.activeSlideIndex === s.slides.length - s.params.slidesPerView) diff = -Math.pow(-diff, 0.85);
-                
+
                 var translateX = isH ? (diff + currentTranslate) * inverter : 0, translateY = isH ? 0 : diff + currentTranslate;
-        
+
                 s.wrapper.transform('translate3d(' + translateX + 'px, ' + translateY + 'px,0)');
             };
             s.onTouchEnd = function (e) {
@@ -4301,7 +4301,7 @@
                             }
                             if (s.params.onClick) s.params.onClick(s, e);
                         }, 300);
-                        
+
                     }
                     if (timeDiff < 300 && (touchEndTime - lastClickTime) < 300) {
                         if (clickTimeout) clearTimeout(clickTimeout);
@@ -4311,16 +4311,16 @@
                     }
                     if (s.params.onTap) s.params.onTap(s, e);
                 }
-        
+
                 lastClickTime = Date.now();
-        
+
                 if (!isTouched || !isMoved) {
                     isTouched = isMoved = false;
                     return;
                 }
                 isTouched = isMoved = false;
                 var touchesDiff = isH ? (touchesCurrent.x - touchesStart.x) * inverter : touchesCurrent.y - touchesStart.y;
-                
+
                 //Release links clicks
                 if (Math.abs(touchesDiff) < 5 && (timeDiff) < 300 && s.allowClick === false) {
                     s.allowClick = true;
@@ -4329,9 +4329,9 @@
                     if (!s) return;
                     s.allowClick = true;
                 }, 100);
-                
+
                 var continueAutoplay = s.params.autoplay && autoplay && !s.params.autoplayDisableOnInteraction;
-        
+
                 if (touchesDiff === 0) {
                     if (continueAutoplay) {
                         s.startAutoplay();
@@ -4348,7 +4348,7 @@
                         s.startAutoplay();
                     });
                 }
-        
+
                 if (timeDiff > 300) {
                     // Long touches
                     if (touchesDiff <= -slideSize / 2) {
@@ -4373,17 +4373,17 @@
                             s.slideTo(s.activeSlideIndex - Math.round(skipSlides));
                         }
                     }
-                        
+
                 }
             };
-        
+
             s.slideTo = function (index, speed, runCallbacks) {
                 if (typeof index === 'undefined') index = 0;
                 if (index < 0) index = 0;
                 if (index > s.slides.length - s.params.slidesPerView) index = s.slides.length - s.params.slidesPerView;
-        
+
                 var translate = - (s.size + s.params.spaceBetween) * index / s.params.slidesPerView;
-        
+
                 if (typeof speed === 'undefined') speed = s.params.speed;
                 s.previousSlideIndex = s.activeSlideIndex;
                 s.activeSlideIndex = Math.round(index);
@@ -4413,7 +4413,7 @@
                 activeSlide.addClass(s.params.slideActiveClass);
                 activeSlide.next().addClass(s.params.slideNextClass);
                 activeSlide.prev().addClass(s.params.slidePrevClass);
-        
+
                 if (s.bullets && s.bullets.length > 0) {
                     s.bullets.removeClass(s.params.bulletActiveClass);
                     s.bullets.eq(s.activeSlideIndex).addClass(s.params.bulletActiveClass);
@@ -4437,7 +4437,7 @@
             s.slideReset = function () {
                 s.slideTo(s.activeSlideIndex);
             };
-        
+
             // Clicks
             s.onClickNext = function (e) {
                 e.preventDefault();
@@ -4451,7 +4451,7 @@
                 e.preventDefault();
                 s.slideTo($(this).index());
             };
-        
+
             // Autoplay
             var autoplayTimeout;
             var autoplay;
@@ -4476,7 +4476,7 @@
                 s.stopAutoplay();
                 s.startAutoplay();
             };
-        
+
             // init
             s.init = function () {
                 s.updateSlides();
@@ -4486,16 +4486,16 @@
                 s.attachEvents();
                 if (s.params.autoplay) s.startAutoplay();
             };
-        
+
             // Destroy
             s.destroy = function () {
                 s.detachEvents();
                 if (s.params.onDestroy) s.params.onDestroy();
                 s = undefined;
             };
-        
+
             s.init();
-        
+
             return s;
         };
         app.slider = function (container, params) {
@@ -4544,13 +4544,13 @@
                 destroySliderOnRemove(_slider);
             }
         };
-        
+
         /*======================================================
         ************   Photo Browser   ************
         ======================================================*/
         var PhotoBrowser = function (params) {
             var pb = this, i;
-        
+
             var defaults = {
                 photos : [],
                 initialSlide: 0,
@@ -4569,16 +4569,16 @@
                 backLinkText: 'Close',
                 ofText: 'of'
             };
-            
+
             params = params || {};
             for (var def in defaults) {
                 if (typeof params[def] === 'undefined') {
                     params[def] = defaults[def];
                 }
             }
-        
+
             pb.params = params;
-            
+
             function findView() {
                 var view;
                 for (i = 0; i < app.views.length; i ++) {
@@ -4586,9 +4586,9 @@
                 }
                 return view;
             }
-        
+
             var iconColor = pb.params.theme === 'dark' ? 'color-white' : '';
-        
+
             var navbarTemplate = pb.params.navbarTemplate ||
                                 '<div class="navbar">' +
                                     '<div class="navbar-inner">' +
@@ -4606,7 +4606,7 @@
                                         '<a href="#" class="link photo-browser-next"><i class="icon icon-' + nextIconClassName + ' ' + iconColor + '"></i></a>' +
                                     '</div>' +
                                 '</div>';
-        
+
             var template = pb.params.template ||
                             '<div class="photo-browser photo-browser-' + pb.params.theme + '">' +
                                 '<div class="view navbar-fixed toolbar-fixed">' +
@@ -4622,42 +4622,42 @@
                                     '</div>' +
                                 '</div>' +
                             '</div>';
-        
+
             var photoTemplate = pb.params.photoTemplate || '<div class="photo-browser-slide slider-slide"><span class="photo-browser-zoom-container"><img src="{{url}}"></span></div>';
             var captionsTheme = pb.params.captionsTheme || pb.params.theme;
             var captionsTemplate = pb.params.captionsTemplate || '<div class="photo-browser-captions photo-browser-captions-' + captionsTheme + '">{{captions}}</div>';
             var captionTemplate = pb.params.captionTemplate || '<div class="photo-browser-caption" data-caption-index="{{captionIndex}}">{{caption}}</div>';
-        
+
             var objectTemplate = pb.params.objectTemplate || '<div class="photo-browser-slide photo-browser-object-slide slider-slide">{{html}}</div>';
             var photosHtml = '';
             var captionsHtml = '';
             for (i = 0; i < pb.params.photos.length; i ++) {
                 var photo = pb.params.photos[i];
                 var thisTemplate = '';
-        
-                //check if photo is a string or string-like object, for backwards compatibility 
+
+                //check if photo is a string or string-like object, for backwards compatibility
                 if (typeof(photo) === 'string' || photo instanceof String) {
-        
+
                     //check if "photo" is html object
                     if (photo.indexOf('<') >= 0 || photo.indexOf('>') >= 0) {
                         thisTemplate = objectTemplate.replace(/{{html}}/g, photo);
                     } else {
                         thisTemplate = photoTemplate.replace(/{{url}}/g, photo);
                     }
-        
+
                     //photo is a string, thus has no caption, so remove the caption template placeholder
                     // captionsHtml += captionTemplate.replace(/{{caption}}/g, '');
-        
+
                     //otherwise check if photo is an object with a url property
                 } else if (typeof(photo) === 'object') {
-        
+
                     //check if "photo" is html object
                     if (photo.hasOwnProperty('html') && photo.html.length > 0) {
                         thisTemplate = objectTemplate.replace(/{{html}}/g, photo.html);
                     } else if (photo.hasOwnProperty('url') && photo.url.length > 0) {
                         thisTemplate = photoTemplate.replace(/{{url}}/g, photo.url);
                     }
-        
+
                     //check if photo has a caption
                     if (photo.hasOwnProperty('caption') && photo.caption.length > 0) {
                         captionsHtml += captionTemplate.replace(/{{caption}}/g, photo.caption).replace(/{{captionIndex}}/g, i);
@@ -4666,22 +4666,22 @@
                         // captionsHtml += captionTemplate.replace(/{{caption}}/g, '');
                     }
                 }
-        
+
                 photosHtml += thisTemplate;
-        
+
             }
-        
+
             var htmlTemplate = template
                                 .replace('{{navbar}}', (pb.params.navbar ? navbarTemplate : ''))
                                 .replace('{{noNavbar}}', (pb.params.navbar ? '' : 'no-navbar'))
                                 .replace('{{photos}}', photosHtml)
                                 .replace('{{captions}}', captionsTemplate.replace(/{{captions}}/g, captionsHtml))
                                 .replace('{{toolbar}}', (pb.params.toolbar ? toolbarTemplate : ''));
-        
+
             pb.activeSlideIndex = pb.params.initialSlide;
             pb.openIndex = pb.activeSlideIndex;
             pb.opened = false;
-        
+
             pb.open = function (index) {
                 if (typeof index === 'undefined') index = pb.activeSlideIndex;
                 index = parseInt(index, 10);
@@ -4709,7 +4709,7 @@
                 if (pb.params.onOpen) {
                     pb.params.onOpen(pb);
                 }
-        
+
             };
             pb.close = function () {
                 pb.opened = false;
@@ -4732,7 +4732,7 @@
                 // Delete references
                 pb.slider = pb.sliderContainer = pb.sliderWrapper = pb.slides = gestureSlide = gestureImg = gestureImgWrap = undefined;
             };
-        
+
             pb.onPopupClose = function (e) {
                 pb.close();
                 $(pb.popup).off('pageBeforeInit', pb.onPopupClose);
@@ -4749,7 +4749,7 @@
                 }
                 $(document).off('pageBeforeRemove', pb.onPageBeforeRemove);
             };
-        
+
             pb.layout = function (index) {
                 if (pb.params.type === 'page') {
                     pb.container = $('.photo-browser-slider-container').parents('.view');
@@ -4766,7 +4766,7 @@
                 pb.slides = pb.container.find('.photo-browser-slide');
                 pb.captionsContainer = pb.container.find('.photo-browser-captions');
                 pb.captions = pb.container.find('.photo-browser-caption');
-                
+
                 var sliderSettings = {
                     nextButton: pb.params.nextButton || '.photo-browser-next',
                     prevButton: pb.params.prevButton || '.photo-browser-prev',
@@ -4789,7 +4789,7 @@
                         pb.activeSlideIndex = slider.activeSlideIndex;
                         pb.container.find('.photo-browser-current').text(slider.activeSlideIndex + 1);
                         pb.container.find('.photo-browser-total').text(slider.slides.length);
-        
+
                         $('.photo-browser-prev, .photo-browser-next').removeClass('photo-browser-link-inactive');
                         if (slider.isFirst) {
                             $('.photo-browser-prev').addClass('photo-browser-link-inactive');
@@ -4797,13 +4797,13 @@
                         if (slider.isLast) {
                             $('.photo-browser-next').addClass('photo-browser-link-inactive');
                         }
-        
+
                         // Update captions
                         if (pb.captions.length > 0) {
                             pb.captionsContainer.find('.photo-browser-caption-active').removeClass('photo-browser-caption-active');
                             pb.captionsContainer.find('[data-caption-index="' + pb.activeSlideIndex + '"]').addClass('photo-browser-caption-active');
                         }
-        
+
                         // Stop Video
                         var previousSlideVideo = slider.slides.eq(slider.previousSlideIndex).find('video');
                         if (previousSlideVideo.length > 0) {
@@ -4823,26 +4823,26 @@
                         if (pb.params.onSlideChangeEnd) pb.params.onSlideChangeEnd(slider);
                     },
                 };
-        
+
                 if (pb.params.swipeToClose && pb.params.type !== 'page') {
                     sliderSettings.onTouchStart = pb.swipeCloseTouchStart;
                     sliderSettings.onOppositeTouchMove = pb.swipeCloseTouchMove;
                     sliderSettings.onTouchEnd = pb.swipeCloseTouchEnd;
                 }
-        
+
                 pb.slider = app.slider(pb.sliderContainer, sliderSettings);
                 pb.attachEvents();
             };
             pb.attachEvents = function (detach) {
                 var action = detach ? 'off' : 'on';
                 // Slide between photos
-        
+
                 if (pb.params.zoom) {
                     // Scale image
                     pb.slides[action]('gesturestart', pb.onSlideGestureStart);
                     pb.slides[action]('gesturechange', pb.onSlideGestureChange);
                     pb.slides[action]('gestureend', pb.onSlideGestureEnd);
-        
+
                     // Move image
                     pb.slides[action](app.touchEvents.start, pb.onSlideTouchStart);
                     pb.slides[action](app.touchEvents.move, pb.onSlideTouchMove);
@@ -4850,10 +4850,10 @@
                 }
                 pb.container.find('.photo-browser-close-link')[action]('click', pb.close);
             };
-        
+
             var isTouched, isMoved, touchesStart = {}, touchesCurrent = {}, touchStartTime, isScrolling, animating = false, currentTranslate;
             var allowClick = true;
-        
+
             // Expose
             pb.exposed = false;
             pb.toggleExposition = function () {
@@ -4871,7 +4871,7 @@
                 if (pb.params.expositionHideCaptions) pb.captionsContainer.removeClass('photo-browser-captions-exposed');
                 pb.exposed = false;
             };
-            
+
             // Gestures
             var gestureSlide, gestureImg, gestureImgWrap, scale = 1, currentScale = 1, isScaling = false;
             pb.onSlideGestureStart = function (e) {
@@ -4917,9 +4917,9 @@
                     gestureImg.transition(300).transform('translate3d(0,0,0) scale(' + scale + ')');
                 }
             };
-        
+
             var imageIsTouched, imageIsMoved, imageCurrentX, imageCurrentY, imageMinX, imageMinY, imageMaxX, imageMaxY, imageWidth, imageHeight, imageTouchesStart = {}, imageTouchesCurrent = {}, imageStartX, imageStartY, velocityPrevPositionX, velocityPrevTime, velocityX, velocityPrevPositionY, velocityY;
-        
+
             pb.onSlideTouchStart = function (e) {
                 if (imageIsTouched) return;
                 if (app.device.os === 'android') e.preventDefault();
@@ -4930,7 +4930,7 @@
             pb.onSlideTouchMove = function (e) {
                 pb.slider.allowClick = false;
                 if (!imageIsTouched || !gestureSlide) return;
-        
+
                 if (!imageIsMoved) {
                     imageWidth = gestureImg[0].offsetWidth;
                     imageHeight = gestureImg[0].offsetHeight;
@@ -4941,17 +4941,17 @@
                 // Define if we need image drag
                 var scaledWidth = imageWidth * scale;
                 var scaledHeight = imageHeight * scale;
-        
+
                 if (scaledWidth < pb.slider.width && scaledHeight < pb.slider.height) return;
-        
+
                 imageMinX = Math.min((pb.slider.width / 2 - scaledWidth / 2), 0);
                 imageMaxX = -imageMinX;
                 imageMinY = Math.min((pb.slider.height / 2 - scaledHeight / 2), 0);
                 imageMaxY = -imageMinY;
-                
+
                 imageTouchesCurrent.x = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
                 imageTouchesCurrent.y = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
-        
+
                 if (!imageIsMoved && !isScaling) {
                     if (
                         (Math.floor(imageMinX) === Math.floor(imageStartX) && imageTouchesCurrent.x < imageTouchesStart.x) ||
@@ -4961,27 +4961,27 @@
                         return;
                     }
                 }
-                
+
                 e.stopPropagation();
                 imageIsMoved = true;
                 imageCurrentX = imageTouchesCurrent.x - imageTouchesStart.x + imageStartX;
                 imageCurrentY = imageTouchesCurrent.y - imageTouchesStart.y + imageStartY;
-                
-                
+
+
                 if (imageCurrentX < imageMinX) {
                     imageCurrentX =  imageMinX + 1 - Math.pow((imageMinX - imageCurrentX + 1), 0.8);
                 }
                 if (imageCurrentX > imageMaxX) {
                     imageCurrentX = imageMaxX - 1 + Math.pow((imageCurrentX - imageMaxX + 1), 0.8);
                 }
-                
+
                 if (imageCurrentY < imageMinY) {
                     imageCurrentY =  imageMinY + 1 - Math.pow((imageMinY - imageCurrentY + 1), 0.8);
                 }
                 if (imageCurrentY > imageMaxY) {
                     imageCurrentY = imageMaxY - 1 + Math.pow((imageCurrentY - imageMaxY + 1), 0.8);
                 }
-        
+
                 //Velocity
                 if (!velocityPrevPositionX) velocityPrevPositionX = imageTouchesCurrent.x;
                 if (!velocityPrevPositionY) velocityPrevPositionY = imageTouchesCurrent.y;
@@ -4993,7 +4993,7 @@
                 velocityPrevPositionX = imageTouchesCurrent.x;
                 velocityPrevPositionY = imageTouchesCurrent.y;
                 velocityPrevTime = Date.now();
-        
+
                 gestureImgWrap.transform('translate3d(' + imageCurrentX + 'px, ' + imageCurrentY + 'px,0)');
             };
             pb.onSlideTouchEnd = function (e) {
@@ -5010,15 +5010,15 @@
                 var newPositionX = imageCurrentX + momentumDistanceX;
                 var momentumDistanceY = velocityY * momentumDurationY;
                 var newPositionY = imageCurrentY + momentumDistanceY;
-        
+
                 //Fix duration
                 if (velocityX !== 0) momentumDurationX = Math.abs((newPositionX - imageCurrentX) / velocityX);
                 if (velocityY !== 0) momentumDurationY = Math.abs((newPositionY - imageCurrentY) / velocityY);
                 var momentumDuration = Math.max(momentumDurationX, momentumDurationY);
-        
+
                 imageCurrentX = newPositionX;
                 imageCurrentY = newPositionY;
-        
+
                 // Define if we need image drag
                 var scaledWidth = imageWidth * scale;
                 var scaledHeight = imageHeight * scale;
@@ -5028,10 +5028,10 @@
                 imageMaxY = -imageMinY;
                 imageCurrentX = Math.max(Math.min(imageCurrentX, imageMaxX), imageMinX);
                 imageCurrentY = Math.max(Math.min(imageCurrentY, imageMaxY), imageMinY);
-        
+
                 gestureImgWrap.transition(momentumDuration).transform('translate3d(' + imageCurrentX + 'px, ' + imageCurrentY + 'px,0)');
             };
-        
+
             // Swipe Up To Close
             var swipeToCloseIsTouched = false;
             var allowSwipeToClose = true;
@@ -5092,37 +5092,37 @@
                 pb.slider.container.css('opacity', '').transition('');
                 swipeToCloseActiveSlide.transform('');
             };
-        
+
             return pb;
         };
-        
+
         app.photoBrowser = function (params) {
             return new PhotoBrowser(params);
         };
-        
+
         /*======================================================
         ************   Notifications   ************
         ======================================================*/
         var _tempNotificationElement;
         app.addNotification = function (params) {
             if (!params) return;
-            
+
             if (typeof params.media === 'undefined') params.media = app.params.notificationMedia;
             if (typeof params.title === 'undefined') params.title = app.params.notificationTitle;
             if (typeof params.subtitle === 'undefined') params.subtitle = app.params.notificationSubtitle;
             if (typeof params.closeIcon === 'undefined') params.closeIcon = app.params.notificationCloseIcon;
             if (typeof params.hold === 'undefined') params.hold = app.params.notificationHold;
             if (typeof params.closeOnClick === 'undefined') params.closeOnClick = app.params.notificationCloseOnClick;
-        
+
             if (!_tempNotificationElement) _tempNotificationElement = document.createElement('div');
-        
+
             var container = $('.notifications');
             if (container.length === 0) {
                 $('body').append('<div class="notifications list-block media-list"><ul></ul></div>');
                 container = $('.notifications');
             }
             var list = container.children('ul');
-        
+
             var itemHTML;
             if (params.custom) {
                 itemHTML = '<li>' + params.custom + '</li>';
@@ -5144,9 +5144,9 @@
                             '</div></li>';
             }
             _tempNotificationElement.innerHTML = itemHTML;
-        
+
             var item = $(_tempNotificationElement).children();
-        
+
             item.on('click', function (e) {
                 if (params.onClick) params.onClick(e, item[0]);
                 if (params.closeOnClick) app.closeNotification(item[0]);
@@ -5165,21 +5165,21 @@
                     if (item.length > 0) app.closeNotification(item[0]);
                 }, params.hold);
             }
-        
+
             list.prepend(item[0]);
             container.show();
-            
+
             var itemHeight = item.height();
             item.css('marginTop', -itemHeight + 'px');
             item.transition(0);
-        
+
             var clientLeft = item[0].clientLeft;
             item.transition('');
             item.css('marginTop', '0px');
-        
+
             container.transform('translate3d(0, 0,0)');
             item.removeClass('notification-hidden');
-        
+
             return item[0];
         };
         app.closeNotification = function (item) {
@@ -5187,18 +5187,18 @@
             if (item.length === 0) return;
             if (item.hasClass('notification-item-removing')) return;
             var container = $('.notifications');
-        
+
             var itemHeight = item.height();
             item.css('height', itemHeight + 'px').transition(0);
             var clientLeft = item[0].clientLeft;
-        
+
             item.css('height', '0px').transition('').addClass('notification-item-removing');
             if (item.data('f7NotificationOnClose')) item.data('f7NotificationOnClose')();
-        
+
             if (container.find('.notification-item:not(.notification-item-removing)').length === 0) {
                 container.transform('');
             }
-        
+
             item.addClass('notification-hidden').transitionEnd(function () {
                 item.remove();
                 if (container.find('.notification-item').length === 0) {
@@ -5245,22 +5245,22 @@
             }
             return processed;
         };
-        
-        
+
+
         /*======================================================
         ************   App Init   ************
         ======================================================*/
         app.init = function () {
             // Init Plugins
             if (app.initPlugins) app.initPlugins();
-            
+
             // Init Device
             if (app.getDeviceInfo) app.getDeviceInfo();
-            
+
             // Init Click events
             if (app.initFastClicks && app.params.fastClicks) app.initFastClicks();
             if (app.initClickEvents) app.initClickEvents();
-        
+
             // Init each page callbacks
             $('.page').each(function () {
                 var pageContainer = $(this);
@@ -5273,34 +5273,34 @@
                 }
                 app.pageInitCallback(view, this, url, 'center');
             });
-            
+
             // Init resize events
             if (app.initResize) app.initResize();
-        
+
             // Init push state
             if (app.initPushState && app.params.pushState) app.initPushState();
-        
+
             // Init Live Swipeouts events
             if (app.initSwipeout && app.params.swipeout) app.initSwipeout();
-        
+
             // Init Live Sortable events
             if (app.initSortable && app.params.sortable) app.initSortable();
-        
+
             // Init Live Swipe Panels
             if (app.initSwipePanels && app.params.swipePanel) app.initSwipePanels();
-            
+
             // App Init callback
             if (app.params.onAppInit) app.params.onAppInit();
-        
+
             // Plugin app init hook
             app.pluginHook('appInit');
         };
         if (app.params.init) app.init();
-        
-        //Return instance        
+
+        //Return instance
         return app;
     };
-    
+
     /*===========================
     Dom7 Library
     ===========================*/
@@ -5493,7 +5493,7 @@
                         }
                     }
                 }
-        
+
                 return this;
             },
             off: function (eventName, listener) {
@@ -5579,7 +5579,7 @@
                         return null;
                     }
                 }
-                    
+
             },
             outerWidth: function (margins) {
                 if (this.length > 0) {
@@ -5602,7 +5602,7 @@
                         return null;
                     }
                 }
-                    
+
             },
             outerHeight: function (margins) {
                 if (this.length > 0) {
@@ -5666,7 +5666,7 @@
                 }
                 return this;
             },
-            
+
             //Dom manipulation
             each: function (callback) {
                 for (var i = 0; i < this.length; i++) {
@@ -5705,7 +5705,7 @@
                     var el = this[0];
                     if (el === document) return selector === document;
                     if (el === window) return selector === window;
-        
+
                     if (el.matches) return el.matches(selector);
                     else if (el.webkitMatchesSelector) return el.webkitMatchesSelector(selector);
                     else if (el.mozMatchesSelector) return el.mozMatchesSelector(selector);
@@ -5730,7 +5730,7 @@
                     }
                     return false;
                 }
-                
+
             },
             indexOf: function (el) {
                 for (var i = 0; i < this.length; i++) {
@@ -5922,7 +5922,7 @@
                 var children = [];
                 for (var i = 0; i < this.length; i++) {
                     var childNodes = this[i].childNodes;
-        
+
                     for (var j = 0; j < childNodes.length; j++) {
                         if (!selector) {
                             if (childNodes[j].nodeType === 1) children.push(childNodes[j]);
@@ -5944,7 +5944,7 @@
                 return this.remove();
             }
         };
-        
+
         // Shortcuts
         (function () {
             var shortcuts = ('click blur focus focusin focusout keyup keydown keypress submit change mousedown mousemove mouseup mouseenter mouseleave mouseout mouseover touchstart touchend touchmove resize scroll').split(' ');
@@ -5967,7 +5967,7 @@
                 createMethod(shortcuts[i]);
             }
         })();
-        
+
         // Ajax
         var _jsonpRequests = 0;
         $.ajax = function (options) {
@@ -5985,20 +5985,20 @@
                 dataType: 'text',
                 contentType: 'application/x-www-form-urlencoded'
             };
-        
+
             //For jQuery guys
             if (options.type) options.type = options.method;
-        
+
             // Merge options and defaults
             for (var prop in defaults) {
                 if (!(prop in options)) options[prop] = defaults[prop];
             }
-        
+
             // Default URL
             if (!options.url) {
                 options.url = window.location.toString();
             }
-        
+
             // Data to modify GET URL
             if ((options.method === 'GET' || options.method === 'HEAD') && options.data) {
                 var stringData;
@@ -6016,7 +6016,7 @@
             }
             // JSONP
             if (options.dataType === 'json' && options.url.indexOf('callback=') >= 0) {
-                
+
                 var callbackName = 'f7jsonp_' + Date.now() + (_jsonpRequests++);
                 var requestURL;
                 var callbackSplit = options.url.split('callback=');
@@ -6027,12 +6027,12 @@
                 else {
                     requestURL = callbackSplit[0] + 'callback=' + callbackName;
                 }
-        
+
                 // Create script
                 var script = document.createElement('script');
                 script.type = 'text/javascript';
                 script.src = requestURL;
-        
+
                 // Handler
                 window[callbackName] = function (data) {
                     if (options.success) options.success(data);
@@ -6041,24 +6041,24 @@
                     delete window[callbackName];
                 };
                 document.querySelector('head').appendChild(script);
-        
+
                 return;
             }
-        
+
             // Cache for GET/HEAD requests
             if (options.method === 'GET' || options.method === 'HEAD') {
                 if (options.cache === false) options.url += ('_nocache=' + Date.now());
             }
-        
+
             // Create XHR
             var xhr = new XMLHttpRequest();
-        
+
             // Open XHR
             xhr.open(options.method, options.url, options.async, options.user, options.password);
-        
+
             // Create POST Data
             var postData = null;
-            
+
             if ((options.method === 'POST' || options.method === 'PUT') && options.data) {
                 if (options.processData) {
                     var postDataInstances = [ArrayBuffer, Blob, Document, FormData];
@@ -6069,7 +6069,7 @@
                     else {
                         // POST Headers
                         var boundary = '---------------------------' + Date.now().toString(16);
-        
+
                         if (options.contentType === 'multipart\/form-data') {
                             xhr.setRequestHeader('Content-Type', 'multipart\/form-data; boundary=' + boundary);
                         }
@@ -6095,38 +6095,38 @@
                 else {
                     postData = options.data;
                 }
-                    
+
             }
-        
+
             // Additional headers
             if (options.headers) {
                 for (var header in options.headers) {
                     xhr.setRequestHeader(header, options.headers[header]);
                 }
             }
-        
+
             // Check for crossDomain
             if (typeof options.crossDomain === 'undefined') {
                 options.crossDomain = /^([\w-]+:)?\/\/([^\/]+)/.test(options.url) && RegExp.$2 !== window.location.host;
             }
-        
+
             if (!options.crossDomain) {
                 xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             }
-        
+
             if (options.xhrFields) {
                 for (var field in options.xhrFields) {
                     xhr[field] = options.xhrFields[field];
                 }
             }
-        
+
             // Handle XHR
             xhr.onload = function (e) {
                 if (xhr.status === 200 || xhr.status === 0) {
                     $(document).trigger('ajaxSuccess', {xhr: xhr});
                     if (options.success) {
                         var responseData = xhr.responseText;
-        
+
                         if (options.dataType === 'json') responseData = JSON.parse(responseData);
                         options.success(responseData, xhr.status, xhr);
                     }
@@ -6139,19 +6139,19 @@
                 }
                 $(document).trigger('ajaxComplete', {xhr: xhr});
             };
-            
+
             xhr.onerror = function (e) {
                 $(document).trigger('ajaxError', {xhr: xhr});
                 if (options.error) options.error(xhr);
             };
-        
+
             // Ajax start callback
             if (options.start) options.start(xhr);
-        
+
             // Send XHR
             $(document).trigger('ajaxStart', {xhr: xhr});
             xhr.send(postData);
-        
+
             // Return XHR object
             return xhr;
         };
@@ -6216,18 +6216,18 @@
                     resultArray.push(prop + '=' + obj[prop]);
                 }
             }
-        
+
             return resultArray.join(separator);
         };
-        
+
         $.getTranslate = function (el, axis) {
             var matrix, curTransform, curStyle, transformMatrix;
-        
+
             // automatic axis detection
             if (typeof axis === 'undefined') {
                 axis = 'x';
             }
-        
+
             curStyle = window.getComputedStyle(el, null);
             if (window.WebKitCSSMatrix) {
                 // Some old versions of Webkit choke when 'none' is passed; pass
@@ -6238,7 +6238,7 @@
                 transformMatrix = curStyle.MozTransform || curStyle.OTransform || curStyle.MsTransform || curStyle.msTransform  || curStyle.transform || curStyle.getPropertyValue('transform').replace('translate(', 'matrix(1, 0, 0, 1,');
                 matrix = transformMatrix.toString().split(',');
             }
-        
+
             if (axis === 'x') {
                 //Latest Chrome and webkits Fix
                 if (window.WebKitCSSMatrix)
@@ -6261,10 +6261,10 @@
                 else
                     curTransform = parseFloat(matrix[5]);
             }
-            
+
             return curTransform || 0;
         };
-        
+
         $.requestAnimationFrame = function (callback) {
             if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
             else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
@@ -6274,10 +6274,10 @@
             }
         };
         $.supportTouch = !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
-        
+
         // Link to prototype
         $.fn = Dom7.prototype;
-        
+
         // Plugins
         $.fn.scrollTo = function (left, top, duration) {
             return this.each(function () {
@@ -6319,7 +6319,7 @@
                     var doneLeft, doneTop, done;
                     if (animateTop) scrollTop = currentTop + ((time - startTime) / duration * (newTop - currentTop));
                     if (animateLeft) scrollLeft = currentLeft + ((time - startTime) / duration * (newLeft - currentLeft));
-        
+
                     if (animateTop && newTop > currentTop && scrollTop >= newTop)  {
                         el.scrollTop = newTop;
                         done = true;
@@ -6328,7 +6328,7 @@
                         el.scrollTop = newTop;
                         done = true;
                     }
-        
+
                     if (animateLeft && newLeft > currentLeft && scrollLeft >= newLeft)  {
                         el.scrollLeft = newLeft;
                         done = true;
@@ -6337,7 +6337,7 @@
                         el.scrollLeft = newLeft;
                         done = true;
                     }
-        
+
                     if (done) return;
                     if (animateTop) el.scrollTop = scrollTop;
                     if (animateLeft) el.scrollLeft = scrollLeft;
@@ -6364,16 +6364,16 @@
         };
         return $;
     })();
-    
+
     // Export Dom7 to Framework7
     Framework7.$ = Dom7;
-    
+
     // Export to local scope
     var $ = Dom7;
-    
+
     // Export to Window
     window.Dom7 = Dom7;
-    
+
     /*===========================
     Features Support Detection
     ===========================*/
@@ -6381,11 +6381,11 @@
         var support = {
             touch: !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch)
         };
-    
+
         // Export object
         return support;
     })();
-    
+
     /*===========================
     Device/OS Detection
     ===========================*/
@@ -6393,14 +6393,14 @@
         var device = {};
         var ua = navigator.userAgent;
         var $ = Dom7;
-    
+
         var android = ua.match(/(Android);?[\s\/]+([\d.]+)?/);
         var ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
         var ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
         var iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
-    
+
         device.ios = device.android = device.iphone = device.ipad = false;
-        
+
         // Android
         if (android) {
             device.os = 'android';
@@ -6424,10 +6424,10 @@
             device.osVersion = ipod[3] ? ipod[3].replace(/_/g, '.') : null;
             device.iphone = true;
         }
-    
+
         // Webview
         device.webView = (iphone || ipad || ipod) && ua.match(/.*AppleWebKit(?!.*Safari)/i);
-            
+
         // Minimal UI
         if (device.os && device.os === 'ios') {
             var osVersionArr = device.osVersion.split('.');
@@ -6436,7 +6436,7 @@
                                 (osVersionArr[0] * 1 === 7 ? osVersionArr[1] * 1 >= 1 : osVersionArr[0] * 1 > 7) &&
                                 $('meta[name="viewport"]').length > 0 && $('meta[name="viewport"]').attr('content').indexOf('minimal-ui') >= 0;
         }
-    
+
         // Check for status bar and fullscreen app mode
         var windowWidth = $(window).width();
         var windowHeight = $(window).height();
@@ -6460,16 +6460,16 @@
         else {
             device.statusBar = false;
         }
-    
+
         // Classes
         var classNames = [];
-    
+
         // Pixel Ratio
         device.pixelRatio = window.devicePixelRatio || 1;
         if (device.pixelRatio >= 2) {
             classNames.push('retina');
         }
-    
+
         // OS classes
         if (device.os) {
             classNames.push(device.os, device.os + '-' + device.osVersion.split('.')[0], device.os + '-' + device.osVersion.replace(/\./g, '-'));
@@ -6479,7 +6479,7 @@
                     classNames.push('ios-gt-' + i);
                 }
             }
-            
+
         }
         // Status bar classes
         if (device.statusBar) {
@@ -6488,17 +6488,17 @@
         else {
             $('html').removeClass('with-statusbar-overlay');
         }
-    
+
         // Add html classes
         if (classNames.length > 0) $('html').addClass(classNames.join(' '));
-    
+
         // Export object
         return device;
     })();
-    
+
     /*===========================
     Plugins prototype
     ===========================*/
     Framework7.prototype.plugins = {};
-    
+
 })();
