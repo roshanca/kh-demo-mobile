@@ -6,32 +6,40 @@
         "index": 1,
         "topic": "您本人通过网络向中华公司提交了开户申请？",
         "options": [
-          {"option": "是", "value": "yes", "groupId": "1406023506799"},
-          {"option": "否", "value": "no", "groupId": "1406023506799"}
+          {"option": "是", "value": "yes", "groupId": "1", "checked": true, "warn": "猪啊，快看第1题"},
+          {"option": "否", "value": "no", "groupId": "1", "tip": "1.确定？"}
         ]
       },
       {
         "index": 2,
         "topic": "开户是您的真实意愿？",
         "options": [
-          {"option": "是", "value": "yes", "groupId": "1406023506669"},
-          {"option": "否", "value": "no", "groupId": "1406023506669"}
+          {"option": "是", "value": "yes", "groupId": "2", "checked": true, "warn": "猪啊，快看第2题"},
+          {"option": "否", "value": "no", "groupId": "2", "tip": "2.确定？"}
         ]
       },
       {
         "index": 3,
         "topic": "您阅读各类风险揭示文件并理解相关条款？",
         "options": [
-          {"option": "是", "value": "yes", "groupId": "1406023506321"},
-          {"option": "否", "value": "no", "groupId": "1406023506321"}
+          {"option": "是", "value": "yes", "groupId": "3", "checked": true, "warn": "猪啊，快看第3题"},
+          {"option": "否", "value": "no", "groupId": "3", "tip": "3.确定？"}
         ]
       },
       {
         "index": 4,
         "topic": "您同意所签的协议？",
         "options": [
-          {"option": "是", "value": "yes", "groupId": "1406023511780"},
-          {"option": "否", "value": "no", "groupId": "1406023511780"}
+          {"option": "是", "value": "yes", "groupId": "4", "checked": true, "warn": "猪啊，快看第4题"},
+          {"option": "否", "value": "no", "groupId": "4", "tip": "4.确定？"}
+        ]
+      },
+      {
+        "index": 5,
+        "topic": "您确定不后悔？",
+        "options": [
+          {"option": "是", "value": "yes", "groupId": "5", "tip": "4.确定？"},
+          {"option": "否", "value": "no", "groupId": "5", "checked": true, "warn": "猪啊，快看第5题"}
         ]
       }
     ]
