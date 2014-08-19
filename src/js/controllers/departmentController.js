@@ -1,10 +1,6 @@
 define(['views/departmentView', 'GS'], function (View, GS) {
 
 	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}, {
 		element: '.department-next-button',
 		event: 'click',
 		handler: nextSubmit
