@@ -1,4 +1,4 @@
-define([], function () {
+define(['services/openTypeService'], function (OTS) {
 	var $CONFIG = null;
 	init();
 
@@ -6,7 +6,6 @@ define([], function () {
 		if (!$CONFIG) {
 			$CONFIG = {};
 			$CONFIG.currentUser = {};
-			$CONFIG.version = window.appVersion;
 
 			if (localStorage.getItem('user')) {
 				$CONFIG.currentUser = JSON.parse(localStorage.getItem('user'));
@@ -47,19 +46,21 @@ define([], function () {
 		}
 	}
 
+	var startPage = OTS.setStartPage();
+
 	function logout() {
 		khApp.confirm('您确定要退出登录吗？', function () {
 			removeCurrentUser();
 			khApp.closeModal();
 			khApp.closePanel();
-			mainView.loadPage('guide.html');
+			mainView.loadPage(startPage);
 		});
 	}
 
 	function checkUpdate() {
 		khApp.modal({
 			title: '当前版本',
-			text: $CONFIG.version,
+			text: window.appParams.version,
 			buttons: [{
 				text: '检测更新',
 				onClick: function () {
@@ -78,6 +79,7 @@ define([], function () {
 		removeCurrentUser: removeCurrentUser,
 		isLogin: isLogin,
 		logout: logout,
-		checkUpdate: checkUpdate
+		checkUpdate: checkUpdate,
+		startPage: startPage
 	};
 });

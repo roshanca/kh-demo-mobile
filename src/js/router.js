@@ -35,7 +35,7 @@ define(['GS'], function (GS) {
 
 		if (!GS.isLogin()) {
 			// mainView.loadPage('login.html');
-			mainView.loadPage('guide.html', false);
+			mainView.loadPage(GS.startPage, false);
 		} else {
 			var currentUser = GS.getCurrentUser();
 			mainView.loadPage(currentUser.node + '.html');

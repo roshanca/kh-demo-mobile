@@ -18,9 +18,9 @@ define(['utils'], function (Utils) {
 		$$('.password').blur();
 	}
 
-	function changeType(navText, descText){
-		$$('.sliding').html(navText);
-		$$('.desc').html(descText);
+	function changeType(title, explain){
+		$$('.sliding').html(title);
+		$$('.desc').html(explain);
 	}
 
 	return {

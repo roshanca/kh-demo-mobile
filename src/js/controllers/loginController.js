@@ -1,4 +1,4 @@
-define(['views/loginView', 'GS'], function (View, GS) {
+define(['views/loginView', 'GS', 'services/openTypeService'], function (View, GS, OTS) {
 
 	var bindings = [{
 		element: '.login-submit',
@@ -10,23 +10,18 @@ define(['views/loginView', 'GS'], function (View, GS) {
 		handler: getValidateCode
 	}];
 
-	var contents = [{
-		nav: '新开户',
-		desc: '我是新入市投资者，还没有股东账户'
-	}, {
-		nav: '转户',
-		desc: '我已有股东账户，已撤销指定交易和完成转托管'
-	}, {
-		nav: '开理财户',
-		desc: '无论有没有在其他券商开立股东账户，都可开立理财户'
-	}];
-
 	function init(query) {
 		var type = query.type;
-		View.changeType(contents[type].nav, contents[type].desc);
+		setType(type);
+
 		View.init({
 			bindings: bindings
 		});
+	}
+
+	function setType(type) {
+		var typeData = OTS.getTypeData(type);
+		View.changeType(typeData.title, typeData.explain);
 	}
 
 	// function isEmail(str){

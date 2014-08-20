@@ -5289,16 +5289,20 @@ html.android .theme-red progress {
 .navbar {
   border-color: #e5e5e3;
 }
+.navbar a.link {
+  color: #444;
+}
 i.icon-back {
   background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path d='M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z' fill='%23000000'/></svg>") !important;
 }
 i.icon-bars {
   background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 26'><path fill='%23000000' d='M0,0h4v4H0V0z M8,1h34v2H8V1z M0,11h4v4H0V11z M8,12h34v2H8V12z M0,22h4v4H0V22z M8,23h34v2H8V23z'/></svg>") !important;
 }
-.navbar a.link,
-.toolbar a.link {
-  color: #444;
-  -webkit-justify-content: inherit;
+.navbar .left .icon-only {
+  -webkit-justify-content: flex-start;
+}
+.navbar .right .icon-only {
+  -webkit-justify-content: flex-end;
 }
 .navbar .center {
   font-size: 18px;
@@ -5546,7 +5550,7 @@ html.android .searchbar.searchbar-active .searchbar-cancel {
   transition-duration: 0ms;
 }
 #guideContent {
-  padding: 20px 0 10px !important;
+  padding: 20px 0 0 !important;
 }
 #guideContent .logo {
   display: block;
@@ -5559,7 +5563,9 @@ html.android .searchbar.searchbar-active .searchbar-cancel {
 #guideContent .entrance a {
   position: relative;
   display: block;
-  height: 110px;
+  box-sizing: border-box;
+  min-height: 90px;
+  max-height: 210px;
   margin-top: 5px;
   padding: 10px;
   font-size: 16px;
@@ -5604,12 +5610,12 @@ html.android .searchbar.searchbar-active .searchbar-cancel {
 #guideContent .entrance .zh:after {
   background-image: url(../img/entrance-zh.png);
 }
-#guideContent .entrance .zjh {
+#guideContent .entrance .lch {
   background-color: #158ed4;
 }
-#guideContent .entrance .zjh:before,
-#guideContent .entrance .zjh:after {
-  background-image: url(../img/entrance-zjh.png);
+#guideContent .entrance .lch:before,
+#guideContent .entrance .lch:after {
+  background-image: url(../img/entrance-lch.png);
 }
 .login-getcode {
   position: absolute;

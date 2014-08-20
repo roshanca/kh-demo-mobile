@@ -10,7 +10,7 @@
 }
 
 #guideContent {
-  padding: 20px 0 10px !important;
+  padding: 20px 0 0 !important;
   .logo {
     display: block;
     width: 163px;
@@ -21,7 +21,9 @@
     a {
       position: relative;
       display: block;
-      height: 110px;
+      box-sizing: border-box;
+      min-height: 90px;
+      max-height: 210px;
       margin-top: 5px;
       padding: 10px;
       font-size: 16px;
@@ -52,11 +54,11 @@
         background-image: url(../img/entrance-zh.png);
       }
     }
-    .zjh {
+    .lch {
       background-color: #158ed4;
       &:before,
       &:after {
-        background-image: url(../img/entrance-zjh.png);
+        background-image: url(../img/entrance-lch.png);
       }
     }
   }

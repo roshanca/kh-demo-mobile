@@ -55,6 +55,10 @@
   border-color: #e5e5e3;
 }
 
+.navbar a.link {
+  color: #444;
+}
+
 i.icon-back {
   background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path d='M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z' fill='%23000000'/></svg>") !important;
 }
@@ -63,9 +67,12 @@ i.icon-bars {
   background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 26'><path fill='%23000000' d='M0,0h4v4H0V0z M8,1h34v2H8V1z M0,11h4v4H0V11z M8,12h34v2H8V12z M0,22h4v4H0V22z M8,23h34v2H8V23z'/></svg>") !important;
 }
 
-.navbar a.link, .toolbar a.link {
-  color: #444;
-  -webkit-justify-content: inherit;
+.navbar .left .icon-only {
+  -webkit-justify-content: flex-start;
+}
+
+.navbar .right .icon-only {
+  -webkit-justify-content: flex-end;
 }
 
 .navbar .center {

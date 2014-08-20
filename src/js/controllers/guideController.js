@@ -1,17 +1,29 @@
-define([], function () {
+define(['views/guideView'], function (View) {
+
+	var bindings = [{
+		element: '.entrance a',
+		event: 'click',
+		handler: jumpPage
+	}];
 
 	function init() {
-		var links = $$('a[data-type]');
-
-		links.each(function () {
-			this.addEventListener('click', function () {
-				var type = this.getAttribute('data-type');
-				jumpPage(type);
-			}, false);
+		View.render({
+			bindings: bindings
 		});
+
+		autoHeightBlock();
 	}
 
-	function jumpPage(param) {
+	function autoHeightBlock() {
+		var viewHeight = document.documentElement.clientHeight;
+		var calcHeight = viewHeight - 120;
+		var length = $$('.entrance a').length;
+
+		$$('.entrance a').css('height', calcHeight / length + 'px');
+	}
+
+	function jumpPage() {
+		var param = $$(this).data('type');
 		mainView.loadPage('login.html?type=' + param);
 	}
 
