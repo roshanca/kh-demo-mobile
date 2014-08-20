@@ -16,7 +16,11 @@
 	<!--<!(endif)-->
 
 	<!--(if target dist)>
-	<script>var appVersion = "{{version}}";</script>
+	<script>
+		var appParams = {};
+		appParams.version = "{{version}}";
+		appParams.openType = ["1", "3", "5"];
+	</script>
 	<link rel="stylesheet" href="css/app.min.css?v={{rlsdate}}">
 	<!--<!(endif)-->
 </head>
