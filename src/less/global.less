@@ -97,7 +97,8 @@ label.label-radio input[type="checkbox"]:checked ~ .item-inner, label.label-radi
 
 /* Android */
 html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
-html.android label.label-radio input[type="radio"]:checked ~ .item-inner {
+html.android label.label-radio input[type="radio"]:checked ~ .item-inner,
+html.android .select-radio[type="radio"]:checked + .select-trigger {
   position: relative;
   &:after {
     content: "";
@@ -228,6 +229,7 @@ html.android .row .col-33 {
 }
 
 .select-trigger {
+  box-sizing: border-box;
   padding: 15px 13px;
   border: 1px solid #dfdfdd;
   background-color: #fff;
@@ -239,19 +241,9 @@ html.android .row .col-33 {
 }
 
 .select-radio[type="radio"]:checked + .select-trigger {
-  position: relative;
-  &:after {
-    content: "";
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    display: block;
-    height: 28px;
-    width: 30px;
-    background-size: auto 15px;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
+  background-size: auto 15px;
+  background-repeat: no-repeat;
+  background-position: calc(~"100% - 15px") center;
 }
 
 .score {
@@ -328,6 +320,10 @@ html.android .agree-block {
       font-size: 24px;
     }
   }
+}
+
+html.android .panel .fixed-bottom {
+  position: absolute;
 }
 
 /* ==========================================================================

@@ -22,9 +22,7 @@
     .select-radio[type="radio"]:checked + .select-trigger {
       color: @color;
       border-color: @color;
-      &:after {
-        background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23@{colorHex}' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
-      }
+      background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23@{colorHex}' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
     }
   }
 
@@ -46,7 +44,8 @@
   /* Android */
   // > list
   html.android .theme-@{colorName} label.label-radio input[type="checkbox"]:checked ~ .item-inner,
-  html.android .theme-@{colorName} label.label-radio input[type="radio"]:checked ~ .item-inner {
+  html.android .theme-@{colorName} label.label-radio input[type="radio"]:checked ~ .item-inner,
+  html.android .theme-@{colorName} .select-radio[type="radio"]:checked + .select-trigger {
     &:after {
       background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23@{colorHex}' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
     }

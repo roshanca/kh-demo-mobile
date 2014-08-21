@@ -3985,8 +3985,6 @@ a.bg-gray,
 .theme-gray .select-radio[type="radio"]:checked + .select-trigger {
   color: #8e8e93;
   border-color: #8e8e93;
-}
-.theme-gray .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%238e8e93' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 .navbar-gray {
@@ -4004,7 +4002,8 @@ a.bg-gray,
 }
 /* Android */
 html.android .theme-gray label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
-html.android .theme-gray label.label-radio input[type="radio"]:checked ~ .item-inner:after {
+html.android .theme-gray label.label-radio input[type="radio"]:checked ~ .item-inner:after,
+html.android .theme-gray .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%238e8e93' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 html.android .theme-gray progress {
@@ -4121,8 +4120,6 @@ a.bg-white,
 .theme-white .select-radio[type="radio"]:checked + .select-trigger {
   color: #ffffff;
   border-color: #ffffff;
-}
-.theme-white .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23ffffff' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 .navbar-white {
@@ -4140,7 +4137,8 @@ a.bg-white,
 }
 /* Android */
 html.android .theme-white label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
-html.android .theme-white label.label-radio input[type="radio"]:checked ~ .item-inner:after {
+html.android .theme-white label.label-radio input[type="radio"]:checked ~ .item-inner:after,
+html.android .theme-white .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23ffffff' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 html.android .theme-white progress {
@@ -4257,8 +4255,6 @@ a.bg-black,
 .theme-black .select-radio[type="radio"]:checked + .select-trigger {
   color: #000000;
   border-color: #000000;
-}
-.theme-black .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23000000' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 .navbar-black {
@@ -4276,7 +4272,8 @@ a.bg-black,
 }
 /* Android */
 html.android .theme-black label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
-html.android .theme-black label.label-radio input[type="radio"]:checked ~ .item-inner:after {
+html.android .theme-black label.label-radio input[type="radio"]:checked ~ .item-inner:after,
+html.android .theme-black .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23000000' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 html.android .theme-black progress {
@@ -4393,8 +4390,6 @@ a.bg-lightblue,
 .theme-lightblue .select-radio[type="radio"]:checked + .select-trigger {
   color: #5ac8fa;
   border-color: #5ac8fa;
-}
-.theme-lightblue .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%235ac8fa' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 .navbar-lightblue {
@@ -4412,7 +4407,8 @@ a.bg-lightblue,
 }
 /* Android */
 html.android .theme-lightblue label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
-html.android .theme-lightblue label.label-radio input[type="radio"]:checked ~ .item-inner:after {
+html.android .theme-lightblue label.label-radio input[type="radio"]:checked ~ .item-inner:after,
+html.android .theme-lightblue .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%235ac8fa' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 html.android .theme-lightblue progress {
@@ -4529,8 +4525,6 @@ a.bg-yellow,
 .theme-yellow .select-radio[type="radio"]:checked + .select-trigger {
   color: #ffcc00;
   border-color: #ffcc00;
-}
-.theme-yellow .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23ffcc00' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 .navbar-yellow {
@@ -4548,7 +4542,8 @@ a.bg-yellow,
 }
 /* Android */
 html.android .theme-yellow label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
-html.android .theme-yellow label.label-radio input[type="radio"]:checked ~ .item-inner:after {
+html.android .theme-yellow label.label-radio input[type="radio"]:checked ~ .item-inner:after,
+html.android .theme-yellow .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23ffcc00' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 html.android .theme-yellow progress {
@@ -4665,8 +4660,6 @@ a.bg-orange,
 .theme-orange .select-radio[type="radio"]:checked + .select-trigger {
   color: #fd8615;
   border-color: #fd8615;
-}
-.theme-orange .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23fd8615' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 .navbar-orange {
@@ -4684,7 +4677,8 @@ a.bg-orange,
 }
 /* Android */
 html.android .theme-orange label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
-html.android .theme-orange label.label-radio input[type="radio"]:checked ~ .item-inner:after {
+html.android .theme-orange label.label-radio input[type="radio"]:checked ~ .item-inner:after,
+html.android .theme-orange .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23fd8615' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 html.android .theme-orange progress {
@@ -4801,8 +4795,6 @@ a.bg-pink,
 .theme-pink .select-radio[type="radio"]:checked + .select-trigger {
   color: #ff2d55;
   border-color: #ff2d55;
-}
-.theme-pink .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23ff2d55' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 .navbar-pink {
@@ -4820,7 +4812,8 @@ a.bg-pink,
 }
 /* Android */
 html.android .theme-pink label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
-html.android .theme-pink label.label-radio input[type="radio"]:checked ~ .item-inner:after {
+html.android .theme-pink label.label-radio input[type="radio"]:checked ~ .item-inner:after,
+html.android .theme-pink .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23ff2d55' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 html.android .theme-pink progress {
@@ -4937,8 +4930,6 @@ a.bg-blue,
 .theme-blue .select-radio[type="radio"]:checked + .select-trigger {
   color: #007aff;
   border-color: #007aff;
-}
-.theme-blue .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23007aff' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 .navbar-blue {
@@ -4956,7 +4947,8 @@ a.bg-blue,
 }
 /* Android */
 html.android .theme-blue label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
-html.android .theme-blue label.label-radio input[type="radio"]:checked ~ .item-inner:after {
+html.android .theme-blue label.label-radio input[type="radio"]:checked ~ .item-inner:after,
+html.android .theme-blue .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23007aff' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 html.android .theme-blue progress {
@@ -5073,8 +5065,6 @@ a.bg-green,
 .theme-green .select-radio[type="radio"]:checked + .select-trigger {
   color: #4cd964;
   border-color: #4cd964;
-}
-.theme-green .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%234cd964' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 .navbar-green {
@@ -5092,7 +5082,8 @@ a.bg-green,
 }
 /* Android */
 html.android .theme-green label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
-html.android .theme-green label.label-radio input[type="radio"]:checked ~ .item-inner:after {
+html.android .theme-green label.label-radio input[type="radio"]:checked ~ .item-inner:after,
+html.android .theme-green .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%234cd964' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 html.android .theme-green progress {
@@ -5209,8 +5200,6 @@ a.bg-red,
 .theme-red .select-radio[type="radio"]:checked + .select-trigger {
   color: #ff3b30;
   border-color: #ff3b30;
-}
-.theme-red .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23ff3b30' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 .navbar-red {
@@ -5228,7 +5217,8 @@ a.bg-red,
 }
 /* Android */
 html.android .theme-red label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
-html.android .theme-red label.label-radio input[type="radio"]:checked ~ .item-inner:after {
+html.android .theme-red label.label-radio input[type="radio"]:checked ~ .item-inner:after,
+html.android .theme-red .select-radio[type="radio"]:checked + .select-trigger:after {
   background-image: url("data:image/svg+xml;charset=utf-8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='%23ff3b30' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
 }
 html.android .theme-red progress {
@@ -5322,11 +5312,13 @@ label.label-radio input[type="radio"]:checked ~ .item-inner {
 }
 /* Android */
 html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
-html.android label.label-radio input[type="radio"]:checked ~ .item-inner {
+html.android label.label-radio input[type="radio"]:checked ~ .item-inner,
+html.android .select-radio[type="radio"]:checked + .select-trigger {
   position: relative;
 }
 html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
-html.android label.label-radio input[type="radio"]:checked ~ .item-inner:after {
+html.android label.label-radio input[type="radio"]:checked ~ .item-inner:after,
+html.android .select-radio[type="radio"]:checked + .select-trigger:after {
   content: "";
   position: absolute;
   right: 15px;
@@ -5442,6 +5434,7 @@ html.android .row .col-33 {
   display: none;
 }
 .select-trigger {
+  box-sizing: border-box;
   padding: 15px 13px;
   border: 1px solid #dfdfdd;
   background-color: #fff;
@@ -5451,19 +5444,9 @@ html.android .row .col-33 {
   display: none;
 }
 .select-radio[type="radio"]:checked + .select-trigger {
-  position: relative;
-}
-.select-radio[type="radio"]:checked + .select-trigger:after {
-  content: "";
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  display: block;
-  height: 28px;
-  width: 30px;
   background-size: auto 15px;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: calc(100% - 15px) center;
 }
 .score {
   font-size: 40px;
@@ -5538,6 +5521,9 @@ html.android .agree-block input[type="checkbox"] {
 }
 .panel-list li .iconfont {
   font-size: 24px;
+}
+html.android .panel .fixed-bottom {
+  position: absolute;
 }
 /* ==========================================================================
    Performance enhance
