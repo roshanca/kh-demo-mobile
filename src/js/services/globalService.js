@@ -50,9 +50,14 @@ define(['services/openTypeService'], function (OTS) {
 
 	function logout() {
 		khApp.confirm('您确定要退出登录吗？', function () {
+			var currentPage = $$('.page-on-center').data('page');
 			removeCurrentUser();
 			khApp.closeModal();
 			khApp.closePanel();
+			if (currentPage === 'video') {
+				clearTimeout(window.videoQueryTimer);
+				console.log('quit video query successful');
+			}
 			mainView.loadPage(startPage);
 		});
 	}

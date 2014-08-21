@@ -1,10 +1,6 @@
 define(['views/videoView', 'GS'], function (View, GS) {
 
 	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}, {
 		element: '.video-start-button',
 		event: 'click',
 		handler: startVideo
@@ -27,10 +23,6 @@ define(['views/videoView', 'GS'], function (View, GS) {
 	}];
 
 	var afterBindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}, {
 		element: '.video-next-button',
 		event: 'click',
 		handler: nextSubmit
@@ -92,6 +84,7 @@ define(['views/videoView', 'GS'], function (View, GS) {
 
 		// 定时任务
 		timer = setTimeout(queryUserWaitInfo, 1500);
+		window.videoQueryTimer = timer;
 	}
 
 	function waitVideo() {
