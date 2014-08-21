@@ -5289,10 +5289,14 @@ i.icon-bars {
   background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 26'><path fill='%23000000' d='M0,0h4v4H0V0z M8,1h34v2H8V1z M0,11h4v4H0V11z M8,12h34v2H8V12z M0,22h4v4H0V22z M8,23h34v2H8V23z'/></svg>") !important;
 }
 .navbar .left .icon-only {
-  -webkit-justify-content: flex-start;
+  margin-left: 7px;
+  display: -webkit-box;
+  -webkit-box-pack: start;
 }
 .navbar .right .icon-only {
-  -webkit-justify-content: flex-end;
+  margin-right: 7px;
+  display: -webkit-box;
+  -webkit-box-pack: end;
 }
 .navbar .center {
   font-size: 18px;
@@ -5310,7 +5314,6 @@ label.label-radio input[type="checkbox"]:checked ~ .item-inner,
 label.label-radio input[type="radio"]:checked ~ .item-inner {
   background-size: auto 15px;
 }
-/* Android */
 html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
 html.android label.label-radio input[type="radio"]:checked ~ .item-inner,
 html.android .select-radio[type="radio"]:checked + .select-trigger {
@@ -5849,6 +5852,9 @@ html.android progress {
 #auditContent .info .iconfont {
   display: inline-block;
   vertical-align: middle;
+}
+#faqContent {
+  padding-bottom: 20px;
 }
 #faqContent .content-block-title {
   color: #4c4c4c;

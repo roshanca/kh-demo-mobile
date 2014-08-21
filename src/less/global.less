@@ -68,11 +68,15 @@ i.icon-bars {
 }
 
 .navbar .left .icon-only {
-  -webkit-justify-content: flex-start;
+  margin-left: 7px;
+  display: -webkit-box;
+  -webkit-box-pack: start;
 }
 
 .navbar .right .icon-only {
-  -webkit-justify-content: flex-end;
+  margin-right: 7px;
+  display: -webkit-box;
+  -webkit-box-pack: end;
 }
 
 .navbar .center {
@@ -91,11 +95,9 @@ i.icon-bars {
 }
 
 label.label-radio input[type="checkbox"]:checked ~ .item-inner, label.label-radio input[type="radio"]:checked ~ .item-inner {
-  // background-image: url("../img/i-form-radio-yellow.png");
   background-size: auto 15px;
 }
 
-/* Android */
 html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
 html.android label.label-radio input[type="radio"]:checked ~ .item-inner,
 html.android .select-radio[type="radio"]:checked + .select-trigger {
