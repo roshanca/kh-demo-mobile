@@ -1,5 +1,9 @@
 # Change Log
 
+v1.2.1 - Updated on August 22, 2014
+*   Replace the original checkbox with new styled checkbox in mobile phone.
+*   Fix many style bugs in Android.
+
 v1.2.0 - Updated on August 19, 2014
 *   New silding panel layout for settings, include logout, faq and so on.
 
