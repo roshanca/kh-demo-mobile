@@ -4,7 +4,7 @@
 		<div class="row">
 		{{#options}}
 			<div class="col-50">
-				<input class="select-radio {{#checked}}default{{/checked}}" type="radio" name="{{groupId}}" value="{{value}}" {{#checked}}checked data-warn="{{warn}}"{{/checked}}>
+				<input class="select-radio {{#checked}}default{{/checked}}" type="radio" name="{{groupId}}" value="{{value}}" data-warn="{{warn}}" {{#checked}}checked="checked"{{/checked}}>
 				<div class="select-trigger" {{^checked}}onclick="khApp.alert('{{tip}}');"{{/checked}}>{{option}}</div>
 			</div>
 		{{/options}}
