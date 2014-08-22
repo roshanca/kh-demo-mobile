@@ -22,8 +22,16 @@
 	</div>
 	{{/model.facePic}}
 </div>
-<div class="content-block-title agree-block">
-	<input type="checkbox" id="agreement" name="agreement" value="agreement"> <label for="agreement">我已阅读并同意签署<a id="protocalLink" href="protocal.html?econtract_id={{model.econtractId}}">《个人数字证书申请责任书》</a></label>
+<div class="content-block-title">
+	<label class="label-checkbox item-content agree-block">
+		<input type="checkbox" name="agreement" value="agreement">
+		<div class="item-media">
+			<i class="icon icon-form-checkbox"></i>
+		</div>
+		<div class="item-inner">
+			<div class="item-title">我已阅读并同意签署<a id="protocalLink" href="protocal.html?econtract_id={{model.econtractId}}">《个人数字证书申请责任书》</a></div>
+		</div>
+	</label>
 </div>
 <div class="content-block">
 	<a href="#" class="button button-big active collect-next-button">下一步</a>

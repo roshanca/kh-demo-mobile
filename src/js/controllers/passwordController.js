@@ -9,10 +9,12 @@ define(['views/passwordView', 'GS', 'utils'], function (View, GS, Utils) {
 		event: 'click',
 		handler: nextSubmit
 	}, {
-		element: '.toggle-switch',
-		event: 'change',
-		handler: toggleDisplay
+		element: '#toggleSwitch',
+		event: 'click',
+		handler: handleSync
 	}];
+
+	var checkSync = document.querySelector('#checkSync');
 
 	function init() {
 		View.render({
@@ -20,8 +22,12 @@ define(['views/passwordView', 'GS', 'utils'], function (View, GS, Utils) {
 		});
 	}
 
+	function handleSync() {
+		setTimeout(toggleDisplay, 100);
+	}
+
 	function toggleDisplay() {
-		if (this.checked) {
+		if (checkSync.checked) {
 			View.toggleInputs('hide');
 		} else {
 			View.toggleInputs('show');

@@ -102,6 +102,7 @@ html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
 html.android label.label-radio input[type="radio"]:checked ~ .item-inner,
 html.android .select-radio[type="radio"]:checked + .select-trigger {
   position: relative;
+  background-image: none !important;
   &:after {
     content: "";
     position: absolute;
@@ -118,6 +119,7 @@ html.android .select-radio[type="radio"]:checked + .select-trigger {
 
 html.android .list-block .item-link .item-inner {
   position: relative;
+  background-image: none !important;
   &:after {
     content: "";
     position: absolute;
@@ -191,10 +193,8 @@ html.android .row .col-33 {
   border-bottom: 1px solid transparent !important;
 }
 
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
+.clearfix {
+  .clearfix();
 }
 
 .step {
@@ -231,7 +231,7 @@ html.android .row .col-33 {
 }
 
 .select-trigger {
-  box-sizing: border-box;
+  .border-box();
   padding: 15px 13px;
   border: 1px solid #dfdfdd;
   background-color: #fff;
@@ -257,21 +257,38 @@ html.android .row .col-33 {
 }
 
 .agree-block {
-  display: -webkit-flex;
-  display: flex;
-  input[type="checkbox"] {
-    font-size: 15px;
+  .flexbox();
+  .align-items(flex-start);
+  font-size: 15px;
+  .item-media {
+    .flexbox();
+    .flex-wrap(no-wrap);
+    .flex-shrink(0);
+    .border-box();
+  }
+  .item-inner {
+    width: 100%;
+    margin-left: 10px;
+    .flexbox();
+    .border-box();
+    .item-title {
+      .flex-shrink(1);
+    }
+  }
+  i.icon-form-checkbox {
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 0 !important;
+    background-color: #fff;
   }
 }
 
 html.android .agree-block {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
+  .item-inner {
+    width: 90%;
   }
-  input[type="checkbox"] {
-    float: left;
+  i.icon-form-checkbox {
+    margin-top: -5px;
   }
 }
 
@@ -280,7 +297,7 @@ html.android .agree-block {
    ========================================================================== */
 .panel {
   .title-block {
-    box-sizing: border-box;
+    .border-box();
     height: 44px;
     padding-left: 15px;
     line-height: 44px;

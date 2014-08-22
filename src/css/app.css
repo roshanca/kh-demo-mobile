@@ -3894,7 +3894,7 @@ a.color-gray {
 .color-gray.button:not(.button-fill):active,
 .color-gray.buttons-row .button:active,
 .theme-gray .button:not(.button-fill):active {
-  background-color: rgba(142, 142, 147, 0.15);
+  background-color: rgba(142, 142, 147, 0.15) !important;
 }
 .color-gray.button:not(.button-fill).active,
 .color-gray.buttons-row .button.active,
@@ -4029,7 +4029,7 @@ a.color-white {
 .color-white.button:not(.button-fill):active,
 .color-white.buttons-row .button:active,
 .theme-white .button:not(.button-fill):active {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.15) !important;
 }
 .color-white.button:not(.button-fill).active,
 .color-white.buttons-row .button.active,
@@ -4164,7 +4164,7 @@ a.color-black {
 .color-black.button:not(.button-fill):active,
 .color-black.buttons-row .button:active,
 .theme-black .button:not(.button-fill):active {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.15) !important;
 }
 .color-black.button:not(.button-fill).active,
 .color-black.buttons-row .button.active,
@@ -4299,7 +4299,7 @@ a.color-lightblue {
 .color-lightblue.button:not(.button-fill):active,
 .color-lightblue.buttons-row .button:active,
 .theme-lightblue .button:not(.button-fill):active {
-  background-color: rgba(90, 200, 250, 0.15);
+  background-color: rgba(90, 200, 250, 0.15) !important;
 }
 .color-lightblue.button:not(.button-fill).active,
 .color-lightblue.buttons-row .button.active,
@@ -4434,7 +4434,7 @@ a.color-yellow {
 .color-yellow.button:not(.button-fill):active,
 .color-yellow.buttons-row .button:active,
 .theme-yellow .button:not(.button-fill):active {
-  background-color: rgba(255, 204, 0, 0.15);
+  background-color: rgba(255, 204, 0, 0.15) !important;
 }
 .color-yellow.button:not(.button-fill).active,
 .color-yellow.buttons-row .button.active,
@@ -4569,7 +4569,7 @@ a.color-orange {
 .color-orange.button:not(.button-fill):active,
 .color-orange.buttons-row .button:active,
 .theme-orange .button:not(.button-fill):active {
-  background-color: rgba(253, 134, 21, 0.15);
+  background-color: rgba(253, 134, 21, 0.15) !important;
 }
 .color-orange.button:not(.button-fill).active,
 .color-orange.buttons-row .button.active,
@@ -4704,7 +4704,7 @@ a.color-pink {
 .color-pink.button:not(.button-fill):active,
 .color-pink.buttons-row .button:active,
 .theme-pink .button:not(.button-fill):active {
-  background-color: rgba(255, 45, 85, 0.15);
+  background-color: rgba(255, 45, 85, 0.15) !important;
 }
 .color-pink.button:not(.button-fill).active,
 .color-pink.buttons-row .button.active,
@@ -4839,7 +4839,7 @@ a.color-blue {
 .color-blue.button:not(.button-fill):active,
 .color-blue.buttons-row .button:active,
 .theme-blue .button:not(.button-fill):active {
-  background-color: rgba(0, 122, 255, 0.15);
+  background-color: rgba(0, 122, 255, 0.15) !important;
 }
 .color-blue.button:not(.button-fill).active,
 .color-blue.buttons-row .button.active,
@@ -4974,7 +4974,7 @@ a.color-green {
 .color-green.button:not(.button-fill):active,
 .color-green.buttons-row .button:active,
 .theme-green .button:not(.button-fill):active {
-  background-color: rgba(76, 217, 100, 0.15);
+  background-color: rgba(76, 217, 100, 0.15) !important;
 }
 .color-green.button:not(.button-fill).active,
 .color-green.buttons-row .button.active,
@@ -5109,7 +5109,7 @@ a.color-red {
 .color-red.button:not(.button-fill):active,
 .color-red.buttons-row .button:active,
 .theme-red .button:not(.button-fill):active {
-  background-color: rgba(255, 59, 48, 0.15);
+  background-color: rgba(255, 59, 48, 0.15) !important;
 }
 .color-red.button:not(.button-fill).active,
 .color-red.buttons-row .button.active,
@@ -5318,6 +5318,7 @@ html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner,
 html.android label.label-radio input[type="radio"]:checked ~ .item-inner,
 html.android .select-radio[type="radio"]:checked + .select-trigger {
   position: relative;
+  background-image: none !important;
 }
 html.android label.label-radio input[type="checkbox"]:checked ~ .item-inner:after,
 html.android label.label-radio input[type="radio"]:checked ~ .item-inner:after,
@@ -5335,6 +5336,7 @@ html.android .select-radio[type="radio"]:checked + .select-trigger:after {
 }
 html.android .list-block .item-link .item-inner {
   position: relative;
+  background-image: none !important;
 }
 html.android .list-block .item-link .item-inner:after {
   content: "";
@@ -5401,9 +5403,12 @@ html.android .row .col-33 {
 .bare .item-inner {
   border-bottom: 1px solid transparent !important;
 }
+.clearfix:before,
 .clearfix:after {
-  content: "";
+  content: " ";
   display: table;
+}
+.clearfix:after {
   clear: both;
 }
 .step {
@@ -5437,6 +5442,8 @@ html.android .row .col-33 {
   display: none;
 }
 .select-trigger {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 15px 13px;
   border: 1px solid #dfdfdd;
@@ -5458,24 +5465,65 @@ html.android .row .col-33 {
   font-size: 20px;
 }
 .agree-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-}
-.agree-block input[type="checkbox"] {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
   font-size: 15px;
 }
-html.android .agree-block:after {
-  content: "";
-  display: table;
-  clear: both;
+.agree-block .item-media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: no-wrap;
+  -ms-flex-wrap: no-wrap;
+  flex-wrap: no-wrap;
+  -webkit-flex-shrink: 0;
+  -ms-flex: 0 0 auto;
+  flex-shrink: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-html.android .agree-block input[type="checkbox"] {
-  float: left;
+.agree-block .item-inner {
+  width: 100%;
+  margin-left: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.agree-block .item-inner .item-title {
+  -webkit-flex-shrink: 1;
+  -ms-flex: 0 1 auto;
+  flex-shrink: 1;
+}
+.agree-block i.icon-form-checkbox {
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 0 !important;
+  background-color: #fff;
+}
+html.android .agree-block .item-inner {
+  width: 90%;
+}
+html.android .agree-block i.icon-form-checkbox {
+  margin-top: -5px;
 }
 /* ==========================================================================
    Panel
    ========================================================================== */
 .panel .title-block {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   height: 44px;
   padding-left: 15px;
