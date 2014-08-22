@@ -5883,6 +5883,9 @@ html.android progress {
 #riskContent .list-block {
   counter-reset: options;
 }
+#riskContent .list-block li {
+  font-size: 15px;
+}
 #riskContent .list-block .item-media {
   padding-bottom: 7px;
   padding-right: 7px;

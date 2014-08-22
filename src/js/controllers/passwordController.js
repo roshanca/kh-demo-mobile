@@ -1,4 +1,4 @@
-define(['views/passwordView', 'GS', 'utils'], function (View, GS, Utils) {
+define(['views/passwordView', 'GS'], function (View, GS) {
 
 	var bindings = [{
 		element: '#logout',
@@ -14,8 +14,6 @@ define(['views/passwordView', 'GS', 'utils'], function (View, GS, Utils) {
 		handler: handleSync
 	}];
 
-	var checkSync = document.querySelector('#checkSync');
-
 	function init() {
 		View.render({
 			bindings: bindings
@@ -27,6 +25,7 @@ define(['views/passwordView', 'GS', 'utils'], function (View, GS, Utils) {
 	}
 
 	function toggleDisplay() {
+		var checkSync = document.querySelector('#checkSync');
 		if (checkSync.checked) {
 			View.toggleInputs('hide');
 		} else {
@@ -35,7 +34,6 @@ define(['views/passwordView', 'GS', 'utils'], function (View, GS, Utils) {
 	}
 
 	function nextSubmit() {
-		$$(window).off('resize', window.bind_resize);
 		mainView.loadPage('depository.html');
 	}
 

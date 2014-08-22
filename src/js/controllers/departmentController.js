@@ -95,7 +95,6 @@ define(['views/departmentView', 'GS'], function (View, GS) {
 	}
 
 	function nextSubmit() {
-		$$(window).off('resize', window.bind_resize);
 		mainView.loadPage('collect.html');
 	}
 
