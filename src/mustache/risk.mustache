@@ -1,16 +1,16 @@
 <form id="riskForm">
 {{#model.questions}}
-	<div class="content-block-title">{{index}}.{{topic}}
+	<div class="content-block-title" id="topic_{{index}}">{{index}}.{{topic}}
 	{{#multi}}
 	<small>（多选）</small>
 	</div>
-	<div class="list-block">
+	<div class="list-block topic-options">
 		<ul>
 			{{#options}}
 			<li>
-				<label class="label-radio item-content">
+				<label class="label-radio item-content topic-option" data-index="multi">
 					<div class="item-media"></div>
-					<input type="checkbox" name="checkbox-{{groupId}}" value="{{value}}">
+					<input type="checkbox" name="{{question_no}}" value="{{value}}">
 					<div class="item-inner">
 						{{option}}
 					</div>
@@ -22,13 +22,13 @@
 	{{^multi}}
 	<small>（单选）</small>
 	</div>
-	<div class="list-block">
+	<div class="list-block topic-options">
 		<ul>
 			{{#options}}
 			<li>
-				<label class="label-radio item-content">
+				<label class="label-radio item-content topic-option" data-index="{{index}}">
 					<div class="item-media"></div>
-					<input type="radio" name="radio-{{groupId}}" value="{{value}}">
+					<input type="radio" name="{{question_no}}" value="{{value}}">
 					<div class="item-inner">
 						{{option}}
 					</div>

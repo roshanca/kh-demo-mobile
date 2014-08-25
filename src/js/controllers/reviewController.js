@@ -41,22 +41,24 @@ define(['views/reviewView', 'GS'], function (View, GS) {
 	function nextSubmit() {
 		var checked = checkDefault();
 
+		// 检查不通过就 return 掉
 		if (checked.length > 0) {
 			khApp.alert(checked[0].warn);
 			return;
 		}
 
+		// resultData 为 {question_no: value} 的 Object 组
 		var resultData = khApp.formToJSON('#reviewContent');
 		var resultArray = [];
-		var result;
+		var answers;
+
 		for (var i in resultData) {
 			var _result = i + '&' + resultData[i];
 			resultArray.push(_result);
 		}
-		console.log(resultData);
 
-		result = resultArray.join('|');
-		console.log(result);
+		// 最终格式为：question_no&value|question_no&value|question_no&value...
+		answers = resultArray.join('|');
 		mainView.loadPage('audit.html');
 	}
 
