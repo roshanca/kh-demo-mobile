@@ -60,6 +60,12 @@
 .icon-emark:before {
   content: "\e611";
 }
+.icon-tel:before {
+  content: "\e610";
+}
+.icon-del:before {
+  content: "\e612";
+}
 html,
 body {
   position: relative;
@@ -5572,6 +5578,10 @@ html.android .agree-block i.icon-form-checkbox {
 }
 .panel-list li .iconfont {
   font-size: 24px;
+}
+.panel-list li .icon-bankcard {
+  font-size: 18px;
+  margin-right: 3px;
 }
 html.android .panel .fixed-bottom {
   position: absolute;
