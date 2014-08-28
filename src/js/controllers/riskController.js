@@ -69,7 +69,7 @@ define(['views/riskView', 'GS'], function (View, GS) {
 				if (checked.length > 0) {
 					scrollToTopic(nextIndex);
 				}
-			}
+			};
 		})(this), 200);
 	}
 
