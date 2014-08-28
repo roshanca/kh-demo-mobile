@@ -55,15 +55,22 @@ define(['views/riskView', 'GS'], function (View, GS) {
 	}
 
 	/**
-	 * 点击题目选项自动跳转到下一题
+	 * 点击题目选项自动滚动到下一题
 	 * @return {void}
 	 */
 	function autoNext() {
 		var index = $$(this).data('index');
-		if (index === 'multi') return;
-		var nextIndex = +index + 1;
+		if (index === 'multi') return; // 多选不滚动
 
-		scrollToTopic(nextIndex);
+		var nextIndex = +index + 1;
+		setTimeout((function (_this) {
+			return function () {
+				var checked = $$(_this).find('input:checked');
+				if (checked.length > 0) {
+					scrollToTopic(nextIndex);
+				}
+			};
+		})(this), 200);
 	}
 
 	/**
