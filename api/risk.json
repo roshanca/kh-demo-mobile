@@ -6,32 +6,51 @@
         "index": 1,
         "topic": "您的年收入为多少？",
         "options": [
-          {"option": "10万（含）以下", "value": "a01", "groupId": "1406023506799"},
-          {"option": "10万-20万（含）", "value": "a02", "groupId": "1406023506799"},
-          {"option": "20万-30万（含）", "value": "a03", "groupId": "1406023506799"},
-          {"option": "30万以上", "value": "a04", "groupId": "1406023506799"}
+          {"option": "10万（含）以下", "value": "1", "question_no": "aaa"},
+          {"option": "10万-20万（含）", "value": "2", "question_no": "aaa"},
+          {"option": "20万-30万（含）", "value": "3", "question_no": "aaa"},
+          {"option": "30万以上", "value": "4", "question_no": "aaa"}
         ]
       },
       {
         "index": 2,
-        "topic": "您可以接受的投资标有哪些？",
-        "multi": true,
+        "topic": "您打算重点投资于哪一类投资品种？",
         "options": [
-          {"option": "权证和期货", "value": "a11", "groupId": "1406023506669"},
-          {"option": "股票", "value": "a11", "groupId": "1406023506669"},
-          {"option": "基金", "value": "a11", "groupId": "1406023506669"},
-          {"option": "家庭理财规划", "value": "a11", "groupId": "1406023506669"}
+          {"option": "债券、货币市场基金、债券基金等固定收益类投资品种", "value": "1", "question_no": "bbb"},
+          {"option": "股票、混合型基金、偏股型基金、股票型基金等权益类投资品种", "value": "2", "question_no": "bbb"},
+          {"option": "期货、融资融券等杠杆性产品", "value": "3", "question_no": "bbb"}
         ]
       },
       {
         "index": 3,
+        "topic": "当您进行投资时，您的首要目标是？",
+        "options": [
+          {"option": "实现资产大幅增长，愿意承担较高风险", "value": "1", "question_no": "ccc"},
+          {"option": "产生更多收益，可以承担一定投资风险", "value": "2", "question_no": "ccc"},
+          {"option": "尽可能保证本金安全，不介意较低收益率", "value": "3", "question_no": "ccc"},
+          {"option": "资产保值，不愿承担投资风险", "value": "4", "question_no": "ccc"}
+        ]
+      },
+      {
+        "index": 4,
+        "topic": "您可以接受的投资标有哪些？",
+        "multi": true,
+        "options": [
+          {"option": "权证和期货", "value": "1", "question_no": "ddd"},
+          {"option": "股票", "value": "2", "question_no": "ddd"},
+          {"option": "基金", "value": "3", "question_no": "ddd"},
+          {"option": "家庭理财规划", "value": "4", "question_no": "ddd"}
+        ]
+      },
+      {
+        "index": 5,
         "topic": "您的投资经验有哪些？",
         "multi": true,
         "options": [
-          {"option": "除银行活期账户和定期存款外，我基本没有其他投资经验", "value": "a21", "groupId": "1406023506321"},
-          {"option": "股票", "value": "a21", "groupId": "1406023506321"},
-          {"option": "基金", "value": "a21", "groupId": "1406023506321"},
-          {"option": "家庭理财规划", "value": "a21", "groupId": "1406023506321"}
+          {"option": "除银行活期账户和定期存款外，我基本没有其他投资经验", "value": "1", "question_no": "eee"},
+          {"option": "股票", "value": "2", "question_no": "eee"},
+          {"option": "基金", "value": "3", "question_no": "eee"},
+          {"option": "家庭理财规划", "value": "4", "question_no": "eee"}
         ]
       }
     ]
