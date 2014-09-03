@@ -1,24 +1,28 @@
 define(['GS'], function (GS) {
 
 	var hash = {
-		index      : 'index',
-		guide      : 'guide',
-		login      : 'login',
-		identity   : 'identity',
-		collect    : 'collect',
-		profile    : 'profile',
-		department : 'department',
-		video      : 'video',
-		appoint    : 'appoint',
-		cert       : 'cert',
-		account    : 'account',
-		risk       : 'risk',
-		password   : 'password',
-		depository : 'depository',
-		review     : 'review',
-		audit      : 'audit',
-		protocal   : 'protocal',
-		reform     : 'reform'
+		index       : 'index',
+		guide       : 'guide',
+		login       : 'login',
+		identity    : 'identity',
+		collect     : 'collect',
+		profile     : 'profile',
+		department  : 'department',
+		departments : 'departments',
+		video       : 'video',
+		appoint     : 'appoint',
+		cert        : 'cert',
+		account     : 'account',
+		risk        : 'risk',
+		password    : 'password',
+		depository  : 'depository',
+		review      : 'review',
+		audit       : 'audit',
+		protocal    : 'protocal',
+		reform      : 'reform',
+		prov        : 'prov',
+		city        : 'city',
+		deps        : 'deps'
 	};
 
 	/**

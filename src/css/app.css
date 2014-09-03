@@ -5239,6 +5239,9 @@ html.android .theme-red progress {
 .panel {
   background: #494949;
 }
+.list-block {
+  margin-top: 18px;
+}
 .list-block,
 .content-block {
   margin-bottom: 18px;
