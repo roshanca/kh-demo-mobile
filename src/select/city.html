@@ -1,0 +1,36 @@
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="left">
+			<a href="#" class="link icon-only back">
+				<i class="icon icon-back"></i>
+			</a>
+		</div>
+		<div class="center sliding">请选择城市或区</div>
+		<div class="right">
+			<a href="#" class="link icon-only open-panel">
+				<i class="icon icon-bars"></i>
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="pages navbar-through no-toolbar">
+	<div data-page="city" class="page">
+		<!-- Search bar -->
+		<form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar">
+			<div class="searchbar-input">
+				<input type="search" placeholder="搜索城市或区"><a href="#" class="searchbar-clear"></a>
+			</div>
+			<a href="#" class="searchbar-cancel">取消</a>
+		</form>
+		<div class="searchbar-overlay"></div>
+		<div class="page-content">
+			<div class="content-block searchbar-not-found">
+				没有找到任何相关内容
+			</div>
+			<div class="list-block list-block-search searchbar-found" id="cityList">
+
+			</div>
+		</div>
+	</div>
+</div>
