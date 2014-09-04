@@ -1,7 +1,7 @@
 # 网上开户移动版 Demo
 
-[![Build Status](http://img.shields.io/travis/roshanca/kh-demo-mobile.svg?style=square)](https://travis-ci.org/roshanca/kh-demo-mobile)
-[![devDependency Status](http://img.shields.io/david/dev/roshanca/kh-demo-mobile.svg?style=square)](https://david-dm.org/roshanca/kh-demo-mobile#info=devDependencies)
+[![Build Status](http://img.shields.io/travis/roshanca/kh-demo-mobile.svg?style=flat)](https://travis-ci.org/roshanca/kh-demo-mobile)
+[![devDependency Status](http://img.shields.io/david/dev/roshanca/kh-demo-mobile.svg?style=flat)](https://david-dm.org/roshanca/kh-demo-mobile#info=devDependencies)
 
 ## 框架
 
