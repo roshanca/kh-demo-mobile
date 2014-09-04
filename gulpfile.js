@@ -66,7 +66,7 @@ gulp.task('less', function () {
 });
 
 gulp.task('lint', function () {
-	return gulp.src(['src/js/**/*.js', '!src/js/libs/*.js'])
+	return gulp.src(['src/js/**/*.js', '!src/js/libs/*.js', 'gulpfile.js'])
 		.pipe(plugins.jshint())
 		.pipe(plugins.jshint.reporter(stylish));
 });
@@ -128,7 +128,7 @@ gulp.task('copy', function () {
 });
 
 gulp.task('clean', function () {
-	return gulp.src('build/*', {read: false}).pipe(plugins.clean());
+	return gulp.src('build/*', {read: false}).pipe(plugins.rimraf());
 });
 
 /**

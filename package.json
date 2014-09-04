@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "gulp": "latest",
-    "gulp-clean": "latest",
     "gulp-html-replace": "latest",
     "gulp-imagemin": "latest",
     "gulp-jshint": "latest",
@@ -32,12 +31,13 @@
     "gulp-minify-html": "latest",
     "gulp-rename": "latest",
     "gulp-requirejs": "latest",
+    "gulp-rimraf": "latest",
     "gulp-uglify": "latest",
     "gulp-watch": "latest",
-    "run-sequence": "latest",
-    "browser-sync": "latest"
+    "browser-sync": "latest",
+    "run-sequence": "latest"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "gulp lint"
   }
 }
