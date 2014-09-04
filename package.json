@@ -21,20 +21,21 @@
     "node": ">= 0.10.0"
   },
   "devDependencies": {
-    "grunt-contrib-clean": "latest",
-    "grunt-contrib-connect": "latest",
-    "grunt-contrib-copy": "latest",
-    "grunt-contrib-htmlmin": "^0.3.0",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-less": "latest",
-    "grunt-contrib-requirejs": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-shell": "latest",
-    "grunt-targethtml": "latest",
-    "jshint": "latest",
-    "jshint-stylish": "latest",
-    "matchdep": "latest"
+    "gulp": "latest",
+    "gulp-clean": "latest",
+    "gulp-html-replace": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-jshint": "latest",
+    "gulp-less": "latest",
+    "gulp-load-plugins": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-minify-html": "latest",
+    "gulp-rename": "latest",
+    "gulp-requirejs": "latest",
+    "gulp-uglify": "latest",
+    "gulp-watch": "latest",
+    "run-sequence": "latest",
+    "browser-sync": "latest"
   },
   "scripts": {
     "test": "grunt test"
