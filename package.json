@@ -35,6 +35,7 @@
     "gulp-uglify": "latest",
     "gulp-watch": "latest",
     "browser-sync": "latest",
+    "jshint-stylish": "latest",
     "run-sequence": "latest"
   },
   "scripts": {
