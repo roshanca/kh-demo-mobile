@@ -21,7 +21,7 @@ Framework7 是一套开源框架，用于快速创建基于 `HTML5` 的混合移
 ### 源码结构
 
 ```
-.
+./src
 |-- api         # => 模拟请求数据
 |-- css
 |-- font        # => icon font
