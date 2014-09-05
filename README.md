@@ -54,7 +54,7 @@ __为什么这么做？__
 
 基本布局包含了：
 
-```
+```html
 <body>
   <!-- Views -->
   <div class="views">
