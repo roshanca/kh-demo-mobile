@@ -101,7 +101,7 @@ Framework7 提供了两种页面跳转方式，当然，都是基于 Ajax 的。
 * `mainView.loadPage('about.html')` 由 JS 方法（具体某个 `view` 实例上的 `loadPage` 方法）来执行跳转。
 
 特别要注意的是：
-> By default Framework7 will load all links using Ajax, except links with additional external class (<a href="somepage.html" class="external">) and links with not correct href attribute (when it is empty or #).
+> By default Framework7 will load all links using Ajax, except links with additional external class (`<a href="somepage.html" class="external">`) and links with not correct href attribute (when it is empty or #).
 
 ## 开发
 
