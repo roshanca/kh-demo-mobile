@@ -114,8 +114,9 @@ Framework7 提供了两种页面跳转方式，当然，都是基于 Ajax 的。
 1. 安装 git: [http://git-scm.com/downloads](http://git-scm.com/downloads)
 1. 安装 nodeJS: [http://nodejs.org](http://nodejs.org)
 1. 安装包管理工具 NPM，一般来说，它会随 nodeJS 的安装而随自动安装好的
+1. 通过 NPM 安装 gulp: `npm install -g gulp`
 
-检查以上工具安装是否成功，请在终端中输入 `git -v`, `node -v` 和 `npm -v`，如若成功输出对应的版本好则表示安装成功！
+检查以上工具安装是否成功，请在终端中输入 `git -v`, `node -v`, `npm -v` 和 `gulp -v`，如若成功输出对应的版本好则表示安装成功！
 
 ### 下载项目代码
 
