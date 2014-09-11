@@ -16,7 +16,10 @@ var runSequence = require('run-sequence');
 
 var serveConfig = {
 	files: [
-		'src/**/*.html'
+		'src/**/*.html',
+		'src/js/**/*.js',
+		'src/img/*.{png|gif}',
+		'src/font/iconfont.{svg|ttf}'
 	],
 	server: {
 		baseDir: 'src/'
