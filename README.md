@@ -9,6 +9,8 @@
 
 Framework7 是一套开源框架，用于快速创建基于 `HTML5` 的混合移动应用（hybrid mobile apps, 一般指嵌套在系统 `webView` 容器内的 `HTML5` 的 Web 应用），其优雅的原生 JS 实现与对 iOS 原生系统之精美界面与流畅交互的完美模拟，是我选择它作为项目框架的主要原因。我还加了些许的 hack，使项目 APP 尽量能兼容地流畅地跑在 Android 里.
 
+***
+
 ## 项目简介
 
 为了使开发快速高效，使用了以下辅助工具（作为前端，应该不会陌生）：
@@ -103,38 +105,58 @@ Framework7 提供了两种页面跳转方式，当然，都是基于 Ajax 的。
 特别要注意的是：
 > By default Framework7 will load all links using Ajax, except links with additional external class (`<a href="somepage.html" class="external">`) and links with not correct href attribute (when it is empty or #).
 
-## 开发
+***
+
+## 如何使用
+
+### 准备工作
+
+1. 安装 git: [http://git-scm.com/downloads](http://git-scm.com/downloads)
+1. 安装 nodeJS: [http://nodejs.org](http://nodejs.org)
+1. 安装包管理工具 NPM，一般来说，它会随 nodeJS 的安装而随自动安装好的
+
+检查以上工具安装是否成功，请在终端中输入 `git -v`, `node -v` 和 `npm -v`，如若成功输出对应的版本好则表示安装成功！
 
 ### 下载项目代码
 
 * 通过 [Download Zip](https://github.com/roshanca/kh-demo-mobile/archive/master.zip) 来下载。
-* `git clone git@github.com:roshanca/kh-demo-mobile.git`
+* 通过 git 直接检出代码至本地：`git clone git@github.com:roshanca/kh-demo-mobile.git`
 
 ### 安装依赖
-
-```
-bower install
-```
-
-此操作将下载 `Framework7`, `requirejs`, `requirejs-text` 和 `mustache` 四个最新的开发包，下载完毕后手动将最新的 JS 文件 copy 至项目 `src/js/libs` 的目录下，`Framework7` 还要将 `less` 文件夹改名为 `framework7` copy 至项目 `src/less` 目录下。
 
 ```
 npm install
 ```
 
-此操作主要是下载 `gulp` 与其插件，用于自动化构建项目，其配置文件 `gulpfile.js` 在项目根目录下。
+此操作主要是下载安装 `gulp` 与其任务插件，用于自动化构建项目（测试、编译、压缩合并等等），其配置文件 `gulpfile.js` 在项目根目录下。
 
-### 开发预览
+***
+
+## 开发预览
+
+在终端中定位至项目根目录下，输入：
 
 ```
 gulp
 ```
 
-### Build
+这时系统默认浏览器会自动打开，载入项目页面。
+
+开发过程中是支持浏览器的 LiveReload 的，通过监视项目源文件中的 html, less, js, 图片等文件，它们一有变化浏览器即可自动刷新。想要了解更多这项技术的细节，请访问：[browserSync](http://www.browsersync.io).
+
+***
+
+## Build
+
+当开发到一定阶段的时候，要分发版本了上正式环境了，从开发环境到正式环境，必须经历一轮 build：
 
 ```
 gulp build
 ```
+
+build 的主要工作，是合并压缩 css 和 js，并将 index.html 中的资源引用替换成 build 后的资源，并且压缩了其余的 html 和 模板文件还有图片等。
+
+***
 
 ## 许可
 Copyright (c) 2014 Roshan Wu. GPL v2 Licensed, see [LICENSE](https://github.com/roshanca/kh-demo-mobile/blob/master/LICENSE) for details.
