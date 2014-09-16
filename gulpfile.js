@@ -19,7 +19,8 @@ var serveConfig = {
 		'src/**/*.html',
 		'src/js/**/*.js',
 		'src/img/*.{png|gif}',
-		'src/font/iconfont.{svg|ttf}'
+		'src/font/iconfont.{svg|ttf}',
+		'src/mustache/*.mustache'
 	],
 	server: {
 		baseDir: 'src/'
@@ -139,7 +140,7 @@ gulp.task('clean', function () {
  * @return {[type]} [description]
  */
 gulp.task('default', ['less', 'browser-sync'], function () {
-	gulp.watch('src/less/*.less', ['less']);
+	gulp.watch('src/less/**/*.less', ['less']);
 });
 
 /**
