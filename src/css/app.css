@@ -5917,6 +5917,9 @@ html.android progress {
   display: inline-block;
   vertical-align: middle;
 }
+#accountContent .select-trigger {
+  display: block;
+}
 #faqContent {
   padding-bottom: 20px;
 }

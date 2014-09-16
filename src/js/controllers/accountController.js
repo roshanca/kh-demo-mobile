@@ -1,10 +1,6 @@
 define(['views/accountView', 'GS'], function (View, GS) {
 
 	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}, {
 		element: '.account-next-button',
 		event: 'click',
 		handler: nextSubmit
@@ -23,35 +19,44 @@ define(['views/accountView', 'GS'], function (View, GS) {
 						bindings: bindings,
 						model: model
 					});
+					checkDefaultAccount();
 					khApp.hideIndicator();
 				}
 			}
 		});
 	}
 
-	function getSelectGroupValue() {
-		var optgroup = $$('[name=account]').find('optgroup');
-		var ret = [];
-
-		for (var i = 0, l = optgroup.length; i < l; i++) {
-			var options = optgroup[i].getElementsByTagName('option');
-			for (var j = 0, m = options.length;  j < m; j++) {
-				if (options[j].selected) {
-					ret.push({
-						'group': optgroup[i].label,
-						'value': options[j].value
-					});
-				}
+	function checkDefaultAccount() {
+		var source = $$('#accountContent input[type="radio"]');
+		source.each(function () {
+			if (this.value.length !== 0) {
+				this.checked = true;
+				$$(this).next()[0].search = '?value=' + this.value;
 			}
-		}
-
-		return ret;
+		});
 	}
+
+	// function getSelectGroupValue() {
+	// 	var optgroup = $$('[name=account]').find('optgroup');
+	// 	var ret = [];
+
+	// 	for (var i = 0, l = optgroup.length; i < l; i++) {
+	// 		var options = optgroup[i].getElementsByTagName('option');
+	// 		for (var j = 0, m = options.length;  j < m; j++) {
+	// 			if (options[j].selected) {
+	// 				ret.push({
+	// 					'group': optgroup[i].label,
+	// 					'value': options[j].value
+	// 				});
+	// 			}
+	// 		}
+	// 	}
+
+	// 	return ret;
+	// }
 
 
 	function nextSubmit() {
-		var groupValue = getSelectGroupValue();
-		console.log(groupValue);
 		mainView.loadPage('password.html');
 	}
 

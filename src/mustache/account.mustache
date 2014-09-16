@@ -4,26 +4,17 @@
 	<li class="step-item">3 三方存管</li>
 </ol>
 <div class="content-block-title">选择开通账户</div>
-<div class="list-block">
-	<ul>
-		<li><a href="#" class="item-link smart-select">
-			<select name="account" multiple>
-				{{#model.accountGroups}}
-				<optgroup label="{{group}}">
-					{{#types}}
-					<option value="{{value}}">{{type}}</option>
-					{{/types}}
-				</optgroup>
-				{{/model.accountGroups}}
-			</select>
-			<div class="item-content">
-				<div class="item-inner">
-					<div class="item-title">账户类型</div>
-					<div class="item-after"></div>
-				</div>
-			</div></a>
-		</li>
-	</ul>
+<div class="content-block">
+	<div class="row">
+		<div class="col-50">
+			<input class="select-radio" type="radio" name="accountStock" value="上海A股 深圳A股">
+			<a href="account-list-stock.html" class="select-trigger">股票账户</a>
+		</div>
+		<div class="col-50">
+			<input class="select-radio" type="radio" name="accountFund" value="">
+			<a href="account-list-fund.html" class="select-trigger">基金账户</a>
+		</div>
+	</div>
 </div>
 <div class="content-block-title">签署协议</div>
 <div class="list-block">

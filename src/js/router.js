@@ -22,7 +22,8 @@ define(['GS'], function (GS) {
 		reform      : 'reform',
 		prov        : 'prov',
 		city        : 'city',
-		deps        : 'deps'
+		deps        : 'deps',
+		accountList : 'accountList'
 	};
 
 	/**
