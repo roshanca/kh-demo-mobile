@@ -36,11 +36,13 @@ var requireConfig = {
 	},
 	include: [
 		'controllers/accountController',
+		'controllers/accountListController',
 		'controllers/appointController',
 		'controllers/auditController',
 		'controllers/certController',
 		'controllers/collectController',
 		'controllers/departmentController',
+		'controllers/departmentsController',
 		'controllers/depositoryController',
 		'controllers/guideController',
 		'controllers/loginController',
@@ -49,7 +51,10 @@ var requireConfig = {
 		'controllers/protocalController',
 		'controllers/reviewController',
 		'controllers/riskController',
-		'controllers/videoController'
+		'controllers/videoController',
+		'controllers/provController',
+		'controllers/cityController',
+		'controllers/depsController'
 	],
 	out: 'app.js'
 };
