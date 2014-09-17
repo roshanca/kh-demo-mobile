@@ -10,7 +10,6 @@
 为了使开发快速高效，使用了以下辅助工具（作为前端，应该不会陌生）：
 
 * 样式预编译器：[LESS](http://www.lesscss.net)
-* 模板引擎：[mustache](http://mustache.github.io)
 * JS 模块依赖管理：[requirejs](http://requirejs.org)
 * 自动化构建工具：[gulpjs](http://gulpjs.com)
 * 应用框架：[Framework7](http://www.idangero.us/framework7/)
@@ -33,7 +32,6 @@
 |   |-- router.js      # => 路由
 |   └── utils.js       # => 工具
 |-- less               # => CSS 编译文件
-|-- mustache           # => 模板文件，负责填充数据
 |-- index.html         # => 首页，也是整个 APP 的入口
 └── ...                # => 其它页面
 ```
@@ -101,7 +99,9 @@ Framework7 是一套开源框架，用于快速创建基于 `HTML5` 的混合移
 
 #### pages
 
-一般情况下，每个在 view 下的 pages，只包含一个带 `data-page="{{pageName}}"` 的 page，`data-page` 是非常重要的，它决定了页面 controller 的加载，以下代码就是根据 page name 来获取 page controller 的方法。其子节点 `<div class="page-content"></div>` 内，就是页面的具体内容了。
+一般情况下，每个在 view 下的 pages，只包含一个带 `data-page="{{pageName}}"` 的 page，`data-page` 是非常重要的，它决定了页面级的 JS 加载。
+
+路由 JS (router.js) 内的路由表，其实是一张 JS 加载指向表。它的其中一段代码，就是根据 `pageName` 来获取页面控制器 JS 的方法。是的，它会去 controllers 的目录下搜寻 `pageName + Controller` 这样的格式的 JS 文件。比如登录页 login.html, 它的 `data-page` 为 'login', 那么它所对应的 controller 是 loginController.js, 可能在 controller 中会依赖 loginView，说不定还会涉及模拟数据 api 目录下的 login.json. 你会发现，保证名称一致，不是什么坏事。
 
 ```js
 /**
@@ -117,6 +117,8 @@ function load(controllerName, query) {
   }
 }
 ```
+
+一般来讲，你的工作从这里开始：`<div class="page-content"></div>` 内，是页面的具体内容，在这里写你的页面代码。
 
 #### 页面跳转
 
