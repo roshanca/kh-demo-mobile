@@ -1,10 +1,6 @@
-define(['views/passwordView', 'GS'], function (View, GS) {
+define(['views/passwordView'], function (View) {
 
 	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}, {
 		element: '.password-next-button',
 		event: 'click',
 		handler: nextSubmit

@@ -1,12 +1,14 @@
-define(['utils', 'text!templates/cert_popup.mustache', 'mustache'], function (Utils, certPopupTemplate, mustache) {
+define(['utils', 'text!popup/cert.html'], function (Utils, certPopupTemplate) {
 
 	function render(params) {
 		Utils.bindEvents(params.bindings);
 	}
 
 	function renderPopup(params) {
-		var template = mustache.render(certPopupTemplate, {model: params.model});
-		$$('.popup').html(template);
+		var compiledTemplate = Template7.compile(certPopupTemplate);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('.popup').html(renderTemplate);
 		Utils.bindEvents(params.bindings);
 	}
 
@@ -18,17 +20,17 @@ define(['utils', 'text!templates/cert_popup.mustache', 'mustache'], function (Ut
 
 	function showDownloading() {
 		show('download');
-		$$('.step').hide();
+		$$('.indicator').hide();
 	}
 
 	function showAuditBefore() {
 		show('auditBefore');
-		$$('.step').show();
+		$$('.indicator').show();
 	}
 
 	function showAuditAfter() {
 		show('auditAfter');
-		$$('.step').show();
+		$$('.indicator').show();
 	}
 
 	return {

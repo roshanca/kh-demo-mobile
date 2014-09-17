@@ -1,12 +1,6 @@
-define(['views/collectView', 'GS'], function (View, GS) {
+define(['views/collectView'], function (View) {
 
 	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}];
-
-	var afterBindings = [{
 		element: '.collect-next-button',
 		event: 'click',
 		handler: nextSubmit
@@ -21,10 +15,6 @@ define(['views/collectView', 'GS'], function (View, GS) {
 	}];
 
 	function init() {
-		View.init({
-			bindings: bindings
-		});
-
 		$$.ajax({
 			url: 'api/collect.json',
 			type: 'GET',
@@ -33,7 +23,7 @@ define(['views/collectView', 'GS'], function (View, GS) {
 				if (data.errorNo === 0) {
 					View.render({
 						model: data.model,
-						bindings: afterBindings
+						bindings: bindings
 					});
 				} else {
 					khApp.alert(data.errorInfo);

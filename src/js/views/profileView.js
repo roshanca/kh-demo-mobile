@@ -1,12 +1,15 @@
-define(['utils', 'text!templates/profile.mustache', 'mustache'], function (Utils, profileTemplate, mustache) {
+define(['utils'], function (Utils) {
 
 	function init(params) {
 		Utils.bindEvents(params.bindings);
 	}
 
 	function render(params) {
-		var template = mustache.render(profileTemplate, {model: params.model});
-		$$('#profileContent').append(template);
+		var template = $$('#profileTemplate').html();
+		var compiledTemplate = Template7.compile(template);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('#profileContent').append(renderTemplate);
 		Utils.bindEvents(params.bindings);
 		resetSelect();
 	}

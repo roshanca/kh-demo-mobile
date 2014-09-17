@@ -20,7 +20,7 @@ define(['views/provView', 'models/depsModel'], function (View, Model) {
 		} else {
 			khApp.showIndicator();
 			$$.ajax({
-				url: 'api/department_alls.json',
+				url: 'api/deps-alls.json',
 				type: 'GET',
 				success: function (data) {
 					data = JSON.parse(data);

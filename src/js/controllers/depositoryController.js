@@ -1,12 +1,6 @@
-define(['views/depositoryView', 'GS'], function (View, GS) {
+define(['views/depositoryView'], function (View) {
 
 	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}];
-
-	var afterBindings = [{
 		element: '#bank',
 		event: 'change',
 		handler: selectBank
@@ -17,19 +11,16 @@ define(['views/depositoryView', 'GS'], function (View, GS) {
 	}];
 
 	function init() {
-		View.init({
-			bindings: bindings
-		});
 		khApp.showIndicator();
 		$$.ajax({
 			url: 'api/depository.json',
-			type: 'POST',
+			type: 'GET',
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {
 					View.render({
 						model: data.model,
-						bindings: afterBindings
+						bindings: bindings
 					});
 				}
 				khApp.hideIndicator();

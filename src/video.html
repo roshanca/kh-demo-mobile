@@ -23,11 +23,13 @@
 <div class="pages navbar-through no-toolbar">
 	<div data-page="video" class="page">
 		<div class="page-content">
-			<ol class="step clearfix">
-				<li class="step-item current">1 身份验证</li>
-				<li class="step-item">2 协议签署</li>
-				<li class="step-item">3 三方存管</li>
-			</ol>
+			<div class="indicator">
+				<ol class="step clearfix">
+					<li class="step-item current">身份验证</li>
+					<li class="step-item">协议签署</li>
+					<li class="step-item">三方存管</li>
+				</ol>
+			</div>
 			<div class="video-content" id="videoReady">
 				<div class="content-block-title">
 					您将和客服人员进行视频通话，客服人员将对您进行身份确认。
@@ -45,7 +47,7 @@
 					</div>
 				</div>
 				<div class="content-block">
-					<a href="#" class="button button-big active fixed-bottom video-start-button">开始视频</a>
+					<a href="#" class="button button-big button-fill fixed-bottom video-start-button">开始视频</a>
 				</div>
 			</div>
 			<div class="video-content" id="videoWait" style="display: none;">
@@ -63,10 +65,10 @@
 						<p>如果排队人数较多，您可以选择：</p>
 						<div class="row">
 							<div class="col-50">
-								<a href="#" class="button active video-wait-button">继续等待</a>
+								<a href="#" class="button button-fill video-wait-button">继续等待</a>
 							</div>
 							<div class="col-50">
-								<a href="appoint.html" class="button active appoint-button">预约客服</a>
+								<a href="appoint.html" class="button button-fill appoint-button">预约客服</a>
 							</div>
 						</div>
 					</div>

@@ -1,4 +1,4 @@
-define(['views/identityView', 'GS'], function (View, GS) {
+define(['views/identityView'], function (View) {
 	var bindings = [{
 		element: '.identity-next',
 		event: 'click',

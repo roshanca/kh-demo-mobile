@@ -36,7 +36,7 @@ define(['views/depsView', 'models/depsModel'], function (View, Model) {
 		var parent = input.parent();
 		var depsname = parent.find('.item-title').html();
 
-		mainView.loadPage('department.html?depsname=' + depsname, false);
+		mainView.reloadPage('department.html?depsname=' + depsname);
 	}
 
 	return {

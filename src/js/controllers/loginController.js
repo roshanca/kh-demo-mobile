@@ -65,7 +65,7 @@ define(['views/loginView', 'GS', 'services/openTypeService'], function (View, GS
 
 		$$.ajax({
 			url: 'api/verify.json',
-			type: 'POST',
+			type: 'GET',
 			data: {
 				'mphone': val
 			},
@@ -128,7 +128,7 @@ define(['views/loginView', 'GS', 'services/openTypeService'], function (View, GS
 
 			$$.ajax({
 				url: 'api/login.json',
-				type: 'POST',
+				type: 'GET',
 				data: {
 					'mobile': valMobile,
 					'validateCode': valPassword

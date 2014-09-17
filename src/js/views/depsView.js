@@ -1,8 +1,10 @@
-define(['utils', 'text!templates/select.mustache', 'mustache'], function (Utils, selectTemplate, mustache) {
+define(['utils', 'text!tpl/deps.html'], function (Utils, depsTemplate) {
 
 	function render(params) {
-		var template = mustache.render(selectTemplate, {itemList: params.model, selectable: true});
-		$$('#depsList').html(template);
+		var compiledTemplate = Template7.compile(depsTemplate);
+		var renderTemplate = compiledTemplate({itemList: params.model, selectable: true});
+
+		$$('#depsList').html(renderTemplate);
 		Utils.bindEvents(params.bindings);
 	}
 

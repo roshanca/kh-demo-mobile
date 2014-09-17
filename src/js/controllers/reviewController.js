@@ -1,12 +1,6 @@
-define(['views/reviewView', 'GS'], function (View, GS) {
+define(['views/reviewView'], function (View) {
 
 	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}];
-
-	var afterBindings = [{
 		element: '.review-next-button',
 		event: 'click',
 		handler: nextSubmit
@@ -17,20 +11,17 @@ define(['views/reviewView', 'GS'], function (View, GS) {
 	}];
 
 	function init() {
-		View.init({
-			bindings: bindings
-		});
 		khApp.showIndicator();
 		$$.ajax({
 			url: 'api/review.json',
-			type: 'POST',
+			type: 'GET',
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {
 					var model = data.model;
 					View.render({
 						model: model,
-						bindings: afterBindings
+						bindings: bindings
 					});
 					khApp.hideIndicator();
 				}

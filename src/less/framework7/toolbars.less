@@ -38,7 +38,7 @@
         .justify-content(flex-start);
         .align-items(center);
         .transition(300ms);
-        &:active{
+        html:not(.watch-active-state) &:active, &.active-state {
             opacity: 0.3;
             .transition(0ms);
         }
@@ -145,6 +145,9 @@
         -webkit-flex-direction: column;
         flex-direction: column;
     }
+    i.icon {
+        height: 30px;
+    }
 }
 .tabbar-labels {
     height: 50px;
@@ -175,7 +178,7 @@
         }
     }
     .tabbar-labels {
-        height: 55px;
+        height: 56px;
         span.tabbar-label {
             font-size: 14px;
         }

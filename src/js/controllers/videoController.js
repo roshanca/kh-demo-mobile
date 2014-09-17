@@ -1,4 +1,4 @@
-define(['views/videoView', 'GS'], function (View, GS) {
+define(['views/videoView'], function (View) {
 
 	var bindings = [{
 		element: '.video-start-button',
@@ -60,7 +60,7 @@ define(['views/videoView', 'GS'], function (View, GS) {
 
 		$$.ajax({
 			url: 'api/video.json',
-			type: 'POST',
+			type: 'GET',
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {
@@ -112,8 +112,8 @@ define(['views/videoView', 'GS'], function (View, GS) {
 		clearTimeout(timer);
 		khApp.showIndicator();
 		$$.ajax({
-			url: 'api/video_success.json',
-			type: 'POST',
+			url: 'api/video-success.json',
+			type: 'GET',
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {
@@ -132,8 +132,8 @@ define(['views/videoView', 'GS'], function (View, GS) {
 		clearTimeout(timer);
 		khApp.showIndicator();
 		$$.ajax({
-			url: 'api/video_fail.json',
-			type: 'POST',
+			url: 'api/video-fail.json',
+			type: 'GET',
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 1) {

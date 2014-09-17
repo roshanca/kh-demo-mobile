@@ -2,28 +2,28 @@
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="center sliding">
-				视频验证
+				安装证书
 			</div>
 		</div>
 	</div>
 	<div class="page">
 		<div class="page-content">
-		{{#model.success}}
+		{{#if model.success}}
 			<div class="info-content vertical-align">
 				<div class="info"><i class="iconfont icon-success"></i>{{model.successText}}</div>
 			</div>
 			<div class="content-block">
-				<a href="#" class="button button-big active fixed-bottom video-next-button">下一步</a>
+				<a href="#" class="button button-big active fixed-bottom cert-download-button">完成</a>
 			</div>
-		{{/model.success}}
-		{{#model.fail}}
+		{{/if}}
+		{{#if model.fail}}
 			<div class="info-content vertical-align">
 				<div class="info"><i class="iconfont icon-fail"></i>{{model.failText}}</div>
 			</div>
 			<div class="content-block">
-				<a href="#" class="button button-big active fixed-bottom video-retry-button">重新验证</a>
+				<a href="#" class="button button-big active fixed-bottom cert-retry-button">重新下载</a>
 			</div>
-		{{/model.fail}}
+		{{/if}}
 		</div>
 	</div>
 </div>

@@ -1,12 +1,11 @@
-define(['utils', 'text!templates/collect.mustache', 'mustache'], function (Utils, collectTemplate, mustache) {
-
-	function init(params) {
-		Utils.bindEvents(params.bindings);
-	}
+define(['utils'], function (Utils) {
 
 	function render(params) {
-		var template = mustache.render(collectTemplate, {model: params.model});
-		$$('#collectContent').html(template);
+		var template = $$('#collectTemplate').html();
+		var compiledTemplate = Template7.compile(template);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('#collectContent').append(renderTemplate);
 		Utils.bindEvents(params.bindings);
 	}
 
@@ -23,7 +22,6 @@ define(['utils', 'text!templates/collect.mustache', 'mustache'], function (Utils
 	}
 
 	return {
-		init: init,
 		render: render,
 		showPhotoFront: showPhotoFront,
 		showPhotoBack: showPhotoBack,

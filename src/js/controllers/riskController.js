@@ -1,10 +1,6 @@
-define(['views/riskView', 'GS'], function (View, GS) {
+define(['views/riskView'], function (View) {
 
 	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}, {
 		element: '.risk-submit-button',
 		event: 'click',
 		handler: resultSubmit
@@ -26,7 +22,7 @@ define(['views/riskView', 'GS'], function (View, GS) {
 		khApp.showIndicator();
 		$$.ajax({
 			url: 'api/risk.json',
-			type: 'POST',
+			type: 'GET',
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {
@@ -130,8 +126,8 @@ define(['views/riskView', 'GS'], function (View, GS) {
 
 		khApp.showIndicator();
 		$$.ajax({
-			url: 'api/risk_result.json',
-			type: 'POST',
+			url: 'api/risk-result.json',
+			type: 'GET',
 			data: {'answers': answers},
 			success: function (data) {
 				data = JSON.parse(data);

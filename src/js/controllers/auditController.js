@@ -1,23 +1,18 @@
-define(['views/auditView', 'GS'], function (View, GS) {
+define(['views/auditView'], function (View) {
 
-	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}];
+	var bindings = [];
 
 	function init() {
 		khApp.showIndicator();
 		$$.ajax({
 			url: 'api/audit.json',
-			type: 'POST',
+			type: 'GET',
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {
-					var model = data.model;
 					View.render({
-						bindings: bindings,
-						model: model
+						model: data.model,
+						bindings: bindings
 					});
 					khApp.hideIndicator();
 				}

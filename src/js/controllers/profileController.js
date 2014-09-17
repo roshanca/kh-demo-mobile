@@ -1,10 +1,6 @@
-define(['views/profileView', 'GS'], function (View, GS) {
+define(['views/profileView'], function (View) {
 
 	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}, {
 		element: '.profile-next-button',
 		event: 'click',
 		handler: nextSubmit
@@ -14,7 +10,7 @@ define(['views/profileView', 'GS'], function (View, GS) {
 		khApp.showIndicator();
 		$$.ajax({
 			url: 'api/profile.json',
-			type: 'POST',
+			type: 'GET',
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {

@@ -1,8 +1,11 @@
-define(['text!templates/protocal.mustache', 'mustache'], function (protocalTemplate, mustache) {
+define([], function () {
 
 	function render(params) {
-		var template = mustache.render(protocalTemplate, {model: params.model});
-		$$('#protocalContent').append(template);
+		var template = $$('#protocalTemplate').html();
+		var compiledTemplate = Template7.compile(template);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('#protocalContent').append(renderTemplate);
 	}
 
 	return {

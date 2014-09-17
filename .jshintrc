@@ -23,6 +23,7 @@
     "window": true,
     "$$": true,
     "Framework7": true,
+    "Template7": true,
     "khApp": true,
     "define": true,
     "mainView": true

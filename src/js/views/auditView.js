@@ -1,8 +1,11 @@
-define(['utils', 'text!templates/audit.mustache', 'mustache'], function (Utils, auditTemplate, mustache) {
+define(['utils'], function (Utils) {
 
 	function render(params) {
-		var template = mustache.render(auditTemplate, {model: params.model});
-		$$('#auditContent').append(template);
+		var template = $$('#auditTemplate').html();
+		var compiledTemplate = Template7.compile(template);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('#auditContent').append(renderTemplate);
 		Utils.bindEvents(params.bindings);
 	}
 

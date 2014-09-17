@@ -1,4 +1,4 @@
-define(['views/departmentView', 'GS'], function (View, GS) {
+define(['views/departmentView'], function (View) {
 
 	var bindings = [{
 		element: '.department-next-button',
@@ -28,31 +28,14 @@ define(['views/departmentView', 'GS'], function (View, GS) {
 		View.render({
 			bindings: bindings
 		});
-
-		laodRecDepartment();
-	}
-
-	function laodRecDepartment() {
-		khApp.showIndicator();
-		$$.ajax({
-			url: 'api/department.json',
-			type: 'POST',
-			success: function (data) {
-				data = JSON.parse(data);
-				if (data.errorNo === 0) {
-					View.renderName(data.model.recDepartment);
-					khApp.hideIndicator();
-				}
-			}
-		});
 	}
 
 	function selectFromNearby() {
-		startSelect('nearbySelect', 'api/department_near.json');
+		startSelect('nearbySelect', 'api/deps-near.json');
 	}
 
 	function selectFromAll() {
-		startSelect('allSelect', 'api/department_all.json');
+		startSelect('allSelect', 'api/deps-all.json');
 	}
 
 	function startSelect(id, url) {
@@ -69,7 +52,7 @@ define(['views/departmentView', 'GS'], function (View, GS) {
 		khApp.showIndicator();
 		$$.ajax({
 			url: url,
-			type: 'POST',
+			type: 'GET',
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {

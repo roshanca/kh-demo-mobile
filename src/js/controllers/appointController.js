@@ -1,10 +1,6 @@
 define(['views/appointView', 'GS'], function (View, GS) {
 
 	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}, {
 		element: '.appoint-done-button',
 		event: 'click',
 		handler: appointDone

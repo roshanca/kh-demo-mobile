@@ -1,63 +1,104 @@
-define(['views/accountView', 'GS'], function (View, GS) {
+define(['views/accountView'], function (View) {
 
 	var bindings = [{
-		element: '.account-next-button',
+		element: '.select-all',
 		event: 'click',
-		handler: nextSubmit
+		handler: selectAll
+	}, {
+		element: '#accountList input[type="checkbox"]',
+		event: 'change',
+		handler: syncSelect
 	}];
 
-	function init() {
-		khApp.showIndicator();
+	function init(query) {
+		var valueString = decodeURI(query.value);
+		var title = query.title;
+
+		View.renderTitle(title);
+
 		$$.ajax({
 			url: 'api/account.json',
-			type: 'POST',
+			type: 'GET',
+			data: {title: title},
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {
-					var model = data.model;
 					View.render({
-						bindings: bindings,
-						model: model
+						model: data.model,
+						bindings: bindings
 					});
-					checkDefaultAccount();
-					khApp.hideIndicator();
+					$$('#accountList input[type="checkbox"]').each(function () {
+						if (valueString.indexOf(this.value) !== -1) {
+							this.checked = true;
+						}
+					});
 				}
 			}
 		});
 	}
 
-	function checkDefaultAccount() {
-		var source = $$('#accountContent input[type="radio"]');
-		source.each(function () {
-			if (this.value.length !== 0) {
-				this.checked = true;
-				$$(this).next()[0].search = '?value=' + this.value;
-			}
+	function selectAll() {
+		var options = $$('#accountList input[type="checkbox"]'),
+			values = [],
+			source,
+			finalValue;
+
+		options.each(function () {
+			source = $$('#signContent input[name="' + this.name + '"]');
+			this.checked = true;
+			values.push(this.value);
+			finalValue = values.join(' ');
+			source.val(finalValue);
+			source[0].checked = finalValue.length === 0 ? false : true;
 		});
 	}
 
-	// function getSelectGroupValue() {
-	// 	var optgroup = $$('[name=account]').find('optgroup');
-	// 	var ret = [];
+	function syncSelect() {
+		var source = $$('#signContent input[name="' + this.name + '"]'),
+			target = this,
+			value = this.value,
+			finalValue;
 
-	// 	for (var i = 0, l = optgroup.length; i < l; i++) {
-	// 		var options = optgroup[i].getElementsByTagName('option');
-	// 		for (var j = 0, m = options.length;  j < m; j++) {
-	// 			if (options[j].selected) {
-	// 				ret.push({
-	// 					'group': optgroup[i].label,
-	// 					'value': options[j].value
-	// 				});
-	// 			}
-	// 		}
-	// 	}
+		source.each(function () {
+			target.checked ? add(this, value) : remove(this, value);
 
-	// 	return ret;
-	// }
+			finalValue = this.value;
+			this.checked = finalValue.length === 0 ? false : true;
+		});
+	}
 
+	function add(target, value) {
+		if (typeof target.value === 'undefined') return;
 
-	function nextSubmit() {
-		mainView.loadPage('password.html');
+		if (target.value.length === 0) {
+			$$(target).val(value);
+		} else {
+			var values = target.value.split(' ');
+
+			if (values.indexOf(value) === -1) {
+				values.push(value);
+			}
+
+			$$(target).val(values.join(' '));
+		}
+	}
+
+	function remove(target, value) {
+		var values = target.value.split(' ');
+
+		if (values.indexOf(value) !== -1) {
+			if (values.length === 1) {
+				$$(target).val('');
+			} else {
+				var valueReverse = [];
+				values.map(function (v, i) {
+					if (v !== value) {
+						valueReverse.push(v);
+					}
+				});
+				$$(target).val(valueReverse.join(' '));
+			}
+		}
 	}
 
 	return {

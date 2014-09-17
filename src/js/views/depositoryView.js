@@ -1,12 +1,11 @@
-define(['utils', 'text!templates/depository.mustache', 'mustache'], function (Utils, depositoryTemplate, mustache) {
-
-	function init(params) {
-		Utils.bindEvents(params.bindings);
-	}
+define(['utils'], function (Utils) {
 
 	function render(params) {
-		var template = mustache.render(depositoryTemplate, {model: params.model});
-		$$('#depositoryContent').html(template);
+		var template = $$('#depositoryTemplate').html();
+		var compiledTemplate = Template7.compile(template);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('#depositoryContent').append(renderTemplate);
 		Utils.bindEvents(params.bindings);
 		resetSelect();
 	}
@@ -52,7 +51,6 @@ define(['utils', 'text!templates/depository.mustache', 'mustache'], function (Ut
 	}
 
 	return {
-		init: init,
 		render: render,
 		noNeedInput: noNeedInput,
 		onlyCardNoInput: onlyCardNoInput,

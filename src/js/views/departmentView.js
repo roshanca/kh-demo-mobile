@@ -1,4 +1,4 @@
-define(['utils', 'text!templates/department.mustache', 'mustache'], function (Utils, departmentTemplate, mustache) {
+define(['utils'], function (Utils) {
 
 	function render(params) {
 		Utils.bindEvents(params.bindings);
@@ -6,8 +6,11 @@ define(['utils', 'text!templates/department.mustache', 'mustache'], function (Ut
 	}
 
 	function renderSelect(params) {
-		var template = mustache.render(departmentTemplate, {model: params.model});
-		$$('#departmentContent').append(template);
+		var template = $$('#departmentTemplate').html();
+		var compiledTemplate = Template7.compile(template);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('#departmentContent').append(renderTemplate);
 		Utils.bindEvents(params.bindings);
 		resetSelect();
 	}

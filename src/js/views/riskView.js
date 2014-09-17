@@ -1,14 +1,19 @@
-define(['utils', 'text!templates/risk.mustache', 'text!templates/risk_popup.mustache', 'mustache'], function (Utils, riskTemplate, riskPopupTemplate, mustache) {
+define(['utils', 'text!popup/risk.html'], function (Utils, riskPopupTemplate) {
 
 	function render(params) {
-		var template = mustache.render(riskTemplate, {model: params.model});
-		$$('#riskContent').append(template);
+		var template = $$('#riskTemplate').html();
+		var compiledTemplate = Template7.compile(template);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('#riskContent').append(renderTemplate);
 		Utils.bindEvents(params.bindings);
 	}
 
 	function renderPopup(params) {
-		var template = mustache.render(riskPopupTemplate, {model: params.model});
-		$$('.popup').html(template);
+		var compiledTemplate = Template7.compile(riskPopupTemplate);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('.popup').html(renderTemplate);
 		Utils.bindEvents(params.bindings);
 	}
 

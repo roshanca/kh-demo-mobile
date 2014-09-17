@@ -1,4 +1,4 @@
-define(['views/protocalView', 'GS'], function (View, GS) {
+define(['views/protocalView'], function (View) {
 
 	function init(query) {
 		console.log(query);
@@ -7,9 +7,9 @@ define(['views/protocalView', 'GS'], function (View, GS) {
 
 	function requestContent(query) {
 		khApp.showIndicator();
-		var xhr = $$.ajax({
+		$$.ajax({
 			url: 'api/protocal.json',
-			type: 'POST',
+			type: 'GET',
 			data: query,
 			success: function (data) {
 				data = JSON.parse(data);

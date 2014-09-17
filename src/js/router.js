@@ -11,6 +11,7 @@ define(['GS'], function (GS) {
 		video       : 'video',
 		appoint     : 'appoint',
 		cert        : 'cert',
+		sign        : 'sign',
 		account     : 'account',
 		risk        : 'risk',
 		password    : 'password',
@@ -21,8 +22,7 @@ define(['GS'], function (GS) {
 		reform      : 'reform',
 		prov        : 'prov',
 		city        : 'city',
-		deps        : 'deps',
-		accountList : 'accountList'
+		deps        : 'deps'
 	};
 
 	/**

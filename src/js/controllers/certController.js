@@ -1,10 +1,6 @@
-define(['views/certView', 'GS'], function (View, GS) {
+define(['views/certView'], function (View) {
 
 	var bindings = [{
-		element: '#logout',
-		event: 'click',
-		handler: GS.logout
-	}, {
 		element: '.cert-request-button',
 		event: 'click',
 		handler: requestCert
@@ -33,7 +29,7 @@ define(['views/certView', 'GS'], function (View, GS) {
 		setTimeout(function () {
 			var xhr = $$.ajax({
 				url: 'api/cert.json',
-				type: 'POST',
+				type: 'GET',
 				success: function (data) {
 					data = JSON.parse(data);
 					if (data.errorNo === 0) {
@@ -61,7 +57,7 @@ define(['views/certView', 'GS'], function (View, GS) {
 	function doneCallback() {
 		View.showAuditAfter();
 		khApp.closeModal();
-		mainView.loadPage('account.html');
+		mainView.loadPage('sign.html');
 	}
 
 	return {

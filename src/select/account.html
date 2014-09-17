@@ -1,0 +1,42 @@
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="left">
+			<a href="#" class="link back">
+				<i class="icon icon-back"></i>
+				<span>完成</span>
+			</a>
+		</div>
+		<div class="center sliding">{{title}}</div>
+		<div class="right">
+			<a href="#" class="link select-all">
+				<span>全选</span>
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="pages navbar-through no-toolbar">
+	<div data-page="account" class="page">
+		<div class="page-content">
+			<div class="list-block" id="accountList">
+				<script id="accountTemplate" type="text/template">
+				<ul>
+					{{#each model.accountList}}
+						<li>
+							<label class="label-checkbox item-content">
+								<input type="checkbox" name="{{name}}" value="{{value}}">
+								<span class="item-media">
+									<i class="icon icon-form-checkbox"></i>
+								</span>
+								<div class="item-inner">
+									<div class="item-title">{{text}}</div>
+								</div>
+							</label>
+						</li>
+					{{/each}}
+				</ul>
+				</script>
+			</div>
+		</div>
+	</div>
+</div>

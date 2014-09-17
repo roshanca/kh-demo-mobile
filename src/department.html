@@ -10,19 +10,21 @@
 </div>
 
 <div class="pages navbar-through no-toolbar">
-	<div data-page="department" class="page">
+	<div data-page="departments" class="page">
 		<div class="page-content" id="departmentContent">
-			<ol class="step clearfix">
-				<li class="step-item current">1 身份验证</li>
-				<li class="step-item">2 协议签署</li>
-				<li class="step-item">3 三方存管</li>
-			</ol>
+			<div class="indicator">
+				<ol class="step clearfix">
+					<li class="step-item current">身份验证</li>
+					<li class="step-item">协议签署</li>
+					<li class="step-item">三方存管</li>
+				</ol>
+			</div>
 			<div class="department-block">
 				<div class="department-badge">
 					<i class="iconfont icon-commend"></i> 推荐
 				</div>
 				<div class="department-name">
-					<h2></h2>
+					<h2>杭州测试营业部</h2>
 				</div>
 				<div class="list-block">
 					<ul class="row no-gutter clearfix">
@@ -60,9 +62,33 @@
 				</ul>
 			</div>
 			<div class="content-block">
-				<a href="#" class="button button-big active department-next-button">下一步</a>
+				<a href="#" class="button button-big button-fill department-next-button">下一步</a>
 			</div>
+			<script id="departmentTemplate" type="text/template">
+			{{#if model.departmentsNearby}}
+				<a href="#" class="item-link smart-select" id="nearbySelect" data-page-title="附近营业部">
+					<select name="nearby">
+					{{#each model.departmentsNearby}}
+						<option value="{{value}}">{{department}}</option>
+					{{/each}}
+					</select>
+				</a>
+			{{/if}}
 
+			{{#if model.departmentsAll}}
+				<a href="#" class="item-link smart-select" id="allSelect" data-page-title="选择营业部" data-searchbar="true" data-searchbar-placeholder="营业部名称" data-searchbar-cancel="取消">
+					<select name="all">
+					{{#each model.departmentsAll}}
+						<optgroup label="{{group}}">
+							{{#departments}}
+								<option value="{{value}}">{{department}}</option>
+							{{/departments}}
+						</optgroup>
+					{{/each}}
+					</select>
+				</a>
+			{{/if}}
+			</script>
 		</div>
 	</div>
 </div>

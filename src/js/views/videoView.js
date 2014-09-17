@@ -1,12 +1,14 @@
-define(['utils', 'text!templates/video_popup.mustache', 'mustache'], function (Utils, videoPopupTemplate, mustache) {
+define(['utils', 'text!popup/video.html'], function (Utils, videoPopupTemplate) {
 
 	function render(params) {
 		Utils.bindEvents(params.bindings);
 	}
 
 	function renderPopup(params) {
-		var template = mustache.render(videoPopupTemplate, {model: params.model});
-		$$('.popup').html(template);
+		var compiledTemplate = Template7.compile(videoPopupTemplate);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('.popup').html(renderTemplate);
 		Utils.bindEvents(params.bindings);
 	}
 

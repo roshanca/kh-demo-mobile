@@ -1,20 +1,20 @@
-define(['utils', 'text!templates/account.mustache', 'text!templates/protocal.mustache', 'mustache'], function (Utils, accountTemplate, protocalPopupTemplate, mustache) {
+define(['utils'], function (Utils) {
 
 	function render(params) {
-		var template = mustache.render(accountTemplate, {model: params.model});
-		$$('#accountContent').html(template);
+		var template = $$('#accountTemplate').html();
+		var compiledTemplate = Template7.compile(template);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('#accountList').append(renderTemplate);
 		Utils.bindEvents(params.bindings);
-		Utils.setButtonPosition('.account-next-button');
 	}
 
-	function renderPopup(params) {
-		var template = mustache.render(protocalPopupTemplate, {model: params.model});
-		$$('.popup').html(template);
-		Utils.bindEvents(params.bindings);
+	function renderTitle(text) {
+		$$('.sliding').html(text + '选择');
 	}
 
 	return {
 		render: render,
-		renderPopup: renderPopup
+		renderTitle: renderTitle
 	};
 });

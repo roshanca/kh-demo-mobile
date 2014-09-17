@@ -18,6 +18,7 @@ var serveConfig = {
 	files: [
 		'src/**/*.html',
 		'src/js/**/*.js',
+		'src/api/**/*.json',
 		'src/img/*.{png|gif}',
 		'src/font/iconfont.{svg|ttf}',
 		'src/mustache/*.mustache'
@@ -31,12 +32,9 @@ var requireConfig = {
 	baseUrl: 'src/js',
 	mainConfigFile: 'src/js/app.js',
 	name: 'app',
-	paths: {
-		'templates': '../template'
-	},
 	include: [
 		'controllers/accountController',
-		'controllers/accountListController',
+		'controllers/signController',
 		'controllers/appointController',
 		'controllers/auditController',
 		'controllers/certController',
@@ -80,7 +78,7 @@ gulp.task('lint', function () {
 		.pipe(plugins.jshint.reporter(stylish));
 });
 
-gulp.task('uglify', ['template'], function () {
+gulp.task('uglify', function () {
 	plugins.requirejs(requireConfig)
 		.pipe(plugins.uglify())
 		.pipe(plugins.rename({extname: '.min.js'}))
@@ -110,12 +108,6 @@ gulp.task('htmlmin', function () {
 	return gulp.src(['src/**/*.html', '!src/index.html'])
 		.pipe(plugins.minifyHtml({empty: true}))
 		.pipe(gulp.dest('build'));
-});
-
-gulp.task('template', function () {
-	return gulp.src('src/mustache/*')
-		.pipe(plugins.minifyHtml({empty: true}))
-		.pipe(gulp.dest('src/template'));
 });
 
 gulp.task('cssmin', function () {

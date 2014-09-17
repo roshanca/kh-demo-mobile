@@ -17,7 +17,24 @@
 <div class="pages navbar-through no-toolbar">
 	<div data-page="review" class="page">
 		<div class="page-content" id="reviewContent">
-
+			<script id="reviewTemplate" type="text/template">
+				{{#each model.questions}}
+					<div class="content-block-title">{{index}}.{{topic}}</div>
+					<div class="content-block">
+						<div class="row">
+						{{#options}}
+							<div class="col-50">
+								<input class="select-radio {{#if checked}}default{{/if}}" type="radio" name="{{groupId}}" value="{{value}}" data-warn="{{warn}}" {{#if checked}}checked="checked"{{/if}}>
+								<div class="select-trigger" {{#unless checked}}onclick="khApp.alert('{{tip}}');"{{/unless}}>{{option}}</div>
+							</div>
+						{{/options}}
+						</div>
+					</div>
+				{{/each}}
+				<div class="content-block">
+					<a href="#" class="button button-big button-fill review-next-button">提交</a>
+				</div>
+			</script>
 		</div>
 	</div>
 </div>
