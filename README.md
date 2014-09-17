@@ -5,8 +5,8 @@
 
 历史分支：
 
-* 基于 Handlebars 的 (hbs)[https://github.com/roshanca/kh-demo-mobile/tree/hbs] 分支
-* 基于 Mustache 的 (mustache)[https://github.com/roshanca/kh-demo-mobile/tree/mustache] 分支
+* 基于 Handlebars 的 [https://github.com/roshanca/kh-demo-mobile/tree/hbs]() 分支
+* 基于 Mustache 的 [https://github.com/roshanca/kh-demo-mobile/tree/mustache]() 分支
 
 ***
 
