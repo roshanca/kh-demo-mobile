@@ -3,6 +3,11 @@
 [![Build Status](http://img.shields.io/travis/roshanca/kh-demo-mobile.svg?style=flat-square)](https://travis-ci.org/roshanca/kh-demo-mobile)
 [![devDependency Status](https://david-dm.org/roshanca/kh-demo-mobile/dev-status.svg?style=flat-square)](https://david-dm.org/roshanca/kh-demo-mobile#info=devDependencies)
 
+历史分支：
+
+* 基于 Handlebars 的 (hbs)[https://github.com/roshanca/kh-demo-mobile/tree/hbs] 分支
+* 基于 Mustache 的 (mustache)[https://github.com/roshanca/kh-demo-mobile/tree/mustache] 分支
+
 ***
 
 ## 项目简介
