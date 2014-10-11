@@ -1,7 +1,7 @@
 # Change Log
 
 v1.3.0 - Updated on September 17, 2014
-*   Update Framework7 to v0.9.5 ([Changelog](https://github.com/nolimits4web/Framework7/blob/master/CHANGELOG.md#framework7-v096---updated-on-september-12-2014))
+*   Update Framework7 to v0.9.6 ([Changelog](https://github.com/nolimits4web/Framework7/blob/master/CHANGELOG.md#framework7-v096---updated-on-september-12-2014))
 
 v1.2.1 - Updated on August 22, 2014
 *   Replace the original checkbox with new styled checkbox in mobile phone.
