@@ -1,6 +1,7 @@
 <div class="navbar">
 	<div class="navbar-inner">
-		<div class="center sliding">申请提交</div>
+		<div class="left"><a href="">刷新</a></div>
+		<div class="center sliding">张达明</div>
 		<div class="right">
 			<a href="#" class="link icon-only open-panel">
 				<i class="icon icon-bars"></i>
@@ -13,9 +14,21 @@
 	<div data-page="audit" class="page">
 		<div class="page-content" id="auditContent">
 			<script id="auditTemplate" type="text/template">
-				<div class="info"><i class="iconfont icon-success"></i>开户成功</div>
-				<div class="content-block-title">
-					我们将尽快完成申请资料的审核，审核后您将收到手机短信提示，请保持手机畅通。
+				<div class="open-step step1"></div>
+				<div class="content-block margTB20 fontz12">开通港股通需满足总资产≥50万（普通账户+信用账户）请先转入资产并进行查询确认</div>
+				<div class="content-block pwd-wrap">
+					<div class="list-block">
+						<div class="item-input">
+							<input type="password" name="tradePwd" pattern="[0-9]*" maxlength="6" placeholder="请输入交易密码">
+						</div>
+					</div>
+				</div>
+				<div class="content-block pwd-bg">
+					<div></div>
+				</div>
+				<div class="content-block search-button-wrap"><a href="#" class="button button-big button-fill search-button">查询</a></div>
+				<div class="content-block light-color fontz12">
+					如果您在其他券商开通过沪A账户，无需转户即可新开沪A账户并开通港股通
 				</div>
 				<div class="list-block">
 					<ul>
@@ -29,6 +42,8 @@
 						{{/each}}
 					</ul>
 				</div>
+				<div class="content-block dlod-client-tip tc">您可通过PC或手机交易客户端进行资产转入</div>
+				<div class="content-block dlod-client"><a href="#" class="button button-big search-button">下载手机交易客户端</a></div>
 			</script>
 		</div>
 	</div>

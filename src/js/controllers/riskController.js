@@ -151,13 +151,13 @@ define(['views/riskView'], function (View) {
 	function drawRound(pecentage) {
 		var isLogoCentered = true,
 			isGaugeInit = false,
-			canvas = document.getElementsByTagName("canvas"),
+			canvas = document.getElementsByTagName('canvas'),
 			gaugeGroup = [],
 			arcIncrements = [],
 			cWidth = canvas[0].width,
 			cHeight = canvas[0].height,
-			baseColor = "#e1e1e1",
-			coverColor = "#e45050";
+			baseColor = '#e1e1e1',
+			coverColor = '#e45050';
 
 		function drawCanvasRound(gauge, color, sAngle, eAngle) {
 			gauge.clearRect(0, 0, cWidth, cHeight);
@@ -180,14 +180,13 @@ define(['views/riskView'], function (View) {
 			gauge.stroke();
 
 			gauge.fillStyle = coverColor;
-			gauge.font = "60px PT Sans";
+			gauge.font = '60px PT Sans';
 			var text = Math.floor(arcEndStaff / 4.86 * 100);
 			var textWidth = gauge.measureText(text).width;
-			console.log(gauge.measureText(text));
 			gauge.fillText(text, cWidth / 2 - textWidth / 2, cHeight / 2 + 20);
-			gauge.font = "18px PT Sans";
-			gauge.fillStyle = "#ccc";
-			gauge.fillText("分", cWidth / 2 + textWidth / 2, cHeight / 2 + 20);
+			gauge.font = '18px PT Sans';
+			gauge.fillStyle = '#ccc';
+			gauge.fillText('分', cWidth / 2 + textWidth / 2, cHeight / 2 + 20);
 
 			return arcEndStaff;
 		}
@@ -195,8 +194,8 @@ define(['views/riskView'], function (View) {
 		function initCanvasStaff() {
 
 			for (var i = 0, cl = canvas.length; i < cl; i++) {
-				var gauge = canvas[i].getContext("2d");
-				var radian = pecentage * 280 * Math.PI / 180
+				var gauge = canvas[i].getContext('2d');
+				var radian = pecentage * 280 * Math.PI / 180;
 				gaugeGroup.push(gauge);
 				arcIncrements.push(0);
 

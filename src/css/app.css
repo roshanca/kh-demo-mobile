@@ -5380,6 +5380,18 @@ html.android .theme-red progress {
 .toolbar-through .page-content {
   padding-bottom: 0;
 }
+.content-block.fontz12 {
+  font-size: 12px;
+}
+.tc {
+  text-align: center;
+}
+.light-color {
+  color: #ccc;
+}
+.margTB20 {
+  margin: 20px 0;
+}
 .panel {
   background: #494949;
 }
@@ -5825,12 +5837,12 @@ html.android .searchbar.searchbar-active .searchbar-cancel {
 #guideContent .entrance .zh:after {
   background-image: url(../img/entrance-zh.png);
 }
-#guideContent .entrance .lch {
+#guideContent .entrance .ggt {
   background-color: #158ed4;
 }
-#guideContent .entrance .lch:before,
-#guideContent .entrance .lch:after {
-  background-image: url(../img/entrance-lch.png);
+#guideContent .entrance .ggt:before,
+#guideContent .entrance .ggt:after {
+  background-image: url(../img/entrance-ggt.png);
 }
 .login-getcode {
   position: absolute;
@@ -6074,12 +6086,108 @@ html.android progress {
 #riskContent .hidden {
   display: none;
 }
+#circle_area {
+  position: relative;
+}
+.level {
+  position: relative;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #2f3944;
+}
+#retest {
+  width: 100px;
+  margin: 0 auto;
+}
+#auditContent {
+  background: #fff;
+}
 #auditContent .info {
   height: 78px;
 }
 #auditContent .info .iconfont {
   display: inline-block;
   vertical-align: middle;
+}
+#auditContent .dlod-client {
+  margin: 0 0 18px 0;
+}
+#auditContent .search-button-wrap {
+  margin: 18px 0 24px 0;
+}
+#auditContent .item-after {
+  font-size: 14px;
+  color: #cccccc;
+}
+#auditContent .pwd-bg {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  margin-top: -34px;
+  height: 20px;
+}
+#auditContent .pwd-bg div {
+  border: 1px solid #dadada;
+  height: 20px;
+}
+#auditContent .pwd-wrap {
+  position: relative;
+  z-index: 10;
+  margin-top: 20px;
+  background: #fff;
+}
+#auditContent .pwd-wrap input[type="password"] {
+  height: 28px;
+}
+#auditContent .light-color {
+  background: #f0f0f0;
+  padding: 10px 15px 20px;
+  margin: 24px 0 -18px;
+  border-top: 1px solid #E5E5E3;
+}
+#auditContent .open-step {
+  width: 240px;
+  height: 53px;
+  background: url(../img/open-step.png) center 0 no-repeat;
+  background-size: cover;
+  margin: 10px auto 0;
+}
+#auditContent .open-step.step2 {
+  background-position: 0 -53px;
+}
+#auditContent .open-step.step3 {
+  background-position: 0 -106px;
+}
+#auditContent .tc {
+  margin: 20px 0 10px 0;
+  font-size: 12px;
+}
+#auditContent .dlod-client-tip {
+  background: #f0f0f0;
+  margin: -18px 0 0 0;
+  padding: 20px 15px 10px;
+}
+#auditContent .dlod-client {
+  background: #f0f0f0;
+  margin: 0;
+  padding-bottom: 18px;
+}
+.modal-title {
+  color: #4c4c4c;
+  font-size: 16px;
+}
+.modal-title .dlg-highlight {
+  color: #fd8615;
+}
+.dlg-lowlight {
+  color: #808080;
+}
+.dlg-cancel-btn {
+  color: #808080;
+}
+.dlg-confirm-btn {
+  color: #328aed;
 }
 #signContent .select-trigger {
   display: block;
