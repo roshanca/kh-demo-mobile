@@ -10,9 +10,14 @@
 		<div class="page-content">
 			<div class="info-content vertical-align">
 				<div class="info">
-					<div class="score">{{model.riskScore}}分</div>
-					<div class="level">{{model.riskLevel}}</div>
-					<a class="close-popup" href="#">重新测评</a>
+					<div id="circle_area">
+						<canvas width="190" height="170" class="gauge"></canvas>
+						<!-- <div class="result">
+							<span class="number">{{model.riskScore}}</span>分
+						</div> -->
+						<div class="level">高风险承受型</div>
+					</div>
+					<a class="close-popup button" id="retest" href="#">重新测评</a>
 				</div>
 			</div>
 			<div class="content-block">

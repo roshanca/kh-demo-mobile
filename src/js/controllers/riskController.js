@@ -14,6 +14,10 @@ define(['views/riskView'], function (View) {
 		element: '.risk-next-button',
 		event: 'click',
 		handler: nextSubmit
+	},{
+		element: 'window',
+		event: 'load',
+		handler: drawRound
 	}];
 
 	var navbar_height = $$('.navbar').outerHeight();
@@ -128,7 +132,7 @@ define(['views/riskView'], function (View) {
 		$$.ajax({
 			url: 'api/risk-result.json',
 			type: 'GET',
-			data: {'answers': answers},
+			data: {'answers': answers },
 			success: function (data) {
 				data = JSON.parse(data);
 				if (data.errorNo === 0) {
@@ -137,16 +141,89 @@ define(['views/riskView'], function (View) {
 						bindings: afterBindings
 					});
 					khApp.popup('.popup');
+					drawRound(data.model.riskScore/100);
 				}
 				khApp.hideIndicator();
 			}
 		});
 	}
 
+	function drawRound(pecentage) {
+		var isLogoCentered = true,
+			isGaugeInit = false,
+			canvas = document.getElementsByTagName("canvas"),
+			gaugeGroup = [],
+			arcIncrements = [],
+			cWidth = canvas[0].width,
+			cHeight = canvas[0].height,
+			baseColor = "#e1e1e1",
+			coverColor = "#e45050";
+
+		function drawCanvasRound(gauge, color, sAngle, eAngle) {
+			gauge.clearRect(0, 0, cWidth, cHeight);
+
+			gauge.beginPath();
+			gauge.strokeStyle = color;
+			gauge.lineWidth = 6;
+			gauge.arc(cWidth / 2, cHeight / 2, 80, sAngle, eAngle, false);
+			gauge.stroke();
+		}
+
+		function drawCanvasStaff(gauge, arcEndStaff) {
+			drawCanvasRound(gauge, baseColor, 130 * Math.PI / 180, 50 * Math.PI / 180);
+			// drawCanvasRound(gauge, coverColor, 0 - 90 * Math.PI / 180, arcEndStaff - 90 * Math.PI / 180);
+
+			gauge.beginPath();
+			gauge.strokeStyle = coverColor;
+			gauge.lineWidth = 6;
+			gauge.arc(cWidth / 2, cHeight / 2, 80,   130 * Math.PI / 180, arcEndStaff - 230 * Math.PI / 180, false);
+			gauge.stroke();
+
+			gauge.fillStyle = coverColor;
+			gauge.font = "60px PT Sans";
+			var text = Math.floor(arcEndStaff / 4.86 * 100);
+			var textWidth = gauge.measureText(text).width;
+			console.log(gauge.measureText(text));
+			gauge.fillText(text, cWidth / 2 - textWidth / 2, cHeight / 2 + 20);
+			gauge.font = "18px PT Sans";
+			gauge.fillStyle = "#ccc";
+			gauge.fillText("分", cWidth / 2 + textWidth / 2, cHeight / 2 + 20);
+
+			return arcEndStaff;
+		}
+
+		function initCanvasStaff() {
+
+			for (var i = 0, cl = canvas.length; i < cl; i++) {
+				var gauge = canvas[i].getContext("2d");
+				var radian = pecentage * 280 * Math.PI / 180
+				gaugeGroup.push(gauge);
+				arcIncrements.push(0);
+
+				// console.log(gaugeGroup);
+				// console.log(arcIncrements);
+
+				// drawCanvasRound(gauge, baseColor, 0, Math.PI * 2);
+			}
+
+			var drawingStaff1 = setInterval(function () {
+				arcIncrements[0] += Math.PI / 180;
+				var end1 = drawCanvasStaff(gaugeGroup[0], arcIncrements[0]);
+				if (end1 > radian) {
+					clearInterval(drawingStaff1);
+				}
+			}, 10);
+
+		}
+
+		initCanvasStaff(pecentage);
+	}
+
 	function nextSubmit() {
 		khApp.closeModal();
 		mainView.loadPage('review.html');
 	}
+
 
 	return {
 		init: init
