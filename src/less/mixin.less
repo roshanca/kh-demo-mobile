@@ -1,0 +1,10 @@
+.at2x(@path, @w, @h, @ext: "png") {
+  background-image: url("../img/@{path}.@{ext}");
+  @media
+    screen and (-webkit-min-device-pixel-ratio : 2),
+    screen and (min-device-pixel-ratio: 2) {
+      background-image: url("../img/@{path}@2x.@{ext}");
+  }
+  background-repeat: no-repeat;
+  background-size: @w @h;
+}
