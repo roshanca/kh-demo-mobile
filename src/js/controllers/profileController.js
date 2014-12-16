@@ -26,7 +26,7 @@ define(['views/profileView'], function (View) {
 	}
 
 	function nextSubmit() {
-		mainView.loadPage('video.html');
+		mainView.loadPage('videotype.html');
 	}
 
 	return {

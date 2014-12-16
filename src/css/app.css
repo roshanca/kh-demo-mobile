@@ -69,6 +69,12 @@
 .icon-sign:before {
   content: "\e614";
 }
+.icon-kefu:before {
+  content: "\e618";
+}
+.icon-camera:before {
+  content: "\e61a";
+}
 html,
 body {
   position: relative;
@@ -6020,6 +6026,108 @@ html.android progress {
 }
 #videoWait .dialog p {
   color: #808080;
+}
+.self-block {
+  padding: 15px 12px;
+  color: #fff;
+  background-color: #78c597;
+}
+.self-block h3 {
+  margin: 0 0 20px 0;
+  font-size: 15px;
+  font-weight: normal;
+}
+.self-block p {
+  font-size: 12px;
+}
+.self-block i {
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  font-size: 0;
+}
+.self-block .pic-photo {
+  background-image: url("../img/photo.png");
+  background-repeat: no-repeat;
+  background-size: 75px 75px;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-device-pixel-ratio: 2) {
+  .self-block .pic-photo {
+    background-image: url("../img/photo@2x.png");
+  }
+}
+.self-block .pic-video {
+  background-image: url("../img/video.png");
+  background-repeat: no-repeat;
+  background-size: 75px 75px;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-device-pixel-ratio: 2) {
+  .self-block .pic-video {
+    background-image: url("../img/video@2x.png");
+  }
+}
+.video-select-title {
+  margin-top: 0;
+  font-size: 15px;
+  color: #41474e;
+}
+.video-select {
+  position: relative;
+  display: block;
+  padding: 28px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+.video-select.active-state {
+  opacity: .9;
+}
+.video-select h2 {
+  margin: 0 0 10px 0;
+  color: #fff;
+  font-size: 45px;
+}
+.video-select p {
+  margin: 0;
+  font-size: 12px;
+}
+.video-select .iconfont {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  -webkit-transform: translateY(-50%);
+  z-index: 999;
+  font-size: 80px;
+  color: #fff;
+}
+.video-online {
+  background-color: #f0624f;
+}
+.video-online p {
+  color: #fae7e6;
+}
+.video-self {
+  background-color: #32b6e6;
+}
+.video-self p {
+  display: inline-block;
+  vertical-align: middle;
+  color: #e0f2fa;
+}
+.video-self p:after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 60px;
+  height: 20px;
+  margin-left: 5px;
+  background-image: url("../img/lasting.png");
+  background-repeat: no-repeat;
+  background-size: 60px 20px;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-device-pixel-ratio: 2) {
+  .video-self p:after {
+    background-image: url("../img/lasting@2x.png");
+  }
 }
 #departmentContent .department-block {
   position: relative;
