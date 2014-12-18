@@ -4,13 +4,31 @@
 <div class="pages navbar-through no-toolbar">
 	<div data-page="guide" class="page no-navbar">
 		<div class="page-content" id="guideContent">
-			<img class="logo" src="img/logo.png" width="100%" height="45px" alt="">
-			<div class="entrance">
-				<script id="guideTemplate" type="text/template">
-				{{#each model.openTypes}}
-					<a class="{{name}}" data-type="{{type}}" href="#">{{explain}}</a>
-				{{/each}}
-				</script>
+			<div class="card kh">
+				<h1>开股东户</h1>
+				<h2>我是新入市投资者，还没有股东账户</h2>
+				<div class="action">
+					<a data-type="1" href="#">开始</a>
+				</div>
+			</div>
+			<div class="card zh">
+				<h1>转股东户</h1>
+				<h2>我已有股东账户，已撤销指定交易和完成转托管</h2>
+				<div class="action">
+					<a data-type="3" href="#">开始</a>
+				</div>
+			</div>
+			<div class="card lc">
+				<h1>开理财户</h1>
+				<h2>无论有没有在其他券商开立股东账户，都可开立理财户</h2>
+				<div class="action">
+					<a data-type="5" href="#">开始</a>
+				</div>
+			</div>
+			<div class="labels">
+				<div class="label zh">转股东户</div>
+				<div class="label lc">开理财户</div>
+				<div class="label kh">开股东户</div>
 			</div>
 		</div>
 	</div>

@@ -5,11 +5,6 @@ define(['utils', 'services/openTypeService'], function (Utils, OTS) {
 	};
 
 	function render(params) {
-		var template = $$('#guideTemplate').html();
-		var compiledTemplate = Template7.compile(template);
-		var renderTemplate = compiledTemplate({model: model});
-
-		$$('.entrance').append(renderTemplate);
 		Utils.bindEvents(params.bindings);
 	}
 
