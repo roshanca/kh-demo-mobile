@@ -1,4 +1,8 @@
-define(['views/guideView'], function (View) {
+define(['views/guideView', 'services/openTypeService'], function (View, OTS) {
+
+	var model = {
+		openTypes: OTS.getCurrentTypeData()
+	};
 
 	var bindings = [{
 		element: '.label',
@@ -12,9 +16,11 @@ define(['views/guideView'], function (View) {
 
 	function init() {
 		View.render({
+			model: model,
 			bindings: bindings
 		});
 
+		setupLabels();
 		setDefaultCard();
 	}
 
@@ -33,6 +39,20 @@ define(['views/guideView'], function (View) {
 	}
 
 	/**
+	 * 组织 labels
+	 */
+	function setupLabels() {
+		var labelLineHeight = parseInt($$('.label').css('line-height'));
+		var size = model.openTypes.length;
+
+		$$('.labels').css('height', labelLineHeight * (size - 1) + 'px');
+		$$('.label').each(function (i) {
+			$$(this).css('top', labelLineHeight * (size - 1 - i) + 'px');
+			$$(this).css('z-index', 99 - i);
+		});
+	}
+
+	/**
 	 * 设置默认的 card
 	 */
 	function setDefaultCard() {
@@ -48,7 +68,7 @@ define(['views/guideView'], function (View) {
 	 */
 	function getCardVisualHeiht() {
 		var bodyHeight = $$('body').height();
-		var labelsHeight = $$('.labels').outerHeight();
+		var labelsHeight = $$('.labels').height();
 
 		return bodyHeight - labelsHeight;
 	}
@@ -72,8 +92,8 @@ define(['views/guideView'], function (View) {
 		card.css('opacity', 0);
 		card.css('margin-top', '-100%');
 		card.transitionEnd(function () {
-			$$(this).css('margin-top', '800px');
-			enableLabel();
+			$$(this).css('margin-top', '200%');
+			setTimeout(enableLabel, 100); // 确保动画完成后再使 label 可点
 		});
 	}
 
@@ -113,15 +133,15 @@ define(['views/guideView'], function (View) {
 	 * @param  {f7Object} targetLabel  目标 label, 需显示
 	 */
 	function labelHandle(currentLabel, targetLabel) {
-		var currentBottom = $$(currentLabel).css('bottom');
+		var currentTop = $$(currentLabel).css('top');
 		var currentZindex = $$(currentLabel).css('z-index');
-		var targetBottom = targetLabel.css('bottom');
+		var targetTop = targetLabel.css('top');
 		var targetZindex = targetLabel.css('z-index');
 
-		currentLabel.css('bottom', targetBottom);
+		currentLabel.css('top', targetTop);
 		currentLabel.css('z-index', targetZindex);
 
-		targetLabel.css('bottom', currentBottom);
+		targetLabel.css('top', currentTop);
 		targetLabel.css('z-index', currentZindex);
 	}
 
@@ -134,28 +154,26 @@ define(['views/guideView'], function (View) {
 
 		$$('.label').each(function () {
 			var len = arr.length;
-			var bottom = parseInt($$(this).css('bottom'));
+			var top = parseInt($$(this).css('top'));
 			var cls = $$(this).attr('class').split(' ')[1];
 
 			if (!len) {
 				arr.push({
 					cls: cls,
-					bottom: bottom
+					top: top
 				});
 			} else {
-				// 上一个 bottom 比这个 bottom 大，
-				// 说明这个 bottom 出现在更加底部
-				if (arr[0].bottom > bottom) {
+				// which one is lower? we want the lower one
+				if (arr[0].top < top) {
 					arr.pop(arr[0]);
 					arr.push({
 						cls: cls,
-						bottom: bottom
+						top: top
 					});
 				}
 			}
 		});
 
-		// console.log(arr);
 		return arr[0].cls;
 	}
 
