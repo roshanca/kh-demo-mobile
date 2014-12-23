@@ -1,10 +1,11 @@
-define(['utils', 'services/openTypeService'], function (Utils, OTS) {
-
-	var model = {
-		openTypes: OTS.getCurrentTypeData()
-	};
+define(['utils'], function (Utils) {
 
 	function render(params) {
+		var template = $$('#guideTemplate').html();
+		var compiledTemplate = Template7.compile(template);
+		var renderTemplate = compiledTemplate({model: params.model});
+
+		$$('#guideContent').append(renderTemplate);
 		Utils.bindEvents(params.bindings);
 	}
 
