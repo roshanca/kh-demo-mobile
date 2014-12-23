@@ -3,28 +3,49 @@ define(['views/guideView'], function (View) {
 	var bindings = [{
 		element: '.label',
 		event: 'click',
-		handler: switchType
+		handler: switchCard
 	}, {
 		element: '.action a',
 		event: 'click',
 		handler: jumpPage
 	}];
 
-	var timers = {};
-
 	function init() {
 		View.render({
 			bindings: bindings
 		});
 
-		setup();
+		setDefaultCard();
 	}
 
-	function setup() {
-		var defaultCard = $$('.card.kh');
+	function switchCard() {
+		var currentLabel = $$(this);
+		var currentClass = $$(this).attr('class').split(' ')[1];
+		var targetClass = getTargetClass();
+		var targetLabel = $$('.label.' + targetClass);
+
+		var currentCard = $$('.card.' + targetClass);
+		var targetCard = $$('.card.' + currentClass);
+
+		disableLabel();
+		cardHandle(currentCard, targetCard);
+		labelHandle(currentLabel, targetLabel);
+	}
+
+	/**
+	 * 设置默认的 card
+	 */
+	function setDefaultCard() {
+		var targetClass = getTargetClass();
+		var defaultCard = $$('.card.' + targetClass);
+		// console.log(targetClass);
 		showCard(defaultCard);
 	}
 
+	/**
+	 * 获得 card 的有效显示区域（除去 label 的部分）
+	 * @return {Number} card visual height
+	 */
 	function getCardVisualHeiht() {
 		var bodyHeight = $$('body').height();
 		var labelsHeight = $$('.labels').outerHeight();
@@ -32,18 +53,52 @@ define(['views/guideView'], function (View) {
 		return bodyHeight - labelsHeight;
 	}
 
+	/**
+	 * 显示 card
+	 * @param  {f7Object} card
+	 */
 	function showCard(card) {
-		// $$('.card').css('opacity', 0);
-		// card.css('opacity', 100);
-		setCardPosition(card);
-	}
-
-	function setCardPosition(card) {
-		var bodyHeight = $$('body').height();
 		var visualHeight = getCardVisualHeiht();
 
-		$$('.card').css('margin-top', bodyHeight + 'px');
+		card.css('opacity', 100);
 		card.css('margin-top', (visualHeight - card.outerHeight()) / 2 + 'px');
+	}
+
+	/**
+	 * 隐藏 card
+	 * @param  {f7Object} card
+	 */
+	function hideCard(card) {
+		card.css('opacity', 0);
+		card.css('margin-top', '-100%');
+		card.transitionEnd(function () {
+			$$(this).css('margin-top', '800px');
+			enableLabel();
+		});
+	}
+
+	/**
+	 * card 的处理方法
+	 * @param  {f7Object} currentCard 当前 card, 需隐藏
+	 * @param  {f7Object} targetCard  目标 card, 需显示
+	 */
+	function cardHandle(currentCard, targetCard) {
+		showCard(targetCard);
+		hideCard(currentCard);
+	}
+
+	/**
+	 * 锁定 label, 使其无法点击，避免频繁点击造成 card 的定位错误
+	 */
+	function disableLabel() {
+		$$('.label').attr('disabled', 'disabled');
+	}
+
+	/**
+	 * 解锁 label
+	 */
+	function enableLabel() {
+		$$('.label').removeAttr('disabled');
 	}
 
 	function jumpPage() {
@@ -52,47 +107,29 @@ define(['views/guideView'], function (View) {
 		mainView.loadPage('login.html?type=' + param);
 	}
 
-	function switchType() {
-		var thisLabel = $$(this);
-		var thisLabelCalss = thisLabel.attr('class').split(' ')[1];
-		var invisibleLabelClass = getInvisibleLabelClass();
-		var invisibleLabel = $$('.label.' + invisibleLabelClass);
-		var targetCard = $$('.card.' + thisLabelCalss);
+	/**
+	 * label 的处理方法
+	 * @param  {f7Object} currentLabel 当前点中的 label, 需隐藏
+	 * @param  {f7Object} targetLabel  目标 label, 需显示
+	 */
+	function labelHandle(currentLabel, targetLabel) {
+		var currentBottom = $$(currentLabel).css('bottom');
+		var currentZindex = $$(currentLabel).css('z-index');
+		var targetBottom = targetLabel.css('bottom');
+		var targetZindex = targetLabel.css('z-index');
 
-		$$('.label').attr('disabled', 'disabled');
+		currentLabel.css('bottom', targetBottom);
+		currentLabel.css('z-index', targetZindex);
 
-		arrangeOrder(thisLabel, invisibleLabel);
-		timers.label = setTimeout(function () {
-			arrangePosition(thisLabel, invisibleLabel);
-		}, 200);
-
-		timers.card = setTimeout(function () {
-			showCard(targetCard);
-			$$('.label').removeAttr('disabled');
-		}, 500);
-	}
-
-	function arrangeOrder(thisLabel, invisibleLabel) {
-		var thisLabelZindex = thisLabel.css('z-index');
-		var invisibleLabelZindex = invisibleLabel.css('z-index');
-
-		thisLabel.css('z-index', invisibleLabelZindex);
-		invisibleLabel.css('z-index', thisLabelZindex);
-	}
-
-	function arrangePosition(thisLabel, invisibleLabel) {
-		var thisLabelBottom = thisLabel.css('bottom');
-		var invisibleLabelBottom = invisibleLabel.css('bottom');
-
-		thisLabel.css('bottom', invisibleLabelBottom);
-		invisibleLabel.css('bottom', thisLabelBottom);
+		targetLabel.css('bottom', currentBottom);
+		targetLabel.css('z-index', currentZindex);
 	}
 
 	/**
 	 * 获取当前不可见的 label 的 Class: kh, zh, lc
 	 * @return {String} class
 	 */
-	function getInvisibleLabelClass() {
+	function getTargetClass() {
 		var arr = [];
 
 		$$('.label').each(function () {
@@ -120,12 +157,6 @@ define(['views/guideView'], function (View) {
 
 		// console.log(arr);
 		return arr[0].cls;
-	}
-
-	function clearTimer() {
-		for (var task in timers) {
-			timers[task] && clearTimeout(timers[task]);
-		}
 	}
 
 	return {
