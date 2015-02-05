@@ -2,7 +2,7 @@
 deploy/
 
 # Build
-build/
+dist/
 
 # Github Pages
 ghp/

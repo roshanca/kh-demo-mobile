@@ -12,9 +12,9 @@ var jshint      = require('gulp-jshint');
 var stylish     = require('jshint-stylish');
 var requirejs   = require('gulp-requirejs-simple');
 var htmlreplace = require('gulp-html-replace');
-var htmlmin     = require('gulp-htmlmin');
-var jsmin       = require('gulp-uglify');
+var htmlmin     = require('gulp-minify-html');
 var cssmin      = require('gulp-minify-css');
+var jsmin       = require('gulp-uglify');
 var imagemin    = require('gulp-imagemin');
 var header      = require('gulp-header');
 
@@ -154,7 +154,7 @@ gulp.task('replace', function () {
  */
 gulp.task('htmlmin', ['replace'], function () {
   return gulp.src(['src/**/*.html', '!src/index.html', 'dist/index.html'])
-    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin({empty: true}))
     .pipe(gulp.dest('dist'));
 });
 
