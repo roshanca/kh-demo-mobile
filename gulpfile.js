@@ -1,167 +1,207 @@
-/* ===============================================================================
-************   Import   ************
-=============================================================================== */
+'use strict';
 
-var gulp = require('gulp');
-var gulpLoadPlugins = require('gulp-load-plugins');
-var plugins = gulpLoadPlugins();
+/**
+ * Module Dependencies.
+ */
+var gulp        = require('gulp');
+var del         = require('del');
+var less        = require('gulp-less');
 var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-var stylish = require('jshint-stylish');
-var runSequence = require('run-sequence');
+var reload      = browserSync.reload;
+var jshint      = require('gulp-jshint');
+var stylish     = require('jshint-stylish');
+var requirejs   = require('gulp-requirejs-simple');
+var htmlreplace = require('gulp-html-replace');
+var htmlmin     = require('gulp-htmlmin');
+var jsmin       = require('gulp-uglify');
+var cssmin      = require('gulp-minify-css');
+var imagemin    = require('gulp-imagemin');
+var header      = require('gulp-header');
 
-/* ===============================================================================
-************   Config   ************
-=============================================================================== */
+/**
+ * Package
+ */
+var pkg = require('./package.json');
 
+/**
+ * Templates
+ */
+var date = new Date();
+var year = date.getFullYear();
+var month = date.getMonth() + 1;
+var day = date.getDate();
+
+var meta = ['/*!',
+  ' * <%= pkg.name %>',
+  ' *',
+  ' * @version: <%= pkg.version %>',
+  ' * @update: ' + year + '-' + month + '-' + day + '',
+  ' * Copyright (c) ' + year + ', <%= pkg.author.email %>',
+  ' */',
+  ''].join('\n');
+
+/**
+ * BrowserSync config
+ */
 var serveConfig = {
-	files: [
-		'src/**/*.html',
-		'src/js/**/*.js',
-		'src/api/**/*.json',
-		'src/img/*.{png|gif}',
-		'src/font/iconfont.{svg|ttf}',
-		'src/mustache/*.mustache'
-	],
-	server: {
-		baseDir: 'src/'
-	}
+  files: [
+    'src/**/*.html',
+    'src/js/**/*.js',
+    'src/api/**/*.json',
+    'src/img/*.{png|gif}',
+    'src/font/iconfont.{svg|ttf}'
+  ],
+  server: {
+    baseDir: 'src/'
+  },
+  open: false,
+  notify: false,
+  logPrefix: 'moas'
 };
 
+/**
+ * Requirejs config
+ */
 var requireConfig = {
-	baseUrl: 'src/js',
-	mainConfigFile: 'src/js/app.js',
-	name: 'app',
-	include: [
-		'controllers/accountController',
-		'controllers/signController',
-		'controllers/appointController',
-		'controllers/auditController',
-		'controllers/certController',
-		'controllers/collectController',
-		'controllers/departmentController',
-		'controllers/departmentsController',
-		'controllers/depositoryController',
-		'controllers/guideController',
-		'controllers/loginController',
-		'controllers/passwordController',
-		'controllers/profileController',
-		'controllers/protocalController',
-		'controllers/reviewController',
-		'controllers/riskController',
-		'controllers/videoController',
-		'controllers/provController',
-		'controllers/cityController',
-		'controllers/depsController'
-	],
-	out: 'app.js'
+  baseUrl: 'src/js',
+  mainConfigFile: 'src/js/app.js',
+  name: 'app',
+  include: [
+    'controllers/accountController',
+    'controllers/signController',
+    'controllers/appointController',
+    'controllers/auditController',
+    'controllers/certController',
+    'controllers/collectController',
+    'controllers/departmentController',
+    'controllers/departmentsController',
+    'controllers/depositoryController',
+    'controllers/guideController',
+    'controllers/loginController',
+    'controllers/passwordController',
+    'controllers/profileController',
+    'controllers/protocalController',
+    'controllers/reviewController',
+    'controllers/riskController',
+    'controllers/videoController',
+    'controllers/provController',
+    'controllers/cityController',
+    'controllers/depsController'
+  ],
+  out: 'dist/build/app.js',
+  optimize: 'uglify2',
+  preserveLicenseComments: false
 };
 
-/* ===============================================================================
-************   Task   ************
-=============================================================================== */
-
+/**
+ * Serve task
+ */
 gulp.task('browser-sync', function () {
-	browserSync(serveConfig);
-});
-
-gulp.task('less', function () {
-	return gulp.src('src/less/app.less')
-		.pipe(plugins.less())
-		.pipe(gulp.dest('src/css'))
-		.pipe(reload({stream:true}));
-});
-
-gulp.task('lint', function () {
-	return gulp.src(['src/js/**/*.js', '!src/js/libs/*.js', 'gulpfile.js'])
-		.pipe(plugins.jshint())
-		.pipe(plugins.jshint.reporter(stylish));
-});
-
-gulp.task('uglify', function () {
-	plugins.requirejs(requireConfig)
-		.pipe(plugins.uglify())
-		.pipe(plugins.rename({extname: '.min.js'}))
-		.pipe(gulp.dest('build/js'));
-});
-
-gulp.task('requirejs', function () {
-	return gulp.src('src/js/libs/require.js')
-		.pipe(plugins.uglify())
-		.pipe(plugins.rename({extname: '.min.js'}))
-		.pipe(gulp.dest('build/js'));
-});
-
-gulp.task('replace', function () {
-	return gulp.src('src/index.html')
-		.pipe(plugins.htmlReplace({
-			js: {
-				src: [['js/app.min', 'js/require.min.js']],
-				tpl: '<script data-main="%s" src="%s"></script>'
-			},
-			css: 'css/app.min.css'
-		}))
-		.pipe(gulp.dest('build'));
-});
-
-gulp.task('htmlmin', function () {
-	return gulp.src(['src/**/*.html', '!src/index.html'])
-		.pipe(plugins.minifyHtml({empty: true}))
-		.pipe(gulp.dest('build'));
-});
-
-gulp.task('cssmin', function () {
-	return gulp.src('src/css/app.css')
-		.pipe(plugins.minifyCss())
-		.pipe(plugins.rename({extname: '.min.css'}))
-		.pipe(gulp.dest('build/css'));
-});
-
-gulp.task('imagemin', function () {
-	return gulp.src('src/img/*')
-		.pipe(plugins.imagemin())
-		.pipe(gulp.dest('build/img'));
-});
-
-gulp.task('copy', function () {
-	return gulp.src(['src/api/*', 'src/font/*'], {base: './src'})
-		.pipe(gulp.dest('build'));
-});
-
-gulp.task('clean', function () {
-	return gulp.src('build/*', {read: false}).pipe(plugins.rimraf());
+  browserSync(serveConfig);
 });
 
 /**
- * Default task, for developing
- * @return {[type]} [description]
+ * Less task
+ */
+gulp.task('less', function () {
+  return gulp.src('src/less/app.less')
+    .pipe(less())
+    .on('error', console.log)
+    .pipe(gulp.dest('src/css'))
+    .pipe(reload({stream:true}));
+});
+
+/**
+ * Lint task
+ */
+gulp.task('lint', function () {
+  gulp.src(['src/js/**/*.js', 'gulpfile.js', '!src/js/libs/*.js'])
+    .pipe(jshint())
+    .pipe(jshint.reporter(stylish));
+});
+
+/**
+ * Bundle task
+ */
+gulp.task('bundle', ['requirejs'], function () {
+  gulp.src(['dist/build/app.js'])
+    .pipe(header(meta, { 'pkg' : pkg }))
+    .pipe(gulp.dest('dist/build'));
+});
+
+/**
+ * Requirejs task
+ */
+gulp.task('requirejs', requirejs(requireConfig));
+
+/**
+ * Replace css js link name task
+ */
+gulp.task('replace', function () {
+  return gulp.src('src/index.html')
+    .pipe(htmlreplace({
+      js: {
+        src: [['build/app', 'build/require.js']],
+        tpl: '<script data-main="%s" src="%s"></script>'
+      },
+      css: 'build/app.css'
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
+/**
+ * Min task
+ */
+gulp.task('htmlmin', ['replace'], function () {
+  return gulp.src(['src/**/*.html', '!src/index.html', 'dist/index.html'])
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('cssmin', function () {
+  return gulp.src('src/css/*.css', {base: './src'})
+    .pipe(cssmin())
+    .pipe(header(meta, { 'pkg' : pkg }))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('jsmin', function () {
+  return gulp.src(['src/js/libs/require.js'])
+    .pipe(jsmin())
+    .pipe(gulp.dest('dist/build'));
+});
+
+gulp.task('imagemin', function () {
+  return gulp.src('src/img/*', {base: './src'})
+    .pipe(imagemin())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('compress', ['htmlmin', 'cssmin', 'jsmin', 'imagemin']);
+
+/**
+ * Copy task
+ */
+gulp.task('copy', function () {
+  return gulp.src(['src/api/*', 'src/font/*', 'src/**/*.js'], {base: './src'})
+    .pipe(gulp.dest('dist'));
+});
+
+/**
+ * Clean task
+ */
+gulp.task('clean', function (cb) {
+  del(['dist'], cb);
+});
+
+/**
+ * Default task
  */
 gulp.task('default', ['less', 'browser-sync'], function () {
-	gulp.watch('src/less/**/*.less', ['less']);
+  gulp.watch('src/less/**/*.less', ['less']);
 });
 
 /**
  * Build task
  */
-gulp.task('compile', [
-	'less',
-	'requirejs'
-]);
-
-gulp.task('compress', [
-	'htmlmin',
-	'cssmin',
-	'uglify',
-	'imagemin'
-]);
-
-gulp.task('rest', [
-	'copy',
-	'replace'
-]);
-
-gulp.task('build', function () {
-	runSequence('clean', 'compile', 'compress', 'rest', function () {
-		console.log('All done!');
-	});
-});
+gulp.task('build', ['compress', 'copy', 'bundle', 'lint']);
