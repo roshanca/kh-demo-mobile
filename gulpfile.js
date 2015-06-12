@@ -174,7 +174,7 @@ gulp.task('jsmin', function () {
 });
 
 gulp.task('imagemin', function () {
-  return gulp.src('src/img/*', {base: './src'})
+  return gulp.src('src/img/**/*', {base: './src'})
     .pipe(imagemin())
     .pipe(gulp.dest('dist'));
 });
