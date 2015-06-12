@@ -1,6 +1,6 @@
 {
   "name": "kh-demo-mobile",
-  "version": "1.3.0",
+  "version": "1.4.1",
   "description": "A online account opening system app for investors, made with Framework7.",
   "author": {
     "name": "Roshan Wu",
@@ -13,10 +13,10 @@
   },
   "main": "dist/",
   "styles": [
-    "dist/css/app.css"
+    "dist/build/app.css"
   ],
   "scripts": [
-    "dist/js/app.js"
+    "dist/build/app.js"
   ],
   "dependencies": {
     "framework7": "latest",
