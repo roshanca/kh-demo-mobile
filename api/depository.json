@@ -1,11 +1,20 @@
 {
   "errorNo": 0,
-  "model": {
-    "banks": [
-      {"code": "000", "name": "中信银行", "type": "01", "protocalId": "aaa"},
-      {"code": "001", "name": "招商银行", "type": "11", "protocalId": "bbb"},
-      {"code": "002", "name": "中国银行", "type": "01", "protocalId": "ccc"},
-      {"code": "003", "name": "中国建设银行", "type": "00", "protocalId": "ddd"}
-    ]
-  }
+  "bankList": [
+    {"code": "000", "id": "zhongguo", "name": "中国银行", "type": "01", "econtract_id": "aaa"},
+    {"code": "000", "id": "minsheng", "name": "民生银行", "type": "11", "econtract_id": "aaa"},
+    {"code": "000", "id": "pingan", "name": "平安银行", "type": "11", "econtract_id": "aaa"},
+    {"code": "001", "id": "gongshang", "name": "中国工商银行", "type": "11", "econtract_id": "bbb", "hint": "请输入银行卡号，签约后请从银行端发起首笔资金转入。"},
+    {"code": "002", "id": "zhaoshang", "name": "招商银行", "type": "01", "econtract_id": "ccc", "hint": "请输入银行卡号，签约后请从银行端发起首笔资金转入。"},
+    {"code": "003", "id": "nongye", "name": "中国农业银行", "type": "00", "econtract_id": "ddd"},
+    {"code": "003", "id": "jianshe", "name": "中国建设银行", "type": "00", "econtract_id": "ddd", "hint": "请输入银行卡号。"},
+    {"code": "003", "id": "huaxia", "name": "华夏银行", "type": "00", "econtract_id": "ddd"},
+    {"code": "003", "id": "zhongxin", "name": "中信银行", "type": "00", "econtract_id": "ddd"},
+    {"code": "003", "id": "shenzhenfazhan", "name": "深圳发展银行", "type": "00", "econtract_id": "ddd"},
+    {"code": "003", "id": "beijing", "name": "北京银行", "type": "00", "econtract_id": "ddd"},
+    {"code": "003", "id": "nanjing", "name": "南京银行", "type": "00", "econtract_id": "ddd"},
+    {"code": "003", "id": "jiaotong", "name": "交通银行", "type": "00", "econtract_id": "ddd"},
+    {"code": "003", "id": "shanghai", "name": "上海银行", "type": "00", "econtract_id": "ddd", "hint": "请输入银行卡号或存折号（如银行卡配有存折，请务必录入存折号）。"},
+    {"code": "003", "id": "guangda", "name": "光大银行", "type": "00", "econtract_id": "ddd"}
+  ]
 }
