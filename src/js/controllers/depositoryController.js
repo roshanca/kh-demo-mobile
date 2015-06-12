@@ -1,59 +1,45 @@
 define(['views/depositoryView'], function (View) {
 
-	var bindings = [{
-		element: '#bank',
-		event: 'change',
-		handler: selectBank
-	}, {
-		element: '.depository-next-button',
-		event: 'click',
-		handler: nextSubmit
-	}];
+  var bindings = [{
+    element: '.depository-list a',
+    event: 'click',
+    handler: selectBank
+  }];
 
-	function init() {
-		khApp.showIndicator();
-		$$.ajax({
-			url: 'api/depository.json',
-			type: 'GET',
-			success: function (data) {
-				data = JSON.parse(data);
-				if (data.errorNo === 0) {
-					View.render({
-						model: data.model,
-						bindings: bindings
-					});
-				}
-				khApp.hideIndicator();
-			}
-		});
-	}
+  function init() {
+    khApp.showIndicator();
+    $$.ajax({
+      url: 'api/depository.json',
+      type: 'GET',
+      success: function (data) {
+        data = JSON.parse(data);
+        if (data.errorNo === 0) {
+          View.render({
+            model: data.bankList,
+            bindings: bindings
+          });
+        }
+        khApp.hideIndicator();
+      }
+    });
+  }
 
-	function selectBank() {
-		var selectedOption = this.options[this.selectedIndex],
-			type = $$(selectedOption).data('type'),
-			text = selectedOption.text,
-			id = $$(selectedOption).data('protocal-id');
+  function selectBank() {
+    var name = $$(this).find('.bank-name').text();
+    var type = $$(this).data('type');
+    var cls = $$(this).data('cls');
+    var hint = $$(this).data('hint');
+    var protocalId = $$(this).data('protocal-id');
 
-		console.log(type);
-		switch (type) {
-			case '00':
-				View.noNeedInput(); // 00: 无需填写卡号密码
-				break;
-			case '01':
-				View.onlyCardNoInput(); // 01: 只需填写卡号
-				break;
-			case '11':
-				View.bothCardNoPswInput(); // 11: 同时需要填写卡号和密码
-				break;
-		}
-		View.syncProtocal(text, id);
-	}
+    mainView.loadPage(['depository-detail.html',
+      '?name=' + name,
+      '&type=' + type,
+      '&cls=' + cls,
+      '&econtract_id=' + protocalId,
+      (hint ? '&hint=' + hint : '')].join(''));
+  }
 
-	function nextSubmit() {
-		mainView.loadPage('risk.html');
-	}
-
-	return {
-		init: init
-	};
+  return {
+    init: init
+  };
 });

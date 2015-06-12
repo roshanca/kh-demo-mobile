@@ -296,9 +296,13 @@ html.android .row .col-33 {
 }
 
 .agree-block {
+  line-height: 22px;
   .flexbox();
   .align-items(flex-start);
-  font-size: 15px;
+  padding: 8px 10px;
+  background-color: #fff;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
   .item-media {
     .flexbox();
     .flex-wrap(no-wrap);
@@ -312,14 +316,15 @@ html.android .row .col-33 {
     .border-box();
     .item-title {
       .flex-shrink(1);
+      .text-overflow();
     }
   }
-  i.icon-form-checkbox {
-    width: 18px !important;
-    height: 18px !important;
-    border-radius: 0 !important;
-    background-color: #fff;
-  }
+  // i.icon-form-checkbox {
+  //   width: 18px !important;
+  //   height: 18px !important;
+  //   border-radius: 0 !important;
+  //   background-color: #fff;
+  // }
 }
 
 html.android .agree-block {

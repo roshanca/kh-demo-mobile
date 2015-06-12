@@ -50,7 +50,7 @@ define(['views/reviewView'], function (View) {
 
 		// 最终格式为：question_no&value|question_no&value|question_no&value...
 		answers = resultArray.join('|');
-		mainView.loadPage('audit.html');
+		mainView.loadPage('result.html');
 	}
 
 	/**

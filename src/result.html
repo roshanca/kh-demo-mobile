@@ -1,0 +1,67 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="center sliding">申请提交</div>
+  </div>
+</div>
+
+<div data-page="result" class="page page-on-center">
+  <div class="page-content" id="resultContent">
+    <script id="resultTemplate" type="text/template">
+      <div class="content-block back-blue">
+        <div class="content-block-hint">
+          <i class="iconfont icon-warn"></i>
+          <div class="text-hint">使用网银签约方式开通三方存管后，还需要到银行网银确认签约三方存管。</div>
+        </div>
+      </div>
+      <div class="content-block submit-success-content">
+        <div class="content-block-hint">
+          <i class="iconfont icon-sub"></i>
+          <span class="text-hint">提交成功！</span>
+        </div>
+        <p>
+          我们将尽快完成申请资料的审核，审核后您将收到手机短信提示，请保持手机畅通。
+        </p>
+      </div>
+      <div class="list-block media-list">
+        <ul>
+          <li class="item-content">
+            <div class="item-media"><img src="img/iphone.png" alt="" width="37" height="37" /></div>
+            <div class="item-inner">
+              <div className="item-title-row">
+                <div class="item-title">下载财通网上交易</div>
+              </div>
+              <div class="item-subtitle">掌上投资理财利器</div>
+              <div class="item-btn"><a href="#" class="button button-fill">马上下载</a></div>
+            </div>
+          </li>
+          <li class="item-content">
+            <div class="item-media"><img src="img/qrcode.png" style="margin-top:-12px" alt="" width="37" height="37" /></div>
+            <div class="item-inner">
+              <div className="item-title-row">
+                <div class="item-title">扫二维码或搜索ID“财通证券”</div>
+              </div>
+              <div class="item-subtitle">热点、业务导航、账户查询、行情，随手掌握</div>
+              <div class="item-btn"><a href="#" class="button button-fill">下载图片</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="list-block">
+        <ul>
+          {{#each model.resultInfo}}
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">{{key}}</div>
+                  <div class="item-input">
+                    <input type="text" class="text-right" readonly="true" name="name" value="{{val}}">
+                  </div>
+                </div>
+              </div>
+            </li>
+            {{/each}}
+        </ul>
+      </div>
+    </script>
+  </div>
+</div>

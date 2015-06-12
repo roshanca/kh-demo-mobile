@@ -1,0 +1,79 @@
+#depositoryContent {
+  .depository-list {
+    width: 100%;
+    padding: 0;
+    margin: 15px 0;
+    border-style: solid;
+    border-color: rgba(204, 204, 204, 0.5);
+    border-width: 1px 0;
+    font-size: 0;
+    background-color: #fff;
+    overflow: hidden;
+    li {
+      position: relative;
+      display: inline-block;
+      .border-box();
+      width: 33%;
+      width: calc(~"100% / 3");
+      text-align: center;
+      bottom: -1px;
+      border-bottom: 1px solid rgba(204, 204, 204, 0.5);
+      border-right: 1px solid rgba(204, 204, 204, 0.5);
+      a {
+        display: block;
+        padding: 10px 0;
+        &.active-state {
+          opacity: .6;
+        }
+      }
+      .iconfont {
+        font-size: 30px;
+      }
+      .bank-name {
+        margin: 10px 0 0 0;
+        font-size: 14px;
+        color: #999;
+      }
+    }
+  }
+}
+
+.icon-guangda {
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  .at2x("icon/guangda", 41px, 30px);
+  background-position: center center;
+}
+
+.icon-shanghai {
+  display: inline-block;
+  width: 30px;
+  height: 42px;
+  .at2x("icon/shanghai", 30px, 30px);
+  background-position: center center;
+}
+
+.icon-minsheng {
+  display: inline-block;
+  width: 30px;
+  height: 42px;
+  .at2x("icon/minsheng", 30px, 30px);
+  background-position: center center;
+}
+
+.deposit-holder {
+  height: 33px;
+  line-height: 33px;
+  padding-bottom: 5px;
+  .iconfont {
+    margin-right: 8px;
+    font-size: 30px;
+    vertical-align: middle;
+  }
+  .bank-name {
+    display: inline-block;
+    margin-top: 0;
+    vertical-align: middle;
+  }
+}

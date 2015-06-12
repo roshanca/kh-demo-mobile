@@ -1,3 +1,5 @@
+# editorconfig.org
+
 root = true
 
 [*]
@@ -7,10 +9,6 @@ end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
-
-[*.{html,xml,js,mustache}]
-indent_style = tab
-indent_size = 4
 
 [*.{md,markdown}]
 trim_trailing_whitespace = false

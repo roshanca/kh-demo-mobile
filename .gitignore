@@ -1,42 +1,8 @@
-# Deploy
-deploy/
-
-# Build
-dist/
-
-# Github Pages
-ghp/
-
-# Windows
 Thumbs.db
 Desktop.ini
-
-# Mac
 .DS_Store
-
-# Bower
-bower_components/
-
-# Npm
-node_modules/
-
-# Eclipse
-.metadata
-.classpath
-.project
-.settings/
-
-# Maven
-log/
-target/
-
-# SVN
-*.svn/
-
-# Temp
-src/template
-template-3.0
-template-tpy
-template-datong
-template-huaxin
-template-before1027
+.idea
+node_modules
+deploy
+dist
+ghp

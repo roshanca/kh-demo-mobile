@@ -1,30 +1,5 @@
 define(['GS'], function (GS) {
 
-	var hash = {
-		guide       : 'guide',
-		login       : 'login',
-		identity    : 'identity',
-		collect     : 'collect',
-		profile     : 'profile',
-		department  : 'department',
-		departments : 'departments',
-		video       : 'video',
-		appoint     : 'appoint',
-		cert        : 'cert',
-		sign        : 'sign',
-		account     : 'account',
-		risk        : 'risk',
-		password    : 'password',
-		depository  : 'depository',
-		review      : 'review',
-		audit       : 'audit',
-		protocal    : 'protocal',
-		reform      : 'reform',
-		prov        : 'prov',
-		city        : 'city',
-		deps        : 'deps'
-	};
-
 	/**
 	 * Init router, that handle page events
 	 */
@@ -36,6 +11,13 @@ define(['GS'], function (GS) {
 
 		$$('.logout').on('click', GS.logout);
 		$$('.version').on('click', GS.checkUpdate);
+
+    // 防止在 Android 下 Smart Select 组件点击穿透
+    if (khApp.device.android) {
+      $$('body').on('touchend', '.smart-select-page li', function (e) {
+        e.stopPropagation();
+      });
+    }
 
 		if (!GS.isLogin()) {
 			// mainView.loadPage('login.html');
@@ -52,11 +34,12 @@ define(['GS'], function (GS) {
 	 * @param  query
 	 */
 	function load(controllerName, query) {
-		if (controllerName in hash) {
-			require(['controllers/' + hash[controllerName] + 'Controller'], function (controller) {
-				controller.init(query);
-			});
-		}
+    if (!controllerName) { return; }
+    if (controllerName.indexOf('smart-select') !== -1) { return; }
+
+		require(['controllers/' + controllerName + 'Controller'], function (controller) {
+      controller.init(query);
+    });
 	}
 
 	return {

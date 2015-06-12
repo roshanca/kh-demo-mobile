@@ -147,6 +147,102 @@
   }
 }
 
+.gray-font() {
+  font-size: 22px;
+  color: #cacaca;
+  vertical-align: middle;
+}
+
+.gvideo-block {
+  .border-box();
+  .flexbox();
+  .justify-content(center);
+  .align-items(center);
+  margin: 25px 15px;
+  padding: 20px 15px;
+  border-radius: 5px;
+  background-color: #fff;
+  .pic,
+  .text {
+    .border-box();
+    position: relative;
+    width: 50%;
+    height: 120px;
+    text-align: center;
+  }
+  .pic {
+    .frame {
+      height: 100%;
+      border-radius: 3px;
+      background-color: #029be9;
+    }
+    p {
+      margin-top: -20px;
+      font-size: 14px;
+      color: #fff;
+    }
+  }
+  .text {
+    padding-left: 10px;
+    em {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: bold;
+      color: #494c4d;
+      &:before {
+        content: "第";
+        .gray-font();
+      }
+      &:after {
+        content: "步";
+        .gray-font();
+      }
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .icon-takephoto,
+  .icon-shootvideo {
+    font-size: 70px;
+    color: #fff;
+    // line-height: 70px;
+  }
+  .icon-success,
+  .icon-fail {
+    font-size: 18px;
+  }
+  .realpic {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background-color: #000;
+    img {
+      max-width: 100%;
+      max-height: 98px;
+    }
+  }
+  .done-text {
+    text-align: left !important;
+    padding-left: 3px;
+    .tip {
+      margin: 5px 0 35px;
+      font-size: 14px;
+      color: #80c823;
+    }
+    .txt {
+      padding: 5px 0;
+      font-size: 12px;
+      color: #bababa;
+    }
+  }
+}
+
 // .clock {
 //   -webkit-animation: explode 500ms forwards;
 //   margin: 35px auto;
