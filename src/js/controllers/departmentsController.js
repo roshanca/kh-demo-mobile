@@ -31,7 +31,7 @@ define(['views/departmentView'], function (View) {
 
 		if (query.depsname) {
 			View.renderName(query.depsname);
-			View.renderBadge();
+			View.renderBadge('all');
 		}
 	}
 
@@ -78,6 +78,7 @@ define(['views/departmentView'], function (View) {
 
 	function selectedName() {
 		var selectedText = this.options[this.selectedIndex].text;
+		var selectedBadge = $$(this).data('from');
 		View.renderName(selectedText);
 		View.renderBadge();
 	}

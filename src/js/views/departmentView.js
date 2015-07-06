@@ -19,8 +19,14 @@ define(['utils'], function (Utils) {
 		$$('.department-name').find('h2').text(text);
 	}
 
-	function renderBadge() {
-		$$('.department-badge').html('您选择的是');
+	function renderBadge(selectedBadge) {
+		if(selectedBadge === 'recommend') {
+			$$('.department-badge').html('<i class="iconfont icon-recommend"></i> 推荐');
+		} else if (selectedBadge === 'all') {
+			$$('.department-badge').html('<i class="iconfont icon-lookfor"></i> 自选');
+		} else {
+			$$('.department-badge').html('<i class="iconfont icon-local"></i> 附近');
+		}
 	}
 
 	function resetSelect() {

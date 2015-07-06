@@ -5,8 +5,13 @@
     .list-block {
       margin-top: 2px;
       ul {
+        .clearfix();
         display: block;
         border-color: #dfdfdf;
+        &:before,
+        &:after {
+          position: relative !important;
+        }
       }
       li {
         float: left;

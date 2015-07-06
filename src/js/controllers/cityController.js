@@ -7,7 +7,9 @@ define(['views/cityView', 'models/depsModel'], function (View, Model) {
 	}];
 
 	function init(query) {
-		var cityData = Model.fetchCity(query.prov);
+        var prov = decodeURIComponent(query.prov);
+		var cityData = Model.fetchCity(prov);
+
 		View.render({
 			model: cityData,
 			bindings: bindings
@@ -16,6 +18,7 @@ define(['views/cityView', 'models/depsModel'], function (View, Model) {
 
 	function selectCity() {
 		var city = $$(this).find('.item-title').html();
+        city = encodeURIComponent(city);
 		mainView.loadPage('select/deps.html?city=' + city);
 	}
 

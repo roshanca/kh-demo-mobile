@@ -66,8 +66,8 @@
 			</div>
 			<script id="departmentTemplate" type="text/template">
 			{{#if model.departmentsNearby}}
-				<a href="#" class="item-link smart-select" id="nearbySelect" data-page-title="附近营业部">
-					<select name="nearby">
+				<a href="#" class="item-link smart-select" id="nearbySelect" data-page-title="附近营业部" data-back-on-select="true">
+					<select name="nearby" data-from="nearby">
 					{{#each model.departmentsNearby}}
 						<option value="{{value}}">{{department}}</option>
 					{{/each}}
@@ -76,8 +76,8 @@
 			{{/if}}
 
 			{{#if model.departmentsAll}}
-				<a href="#" class="item-link smart-select" id="allSelect" data-page-title="选择营业部" data-searchbar="true" data-searchbar-placeholder="营业部名称" data-searchbar-cancel="取消">
-					<select name="all">
+				<a href="#" class="item-link smart-select" id="allSelect" data-page-title="选择营业部" data-back-on-select="true" data-searchbar="true" data-searchbar-placeholder="营业部名称" data-searchbar-cancel="取消">
+					<select name="all" data-from="all">
 					{{#each model.departmentsAll}}
 						<optgroup label="{{group}}">
 							{{#departments}}
