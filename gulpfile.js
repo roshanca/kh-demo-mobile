@@ -14,7 +14,6 @@ var requirejs   = require('gulp-requirejs-simple');
 var htmlreplace = require('gulp-html-replace');
 var htmlmin     = require('gulp-minify-html');
 var cssmin      = require('gulp-minify-css');
-var cssconcat   = require('gulp-concat-css');
 var jsmin       = require('gulp-uglify');
 var imagemin    = require('gulp-imagemin');
 var header      = require('gulp-header');
@@ -162,11 +161,10 @@ gulp.task('htmlmin', ['replace'], function () {
 });
 
 gulp.task('cssmin', function () {
-  return gulp.src('src/css/*.css')
-    .pipe(cssconcat('app.css'))
+  return gulp.src('src/css/*.css', {base: './src'})
     .pipe(cssmin())
     .pipe(header(meta, { 'pkg' : pkg }))
-    .pipe(gulp.dest('dist/build'));
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('jsmin', function () {
