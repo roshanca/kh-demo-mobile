@@ -26,8 +26,4 @@ define(['views/depsView', 'models/depsModel'], function (View, Model) {
 	return {
 		init: init
 	};
-
-	return {
-		init: init
-	};
 });
