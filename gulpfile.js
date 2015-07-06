@@ -161,10 +161,10 @@ gulp.task('htmlmin', ['replace'], function () {
 });
 
 gulp.task('cssmin', function () {
-  return gulp.src('src/css/*.css', {base: './src'})
+  return gulp.src('src/css/app.css')
     .pipe(cssmin())
     .pipe(header(meta, { 'pkg' : pkg }))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/build'));
 });
 
 gulp.task('jsmin', function () {
